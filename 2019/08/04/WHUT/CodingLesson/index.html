@@ -1,0 +1,535 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.ico">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="受到实验室指导老师的邀请，给学弟学妹们科普上位机。
+由于上位机软件开发中会涉及到大量英语文档，因此在基本概念中，有些使用的英文介绍。">
+  <meta name="author" content="Fu Qingchen">
+  <meta name="keywords" content="MSE, CS">
+  
+  <title>ICADCS同学的上位机科普 | Fu&#39;s Web</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/vs2015.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.11","typing":{"enable":false,"typeSpeed":30,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null},"tajs":null},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 50vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Fu's Web</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('https://gitee.com/fuqingchen/picture-lib/raw/master/img/Test_Tree.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="ICADCS同学的上位机科普">
+              
+                ICADCS同学的上位机科普
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2019-08-04 08:07" pubdate>
+        2019年8月4日 早上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      851 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      10
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">ICADCS同学的上位机科普</h1>
+            
+            <div class="markdown-body">
+              <p>受到实验室指导老师的邀请，给学弟学妹们科普上位机。</p>
+<p>由于上位机软件开发中会涉及到大量英语文档，因此在基本概念中，有些使用的英文介绍。</p>
+<span id="more"></span>
+<h1 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h1><h2 id="上位机-下位机"><a href="#上位机-下位机" class="headerlink" title="上位机/下位机"></a>上位机/下位机</h2><p><strong>上位机</strong>是指可以直接发出操控命令的计算机，一般是PC，屏幕上显示各种信号变化（液压，水位，温度等）。下位机是直接控制设备获取设备状况的计算机，一般是PLC/单片机之类的。上位机发出的命令首先给下位机，下位机再根据此命令控制相应设备。下位机不时读取设备状态数据（一般为模拟量），转换成数字信号反馈给上位机。</p>
+<h2 id="I-O"><a href="#I-O" class="headerlink" title="I/O"></a>I/O</h2><p>Input/output</p>
+<h2 id="IDE"><a href="#IDE" class="headerlink" title="IDE"></a>IDE</h2><ul>
+<li>Integrated development environment</li>
+<li>An <strong>integrated development environment</strong> (<strong>IDE</strong>) is a software application that provides comprehensive facilities to computer programmers for software development. An IDE normally consists of at least a <strong>source code editor</strong>, <strong>build automation tools</strong>, and a <strong>debugger</strong>.</li>
+<li><a target="_blank" rel="noopener" href="https://developer.android.google.cn/studio?hl=zh_cn">Android Studio</a>、<a target="_blank" rel="noopener" href="https://visualstudio.microsoft.com/vs/">Visual Studio</a></li>
+</ul>
+<h2 id="SDK"><a href="#SDK" class="headerlink" title="SDK"></a>SDK</h2><ul>
+<li>Software development kit</li>
+<li>A <strong>software development kit</strong> (<strong>SDK</strong> or <strong>devkit</strong>) is typically a set of software development tools that allows the creation of applications for a certain software package, software framework, hardware platform, computer system, video game console, operating system, or similar development platform.</li>
+<li>Java Development Kit(JDK)、.NET Framework SDK、iOS SDK</li>
+</ul>
+<h2 id="API"><a href="#API" class="headerlink" title="API"></a>API</h2><ul>
+<li>Application programming interface</li>
+<li>In computer programming, an <strong>application programming interface</strong> (<strong>API</strong>) is a set of subroutine definitions, communication protocols, and tools for building software.</li>
+<li>百度地图API</li>
+</ul>
+<h2 id="NET-Framework"><a href="#NET-Framework" class="headerlink" title=".NET Framework"></a>.NET Framework</h2><ul>
+<li>.NET is an open source developer platform, created by Microsoft, for building many different types of applications</li>
+<li>You can write .NET apps in C#, F#, or Visual Basic.<ul>
+<li>C# is a simple, modern, object-oriented, and type-safe programming language.</li>
+</ul>
+</li>
+</ul>
+<h2 id="Windows-Forms"><a href="#Windows-Forms" class="headerlink" title="Windows Forms"></a>Windows Forms</h2><ul>
+<li><strong>Windows Forms</strong> (WinForms) is a graphical (GUI) class library included as a part of Microsoft .NET Framework  providing a platform to write rich client applications for desktop, laptop, and tablet PCs.</li>
+</ul>
+<h1 id="项目处理"><a href="#项目处理" class="headerlink" title="项目处理"></a>项目处理</h1><h2 id="完整应用程序的组成"><a href="#完整应用程序的组成" class="headerlink" title="完整应用程序的组成"></a>完整应用程序的组成</h2><ul>
+<li>源程序文件</li>
+<li>GUI界面文件</li>
+<li>资源文件</li>
+<li>配置文件</li>
+</ul>
+<h2 id="项目处理过程"><a href="#项目处理过程" class="headerlink" title="项目处理过程"></a>项目处理过程</h2><ol>
+<li>学习对应的编程语言</li>
+<li>分析功能</li>
+<li>拆分功能</li>
+<li>明确输入输出</li>
+<li>建立初版GUI界面</li>
+<li>查找功能对应的库或源代码</li>
+<li>弄懂对应库或源代码的使用方法</li>
+<li>完成功能模块</li>
+<li>Debug</li>
+<li>完善GUI界面</li>
+</ol>
+<h1 id="编程学习"><a href="#编程学习" class="headerlink" title="编程学习"></a>编程学习</h1><h2 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h2><p>我们编写的的是 Windows Forms 程序，使用 C# 这种编程语言编程。C# 是一种面对对象编程语言，与面对过程的 C 有很大的区别，因此我们需要把这个当作一种全新的编程语言来学习，一定要把完整的视频过一遍。这里提供两个教程网址</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/dotnet/csharp/">Microsoft: C# Guide</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/dotnet/csharp/">51自学网: C#入门教程</a></li>
+</ul>
+<h2 id="Android（选修）"><a href="#Android（选修）" class="headerlink" title="Android（选修）"></a>Android（选修）</h2><p>安卓情况比较复杂，这里推荐 Google 制作的一套官方教程，可以不用先学Java，零基础入门。</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://cn.udacity.com/course/android-basics-user-interface--ud834">Android 基础：用户界面</a></li>
+<li><a target="_blank" rel="noopener" href="https://cn.udacity.com/course/android-basics-user-input--ud836">Android 基础：用户输入</a></li>
+<li><a target="_blank" rel="noopener" href="https://cn.udacity.com/course/android-basics-multi-screen-apps--ud839">Android 基础：多屏应用</a></li>
+<li><a target="_blank" rel="noopener" href="https://cn.udacity.com/course/android-basics-networking--ud843">Android 基础：网络</a></li>
+<li><a target="_blank" rel="noopener" href="https://cn.udacity.com/course/android-basics-data-storage--ud845">Android 基础：数据存储</a></li>
+</ul>
+<h2 id="Bug-amp-Debug"><a href="#Bug-amp-Debug" class="headerlink" title="Bug&amp;Debug"></a>Bug&amp;Debug</h2><ul>
+<li>检查配置是否匹配</li>
+<li>边写边测试</li>
+<li>单位测试</li>
+<li>注意查看报错信息</li>
+<li>Google一下/Bing一下/百度一下</li>
+</ul>
+<h1 id="版本控制"><a href="#版本控制" class="headerlink" title="版本控制"></a>版本控制</h1><h2 id="Github注册"><a href="#Github注册" class="headerlink" title="Github注册"></a>Github注册</h2><p>Github是一个基于git的代码托管平台，付费用户可以建无数个私人仓库，我们一般的免费用户只能使用最多5个私人仓库及无数个公共仓库，其中公共仓库代码公开。</p>
+<p><strong>请自行搜索注册教程</strong></p>
+<h2 id="Github使用"><a href="#Github使用" class="headerlink" title="Github使用"></a>Github使用</h2><p>现场演示</p>
+<h1 id="相关资源"><a href="#相关资源" class="headerlink" title="相关资源"></a>相关资源</h1><ul>
+<li><a target="_blank" rel="noopener" href="https://dotnet.microsoft.com/">.Net官网</a> </li>
+<li><a target="_blank" rel="noopener" href="https://developer.android.google.cn/?hl=zh_cn">Android开发者网站</a> </li>
+<li><a target="_blank" rel="noopener" href="https://material.io/tools/icons/?icon=minimize&amp;style=round">Material Design 图标</a> （Google主推的图标）</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/">Github官网</a> </li>
+</ul>
+<hr>
+<p>Learning By Sharing，2019©Fu_Qingchen，Markdown，$\LaTeX$</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9B%B8%E5%85%B3/">计算机相关</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%95%99%E7%A8%8B/">教程</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/01/18/WHUT/CourseDesignOnMechanicalAndElectronicTransmissionAndControl/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">课程设计：MQ4035门座起重机变幅机构变频调速电气控制线路设计</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2019/06/24/WHUT/MechanicalAndElectronicTransmissionAndControl/">
+                        <span class="hidden-mobile">机电传动及控制笔记</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"DNr2pgYBNbnn4YMKmdstH2Sw-gzGzoHsz","appKey":"6RRAdTwPs2Y3Tk5iKNo2qo1D","placeholder":"说点什么","path":"window.location.pathname","avatar":"retro","meta":["nick","mail"],"pageSize":10,"lang":"zh-CN","highlight":true,"recordIP":false,"serverURLs":"https://dnr2pgyb.lc-cn-n1-shared.com","emojiCDN":null,"emojiMaps":null,"enableQQ":false,"requiredFields":[],"appid":"DNr2pgYBNbnn4YMKmdstH2Sw-gzGzoHsz","appkey":"6RRAdTwPs2Y3Tk5iKNo2qo1D"},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

@@ -1,0 +1,701 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.ico">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="我这一届可能是物流学院最后一届液压班了，这课应该绝版了，不过当时在搞比赛没好好学很可惜。">
+  <meta name="author" content="Fu Qingchen">
+  <meta name="keywords" content="MSE, CS">
+  
+  <title>液压元件与系统笔记 | Fu&#39;s Web</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/vs2015.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.11","typing":{"enable":false,"typeSpeed":30,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null},"tajs":null},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 50vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Fu's Web</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('https://gitee.com/fuqingchen/picture-lib/raw/master/img/Test_Tree.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="液压元件与系统笔记">
+              
+                液压元件与系统笔记
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2019-06-13 08:07" pubdate>
+        2019年6月13日 早上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      2.8k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      28
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">液压元件与系统笔记</h1>
+            
+            <div class="markdown-body">
+              <p>我这一届可能是物流学院最后一届液压班了，这课应该绝版了，不过当时在搞比赛没好好学很可惜。</p>
+<span id="more"></span>
+<h1 id="绪论"><a href="#绪论" class="headerlink" title="绪论"></a>绪论</h1><h2 id="液压传动的工作原理、基本特征"><a href="#液压传动的工作原理、基本特征" class="headerlink" title="液压传动的工作原理、基本特征"></a>液压传动的工作原理、基本特征</h2><ul>
+<li><p>工作原理：基于帕斯卡原理，利用液体的压力能传递动力</p>
+</li>
+<li><p>基本特征：</p>
+<ul>
+<li>工作压力取决于负载</li>
+<li>运动速度取决于输入的流量</li>
+<li>液压泵的工作压力和流量之间没有相关性，而是呈现出刚性的压力流量特性</li>
+<li>P = pq</li>
+</ul>
+</li>
+</ul>
+<h1 id="液压泵、液压马达和液压缸"><a href="#液压泵、液压马达和液压缸" class="headerlink" title="液压泵、液压马达和液压缸"></a>液压泵、液压马达和液压缸</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><h3 id="液压泵、液压马达的分类"><a href="#液压泵、液压马达的分类" class="headerlink" title="液压泵、液压马达的分类"></a>液压泵、液压马达的分类</h3><ul>
+<li>液压泵<ul>
+<li>齿轮泵</li>
+<li>叶片泵</li>
+<li>柱塞泵</li>
+<li>螺杆泵</li>
+</ul>
+</li>
+<li>液压马达<ul>
+<li>高速<ul>
+<li>齿轮式</li>
+<li>叶片式</li>
+<li>轴向柱塞式</li>
+</ul>
+</li>
+<li>低速<ul>
+<li>径向柱塞式</li>
+<li>摆线转子式</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="自吸现象"><a href="#自吸现象" class="headerlink" title="自吸现象"></a>自吸现象</h3><p>在额定转速下，液压泵从低于泵的油箱自行吸油的能力，用真空度来表示。</p>
+<h3 id="液压泵和马达对偶摩擦副的润滑状态，对应摩擦学特性"><a href="#液压泵和马达对偶摩擦副的润滑状态，对应摩擦学特性" class="headerlink" title="液压泵和马达对偶摩擦副的润滑状态，对应摩擦学特性"></a>液压泵和马达对偶摩擦副的润滑状态，对应摩擦学特性</h3><ul>
+<li>液膜润滑：对偶表面被液膜隔开，并不直接接触- ，是理想的液膜润滑状态。这时摩擦力主要与润滑剂粘性有关。</li>
+<li>混合润滑：有些地方处于边界润滑，有些地方处于液膜润滑。</li>
+<li>边界润滑：液膜薄，由润滑剂中的化学物吸附在金属表面形成吸附膜或产生反应生成固体反应物形成反应膜，起润滑作用。摩擦力主要与摩擦表面特性和润滑性相关</li>
+</ul>
+<h2 id="齿轮泵"><a href="#齿轮泵" class="headerlink" title="齿轮泵"></a>齿轮泵</h2><h3 id="齿轮泵流量脉动产生原因、危害、减小措施"><a href="#齿轮泵流量脉动产生原因、危害、减小措施" class="headerlink" title="齿轮泵流量脉动产生原因、危害、减小措施"></a>齿轮泵流量脉动产生原因、危害、减小措施</h3><ul>
+<li>原因：泵在工作时，啮合点不断变化，排油腔减小的面积与增大的面积不同，流量不均匀，产生流量脉动</li>
+<li><p>危害</p>
+<ul>
+<li>脉动振幅大，执行元件的平稳性差</li>
+<li>产生压力脉动，对轴、轴承等有疲劳破环</li>
+<li>若脉动频率与溢流阀固有频率相同，产生严重的共振</li>
+</ul>
+</li>
+<li><p>减小措施</p>
+<ul>
+<li>增加齿数</li>
+<li>实现无侧隙啮合</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>流量不均匀系数：$\delta_q={(q_{sh\max}-q_{sh\min})}/{q_t}$</p>
+</blockquote>
+<h2 id="叶片泵"><a href="#叶片泵" class="headerlink" title="叶片泵"></a>叶片泵</h2><h3 id="瞬时流量不均匀性取决因素"><a href="#瞬时流量不均匀性取决因素" class="headerlink" title="瞬时流量不均匀性取决因素"></a>瞬时流量不均匀性取决因素</h3><ul>
+<li>叶片数</li>
+<li>叶片沿定子曲线移动的度速度</li>
+</ul>
+<h3 id="排量计算"><a href="#排量计算" class="headerlink" title="排量计算"></a>排量计算</h3><script type="math/tex; mode=display">
+V=2\pi B(R^2-r^2)</script><ul>
+<li>B：叶片宽度</li>
+<li>R，r：定子内曲线大、小圆弧半径</li>
+</ul>
+<h3 id="单作用叶片变量泵"><a href="#单作用叶片变量泵" class="headerlink" title="单作用叶片变量泵"></a>单作用叶片变量泵</h3><ul>
+<li>内反馈<ul>
+<li>原理：通过工作腔内的压力推动定子运动，达到变量目的</li>
+<li>q-p 曲线：在截流压力前，泵全排量输出；到达截流压力后，输出流量随压力减小，斜率与调压弹簧刚度有关，刚度越大，斜率越小。</li>
+<li>调节：通过改变调压弹簧的刚度实现曲线下降特性段斜率的改变</li>
+</ul>
+</li>
+<li>外反馈<ul>
+<li>原理：叶片泵正常运转时，压力低，定子被推向流量调节螺栓，处于最大排量处；到达调定压力后，压力补偿阀口与油箱相连，定子迅速移动，处于零偏心位置，排量为 0</li>
+<li>q-p 曲线：与内反馈相似，不过下降段具有垂直特性</li>
+<li>调节：通过流量调节螺栓可以调节定子的最大偏心量，从而实现 q-p 特性曲线的上下平移。通过调整压力补偿器中调压弹簧的压力，可以实现 q-p 特性曲线下降段的左右平移。</li>
+</ul>
+</li>
+</ul>
+<h2 id="柱塞泵"><a href="#柱塞泵" class="headerlink" title="柱塞泵"></a>柱塞泵</h2><h3 id="轴向柱塞泵采用奇数柱塞原因"><a href="#轴向柱塞泵采用奇数柱塞原因" class="headerlink" title="轴向柱塞泵采用奇数柱塞原因"></a>轴向柱塞泵采用奇数柱塞原因</h3><p>奇数柱塞泵的流量不均匀系数 $\delta_d$ 明显好于偶数柱塞泵</p>
+<h3 id="手动伺服变量泵、恒功率变量泵、恒压变量泵、功率适应性变量泵"><a href="#手动伺服变量泵、恒功率变量泵、恒压变量泵、功率适应性变量泵" class="headerlink" title="手动伺服变量泵、恒功率变量泵、恒压变量泵、功率适应性变量泵"></a>手动伺服变量泵、恒功率变量泵、恒压变量泵、功率适应性变量泵</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">名称</th>
+<th style="text-align:center">工作原理</th>
+<th style="text-align:center">适应范围</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">手动伺服变量泵</td>
+<td style="text-align:center">阀杆带动控制阀动，使变量活塞上端出现液压，活塞上下面积不等，使活塞移动，实现变量</td>
+<td style="text-align:center">广泛应用于频繁变速的液压系统中</td>
+</tr>
+<tr>
+<td style="text-align:center">恒功率变量泵</td>
+<td style="text-align:center">设置内外弹簧，用两个弹簧先后调节，刚度变化使 pq = C</td>
+<td style="text-align:center">广泛应用于压力经常变化的液压系统</td>
+</tr>
+<tr>
+<td style="text-align:center">恒压变量泵</td>
+<td style="text-align:center">通过一先导控制滑阀与出油口相接，调节出口压力</td>
+<td style="text-align:center">用于液压系统保压、电液伺服系统供压油源、节流调速系统，节省功率，减少发热</td>
+</tr>
+<tr>
+<td style="text-align:center">功率适应性变量泵</td>
+<td style="text-align:center">外置节流阀，通过节流口变化使压力差变化，调节先导控制阀，以调节流量；通过一先导控制滑阀与出油口相接，调节出口压力。同时调节两者以调节功率</td>
+<td style="text-align:center">适应于各种形式的复合控制</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="柱塞泵滑靴辅助支承作用"><a href="#柱塞泵滑靴辅助支承作用" class="headerlink" title="柱塞泵滑靴辅助支承作用"></a>柱塞泵滑靴辅助支承作用</h3><ul>
+<li>内辅助支承面：减小滑靴底面的接触比压</li>
+<li>外辅助支承面：防止因滑靴倾斜使密封带破坏</li>
+</ul>
+<h2 id="液压马达"><a href="#液压马达" class="headerlink" title="液压马达"></a>液压马达</h2><h3 id="多作用径向柱塞内曲线马达的设计要求"><a href="#多作用径向柱塞内曲线马达的设计要求" class="headerlink" title="多作用径向柱塞内曲线马达的设计要求"></a>多作用径向柱塞内曲线马达的设计要求</h3><ul>
+<li>满足柱塞的行程要求</li>
+<li>转矩和角速度的脉动小或无脉动</li>
+<li>柱塞径向运动加速度不能过大，而且应均匀变化，以减小回油背压、冲击、噪声</li>
+<li>滚轮和导轨间接触应力不应过大，而且应均匀变化，以延长寿命</li>
+<li>易于加工制造</li>
+</ul>
+<h2 id="液压马达-1"><a href="#液压马达-1" class="headerlink" title="液压马达"></a>液压马达</h2><h3 id="缓冲装置"><a href="#缓冲装置" class="headerlink" title="缓冲装置"></a>缓冲装置</h3><p>在活塞行驶至活塞终端时，在活塞和缸盖间封上一层油液，使其强制通过一小孔，产生很大的阻力。</p>
+<ul>
+<li>固定间隙缓冲装置</li>
+<li>可变节流缓冲装置</li>
+<li>可调节流缓冲装置</li>
+</ul>
+<h1 id="液压控制阀"><a href="#液压控制阀" class="headerlink" title="液压控制阀"></a>液压控制阀</h1><h2 id="概述-1"><a href="#概述-1" class="headerlink" title="概述"></a>概述</h2><h3 id="连接方式"><a href="#连接方式" class="headerlink" title="连接方式"></a>连接方式</h3><ul>
+<li>管式</li>
+<li>板式</li>
+<li>插装</li>
+<li>叠加</li>
+</ul>
+<h3 id="液压侧向力和摩擦力的减小方法"><a href="#液压侧向力和摩擦力的减小方法" class="headerlink" title="液压侧向力和摩擦力的减小方法"></a>液压侧向力和摩擦力的减小方法</h3><ul>
+<li>提高加工精度</li>
+<li>开圆周方向的均压槽</li>
+<li>保证密封下减小配合尺寸</li>
+<li>在控制系统中加入颤振信号</li>
+</ul>
+<h3 id="滑阀流量公式"><a href="#滑阀流量公式" class="headerlink" title="滑阀流量公式"></a>滑阀流量公式</h3><script type="math/tex; mode=display">
+q = C_dA\sqrt{\frac2\rho\Delta p}</script><h3 id="比例电磁铁"><a href="#比例电磁铁" class="headerlink" title="比例电磁铁"></a>比例电磁铁</h3><ul>
+<li>吸合区：工作间隙基本为0，输出力急剧上升</li>
+<li>工作行程区：输出力与输入电流成比例，与间隙基本无关</li>
+<li>空行程区：间隙过大，输出力减小</li>
+</ul>
+<h3 id="稳态液压力对阀的工作性能的影响、减小措施"><a href="#稳态液压力对阀的工作性能的影响、减小措施" class="headerlink" title="稳态液压力对阀的工作性能的影响、减小措施"></a>稳态液压力对阀的工作性能的影响、减小措施</h3><p>影响：使阀芯操纵困难</p>
+<p>减小措施：</p>
+<ul>
+<li>使用双级或多级调节</li>
+<li>用压降补偿</li>
+<li>开径向小孔</li>
+<li>在阀套开斜孔</li>
+</ul>
+<h3 id="液阻作用"><a href="#液阻作用" class="headerlink" title="液阻作用"></a>液阻作用</h3><p>阻尼作用</p>
+<h2 id="流量控制阀"><a href="#流量控制阀" class="headerlink" title="流量控制阀"></a>流量控制阀</h2><h3 id="将调速阀和溢流节流阀分别装在液压缸的回油路上，能否起到稳定速度的作用？"><a href="#将调速阀和溢流节流阀分别装在液压缸的回油路上，能否起到稳定速度的作用？" class="headerlink" title="将调速阀和溢流节流阀分别装在液压缸的回油路上，能否起到稳定速度的作用？"></a>将调速阀和溢流节流阀分别装在液压缸的回油路上，能否起到稳定速度的作用？</h3><ul>
+<li>调速阀可以</li>
+<li>溢流节流阀不行，因为溢流节流阀只能出现在<strong>进油口</strong></li>
+</ul>
+<h3 id="中位机能为-M、H、P、Y-的三位滑阀型换向阀的特点及其应用场合"><a href="#中位机能为-M、H、P、Y-的三位滑阀型换向阀的特点及其应用场合" class="headerlink" title="中位机能为 M、H、P、Y 的三位滑阀型换向阀的特点及其应用场合"></a>中位机能为 M、H、P、Y 的三位滑阀型换向阀的特点及其应用场合</h3><ul>
+<li>M：P、T口互通；A、B口封闭；机构处于静止状态</li>
+<li>H：A、B、P、T口互通；机构处于浮动状态</li>
+<li>P：A、B、P口互通；双作用液压缸处于平衡状态</li>
+<li>Y：A、B、T口互通，P口保持压力。机构呈浮动状态</li>
+</ul>
+<h3 id="盖板式插装阀组成"><a href="#盖板式插装阀组成" class="headerlink" title="盖板式插装阀组成"></a>盖板式插装阀组成</h3><ul>
+<li>先导控制阀：控制主阀组件动作</li>
+<li>控制盖板：固定插装件并保证密封，内嵌先导控制元件和节流螺塞，安装先导控制阀以及位移传感器，行程开关等电气附件，沟通插装块体内控制油路和主阀组件的连接并实施控制</li>
+<li>插装件：控制液流通断或压力高低、流量大小实现对液压执行机构方向、流量、压力的控制</li>
+</ul>
+<h3 id="面积比"><a href="#面积比" class="headerlink" title="面积比"></a>面积比</h3><script type="math/tex; mode=display">
+\alpha_A=\frac {A_A}{A_X},\\
+\alpha_B=\frac {A_B}{A_X}</script><ul>
+<li><p>$A_A,A_B$：主油口面积</p>
+</li>
+<li><p>$A_X$ ：控制油腔</p>
+</li>
+</ul>
+<h3 id="电液比例阀"><a href="#电液比例阀" class="headerlink" title="电液比例阀"></a>电液比例阀</h3><h3 id="电液比例压力阀中的弹簧与普通压力阀之间的区别"><a href="#电液比例压力阀中的弹簧与普通压力阀之间的区别" class="headerlink" title="电液比例压力阀中的弹簧与普通压力阀之间的区别"></a>电液比例压力阀中的弹簧与普通压力阀之间的区别</h3><p>电液比例压力阀中的弹簧起传力作用，普通压力阀起调压作用。</p>
+<h3 id="电液比例阀与普通开关阀、电液伺服阀相比较有何特点"><a href="#电液比例阀与普通开关阀、电液伺服阀相比较有何特点" class="headerlink" title="电液比例阀与普通开关阀、电液伺服阀相比较有何特点"></a>电液比例阀与普通开关阀、电液伺服阀相比较有何特点</h3><ul>
+<li>电液比例阀是介于普通开关阀与伺服阀之间的一种液压元件。</li>
+<li>与伺服阀相比，其优点是价廉、抗污染能力强。除了在控制精度和响应快速性方面不如伺服阀外，其他方面的性能和控制水平与伺服阀相当，其动、静态性能可以满足大多数工业应用的需求。</li>
+<li>与普通开关阀相比，虽然价格较贵，但由于其良好的控制性能而得到补偿。因此在控制较复杂，特别是对控制性能要求较高的场合，普通开关阀正逐渐被比例阀等元件所替代。</li>
+</ul>
+<h1 id="液压系统工作介质、污染控制及液压辅件"><a href="#液压系统工作介质、污染控制及液压辅件" class="headerlink" title="液压系统工作介质、污染控制及液压辅件"></a>液压系统工作介质、污染控制及液压辅件</h1><h2 id="液压系统工作介质"><a href="#液压系统工作介质" class="headerlink" title="液压系统工作介质"></a>液压系统工作介质</h2><h3 id="粘度指数-VI"><a href="#粘度指数-VI" class="headerlink" title="粘度指数(VI)"></a>粘度指数(VI)</h3><p>用于表示油液运动粘度随温度的变化特性</p>
+<h3 id="液压油的粘度等级（牌号）"><a href="#液压油的粘度等级（牌号）" class="headerlink" title="液压油的粘度等级（牌号）"></a>液压油的粘度等级（牌号）</h3><ul>
+<li>概念：液压油40℃时其运动粘度的中心值</li>
+<li>常见牌号：32，46，68，100</li>
+</ul>
+<h3 id="难燃液压液种类"><a href="#难燃液压液种类" class="headerlink" title="难燃液压液种类"></a>难燃液压液种类</h3><ul>
+<li>HFA</li>
+<li>HFB</li>
+<li>HFC</li>
+<li>HFDR</li>
+</ul>
+<h2 id="工作介质的污染控制来源及危害"><a href="#工作介质的污染控制来源及危害" class="headerlink" title="工作介质的污染控制来源及危害"></a>工作介质的污染控制来源及危害</h2><h3 id="污染物的种类"><a href="#污染物的种类" class="headerlink" title="污染物的种类"></a>污染物的种类</h3><ul>
+<li>固体颗粒污染物</li>
+<li>空气侵入</li>
+<li>水的侵入</li>
+</ul>
+<h3 id="污染物的来源"><a href="#污染物的来源" class="headerlink" title="污染物的来源"></a>污染物的来源</h3><ul>
+<li>残留的污染物</li>
+<li>侵入的污染物</li>
+<li>生成的污染物</li>
+<li>已被污染的新油</li>
+</ul>
+<h3 id="油液污染物等级的测定"><a href="#油液污染物等级的测定" class="headerlink" title="油液污染物等级的测定"></a>油液污染物等级的测定</h3><ul>
+<li>质量分析法：耗时长，结果只反映颗粒总数，无法反映尺寸及分布</li>
+<li>显微镜计数法：对尺寸小、数量多的颗粒，检测精度较差</li>
+<li>自动颗粒计数法</li>
+</ul>
+<h3 id="过滤器的性能参数"><a href="#过滤器的性能参数" class="headerlink" title="过滤器的性能参数"></a>过滤器的性能参数</h3><ul>
+<li><p>过滤效率：被过滤器滤除的污染物数量 / 过滤器上游的污染物数量</p>
+</li>
+<li><p>过滤比 $\beta$ </p>
+<script type="math/tex; mode=display">
+\beta_x=\frac{N_u}{N_d}</script><ul>
+<li>$\beta_x$ ：相对尺寸 x 的过滤比。$\beta_{10}$ 为评定过滤器过滤精度的性能参数。$\beta_x =1 $，没过滤；$\beta_x =2$，过滤50%，过滤器的平均过滤精度；$\beta_x =75$，过滤器的绝对过滤精度。</li>
+<li>$N_u,N_d$ ：过滤器上、下游中大于某一尺寸的污染物颗粒数</li>
+</ul>
+</li>
+</ul>
+<h2 id="液压辅件"><a href="#液压辅件" class="headerlink" title="液压辅件"></a>液压辅件</h2><h3 id="油箱的功用"><a href="#油箱的功用" class="headerlink" title="油箱的功用"></a>油箱的功用</h3><ul>
+<li>能够储存足够的油液，以满足液压系统的需要</li>
+<li>有足够的表面面积，能够散发系统工作产生的热量</li>
+<li>油液应平缓迂回流动，以利于油液中空气的分离和污染物的沉淀</li>
+<li>应能有效防止外界污染物入侵</li>
+<li>能保证液压泵的正常吸油，防止气泡混入和气穴的产生</li>
+<li>应为清洗油箱及油箱内元部件的安装维修提供方便，并便于注油和排油</li>
+<li>应具备液面指示器等装置</li>
+<li>应使外形整齐美观，具有一定强度和刚度</li>
+</ul>
+<h3 id="油箱容积的确定"><a href="#油箱容积的确定" class="headerlink" title="油箱容积的确定"></a>油箱容积的确定</h3><ul>
+<li>系统有大量供油时，最低液面应该在泵过滤器之上；系统有大量回油时油液应不溢出</li>
+<li>有足够的散热面积</li>
+</ul>
+<hr>
+<p>Learning By Sharing，2019©Fu_Qingchen，Markdown，$\LaTeX$</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E6%B6%B2%E5%8E%8B%E7%9B%B8%E5%85%B3/">液压相关</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%B6%B2%E5%8E%8B/">液压</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2019/06/24/WHUT/MechanicalAndElectronicTransmissionAndControl/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">机电传动及控制笔记</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2019/04/01/WHUT/NumericalControlTechnology/">
+                        <span class="hidden-mobile">数控技术笔记</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"DNr2pgYBNbnn4YMKmdstH2Sw-gzGzoHsz","appKey":"6RRAdTwPs2Y3Tk5iKNo2qo1D","placeholder":"说点什么","path":"window.location.pathname","avatar":"retro","meta":["nick","mail"],"pageSize":10,"lang":"zh-CN","highlight":true,"recordIP":false,"serverURLs":"https://dnr2pgyb.lc-cn-n1-shared.com","emojiCDN":null,"emojiMaps":null,"enableQQ":false,"requiredFields":[],"appid":"DNr2pgYBNbnn4YMKmdstH2Sw-gzGzoHsz","appkey":"6RRAdTwPs2Y3Tk5iKNo2qo1D"},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

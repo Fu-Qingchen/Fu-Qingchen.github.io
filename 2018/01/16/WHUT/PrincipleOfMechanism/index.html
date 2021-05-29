@@ -1,0 +1,875 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.ico">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="一半是几何画图，一半是理论力学的应用，哦，还有个齿轮的计算。画图相关的现在都用计算机辅助软件了，估计过几年这门课就要改版了。
+参考资料：《机械原理与机械设计》第三版（ISBN：978-7-04-039981-3）
+">
+  <meta name="author" content="Fu Qingchen">
+  <meta name="keywords" content="MSE, CS">
+  
+  <title>机械原理笔记 | Fu&#39;s Web</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/vs2015.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.11","typing":{"enable":false,"typeSpeed":30,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null},"tajs":null},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 50vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Fu's Web</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('https://gitee.com/fuqingchen/picture-lib/raw/master/img/Test_Tree.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="机械原理笔记">
+              
+                机械原理笔记
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2018-01-16 14:04" pubdate>
+        2018年1月16日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      4.2k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      46
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">机械原理笔记</h1>
+            
+            <div class="markdown-body">
+              <p>一半是几何画图，一半是理论力学的应用，哦，还有个齿轮的计算。画图相关的现在都用计算机辅助软件了，估计过几年这门课就要改版了。</p>
+<p>参考资料：《机械原理与机械设计》第三版（ISBN：978-7-04-039981-3）</p>
+<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/bcedc069gy1fnpm922snpj21kw0ldn3k.jpg" srcset="/img/loading.gif" lazyload alt="第一章思维导图"></p>
+<span id="more"></span>
+<h2 id="平面连杆机构"><a href="#平面连杆机构" class="headerlink" title="平面连杆机构"></a>平面连杆机构</h2><h3 id="平面连杆机构的基本特性"><a href="#平面连杆机构的基本特性" class="headerlink" title="平面连杆机构的基本特性"></a>平面连杆机构的基本特性</h3><p>平面四杆机构的基本形式是铰链四杆机构。运动副均为转动副的四连杆机构称为铰链四连杆机构。铰链四连杆机构中，能够整周回转的连架杆称为<strong>曲柄</strong>，不能的连架杆称为<strong>摇杆</strong>。按照连架杆的不同，又分为<strong>曲柄摇杆机构</strong>、<strong>双曲柄机构</strong>、<strong>双摇杆机构</strong></p>
+<h4 id="曲柄存在的条件"><a href="#曲柄存在的条件" class="headerlink" title="曲柄存在的条件"></a>曲柄存在的条件</h4><p>当连架杆可以共线时，就可以存在曲柄</p>
+<p>根据几何关系可以得到曲杆存在的条件：①最短杆与最长杆长度之和≤其他两杆长度之和②最短杆做连架杆或机架</p>
+<p>总结可以得到，在满足上式①条件后：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>做机架的杆</th>
+<th>机构类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>最短杆</td>
+<td>双曲柄机构</td>
+</tr>
+<tr>
+<td>最短杆临边</td>
+<td>曲柄连杆机构</td>
+</tr>
+<tr>
+<td>最短杆对边</td>
+<td>双连杆机构</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 id="急回运动特性"><a href="#急回运动特性" class="headerlink" title="急回运动特性"></a>急回运动特性</h4><p>曲柄运动的时候做等速运动，而从动件在往返这两个阶段速度是不一样的，这就是<strong>急回运动特性</strong>，急回程度可以用<strong>行程变化系数K</strong>表示，K = 输出构件回程的平均速度/输出构件工作行程的平均速度</p>
+<p>在曲柄摇杆机构中，曲柄与连杆两次共线的夹角称为<strong>极位夹角θ</strong>（θ为锐角），摇杆在这两个位置的夹角称为<strong>摆角</strong></p>
+<p>极位夹角θ与K的关系：θ = 180° · (K-1)/(K+1)，其中当θ = 0时，K=1，机构无急回特性</p>
+<h4 id="压力角与传动角"><a href="#压力角与传动角" class="headerlink" title="压力角与传动角"></a>压力角与传动角</h4><p>压力角：<em>主动件通过连杆作用于从动件的力</em> 与 <em>从动件作用点绝对速度</em> 的方向所夹的锐角</p>
+<h4 id="死点位置"><a href="#死点位置" class="headerlink" title="死点位置"></a>死点位置</h4><p>主动件做往复运动时，存在死点位置（从动件无法从主动件获得力的位置）。</p>
+<h2 id="凸轮机构"><a href="#凸轮机构" class="headerlink" title="凸轮机构"></a>凸轮机构</h2><p>1.优点：只要设计出适当的轮廓，即可实现特定的运动规律。结构简单，工作可靠</p>
+<p>2.缺点：高副接触，压强较大，容易磨损，且费用较高。</p>
+<h3 id="凸轮基本概念介绍"><a href="#凸轮基本概念介绍" class="headerlink" title="凸轮基本概念介绍"></a>凸轮基本概念介绍</h3><p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/bcedc069gy1fnpm91j79xj21h013odh8.jpg" srcset="/img/loading.gif" lazyload alt="凸轮"></p>
+<p>1.基圆：以凸轮轮廓最小向径r0为半径所作的圆，r0为基圆半径</p>
+<p>2.推程：从动件逐渐远离轴心的过程，此时转过的角度为推程运动角</p>
+<p>3.回城：从动件由最高位置回到最低位置的过程，此时转过的角度为回程运动角</p>
+<p>4.远休止角：推程结束到回程开始出所转动的夹角；近休止角：回程结束到推程开始出所转动的夹角</p>
+<h3 id="从动件常见运动规律"><a href="#从动件常见运动规律" class="headerlink" title="从动件常见运动规律"></a>从动件常见运动规律</h3><p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/bcedc069gy1fnpm92190uj21kw12a0xp.jpg" srcset="/img/loading.gif" lazyload alt="从动件常见运动规律"><br><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/bcedc069gy1fnpm922jx2j21kw14hq84.jpg" srcset="/img/loading.gif" lazyload alt="从动件常见运动规律"><br><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/bcedc069gy1fnpm923beaj21kw13iq8m.jpg" srcset="/img/loading.gif" lazyload alt="从动件常见运动规律"></p>
+<p>注：在等速运动规律中，运动的起点处和终点处速度发生了突变，机构会受到<strong>刚性冲击</strong>，等加速减速运动规律和余弦运动规律加速度产生突变，机构会受到<strong>柔性冲击</strong></p>
+<h3 id="凸轮设计时的注意事项"><a href="#凸轮设计时的注意事项" class="headerlink" title="凸轮设计时的注意事项"></a>凸轮设计时的注意事项</h3><p>1.压力角随基圆半径的增大而减小</p>
+<p>2.为了防止凸轮运动的失真，可以在滚子半径保持不变的状态下，将基圆半径变小</p>
+<h2 id="齿轮机构"><a href="#齿轮机构" class="headerlink" title="齿轮机构"></a>齿轮机构</h2><blockquote>
+<p>闲暇时做的视频</p>
+</blockquote>
+<iframe id=sbrxp src="//player.bilibili.com/player.html?aid=73314920&bvid=BV15E41117jt&cid=131041148&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="width: 720px; height: 430px; max-width: 100%"> </iframe>
+
+<h3 id="齿轮基本概念介绍"><a href="#齿轮基本概念介绍" class="headerlink" title="齿轮基本概念介绍"></a>齿轮基本概念介绍</h3><h4 id="齿廓"><a href="#齿廓" class="headerlink" title="齿廓"></a>齿廓</h4><p>我们的齿轮要求传动平稳。传动平稳，就是指在齿轮啮合中，传动比 i=ω1/ω2 为一常数。</p>
+<p>由公式推导可得：要使传动比为常数，就需要齿轮轮廓能实现：无论在齿廓的哪一点接触（K点，未标出），过接触点（K）所作的两齿廓的公法线（n）必须与连心线（O1O2）交于一点（C）。这就是<strong>齿轮啮合基本定律</strong>，满足这个条件的齿廓叫共轭齿廓</p>
+<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/bcedc069gy1fnpm91imvqj208c08cjro.jpg" srcset="/img/loading.gif" lazyload alt="齿轮啮合基本定律"></p>
+<p>这里提出一个概念：节圆。节圆是以O1、O2为圆心，以轮廓公法线与连心线交点（C）为半径的圆。</p>
+<p>在机械中，常常使用渐开线，摆线或圆弧等等曲线作为轮廓线。而渐开线的运用最为广泛。</p>
+<h5 id="渐开线"><a href="#渐开线" class="headerlink" title="渐开线"></a>渐开线</h5><p>渐开线是由直线沿圆作纯滚动时，直线上任意一点的轨迹。（我们把直线称为发生线，圆称为基圆，轨迹对应中心角叫展角。）</p>
+<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/bcedc069gy1fnpm91ikd7j208c08c0t3.jpg" srcset="/img/loading.gif" lazyload alt="渐开线"></p>
+<p>其中：<br>1.直线长BK=弧长AB</p>
+<p>2.渐开线任意法线与基圆相切（由此可推出渐开线符合齿轮啮合基本定律）</p>
+<p>3.基圆越小，渐开线越弯曲</p>
+<p>4.同一基圆任意两渐开线法向距离相等</p>
+<p>5.压力角α=Rb（基圆半径）/OK，即基圆半径与向径的比值</p>
+<p>6.基圆内无渐开线</p>
+<p>7.渐开线方程：θ=tanα-α（这个式子也是求展角/压力角的式子）</p>
+<h5 id="渐开线齿轮"><a href="#渐开线齿轮" class="headerlink" title="渐开线齿轮"></a>渐开线齿轮</h5><p>1.传动比=基圆半径的反比，即i12=r2/r1</p>
+<p>2.可分性：在安装中即使有偏差，可可以保持传动比为定值（齿轮基圆半径不变，传动比不变）</p>
+<p>3.啮合线：渐开线齿廓接触点轨迹</p>
+<p>4.啮合角：啮合线与节圆公切线的夹角，用α’表示。</p>
+<h5 id="齿轮基本参数"><a href="#齿轮基本参数" class="headerlink" title="齿轮基本参数"></a>齿轮基本参数</h5><div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">名称</th>
+<th style="text-align:center">代号</th>
+<th style="text-align:center">计算公式</th>
+<th style="text-align:center">备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">模数</td>
+<td style="text-align:center">m</td>
+<td style="text-align:center">根据强度计算或结构需要而定</td>
+<td style="text-align:center">m为标准值</td>
+</tr>
+<tr>
+<td style="text-align:center">齿数</td>
+<td style="text-align:center">z</td>
+<td style="text-align:center">根据强度计算或结构需要而定</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">中心距</td>
+<td style="text-align:center">a</td>
+<td style="text-align:center">a=m(z1+z2)/2</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">压力角</td>
+<td style="text-align:center">α</td>
+<td style="text-align:center">α=20°</td>
+<td style="text-align:center">α为标准值</td>
+</tr>
+<tr>
+<td style="text-align:center">分度圆直径</td>
+<td style="text-align:center">d</td>
+<td style="text-align:center">d1=mz1,d2=mz2</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">齿距</td>
+<td style="text-align:center">p</td>
+<td style="text-align:center">p=πm</td>
+<td style="text-align:center">分度圆上</td>
+</tr>
+<tr>
+<td style="text-align:center">齿厚</td>
+<td style="text-align:center">s</td>
+<td style="text-align:center">p=πm/2</td>
+<td style="text-align:center">分度圆上</td>
+</tr>
+<tr>
+<td style="text-align:center">齿槽宽</td>
+<td style="text-align:center">e</td>
+<td style="text-align:center">p=πm/2</td>
+<td style="text-align:center">分度圆上</td>
+</tr>
+<tr>
+<td style="text-align:center">基圆直径</td>
+<td style="text-align:center">db</td>
+<td style="text-align:center">db=dcosα=mzcosα</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">基圆齿距</td>
+<td style="text-align:center">pb</td>
+<td style="text-align:center">pb=πmcosα=mzcosα</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">齿顶圆直径</td>
+<td style="text-align:center">da</td>
+<td style="text-align:center">da=m(z+2)</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">齿根圆直径</td>
+<td style="text-align:center">df</td>
+<td style="text-align:center">df=m(z-2.5)</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">齿顶高</td>
+<td style="text-align:center">ha</td>
+<td style="text-align:center">ha=ha❀×m=m</td>
+<td style="text-align:center">ha❀为标准值=1</td>
+</tr>
+<tr>
+<td style="text-align:center">齿根高</td>
+<td style="text-align:center">hf</td>
+<td style="text-align:center">hf=（ha❀+c❀）m=1.25m</td>
+<td style="text-align:center">c❀为标准值=0.25</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/bcedc069gy1fnpm91luuoj209q09qgmm.jpg" srcset="/img/loading.gif" lazyload alt="基本参数"></p>
+<h5 id="齿条"><a href="#齿条" class="headerlink" title="齿条"></a>齿条</h5><p>没什么需要注意的……</p>
+<h5 id="内齿轮"><a href="#内齿轮" class="headerlink" title="内齿轮"></a>内齿轮</h5><p>齿顶圆直径：da=d+2ha；齿顶圆直径：df=d-2hf（就是正负号换了一下而已）</p>
+<p>对于内齿轮，齿顶圆必须大于基圆，为了使内齿轮齿廓全为渐开线</p>
+<h4 id="渐开线标准直齿轮"><a href="#渐开线标准直齿轮" class="headerlink" title="渐开线标准直齿轮"></a>渐开线标准直齿轮</h4><h5 id="齿轮传动的正确啮合条件"><a href="#齿轮传动的正确啮合条件" class="headerlink" title="齿轮传动的正确啮合条件"></a>齿轮传动的正确啮合条件</h5><p>模数和压力角同时相等，即m1=m2,α1=α2<br><code>（正确啮合即齿距p相同 =&gt; p1=πm2cosα1=p2=πm2cosα2 =&gt; m1cosα1=m2cosα2）</code></p>
+<h5 id="齿轮传动的连续性条件"><a href="#齿轮传动的连续性条件" class="headerlink" title="齿轮传动的连续性条件"></a>齿轮传动的连续性条件</h5><p>1.端面作用弧：从啮合开始到啮合结束，所转动的分度圆弧长（CD）</p>
+<p>2.端面作用角φα=弧长CD/分度圆半径r：端面作用弧所对应的圆心角</p>
+<p>3.齿距角τ=齿距p/分度圆半径r：齿距p所对圆心角</p>
+<h5 id="重合度"><a href="#重合度" class="headerlink" title="重合度"></a>重合度</h5><p>1.定义式：εα=φα/τ，是实际啮合线与齿距的比值。</p>
+<p>2.计算式：<strong>εα=[z1(tanαa1-tanα’)+z2(tanαa2-tanα’)]/2π</strong>。</p>
+<p>其中αa1、αa2为1、2齿轮压力角，其值为αa1=acos(rb1/ra1)、αa2=acos(rb2/ra2)、α’=acos(rb/r’)</p>
+<p>3.意义 ：εα越大，表示同时啮合的轮齿数越多。齿轮传动越平稳，承载能力越高</p>
+<p>例如：εα=1.45表示平均1.45对齿轮参与啮合</p>
+<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/bcedc069gy1fnpm91n4b7j209q09q0ti.jpg" srcset="/img/loading.gif" lazyload alt="重合度"></p>
+<h5 id="无侧隙啮合条件"><a href="#无侧隙啮合条件" class="headerlink" title="无侧隙啮合条件"></a>无侧隙啮合条件</h5><p>a’cosα’=acosα</p>
+<p>其中：a为标准中心距，a’为实际中心距，α为压力角，α’为啮合角</p>
+<ul>
+<li>注：对于齿条而言，无论是否标准安装，啮合角等于分度圆压力角，齿轮节圆与分度圆恒重合</li>
+</ul>
+<h4 id="渐开线齿轮切齿原理"><a href="#渐开线齿轮切齿原理" class="headerlink" title="渐开线齿轮切齿原理"></a>渐开线齿轮切齿原理</h4><h5 id="加工方法"><a href="#加工方法" class="headerlink" title="加工方法"></a>加工方法</h5><p>1.仿形法：刀具的形状为齿槽齿廓的形状，然后直着切下去，形成渐开线齿廓<br>  缺点：齿轮精度低，生产率低，所需刀具多；优点：设备简单</p>
+<p>2.范成法：利用一对齿轮啮合时其共轭齿廓互为包络线的原理，将刀具做成齿轮形状，让它一边上下运动进行切割，一边与齿坯啮合。该啮合运动称为展成运动。<br>  优点：加工精确，统一刀具加工的不同齿距的刀也可以正确啮合</p>
+<h5 id="根切"><a href="#根切" class="headerlink" title="根切"></a>根切</h5><p>1.概念：范成法加工时，如果齿轮齿数过少，可能齿根的渐开线轮廓会被切去一部分</p>
+<p>2.原因：刀具的齿顶线与啮合线的交点超过了理论啮合线的极限点N1。<br>  <code>（在保证齿坯分度圆与机床节线相切的前提下，如果齿数过小，会导致基圆半径过小；又因为模数一定，齿高也就确定了；这样的话会使刀具相对基圆切的更深，从而超过理论啮合线的极限点N1。在这种情况下，刀具过理论啮合线的极限点后，依然会切割，这样就产生了根切现象）</code></p>
+<p>3.最少齿数z(min)=2·ha❀/sin²α=17<code>（推导过程：刀具高(ha❀·m)必须在理论啮合点下方 =&gt; ha❀·m&lt;mz·sinα·sinα =&gt; z(min)=2·ha❀/sin²α）</code><br>  即标准直齿轮不发生根切的最少齿数为17</p>
+<h4 id="变位齿轮"><a href="#变位齿轮" class="headerlink" title="变位齿轮"></a>变位齿轮</h4><p>为了避免出现根切现象，我们改变刀具的位置，让刀具远离一段距离，从而解决这个问题。使用这种方法制造出的齿轮为<strong>变位齿轮</strong>。以标准齿轮的位置为基准，刀具沿径向改变的位置为xm，其中x为<strong>变位系数</strong>。规定刀具远离轮坯中心为正，靠近为负。</p>
+<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/bcedc069gy1fnpm9wuk8fj20j308cgmu.jpg" srcset="/img/loading.gif" lazyload alt="变位齿轮"></p>
+<p>如图，以正变位为例，刀具变位后：<br>p=(加工刀具齿距为定值)，Ra++(齿顶圆半径)，Rb=(基圆)，R=(分度圆)，Rf++(齿底圆半径)，ha++(齿顶高)，h=(加工刀具齿高为定值)，hf++(齿底高)，e—(齿槽宽)，s++(齿厚宽)，Ra++(齿顶圆半径)，Rf++(齿底圆半径)</p>
+<h5 id="最小变位系数"><a href="#最小变位系数" class="headerlink" title="最小变位系数"></a>最小变位系数</h5><p>变位需要有一个数值，我们把避免根切的最小的变位系数称为<strong>最小变变位系数</strong></p>
+<ul>
+<li>经过推导得z(min)=(17-z)/17</li>
+</ul>
+<p>上式说明：当z<17时，为避免根切，刀具正变位量最小为x(min)m；当z>17时，必要时可以使用负变位（一般是在凑中心距时应用）</p>
+<h5 id="无侧隙啮合方程"><a href="#无侧隙啮合方程" class="headerlink" title="无侧隙啮合方程"></a>无侧隙啮合方程</h5><p>变位之后，齿轮啮合中心距就发生了改变，而为了保证齿轮之间继续啮合，需要：一轮节圆的齿槽宽等于另一轮节圆的齿厚宽。</p>
+<p>经过一系列推导得：<strong>tanα’-α’=2(x1+x2)/(z1+z2)·tanα+tanα-α</strong></p>
+<p>这个式子常与a’cosα’=acosα结合起来求解</p>
+<h5 id="变位齿轮传动类型"><a href="#变位齿轮传动类型" class="headerlink" title="变位齿轮传动类型"></a>变位齿轮传动类型</h5><ul>
+<li>前排提示：小齿轮相比大齿轮更容易损耗，因此一般x1&gt;x2（1为小齿轮）<br>1.零传动 x1+x2=0</li>
+</ul>
+<p>1.1标准齿轮传动 x1=x2=0</p>
+<p>1.2等变位齿轮 x1=-x2!=0</p>
+<ul>
+<li>注意：①齿数之和&gt;=34 ②实际中心距小于标准中心距</li>
+</ul>
+<p>2.正传动 x1+x2&gt;0</p>
+<ul>
+<li><p>注意：实际中心距大于标准中心距</p>
+</li>
+<li><p>当x2=0时，虽然变位系数为0，但大齿轮依然是变位齿轮。<br>（这是因为需要无侧隙安装，即需要一轮齿顶圆齿厚=另一轮齿根圆齿槽宽，解决这个的方法是将两轮的齿顶切去一些）</p>
+</li>
+<li><p>优点：减轻齿轮磨损；减少结构尺寸；提高强度</p>
+</li>
+<li><p>缺点：降低了重合度（啮合角增大）</p>
+</li>
+</ul>
+<p>3.负传动 x1+x2&gt;0</p>
+<ul>
+<li><p>注意：实际中心距小于标准中心距</p>
+</li>
+<li><p>同理，当x1=0时，虽然变位系数为0，但小齿轮依然是变位齿轮。</p>
+</li>
+<li><p>负传动会加快齿轮损耗，不得以才为之</p>
+</li>
+</ul>
+<h3 id="斜齿圆柱齿轮"><a href="#斜齿圆柱齿轮" class="headerlink" title="斜齿圆柱齿轮"></a>斜齿圆柱齿轮</h3><ul>
+<li>优点：①传动稳定②重合度大③避免根切的最小尺寸小</li>
+<li>缺点：有轴向力</li>
+</ul>
+<h4 id="齿廓-1"><a href="#齿廓-1" class="headerlink" title="齿廓"></a>齿廓</h4><p>渐开线螺旋面：与圆柱母线成βb角的斜直线KK’，与圆相切形成的发生面，在做纯滚动时形成的轮廓。其中斜直线KK’与母线的夹角为基圆螺旋角βb。</p>
+<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/bcedc069gy1fnpm9wwkbsj20p008cq4a.jpg" srcset="/img/loading.gif" lazyload alt="斜齿轮齿廓"></p>
+<p>由于是斜齿轮，当一个齿开始啮合时，齿的后部尚未啮合，此时，啮合线为一个点。随着啮合的进行，啮合线会逐渐增大，到某一位置后又会逐渐减少。，然后脱离啮合</p>
+<h4 id="基本参数"><a href="#基本参数" class="headerlink" title="基本参数"></a>基本参数</h4><p>斜齿轮有两种参数：端面参数（垂直于轴线）、法面参数（垂直于分度圆上螺旋线）。</p>
+<p>其中注意：法面齿廓不是渐开线，且法面”圆”为椭圆</p>
+<p>根据斜齿轮的展开图（其中：b为齿宽）</p>
+<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/bcedc069gy1fnpm9xb9b8j20hc08c406.jpg" srcset="/img/loading.gif" lazyload alt="斜齿轮展开图"></p>
+<p>端面参数与法面参数有以下关系</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">名称</th>
+<th style="text-align:center">关系</th>
+<th style="text-align:center">备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">齿距</td>
+<td style="text-align:center">pt=pn/cosβ</td>
+<td style="text-align:center">分度圆上</td>
+</tr>
+<tr>
+<td style="text-align:center">模数</td>
+<td style="text-align:center">mt=mn/cosβ</td>
+<td style="text-align:center">分度圆上</td>
+</tr>
+<tr>
+<td style="text-align:center">压力角</td>
+<td style="text-align:center">tan(αt)=tan(αn)/cosβ</td>
+<td style="text-align:center">分度圆上</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>注：根据制造方式，法面尺寸为标准值</p>
+<h4 id="齿轮正确啮合条件"><a href="#齿轮正确啮合条件" class="headerlink" title="齿轮正确啮合条件"></a>齿轮正确啮合条件</h4><p>模数和压力角分别相等，外啮合时螺旋角相反，内啮合时螺旋角相同。<br>即：</p>
+<p>1.mt1=mt2(mn1=mn2);</p>
+<p>2.αt1=αt2(αt1=αt2);</p>
+<p>3.β1=-β2(外啮合)/β1=β2(内啮合)</p>
+<ul>
+<li>注：左旋：沿齿轮的轴向观察，〼为右旋，反之为左旋</li>
+</ul>
+<h4 id="重合度-1"><a href="#重合度-1" class="headerlink" title="重合度"></a>重合度</h4><p><strong>εγ=α（端面重合度）+εβ（纵向重合度）=εα + bsinβ/pn</strong>= [z1(tanαa1-tanα’)+z2(tanαa2-tanα’)]/2π + bsinβ/pn</p>
+<h4 id="当量齿数"><a href="#当量齿数" class="headerlink" title="当量齿数"></a>当量齿数</h4><p>由于斜齿圆柱齿轮法向齿形不是渐开线就引入了当量齿轮的概念。当量齿轮是 刀具沿法向加工时 为了模拟出相似的齿形 而假想的直齿圆柱齿轮。<br>具体模拟方法如下：</p>
+<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/bcedc069gy1fnpm9wuyqaj208c08c3z4.jpg" srcset="/img/loading.gif" lazyload alt="当量齿轮"></p>
+<p>其中上图中的椭圆为实际齿轮，与椭圆相切的圆为当量齿轮，由计算得ρ = a²/b = d/2cos²β</p>
+<ul>
+<li>①因此该当量齿轮的当量齿数<strong>zv = 2ρ/mn = z/cos³β</strong></li>
+<li>②在判断是否<strong>根切</strong>时，需要运用到这个概念<h4 id="几何尺寸计算"><a href="#几何尺寸计算" class="headerlink" title="几何尺寸计算"></a>几何尺寸计算</h4></li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">名称</th>
+<th style="text-align:center">代号</th>
+<th style="text-align:center">计算公式</th>
+<th style="text-align:center">备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">端面模数</td>
+<td style="text-align:center">mt</td>
+<td style="text-align:center">mt=mncosβ</td>
+<td style="text-align:center">mn根据强度计算或结构需要而定</td>
+</tr>
+<tr>
+<td style="text-align:center">螺旋角</td>
+<td style="text-align:center">β</td>
+<td style="text-align:center">β一般取10°到25°</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">齿数</td>
+<td style="text-align:center">z</td>
+<td style="text-align:center">根据强度计算或结构需要而定</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">当量齿数</td>
+<td style="text-align:center">zv</td>
+<td style="text-align:center">zv=z/cos³β</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">中心距</td>
+<td style="text-align:center">a</td>
+<td style="text-align:center">a=mt(z1+z2)/2</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">端面压力角</td>
+<td style="text-align:center">αt</td>
+<td style="text-align:center">tan(αt)=tan(αn)/cosβ</td>
+<td style="text-align:center">αn为标准值</td>
+</tr>
+<tr>
+<td style="text-align:center">分度圆直径</td>
+<td style="text-align:center">d</td>
+<td style="text-align:center">d1=mtz1,d2=mtz2</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">法向齿距</td>
+<td style="text-align:center">pn</td>
+<td style="text-align:center">pn=πm</td>
+<td style="text-align:center">分度圆上</td>
+</tr>
+<tr>
+<td style="text-align:center">端面齿距</td>
+<td style="text-align:center">pt</td>
+<td style="text-align:center">pt=πm/cosβ</td>
+<td style="text-align:center">分度圆上</td>
+</tr>
+<tr>
+<td style="text-align:center">齿厚</td>
+<td style="text-align:center">s</td>
+<td style="text-align:center">p=πmt/2</td>
+<td style="text-align:center">分度圆上</td>
+</tr>
+<tr>
+<td style="text-align:center">齿槽宽</td>
+<td style="text-align:center">e</td>
+<td style="text-align:center">p=πmt/2</td>
+<td style="text-align:center">分度圆上</td>
+</tr>
+<tr>
+<td style="text-align:center">基圆直径</td>
+<td style="text-align:center">db</td>
+<td style="text-align:center">db=dcosα=mtzcosα</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">基圆齿距</td>
+<td style="text-align:center">pb</td>
+<td style="text-align:center">pb=πmtcosα=mtzcosα</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">齿顶圆直径</td>
+<td style="text-align:center">da</td>
+<td style="text-align:center">da=mn(z+2)</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">齿根圆直径</td>
+<td style="text-align:center">df</td>
+<td style="text-align:center">df=mn(z-2.5)</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">齿顶高</td>
+<td style="text-align:center">ha</td>
+<td style="text-align:center">ha=han❀×mn=mnn</td>
+<td style="text-align:center">han❀为标准值=1</td>
+</tr>
+<tr>
+<td style="text-align:center">齿根高</td>
+<td style="text-align:center">hf</td>
+<td style="text-align:center">hf=（han❀+cn❀）mn=1.25mn</td>
+<td style="text-align:center">cn❀为标准值=0.25</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul>
+<li>注：β=0时，即为直齿圆柱齿轮</li>
+</ul>
+<h3 id="直齿锥齿轮"><a href="#直齿锥齿轮" class="headerlink" title="直齿锥齿轮"></a>直齿锥齿轮</h3><h4 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h4><p>1.直齿锥齿轮齿廓曲面的形成与直齿圆柱齿轮相似。如左图所示，当一扇形发生面S在基圆锥上作纯滚动时，发生面上过锥顶0的线段KK’所形成的轨迹AA’K’K即为锥齿轮的齿廓曲面。</p>
+<p>2.因发生面沿基圆锥作纯滚动时，过0点的直线KK’上的K点至锥顶0点的距离不变，因此渐开线AK是在以点0为球心、OK为半径的球面上，故称渐开线AK为球面渐开线。</p>
+<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/bcedc069gy1fnpm9wx5xmj20kh08cmyi.jpg" srcset="/img/loading.gif" lazyload alt="直齿锥齿轮">  </p>
+<p>3.将背锥表面展开为一扇平面，以背锥锥矩rv为分度圆半径，补足为完整的直齿圆柱齿轮，齿数增加至zv1，这个直齿圆柱齿轮就是锥齿轮的当量齿轮。zv1为当量齿数。其中<strong>Zv1 = Z1 / cosδ1</strong></p>
+<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/bcedc069gy1fnpm9ww2kzj207m08cgm7.jpg" srcset="/img/loading.gif" lazyload alt="当量齿数">  </p>
+<h4 id="等顶隙收缩齿轮"><a href="#等顶隙收缩齿轮" class="headerlink" title="等顶隙收缩齿轮"></a>等顶隙收缩齿轮</h4><p>1.下图左所示锥齿轮副，其两轮的顶锥、根锥与分度圆锥的锥顶点重合，齿顶间隙沿齿宽方向不相等，称为不等顶隙收缩齿锥齿轮传动。</p>
+<p>2.而下图右所示两轮的根锥仍与分度圆锥的顶点重合，但两轮顶锥的顶点不再与分度圆锥的顶点重合，而是一轮的顶锥母线与另一轮的根锥母线平行，所以在整个齿宽方向齿顶间隙不变，故称为等顶隙收缩齿轮传动。</p>
+<p>  <img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/bcedc069gy1fnpm9x2n5jj20oi0b4acu.jpg" srcset="/img/loading.gif" lazyload alt="顶隙"></p>
+<p>3.等顶隙收缩齿锥齿轮传动的优点是，能加大齿根和刀具的圆角半径，提高齿轮的弯曲强度和刀具的寿命有助于避免小端齿顶变尖等顶隙有利于齿轮的润滑等。因此其应用日益广泛。</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E6%9C%BA%E6%A2%B0%E7%9B%B8%E5%85%B3/">机械相关</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%9C%BA%E6%A2%B0/">机械</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%9C%BA%E6%A2%B0%E5%8E%9F%E7%90%86/">机械原理</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2018/01/17/WHUT/InterchangeabilityAndMeasuringTechnology/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">互换性与测量技术笔记</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2018/01/15/WHUT/MechanicsOfMaterials/">
+                        <span class="hidden-mobile">材料力学笔记</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"DNr2pgYBNbnn4YMKmdstH2Sw-gzGzoHsz","appKey":"6RRAdTwPs2Y3Tk5iKNo2qo1D","placeholder":"说点什么","path":"window.location.pathname","avatar":"retro","meta":["nick","mail"],"pageSize":10,"lang":"zh-CN","highlight":true,"recordIP":false,"serverURLs":"https://dnr2pgyb.lc-cn-n1-shared.com","emojiCDN":null,"emojiMaps":null,"enableQQ":false,"requiredFields":[],"appid":"DNr2pgYBNbnn4YMKmdstH2Sw-gzGzoHsz","appkey":"6RRAdTwPs2Y3Tk5iKNo2qo1D"},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

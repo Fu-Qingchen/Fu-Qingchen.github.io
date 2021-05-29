@@ -1,0 +1,565 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.ico">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="又名传感器，测控方向的要好好学下。">
+  <meta name="author" content="Fu Qingchen">
+  <meta name="keywords" content="MSE, CS">
+  
+  <title>现代测试技术笔记 | Fu&#39;s Web</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/vs2015.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.11","typing":{"enable":false,"typeSpeed":30,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null},"tajs":null},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 50vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Fu's Web</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('https://gitee.com/fuqingchen/picture-lib/raw/master/img/Test_Tree.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="现代测试技术笔记">
+              
+                现代测试技术笔记
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2019-04-01 08:07" pubdate>
+        2019年4月1日 早上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      717 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      12
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">现代测试技术笔记</h1>
+            
+            <div class="markdown-body">
+              <p>又名传感器，测控方向的要好好学下。</p>
+<span id="more"></span>
+<h1 id="思维导图"><a href="#思维导图" class="headerlink" title="思维导图"></a>思维导图</h1><blockquote>
+<p><strong>为了更好的阅读体验，请前往：<a target="_blank" rel="noopener" href="http://www.xmind.net/embed/LVYU">http://www.xmind.net/embed/LVYU</a>  查看</strong></p>
+</blockquote>
+<h1 id="信号分析基础"><a href="#信号分析基础" class="headerlink" title="信号分析基础"></a>信号分析基础</h1><h2 id="自相关函数"><a href="#自相关函数" class="headerlink" title="自相关函数"></a>自相关函数</h2><script type="math/tex; mode=display">
+R_{xx}(\tau)=\lim_{T\rightarrow∞}\frac1T\int_0^Tx(t)x(t-\tau)</script><script type="math/tex; mode=display">
+x(t)=x_0\sin(\omega t+\varphi)R_{xx}(\tau)=\frac{x_0^2}2\cos(\omega \tau)</script><h2 id="互相关函数"><a href="#互相关函数" class="headerlink" title="互相关函数"></a>互相关函数</h2><script type="math/tex; mode=display">
+R_{xy}(\tau)=\lim_{T\rightarrow∞}\frac1T\int_0^Tx(t)y(t-\tau)dt</script><script type="math/tex; mode=display">
+x(t)=x_0\sin(\omega t+\varphi_x),y(t)=y_0\sin(\omega t+\varphi_y)\Rightarrow R_{xy}(\tau)=\frac{x_0y_0}2\cos(\omega \tau+\theta_y-\theta_x)</script><h2 id="傅里叶级数"><a href="#傅里叶级数" class="headerlink" title="傅里叶级数"></a>傅里叶级数</h2><script type="math/tex; mode=display">
+x(t)=a_0/2+\sum_{n=1}^∞[a_n\cos n\omega_0t+b_n\sin n\omega_0t],\\
+a_0=\frac2T\int_{-\frac T2}^{\frac T2}x(t)dt,\\
+a_n=\frac T2\int_{-\frac T2}^{\frac T2}x(t)\cos n\omega_0tdt,\\
+b_n=\frac T2\int_{-\frac T2}^{\frac T2}x(t)\sin n\omega_0tdt</script><script type="math/tex; mode=display">
+x(t)=\sum_{n=-∞}^∞ C_ne^{jn\omega_0t},\\
+C_n=\frac{a_n-jb_n}{2}</script><h2 id="欧拉公式"><a href="#欧拉公式" class="headerlink" title="欧拉公式"></a>欧拉公式</h2><script type="math/tex; mode=display">
+e^{jx}=\cos x+j\sin x</script><script type="math/tex; mode=display">
+\cos\omega t=\frac12(e^{-j\omega t}+e^{j\omega t}),\\
+\sin\omega t=j\frac12(e^{-j\omega t}-e^{j\omega t})</script><h2 id="傅里叶变换"><a href="#傅里叶变换" class="headerlink" title="傅里叶变换"></a>傅里叶变换</h2><script type="math/tex; mode=display">
+X(f)=\int_{-∞}^{+∞}x(t)e^{-j2\pi ft}dt,\\
+x(t)=\int_{-∞}^{+∞}X(f)e^{2\pi ft}df</script><script type="math/tex; mode=display">
+x(t)为窗函数,F[x(t)]=\tau sinc(\omega\tau/2)</script><script type="math/tex; mode=display">
+F(\cos2\pi f_0t)=\frac12[\delta(f-f_0)+\delta(f+f_0)],\\
+F(\sin2\pi f_0t)=\frac1{2j}[\delta(f-f_0)-\delta(f+f_0)]</script><script type="math/tex; mode=display">
+x(t-t_0)-X(f)e^{-j2\pi ft_0},\\
+e^{j2\pi f_0t}x(t)-X(f-f_0),\\
+\frac{dx(t)}{dt}-j2\pi fX(f),\\
+\int_{-\infty}^tx(t)dt-\frac1{j2\pi f}X(f)</script><blockquote>
+<p>通过傅里叶变换可以进行一些骚操作，比如说画图</p>
+</blockquote>
+<iframe id=sbrxp src="//player.bilibili.com/player.html?aid=85377237&bvid=BV1j7411r7oM&cid=169562491&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="width: 720px; height: 430px; max-width: 100%"> </iframe>
+
+<h2 id="卷积"><a href="#卷积" class="headerlink" title="卷积"></a>卷积</h2><script type="math/tex; mode=display">
+x(t)*y(t)=\int_{-∞}^{+∞}x(\tau)y(\tau-t)d\tau</script><script type="math/tex; mode=display">
+F[x(t)*y(t)]=X(f)Y(f)</script><script type="math/tex; mode=display">
+F[x(t)y(t)]=2\pi X(f)*Y(f)</script><h2 id="delta-函数"><a href="#delta-函数" class="headerlink" title="$\delta$ 函数"></a>$\delta$ 函数</h2><script type="math/tex; mode=display">
+\int_{-∞}^{+∞}\delta(t)dt=1</script><script type="math/tex; mode=display">
+x(t)\delta(t-t_0)=x(t_0)\delta(t-t_0),\\
+\int_{-∞}^{+∞}x(t)\delta(t-t_0)dt=x(t_0),\\
+x(t)*\delta(t)=x(t)</script><h1 id="线性系统分析"><a href="#线性系统分析" class="headerlink" title="线性系统分析"></a>线性系统分析</h1><h2 id="一阶系统"><a href="#一阶系统" class="headerlink" title="一阶系统"></a>一阶系统</h2><script type="math/tex; mode=display">
+H(\omega)=\frac{1}{1+j\tau\omega_0},\\
+A(\omega)=\frac{1}{\sqrt{1+\tau^2\omega_0^2}},\\
+\varphi(\omega)=-\arctan(\tau\omega_0)</script><h1 id="误差分析"><a href="#误差分析" class="headerlink" title="误差分析"></a>误差分析</h1><h2 id="直接测量"><a href="#直接测量" class="headerlink" title="直接测量"></a>直接测量</h2><script type="math/tex; mode=display">
+R=x_\max-x_\min,\\
+\sigma=\sqrt{\frac1n\sum_{i=1}^n\Delta x_i^2}=\sqrt{\frac1{N-1}\sum_{i=1}^N(x_i-\bar{x})^2},\\
+w=\frac\sigma{\bar{x}},\\
+\delta_m=3\sigma,\\
+\rho=0.6745\sigma</script><script type="math/tex; mode=display">
+s=\frac\sigma{\sqrt N},\\
+\lambda=3s,\\
+R=0.6745s</script><h2 id="间接测量"><a href="#间接测量" class="headerlink" title="间接测量"></a>间接测量</h2><script type="math/tex; mode=display">
+\sigma_y=\sqrt{\sum_{i=1}^n[(\frac{\partial f}{\partial x_i})\sigma_i]^2},\\
+\sigma_i=\frac{\sigma_y}{\sqrt n(\frac{\partial f}{\partial x_i})}</script><h1 id="信号的传输、变换及记录"><a href="#信号的传输、变换及记录" class="headerlink" title="信号的传输、变换及记录"></a>信号的传输、变换及记录</h1><script type="math/tex; mode=display">
+U_{BD}=\frac{R_1R_3-R_2R_4}{(R_1+R_2)(R_3+R_4)}U_0</script><script type="math/tex; mode=display">
+U=\frac{KU_0}{4}(\varepsilon_1-\varepsilon_2+\varepsilon_3-\varepsilon_4)</script><script type="math/tex; mode=display">
+A=\frac{4}{KU_0\varepsilon}{\Delta U}=\frac{\Delta R/R}{\varepsilon}</script><script type="math/tex; mode=display">
+Z_1Z_3=Z_2Z_4,\\
+\varphi_1+\varphi_3=\varphi_2+\varphi_4</script><h1 id="数字信号处理"><a href="#数字信号处理" class="headerlink" title="数字信号处理"></a>数字信号处理</h1><script type="math/tex; mode=display">
+X(k)=\sum_{i=0}^{N-1}x(n)W^{kn},\\
+x(n)=\frac1N\sum_{i=0}^{N-1}X(k)W^{-kn},\\
+W=e^{-j2\pi/N}</script><h1 id="应力应变测量"><a href="#应力应变测量" class="headerlink" title="应力应变测量"></a>应力应变测量</h1><script type="math/tex; mode=display">
+\left[
+\begin{matrix}
+\sigma_1\\
+\sigma_2\\
+\sigma_3\\
+\sigma_4\\
+\end{matrix}
+\right]=
+\left[
+\begin{matrix}
+1&1&1&1\\
+1&1&-1&-1\\
+1&-1&1&-1\\
+1&-1&-1&1\\
+\end{matrix}
+\right]\left[
+\begin{matrix}
+\sigma_N\\
+\sigma_{M_z}\\
+\sigma_{M_y}\\
+\sigma_\omega\\
+\end{matrix}
+\right]</script><script type="math/tex; mode=display">
+\left[
+\begin{matrix}
+\sigma_N\\
+\sigma_{M_z}\\
+\sigma_{M_y}\\
+\sigma_\omega\\
+\end{matrix}
+\right]=\frac14
+\left[
+\begin{matrix}
+1&1&1&1\\
+1&1&-1&-1\\
+1&-1&1&-1\\
+1&-1&-1&1\\
+\end{matrix}
+\right]\left[
+\begin{matrix}
+\sigma_1\\
+\sigma_2\\
+\sigma_3\\
+\sigma_4\\
+\end{matrix}
+\right]</script><hr>
+<p>Learning By Sharing，2019©Fu_Qingchen，Markdown，$\LaTeX$</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E8%87%AA%E5%8A%A8%E5%8C%96%E7%9B%B8%E5%85%B3/">自动化相关</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E8%87%AA%E5%8A%A8%E5%8C%96/">自动化</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E4%BC%A0%E6%84%9F%E5%99%A8/">传感器</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2019/04/01/WHUT/NumericalControlTechnology/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">数控技术笔记</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2019/01/25/WHUT/MachineLearning/">
+                        <span class="hidden-mobile">深度学习中的数学基础笔记</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"DNr2pgYBNbnn4YMKmdstH2Sw-gzGzoHsz","appKey":"6RRAdTwPs2Y3Tk5iKNo2qo1D","placeholder":"说点什么","path":"window.location.pathname","avatar":"retro","meta":["nick","mail"],"pageSize":10,"lang":"zh-CN","highlight":true,"recordIP":false,"serverURLs":"https://dnr2pgyb.lc-cn-n1-shared.com","emojiCDN":null,"emojiMaps":null,"enableQQ":false,"requiredFields":[],"appid":"DNr2pgYBNbnn4YMKmdstH2Sw-gzGzoHsz","appkey":"6RRAdTwPs2Y3Tk5iKNo2qo1D"},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

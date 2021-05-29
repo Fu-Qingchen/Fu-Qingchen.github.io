@@ -1,0 +1,576 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.ico">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="最近搞毕业设计遇到了一些理论力学的问题，发现自己忘记的好快，所以来回顾一下。理论力学是各种力学的基础，讨论物体不失效，不变形情况下运动和力的关系">
+  <meta name="author" content="Fu Qingchen">
+  <meta name="keywords" content="MSE, CS">
+  
+  <title>理论力学回顾 | Fu&#39;s Web</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/vs2015.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.11","typing":{"enable":false,"typeSpeed":30,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null},"tajs":null},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 50vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Fu's Web</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('https://gitee.com/fuqingchen/picture-lib/raw/master/img/Test_Tree.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="理论力学回顾">
+              
+                理论力学回顾
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-04-09 08:07" pubdate>
+        2020年4月9日 早上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      2.2k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      32
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">理论力学回顾</h1>
+            
+            <div class="markdown-body">
+              <p>最近搞毕业设计遇到了一些理论力学的问题，发现自己忘记的好快，所以来回顾一下。理论力学是各种力学的基础，讨论物体不失效，不变形情况下运动和力的关系</p>
+<span id="more"></span>
+<h1 id="回顾"><a href="#回顾" class="headerlink" title="回顾"></a>回顾</h1><p>理论力学主要分为三大部分：</p>
+<ul>
+<li>静力学：讨论静止状态下物体的受力，主要包括力的平衡，力系的简化。</li>
+<li>运动学：讨论物体的运动状态，主要包括运动的描述，复合运动速度和加速度的求解。</li>
+<li>动力学：讨论力和物体的关系。主要解决给定力求运动轨迹、速度。动力学求解方法有很多种，任意一种即可。</li>
+</ul>
+<h2 id="静力学"><a href="#静力学" class="headerlink" title="静力学"></a>静力学</h2><p>静力学内容比较少，也比较简单，其主要思想是分而治之。这一块的核心就是画受力分析图，然后根据受力分析图求解约束力。其中要注意的地方就是力和力偶的概念，还有他们的相互转化。其主要内容包括：</p>
+<ul>
+<li>约束类型和约束力的数量和方向</li>
+<li>受力分析图</li>
+<li>力对点的力矩：$M_O(\vec{F})=\vec r\times \vec F$；力对轴的矩：$M_z(\vec{F})=[M_O(\vec F)]_z$</li>
+<li>力的平移$F’\rightarrow F+M$；力偶的平移 $M\rightarrow M$</li>
+<li>平面任意力系的平衡条件 $\vec F=0,M=0$</li>
+<li>超静定问题的求解</li>
+<li>摩擦角和自锁</li>
+</ul>
+<h2 id="运动学"><a href="#运动学" class="headerlink" title="运动学"></a>运动学</h2><p>运动学稍微多一点，但是同样比较简单，就是公式变多了。这一块的核心是选择动点动系画运动图，然后根据对应的公式进行求解。要注意点的绝对运动、相对运动、牵连运动的概念，然后有个科氏加速度。这一块的知识在机械原理中会在此用到。其主要内容是：</p>
+<ul>
+<li><p>点的运动的表示</p>
+</li>
+<li><p>点的绝对运动（动点对定系）、相对运动（动点对动系）、牵连运动（动系对静系），并且有以下关系：</p>
+<ul>
+<li><p>速度：$\vec{v_a} = \vec{v_e} + \vec{v_r}$</p>
+</li>
+<li><p>加速度（牵连运动是平动）：$\vec{a_a} = \vec{a_e} + \vec{a_r},a_r^n=v_r^2/R=\omega^2R$</p>
+</li>
+<li>加速度（牵连运动是转动）：$\vec{a_a} = \vec{a_e} + \vec{a_r} + \vec{a_C},a_r^n=v_r^2/R=\omega^2R,\vec{a_C}=2\vec{\omega}\times\vec{v_r}$</li>
+</ul>
+</li>
+<li><p>刚体平面运动：</p>
+<ul>
+<li>速度：合成法（ $\vec{v_B} = \vec{v_A} + \vec{v_{BA}}$ ）、速度投影法（ $(\vec{v_A})_{AB}=(\vec{v_B})_{AB}$ ）、瞬心法</li>
+<li>加速度：合成法（ $\vec{a_B} = \vec{a_A} + \vec{a_{BA}},\vec{a_{BA}}=\vec{a_{BA}^n}+\vec{a_{BA}^t}$ ）</li>
+</ul>
+</li>
+</ul>
+<h2 id="动力学"><a href="#动力学" class="headerlink" title="动力学"></a>动力学</h2><p>这一块内容很多很杂，求解方法也有很多。主要有两派，一派是以牛顿为主导的经典力学解法，在笛卡尔坐标系下用动量动量矩动能定理求解，另一派是以拉格朗日为主导的分析力学的解法，在广义坐标系下用拉格朗日方程求解。其中，分析力学以经典力学中的达朗贝尔原理和虚位移原理作为基础，主要研究功能关系，不需要复杂的运动学求解。</p>
+<p>在这个里面最重要的思想是守恒，还有达朗贝尔原理、虚功原理和广义坐标系。这一块也是理论力学的核心，同时，这一块的知识在材料力学中会使用到。</p>
+<p>经典力学主要内容如下：</p>
+<ul>
+<li>质心运动定理（牛二） $m\vec {a_C}=\sum \vec{F_i^{(e)}}, J_C\alpha=\sum M_C(\vec{F_i^{(e)}})$</li>
+<li>质点系动量定理 $d(\sum m\vec v)/dt=\sum \vec {F^{(e)}_i}$</li>
+<li>质点系动量矩定理 $d[M_O(m\vec{v_C})+J_C\omega]/dt=\sum M_O(\vec{F_i^{(e)}})$</li>
+<li>质点系动能定理 $T_2-T_1 = \sum W$</li>
+<li>达朗贝尔原理（动静法）：惯性力代替加速度 $\sum\vec{F_i^{(e)}} + \sum\vec{F_I}=0,\sum M_O{(\vec{F_i^{(e)}})}+\sum M_O(\vec{F_I})=0,\vec{F_{IR}}=-m\vec {a_C},M_{IC}=-J_C\alpha$</li>
+<li>虚位移原理：设定虚位移，研究虚位移之间的关系，所有主动力虚功为零$\sum \vec{F_i}·\delta\vec{r_i}=0$</li>
+</ul>
+<p>分析力学主要内容如下：</p>
+<ul>
+<li><p>N维广义坐标下的坐标矢量 $\delta \vec{r_i}=\sum\limits_{k=1}^N(\partial\vec{r_i}/\partial q_k)\delta{q_k}$</p>
+</li>
+<li><p>广义坐标下的平衡条件：广义力为零 $Q_k=\sum\limits_{i=1}^n(F_{ix}\frac{\partial x_i}{\partial q_k}+F_{iy}\frac{\partial y_i}{\partial q_k}+F_{iz}\frac{\partial z_i}{\partial q_k})=0$ </p>
+<blockquote>
+<p>确定广义坐标-&gt;写出质点在广义坐标下的表达式-&gt;表达式对广义坐标求导-&gt;求解广义力-&gt;广义力为0求解未知量</p>
+</blockquote>
+</li>
+<li><p>对保守系统（无外力的系统），质点系的势能对于每一个广 义坐标的偏导数分别等于零 $Q_k=-(\partial V/\partial q_k)=0$</p>
+</li>
+<li><p>动力学普遍方程：广义力与广义惯性力所作的虚功和为零 $\sum\limits_{i=1}^N(Q_k-\sum\limits_{k=1}^nm\ddot r·\frac{\partial r_i}{\partial q_k})\delta q_k=0$</p>
+</li>
+<li><p>拉格朗日方程</p>
+</li>
+</ul>
+<script type="math/tex; mode=display">
+\frac{d}{dt}(\frac{\partial T}{\partial \dot {q_k}})-\frac{\partial T}{\partial {q_k}}-Q_k=0</script><h1 id="小练习"><a href="#小练习" class="headerlink" title="小练习"></a>小练习</h1><figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> sympy <span class="hljs-keyword">as</span> sym<br>sym.init_printing(use_latex=<span class="hljs-string">&quot;mathjax&quot;</span>)<br></code></pre></div></td></tr></table></figure>
+<p>这个题目的来源是模拟 <a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV17A411h7wJ">https://www.bilibili.com/video/BV17A411h7wJ</a> 这个视频 10:33 的内容，通过这个巩固一下自己的理论力学和编程能力。</p>
+<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20200822205511.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>已知两个物体通过一根绳子挂在一根柱子上，其中有一个物体有动能，该物体运动至最高处的状态如图所示，忽略摩擦以及柱子的直径，求其运动方程</p>
+<p>取如图所示$m,M$为物体质量，$l,\theta$为有动能的物体到柱子的长度和绳子的角度，绳子总长S，易得两个物体的坐标可以表示为</p>
+<script type="math/tex; mode=display">
+p_m=\left[ \begin{array}{c}-l\cos \theta\\-l\sin \theta\\\end{array} \right] ,p_M=\left[ \begin{array}{c}0\\l-L\\\end{array} \right]</script><p>对时间求导，可以得到他们的速度为</p>
+<script type="math/tex; mode=display">
+\dot{p}_m=\left[ \begin{array}{c}
+    -\dot{l}\cos \theta +l\dot{\theta}\sin \theta\\
+    -\dot{l}\sin \theta -l\dot{\theta}\cos \theta\\
+\end{array} \right] ,\dot{p}_M=\left[ \begin{array}{c}
+    0\\
+    \dot{l}\\
+\end{array} \right]</script><figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python">l, theta, dl, dtheta, S = sym.symbols(<span class="hljs-string">r&#x27;l, theta, \dot&#123;l&#125;, \dot&#123;\theta&#125;, S&#x27;</span>)<br>pm, pM = sym.Matrix([-l*sym.cos(theta), -l*sym.sin(theta)]), sym.Matrix([<span class="hljs-number">0</span>, l-S])<br>dpm, dpM = sym.Matrix([-dl*sym.cos(theta) + l*dtheta*sym.sin(theta), -dl*sym.sin(theta)-l*dtheta*sym.cos(theta)]), sym.Matrix([<span class="hljs-number">0</span>, dl])<br>pm, pM, dpm, dpM<br></code></pre></div></td></tr></table></figure>
+<script type="math/tex; mode=display">\left ( \left[\begin{matrix}- l \cos{\left (\theta \right )}\\- l \sin{\left (\theta \right )}\end{matrix}\right], \quad \left[\begin{matrix}0\\- S + l\end{matrix}\right], \quad \left[\begin{matrix}\dot{\theta} l \sin{\left (\theta \right )} - \dot{l} \cos{\left (\theta \right )}\\- \dot{\theta} l \cos{\left (\theta \right )} - \dot{l} \sin{\left (\theta \right )}\end{matrix}\right], \quad \left[\begin{matrix}0\\\dot{l}\end{matrix}\right]\right )</script><p>求解其动能和势能为</p>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python">m, M , g= sym.symbols(<span class="hljs-string">r&quot;m, M, g&quot;</span>)<br>T = (<span class="hljs-number">1</span>/<span class="hljs-number">2</span>*m*dpm.T*dpm + <span class="hljs-number">1</span>/<span class="hljs-number">2</span>*M*dpM.T*dpM)[<span class="hljs-number">0</span>]<br>V = m*g*pm[<span class="hljs-number">1</span>] + M*g*pM[<span class="hljs-number">1</span>]<br>T, V<br></code></pre></div></td></tr></table></figure>
+<script type="math/tex; mode=display">\left ( 0.5 M \dot{l}^{2} + 0.5 m \left(\dot{\theta} l \sin{\left (\theta \right )} - \dot{l} \cos{\left (\theta \right )}\right)^{2} + 0.5 m \left(- \dot{\theta} l \cos{\left (\theta \right )} - \dot{l} \sin{\left (\theta \right )}\right)^{2}, \quad M g \left(- S + l\right) - g l m \sin{\left (\theta \right )}\right )</script><p>L = T - V为</p>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python">L = T - V<br>L<br></code></pre></div></td></tr></table></figure>
+<script type="math/tex; mode=display">0.5 M \dot{l}^{2} - M g \left(- S + l\right) + g l m \sin{\left (\theta \right )} + 0.5 m \left(\dot{\theta} l \sin{\left (\theta \right )} - \dot{l} \cos{\left (\theta \right )}\right)^{2} + 0.5 m \left(- \dot{\theta} l \cos{\left (\theta \right )} - \dot{l} \sin{\left (\theta \right )}\right)^{2}</script><p>由拉格朗日方程得</p>
+<script type="math/tex; mode=display">
+\frac{d}{dt}\left( \frac{\partial L}{\partial \dot{l}} \right) -\frac{\partial L}{\partial l}=0\\
+\frac{d}{dt}\left( \frac{\partial L}{\partial \dot{\theta}} \right) -\frac{\partial L}{\partial \theta}=0</script><figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python">func_temp = sym.Matrix([[sym.diff(L, dl), sym.diff(L, l)], <br>            [sym.diff(L, dtheta), sym.diff(L,  theta)]])<br>sym.simplify(func_temp)<br></code></pre></div></td></tr></table></figure>
+<script type="math/tex; mode=display">\left[\begin{matrix}1.0 \dot{l} \left(M + m\right) & - 1.0 M g + 1.0 \dot{\theta}^{2} l m + 1.0 g m \sin{\left (\theta \right )}\\1.0 \dot{\theta} l^{2} m & g l m \cos{\left (\theta \right )}\end{matrix}\right]</script><figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python">ddl, ddtheta = sym.symbols(<span class="hljs-string">r&quot;\ddot&#123;l&#125;, \ddot&#123;\theta&#125;&quot;</span>)<br>dLddl = ddl*(M + m)<br>dLddtheta = ddtheta*l**<span class="hljs-number">2</span>*m + <span class="hljs-number">2</span>*dtheta*l*m*dl<br>sym.simplify(sym.Matrix([dLddl-sym.diff(L, l), dLddtheta-sym.diff(L,  theta)]))<br></code></pre></div></td></tr></table></figure>
+<script type="math/tex; mode=display">\left[\begin{matrix}1.0 M \ddot{l} + 1.0 M g + 1.0 \ddot{l} m - 1.0 \dot{\theta}^{2} l m - 1.0 g m \sin{\left (\theta \right )}\\l m \left(\ddot{\theta} l + 2 \dot{\theta} \dot{l} - g \cos{\left (\theta \right )}\right)\end{matrix}\right]</script><p>整理得到微分方程</p>
+<script type="math/tex; mode=display">
+\left( m+M \right) \ddot{l}=ml\dot{\theta}^2+mg\sin \theta -Mg\\
+l\ddot{\theta}=g\cos \theta -2\dot{l}\dot{\theta}</script><p>取初始条件</p>
+<script type="math/tex; mode=display">
+\left[ \begin{array}{c}
+    l_0\\
+    \theta_0\\
+\end{array} \right] =\left[ \begin{array}{c}
+    3\\
+    0\\
+\end{array} \right] ,\left[ \begin{array}{c}
+    \dot{l}_0\\
+    \dot{\theta}_0\\
+\end{array} \right] =\left[ \begin{array}{c}
+    0\\
+    0\\
+\end{array} \right] ,\left[ \begin{array}{c}
+    \ddot{l}_0\\
+    \ddot{\theta}_0\\
+\end{array} \right] =\left[ \begin{array}{c}
+    0\\
+    0\\
+\end{array} \right]</script><p>用数值（暴力）解法可以写出迭代式</p>
+<script type="math/tex; mode=display">
+\ddot{l}_i=\frac{ml_{i-1}\dot{\theta}_{i-1}^{2}+mg\sin \theta _{i-1}-Mg}{m+M}\\
+\ddot{\theta}_i=\frac{g\cos \theta _{i-1}-2\dot{l}_{i-1}\dot{\theta}_{i-1}}{l_{i-1}}\\
+\dot{l}_i=\dot{l}_{i-1}+\ddot{l}_i\Delta t\\
+\dot{\theta}_i=\dot{\theta}_{i-1}+\ddot{\theta}_i\Delta t\\
+l_i=l_{i-1}+\dot{l}_i\Delta t\\
+\theta _i=\theta _{i-1}+\dot{\theta}_{i-1}\Delta t</script><p>这样就可以求解出位置关于时间的函数，绘制成动画如下</p>
+<iframe id=sbrxp src="//player.bilibili.com/player.html?aid=8970989&bvid=BV1Xx411k7FE&cid=204595985&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="width: 720px; height: 430px; max-width: 100%"> </iframe>
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E6%9C%BA%E6%A2%B0%E7%9B%B8%E5%85%B3/">机械相关</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%8A%9B%E5%AD%A6/">力学</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/09/01/CommemorationWHUT/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">毕业纪念：武汉理工大学</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2020/01/18/WHUT/CourseDesignOnHydraulicElementsAndTransitionSystems/">
+                        <span class="hidden-mobile">课程设计：65t-55m岸桥挂舱保护液压缸设计</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"DNr2pgYBNbnn4YMKmdstH2Sw-gzGzoHsz","appKey":"6RRAdTwPs2Y3Tk5iKNo2qo1D","placeholder":"说点什么","path":"window.location.pathname","avatar":"retro","meta":["nick","mail"],"pageSize":10,"lang":"zh-CN","highlight":true,"recordIP":false,"serverURLs":"https://dnr2pgyb.lc-cn-n1-shared.com","emojiCDN":null,"emojiMaps":null,"enableQQ":false,"requiredFields":[],"appid":"DNr2pgYBNbnn4YMKmdstH2Sw-gzGzoHsz","appkey":"6RRAdTwPs2Y3Tk5iKNo2qo1D"},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

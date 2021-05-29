@@ -1,0 +1,743 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.ico">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="Fu Qingchen">
+  <meta name="keywords" content="MSE, CS">
+  
+  <title>Android入门之旅 | Fu&#39;s Web</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/vs2015.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.11","typing":{"enable":false,"typeSpeed":30,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null},"tajs":null},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 50vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Fu's Web</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('https://gitee.com/fuqingchen/picture-lib/raw/master/img/Test_Tree.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="Android入门之旅">
+              
+                Android入门之旅
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2018-03-31 08:39" pubdate>
+        2018年3月31日 早上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      6.7k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      82
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Android入门之旅</h1>
+            
+            <div class="markdown-body">
+              <p>注：这是一个学习笔记。很可惜今年的 <strong>Google Study Jams</strong> 活动取消了，于是就只能自己来了，幸好 Google 官方有很多面向新手的教程，那么，开干！本文基于<a target="_blank" rel="noopener" href="https://developers.google.cn/training/android/">https://developers.google.cn/training/android/</a> 给出的教程(而且是中文教程，感觉很良心)</p>
+<p>2018©Fu_Qingchen，Typora</p>
+<p>本文的运行环境是：<br><figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java">Android Studio <span class="hljs-number">3.1</span><br>Build #AI-<span class="hljs-number">173.4670197</span>, built on March <span class="hljs-number">22</span>, <span class="hljs-number">2018</span><br>JRE: <span class="hljs-number">1.8</span><span class="hljs-number">.0_152</span>-release-<span class="hljs-number">1024</span>-b02 amd64<br>JVM: OpenJDK <span class="hljs-number">64</span>-Bit Server VM by JetBrains s.r.o<br>Windows <span class="hljs-number">10</span> <span class="hljs-number">10.0</span><br></code></pre></div></td></tr></table></figure></p>
+<h1 id="总体规划"><a href="#总体规划" class="headerlink" title="总体规划"></a>总体规划</h1><p>参照 <strong>Google Study Jams</strong> 的活动进行</p>
+<p>第一阶段</p>
+<ul>
+<li>L1 (3:38:59)：1A  (1:04:07) 、1B  (1:13:59)、1C  (1:20:53)</li>
+<li>L2 (5:07:02)：2A  (2:00:40)、2B  (1:03:40)、2C  (2:02:42)</li>
+<li>L3 (4:25:20)：3A  (2:15:36)、3B  (2:09:44)</li>
+<li>拓展 (2:06:44)：Firebase 介绍(0:34:25) + Firebase 周末(1:32:19)</li>
+</ul>
+<p>第二阶段</p>
+<ul>
+<li>实践教程：制作结业 App、上载结业 App 到 Google Play</li>
+</ul>
+<p>总时长 15:18:05，建议 40 - 45 小时的<strong>空闲时间</strong>学习 ，比如工作日每天一个小时，周末每天两个小时。</p>
+<h1 id="用户界面"><a href="#用户界面" class="headerlink" title="用户界面"></a>用户界面</h1><p>1C为AndroidStudio的运用，暂不介绍</p>
+<h2 id="View"><a href="#View" class="headerlink" title="View"></a>View</h2><p>简单来说一个展示内容的长方形，有很多，像什么TestView，ImageView，Button等等</p>
+<h2 id="XML"><a href="#XML" class="headerlink" title="XML"></a>XML</h2><p>描述Android外观的语言</p>
+<p><strong>注：下面的代码块中，注释的写法是错误的，但是为了方便，还是这么写了</strong></p>
+<p>例如</p>
+<figure class="highlight xml"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">TextView</span> //类型</span><br><span class="hljs-tag">          <span class="hljs-attr">android:text</span>=<span class="hljs-string">&quot;Happy Birthday!&quot;</span></span><br><span class="hljs-tag">          //属性名=<span class="hljs-string">&quot;值&quot;</span> 的形式</span><br><span class="hljs-tag">          <span class="hljs-attr">android:background</span>=<span class="hljs-string">&quot;@android:color/darker_gray&quot;</span>//属性值放在引号内部</span><br><span class="hljs-tag">          <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;150dp&quot;</span></span><br><span class="hljs-tag">          <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;75dp&quot;</span>&lt;/<span class="hljs-attr">TextView</span>&gt;</span><br>//当然也可以如果需要嵌套，必须使用<br>//<span class="hljs-tag">&lt;/<span class="hljs-name">TextView</span>&gt;</span>来结束<br></code></pre></div></td></tr></table></figure>
+<h3 id="TextView"><a href="#TextView" class="headerlink" title="TextView"></a>TextView</h3><figure class="highlight xml"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">TextView</span></span><br><span class="hljs-tag">      <span class="hljs-attr">android:text</span>=<span class="hljs-string">&quot;Happy Birthday!&quot;</span></span><br><span class="hljs-tag">      <span class="hljs-attr">android:background</span>=<span class="hljs-string">&quot;@android:color/darker_gray&quot;</span></span><br><span class="hljs-tag">      <span class="hljs-attr">android:background</span>=<span class="hljs-string">&quot;#2196F3&quot;</span>//替换自己的颜色</span><br><span class="hljs-tag">      <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;150dp&quot;</span></span><br><span class="hljs-tag">          <span class="hljs-attr">dp</span>代表密度无关像素，其中可以接触的东东需要至少<span class="hljs-attr">48dp</span></span><br><span class="hljs-tag">          //用<span class="hljs-attr">dp</span>的原因是不同的设备点像素点的大小是不同的，<span class="hljs-attr">dp</span>可以使不同的设备显示相同的尺寸</span><br><span class="hljs-tag">      //<span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;75dp&quot;</span></span><br><span class="hljs-tag">      <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;warp_content&quot;</span></span><br><span class="hljs-tag">          //让<span class="hljs-attr">TextView</span>的高度正好等于文字的高度</span><br><span class="hljs-tag">      //<span class="hljs-attr">android:textSize</span>=<span class="hljs-string">&quot;45sp&quot;</span>//大小可以按照<span class="hljs-attr">MD</span>的说明来弄，其中<span class="hljs-attr">sp</span>是比例无关像素</span><br><span class="hljs-tag">      <span class="hljs-attr">android:textAppearance</span>=<span class="hljs-string">&quot;?android:textAppearanceLarge&quot;</span></span><br><span class="hljs-tag">          //用系统的文字大小进行匹配/&gt;</span><br></code></pre></div></td></tr></table></figure>
+<p>相关链接：<a target="_blank" rel="noopener" href="https://developer.android.google.cn/reference/android/widget/TextView.html">TextView官方文档</a></p>
+<h3 id="ImageView"><a href="#ImageView" class="headerlink" title="ImageView"></a>ImageView</h3><figure class="highlight xml"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">ImageView</span></span><br><span class="hljs-tag">      <span class="hljs-attr">android:src</span>=<span class="hljs-string">&quot;@drawable/cake&quot;</span></span><br><span class="hljs-tag">           //使用@符号表示在<span class="hljs-attr">Android</span> <span class="hljs-attr">APP</span>里面引用一个资源</span><br><span class="hljs-tag">           //<span class="hljs-attr">drawable</span>是一种资源类型,能将图形显示在屏幕上</span><br><span class="hljs-tag">           //<span class="hljs-attr">cake</span>是图片名,不需要添加文件的扩展名</span><br><span class="hljs-tag">      <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;wrap_content&quot;</span></span><br><span class="hljs-tag">      <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;wrap_content&quot;</span></span><br><span class="hljs-tag">      <span class="hljs-attr">android:scaleType</span>=<span class="hljs-string">&quot;center&quot;</span></span><br><span class="hljs-tag">           //不改变图片大小，然后居中显示</span><br><span class="hljs-tag">           //<span class="hljs-attr">android:scaleType</span>=<span class="hljs-string">&quot;centerCrop&quot;</span>//放大缩小以满足 <span class="hljs-attr">View</span> 的宽高要求/&gt;</span><br></code></pre></div></td></tr></table></figure>
+<p>相关链接：<a target="_blank" rel="noopener" href="https://developer.android.google.cn/reference/android/widget/ImageView.html">ImageView官方文档</a></p>
+<h2 id="ViewGroup"><a href="#ViewGroup" class="headerlink" title="ViewGroup"></a>ViewGroup</h2><p>ViewGroup是一个组，相当于是一个容器，他能管理底下的TextView，ImageView，Button等等</p>
+<h2 id="LinearLayout"><a href="#LinearLayout" class="headerlink" title="LinearLayout"></a>LinearLayout</h2><p>线性布局，分为水平和竖直两种。一般竖直的比较常用</p>
+<p>在下面的例子中会介绍线性布局的一些基础内容，还有布局权重</p>
+<figure class="highlight xml"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">LinearLayout</span></span><br><span class="hljs-tag">    <span class="hljs-attr">xmlns:android</span>=<span class="hljs-string">&quot;http://schemas.android.com/apk/res/android&quot;</span></span><br><span class="hljs-tag">    <span class="hljs-attr">android:orientation</span>=<span class="hljs-string">&quot;vertical&quot;</span></span><br><span class="hljs-tag">              //线性布局的方向为&quot;竖直&quot;</span><br><span class="hljs-tag">    <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span></span><br><span class="hljs-tag">              //这是一种新的标尺寸的东东，与之前的&quot;<span class="hljs-attr">wrap_content</span>&quot;类似。</span><br><span class="hljs-tag">              //&quot;<span class="hljs-attr">match_parent</span>&quot;的含义是：这个尺寸与父级的尺寸相同</span><br><span class="hljs-tag">              //此处<span class="hljs-attr">LinearLayout</span>宽就与设备宽度相同，下同</span><br><span class="hljs-tag">    <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;match_parent&quot;</span>&gt;</span><br>    		&lt;注意这里有一个&quot;&gt;&quot;/&gt;<br><br>    <span class="hljs-tag">&lt;<span class="hljs-name">ImageView</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:src</span>=<span class="hljs-string">&quot;@drawable/ocean&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;0dp&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;wrap_content&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:layout_weight</span>=<span class="hljs-string">&quot;5&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:scaleType</span>=<span class="hljs-string">&quot;centerCrop&quot;</span> /&gt;</span><br>&lt;<br>    这里出现了layout_weight=&quot;1&quot;此处的weight就是权重。<br>    在这个例子中，ImageView占比5/6，TextView占比1/6<br>    当有权重weight出现时通常把对应的值设置为0（竖直:height）<br>    /&gt;<br>    <span class="hljs-tag">&lt;<span class="hljs-name">TextView</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:text</span>=<span class="hljs-string">&quot;You&#x27;re invited!&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;0dp&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;wrap_content&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:textColor</span>=<span class="hljs-string">&quot;@android:color/white&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:textSize</span>=<span class="hljs-string">&quot;54sp&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:layout_weight</span>=<span class="hljs-string">&quot;1&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:background</span>=<span class="hljs-string">&quot;#009688&quot;</span> /&gt;</span><br><br><span class="hljs-tag">&lt;/<span class="hljs-name">LinearLayout</span>&gt;</span><br></code></pre></div></td></tr></table></figure>
+<h2 id="RelativeLayout"><a href="#RelativeLayout" class="headerlink" title="RelativeLayout"></a>RelativeLayout</h2><p>相对布局</p>
+<p>顾名思义嘛，同样的，在例子中解释</p>
+<figure class="highlight xml"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">RelativeLayout</span></span><br><span class="hljs-tag">    <span class="hljs-attr">xmlns:android</span>=<span class="hljs-string">&quot;http://schemas.android.com/apk/res/android&quot;</span></span><br><span class="hljs-tag">    <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span></span><br><span class="hljs-tag">    <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;match_parent&quot;</span> &gt;</span><br>&lt;<br>   相对布局就不需要android:orientation这个方向属性了<br>    /&gt;<br>   <br>    <span class="hljs-tag">&lt;<span class="hljs-name">ImageView</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:id</span>=<span class="hljs-string">&quot;@+id/ocean_image_view&quot;</span></span><br><span class="hljs-tag">               //相对的嘛，就需要参照物了，参照物需要一个名字，就是<span class="hljs-attr">id</span></span><br><span class="hljs-tag">               //由于这里是添加属性，因此是&quot;@+<span class="hljs-attr">id</span>&quot;</span><br><span class="hljs-tag">               //一般习惯性的给每个<span class="hljs-attr">View</span>都给一个<span class="hljs-attr">id</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;56dp&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;56dp&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:scaleType</span>=<span class="hljs-string">&quot;centerCrop&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:src</span>=<span class="hljs-string">&quot;@drawable/ocean&quot;</span> /&gt;</span><br><br>    <span class="hljs-tag">&lt;<span class="hljs-name">TextView</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:id</span>=<span class="hljs-string">&quot;@+id/Pebble_Beach_text_view&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;wrap_content&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;wrap_content&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:text</span>=<span class="hljs-string">&quot;Pebble Beach&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:layout_toRightOf</span>=<span class="hljs-string">&quot;@id/ocean_image_view&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:textAppearance</span>=<span class="hljs-string">&quot;?android:textAppearanceMedium&quot;</span> /&gt;</span><br>&lt;<br>    其中layout_toRightOf属性就是表示相对位置的，含义是在参照物的右边<br>    同理，还有layout_below，layout_above，toLeftOf，见下方<br>    /&gt;<br><br>    <span class="hljs-tag">&lt;<span class="hljs-name">TextView</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:id</span>=<span class="hljs-string">&quot;@+id/California_text_view&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;wrap_content&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;wrap_content&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:text</span>=<span class="hljs-string">&quot;California&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:layout_toRightOf</span>=<span class="hljs-string">&quot;@id/ocean_image_view&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:layout_below</span>=<span class="hljs-string">&quot;@id/Pebble_Beach_text_view&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:textAppearance</span>=<span class="hljs-string">&quot;?android:textAppearanceSmall&quot;</span> /&gt;</span><br><br>&lt;<br>    除了把其他View当作参照物，还可以直接把父视图当作参照物，用以下的语句表示：<br>    android:layout_alignParentTop=&quot;true&quot;<br>    android:layout_alignParentBottom=&quot;true&quot;<br>    android:layout_alignParentLeft=&quot;true&quot;<br>    android:layout_centerHorizontal=&quot;true&quot;//水平居中<br>    android:layout_centerVertical=&quot;true&quot;//竖直居中<br>    /&gt;<br><span class="hljs-tag">&lt;/<span class="hljs-name">RelativeLayout</span>&gt;</span><br></code></pre></div></td></tr></table></figure>
+<p><strong>注意：为了避免过于复杂，能够使用线性视图就使用线性视图</strong></p>
+<h2 id="内边距与外边距"><a href="#内边距与外边距" class="headerlink" title="内边距与外边距"></a>内边距与外边距</h2><p>内边距（padding）呢就是View本身往外边扩展一层，如果View有背景颜色的话，背景颜色也会扩充</p>
+<p>外边距（margin）就是把View隔开一下，隔开的地方是没有颜色的。外边距讲究一种隔开的情况，因此需要建立在ViewGroup里面</p>
+<p>下面的图形就是内边距和外边距的例子（PS：Google的教程截图）</p>
+<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20200821222439.png" srcset="/img/loading.gif" lazyload alt="内边距和外边距"></p>
+<p>其中蓝色部分代表TextView，红色部分代表ViewGroup，左边是内边距，右边是外边距</p>
+<p>其实感觉外边距的运用广泛一些，可能跟最近卡片风格流行有关吧</p>
+<p>控制内边距（padding）的语句有</p>
+<figure class="highlight xml"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs xml">android:padding=&quot;8dp&quot;	//对于全局<br>android:paddingLeft=&quot;8dp&quot;<br>android:paddingRight=&quot;8dp&quot;<br>android:paddingTop=&quot;8dp&quot;<br>android:paddingBottom=&quot;8dp&quot;<br></code></pre></div></td></tr></table></figure>
+<p>控制外边距的语句有</p>
+<figure class="highlight xml"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs xml">android:layout_margin=&quot;8dp&quot;	//对于全局<br>android:layout_marginLeft=&quot;8dp&quot;<br>android:layout_marginRight=&quot;8dp&quot;<br>android:layout_marginTop=&quot;8dp&quot;<br>android:layout_marginBottom=&quot;8dp&quot;<br></code></pre></div></td></tr></table></figure>
+<p>当然，这个是可以对各个View分别设置的，也可以对ViewGroup设置</p>
+<h2 id="ConstraintLayout"><a href="#ConstraintLayout" class="headerlink" title="ConstraintLayout"></a>ConstraintLayout</h2><p> 约束布局，能够非常快速地制作自适应 UI的一种布局。</p>
+<h2 id="※-构建布局的步骤"><a href="#※-构建布局的步骤" class="headerlink" title="※ 构建布局的步骤"></a>※ 构建布局的步骤</h2><ol>
+<li><p>选择视图类型</p>
+<p><code>3 Button, 4 TextView</code></p>
+</li>
+<li><p>确定视图的位置</p>
+<p><code>标题下面是一行按钮和一个TextView，然后是另一个标题和TextView，最后面是一个Button</code></p>
+</li>
+<li><p>设置视图的样式</p>
+<p><code>内边距外边距什么的</code></p>
+</li>
+</ol>
+<h1 id="用户交互"><a href="#用户交互" class="headerlink" title="用户交互"></a>用户交互</h1><h2 id="什么是Activity？"><a href="#什么是Activity？" class="headerlink" title="什么是Activity？"></a>什么是Activity？</h2><p>Activity是应用中用户可以操作的东西，有时候Activity就是应用中的一个屏幕。</p>
+<p>比如在Google日历中，你点开时看到的就是一个Activity，让你查看日程的，而且这个Activity有一个侧边栏。Google日历的设置是另外一个Activity，让你设置一些东西的。</p>
+<h2 id="XML与Java在Android中有什么作用？"><a href="#XML与Java在Android中有什么作用？" class="headerlink" title="XML与Java在Android中有什么作用？"></a>XML与Java在Android中有什么作用？</h2><p>XML其实就是一个控制布局的，你可以在里边编辑你的UI</p>
+<p>Java呢，就是控制程序的，实现各种各样的功能</p>
+<h2 id="XML如何调用Java？"><a href="#XML如何调用Java？" class="headerlink" title="XML如何调用Java？"></a>XML如何调用Java？</h2><p>在XML中，我们可以看到这样的语句：</p>
+<figure class="highlight xml"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">Button</span></span><br><span class="hljs-tag">    <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;wrap_content&quot;</span></span><br><span class="hljs-tag">    <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;wrap_content&quot;</span></span><br><span class="hljs-tag">    <span class="hljs-attr">android:onClick</span>=<span class="hljs-string">&quot;submitOrders&quot;</span></span><br><span class="hljs-tag">    <span class="hljs-attr">android:text</span>=<span class="hljs-string">&quot;order&quot;</span> /&gt;</span><br></code></pre></div></td></tr></table></figure>
+<p>其中<code>android:onClick=&quot;submitOrders&quot;</code> 就是用来调用Java中的<code>submitOrders</code> 方法的</p>
+<p>如果<code>submitOrders</code> 方法是这样的，那么当用户点击<code>ORDER</code> 按钮时，就会执行相对应的display方法和displayPrice方法</p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">submitOrders</span><span class="hljs-params">(View view)</span> </span>&#123;<br>    <span class="hljs-comment">//将submitOrders变为submitOrder会在应用运行时报错</span><br>    <span class="hljs-keyword">int</span> numberOfCoffee = <span class="hljs-number">2</span>;<br>    <span class="hljs-keyword">int</span> price = <span class="hljs-number">3</span>;<br>    display(numberOfCoffee);<br>    displayPrice(numberOfCoffee * price);<br>&#125;<br></code></pre></div></td></tr></table></figure>
+<h2 id="Debug"><a href="#Debug" class="headerlink" title="Debug"></a>Debug</h2><p>debug是消除bug的调试过程</p>
+<h2 id="系统日志"><a href="#系统日志" class="headerlink" title="系统日志"></a>系统日志</h2><p>System Log: Android开发中常用logcat这个工具来分层次、分类型地显示不同等级的日志，方便程序员查找感兴趣的信息(错误信息或者更琐碎、更底层的信息)。</p>
+<h3 id="断点功能"><a href="#断点功能" class="headerlink" title="断点功能"></a>断点功能</h3><p>为了快速找到错误指令，我们可以在希望设备暂停的指令位置插入一个断点，类似停车标志或路障。然后我们可以让调试器从第一条指令开始全速运行应用，运行至断点时，设备一定会暂停供我们进行检查。</p>
+<h3 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h3><p>进行Debugging必须首先进入debug模式，Android的debug是用一只小瓢虫代替。</p>
+<p>进入Debug模式之后，程序会和运行时一样重新编译这个App，此时手机会弹出提示，过一会等弄好了，提示也就自己消失了。</p>
+<p>当在手机上操作时，在Android Studio的程序框里面就会显示信息，程序运行到断点就会停止，你可以看到一些数据的值</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/Yaoobs/article/details/51296198">https://blog.csdn.net/Yaoobs/article/details/51296198</a> 这里非常详细的介绍了Debug模式的使用方法</p>
+<h2 id="Nested-ViewGroups"><a href="#Nested-ViewGroups" class="headerlink" title="Nested ViewGroups"></a>Nested ViewGroups</h2><p>嵌套视图组，简单的说就是可以在一个布局里面嵌套多个布局。比如说在竖直的线性布局里面嵌套水平布局。</p>
+<p>比如说下面这个图例：</p>
+<ul>
+<li>图例首先是包含两个子视图一个竖直的线性布局（vertical LinearLayout）</li>
+<li>第一个子视图是一个包含3个子视图的水平线性布局（horizontal LinearLayout）</li>
+<li>第二个子视图是一个包含4个子视图的相对布局（RelativeLayout）<ul>
+<li>其中一个子视图还包含着一个子视图</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20200821222535.png" srcset="/img/loading.gif" lazyload alt="嵌套"></p>
+<h2 id="Java字符串"><a href="#Java字符串" class="headerlink" title="Java字符串"></a>Java字符串</h2><figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java">String message = <span class="hljs-string">&quot;Item count&quot;</span> + quantity + <span class="hljs-number">3</span>;	<br><span class="hljs-comment">//字符串还可以这么写，其中quantity是字符变量</span><br></code></pre></div></td></tr></table></figure>
+<p>其他的都是Java基础了，这里就不写了</p>
+<h2 id="控制对齐的属性"><a href="#控制对齐的属性" class="headerlink" title="控制对齐的属性"></a>控制对齐的属性</h2><p>主要有两个：<strong><a target="_blank" rel="noopener" href="http://developer.android.youdaxue.com/reference/android/widget/LinearLayout.LayoutParams.html?utm_source=udacity&amp;utm_medium=course&amp;utm_campaign=android_basics#attr_android:layout_gravity">layout_gravity</a></strong> 以及 <strong><a target="_blank" rel="noopener" href="http://developer.android.youdaxue.com/reference/android/widget/LinearLayout.html?utm_source=udacity&amp;utm_medium=course&amp;utm_campaign=android_basics#attr_android:gravity">gravity</a></strong></p>
+<p>关于两者的区别：</p>
+<ul>
+<li>layout_gravity是对整个view的布局。view整体发生变化，但是view里面的内容改咋样还是咋样</li>
+<li>gravity是对view内的布局。view本身不变，变的是里面的东西</li>
+</ul>
+<p>下图是一个很好的例子（来源：<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/3482742/difference-between-gravity-and-layout-gravity-on-android/26190050#26190050?newreg=12160f705b15400fa08bba26d9d0e635">stackoverflow</a>）</p>
+<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20200823220410.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="Java常量"><a href="#Java常量" class="headerlink" title="Java常量"></a>Java常量</h2><p>在编程语言中，<strong>常量</strong>是指在整个程序中永远不会改变的值。在 Java 中，你可以使用关键字 <code>final</code> 来强制规定某个值不得被更改。例如：</p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> POINTS_FOR_FREE_THROW = <span class="hljs-number">1</span>;<br></code></pre></div></td></tr></table></figure>
+<p>Then if you wrote the following, you’d get an error:</p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java">POINTS_FOR_FREE_THROW = <span class="hljs-number">100</span>;<br></code></pre></div></td></tr></table></figure>
+<p>注意，按照惯例，常量的名称全为大写形式。此外，单词之间用下划线连接，而不用空格或用骆驼拼写法。你可以将变量声明为常量，防止自己意外地更改了变量的值。</p>
+<h2 id="Android的构成"><a href="#Android的构成" class="headerlink" title="Android的构成"></a>Android的构成</h2><p>一个Android应用主要由资源文件和java代码构成。</p>
+<ul>
+<li>java代码负责处理一些事情，比如说按按钮之后还会干啥。。。</li>
+<li>资源文件就是资源是代码使用的附加文件和静态内容，例如位图，布局定义，用户界面字符串，动画说明等。像一些什么布局文件（XML）啊，图片啊，音乐啊等等</li>
+</ul>
+<p>相关资源在 <a target="_blank" rel="noopener" href="http://developer.android.youdaxue.com/guide/index.html">这里</a></p>
+<h2 id="Java获取资源"><a href="#Java获取资源" class="headerlink" title="Java获取资源"></a>Java获取资源</h2><p>在运用编译时，Android中有一个叫 <code>aapt</code> 的工具，这个工具会产生 <code>R</code> 类（就是一个简单的R.java文件）这个里面S目录里包含所有资源文件的ID</p>
+<p>有两种方式使用ID：</p>
+<ul>
+<li><p>在Java代码中用 <code>R.资源类型.资源名</code> 的形式调用。</p>
+<p>比如 <code>R.string.hello</code>、<code>R.drawable.photo</code></p>
+</li>
+<li><p>在XML文件中，用 <code>@资源类型/资源名</code> 的形式调用</p>
+<p>比如<code>@string/hello</code>、<code>@drawable/photo</code></p>
+</li>
+</ul>
+<h2 id="XML-amp-JAVA"><a href="#XML-amp-JAVA" class="headerlink" title="XML&amp;JAVA"></a>XML&amp;JAVA</h2><p>当你点击APP的时候，它会打开<code>MainActivity</code>，此时什么都看不到，因为它在初始化。然后java中的<code>onCreate</code>方法会被自动调用，activity会被创建。</p>
+<p>在<code>MainActivity</code>中的 <code>onCreate</code>方法中有一句<code>setContentView(R.layout.activity_main);</code>，这个对应着布局文件的资源ID。此时XML文件与Java文件就结合起来了 。Android程序就开始解析XML文件，识别XML文件中的各种布局还有View等等。</p>
+<h2 id="findViewById方法"><a href="#findViewById方法" class="headerlink" title="findViewById方法"></a>findViewById方法</h2><p>这个方法会在XML文件中找到与传入ID相对应的View，然后在onCreate方法中处理它</p>
+<p>例如下面这个：</p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java">View textView = findViewById(R.id.order_summary_text_view);<br></code></pre></div></td></tr></table></figure>
+<p>这个语句的意思就是：我们传入一个id参数 <code>R.id.order_summary_text_view</code> 给 <code>findViewById</code> 方法。这个方法会遍历整个XML文件，直到找到id为 <code>R.id.order_summary_text_view</code> 的一个View，然后把这个View作为一个Java对象返回，然后把这个对象存放在名字为<code>textView</code> 的View类对象中。</p>
+<p>注：如果ID为为 <code>R.id.order_summary_text_view</code> 的View是<code>TextView</code>的话，它是无法使用<code>TextView</code>类的方法的，因为<code>findViewById</code>创建的是一个<code>View</code>类型的对象，如果要用<code>TextView</code>的特殊方法，就必须要使用以下的语句</p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java">TextView textView = (TextView) findViewById(R.id.order_summary_text_view);<br></code></pre></div></td></tr></table></figure>
+<h2 id="向-Android-日志中写消息"><a href="#向-Android-日志中写消息" class="headerlink" title="向 Android 日志中写消息"></a>向 Android 日志中写消息</h2><p>注：这个是抄的Udacity上面的</p>
+<p>本质上，你是在代码中写出类似于以下内容的 Java 语句：</p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java">Log.i(<span class="hljs-string">&quot;eatCookie&quot;</span>,<span class="hljs-string">&quot;Oh my God, You Killed Kenny!!!&quot;</span>);<br></code></pre></div></td></tr></table></figure>
+<p>第一个参数是日志语句所来自的<strong>类的名称</strong>。第二个参数是你想要显示的<strong>文字</strong>。</p>
+<p>这里，我们使用了 Log.i()，表示“信息”级别的日志。其他级别的选项如下所示：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="http://developer.android.youdaxue.com/reference/android/util/Log.html?utm_source=udacity&amp;utm_medium=course&amp;utm_campaign=android_basics#e(java.lang.String,%20java.lang.String">e(String, String)</a>)（错误）</li>
+<li><a target="_blank" rel="noopener" href="http://developer.android.youdaxue.com/reference/android/util/Log.html?utm_source=udacity&amp;utm_medium=course&amp;utm_campaign=android_basics#w(java.lang.String,%20java.lang.String">w(String, String)</a>)（警告）</li>
+<li><a target="_blank" rel="noopener" href="http://developer.android.youdaxue.com/reference/android/util/Log.html?utm_source=udacity&amp;utm_medium=course&amp;utm_campaign=android_basics#i(java.lang.String,%20java.lang.String">i(String, String)</a>)（信息）</li>
+<li><a target="_blank" rel="noopener" href="http://developer.android.youdaxue.com/reference/android/util/Log.html?utm_source=udacity&amp;utm_medium=course&amp;utm_campaign=android_basics#d(java.lang.String,%20java.lang.String">d(String, String)</a>)（调试）</li>
+<li><a target="_blank" rel="noopener" href="http://developer.android.youdaxue.com/reference/android/util/Log.html?utm_source=udacity&amp;utm_medium=course&amp;utm_campaign=android_basics#v(java.lang.String,%20java.lang.String">v(String, String)</a>) (详情)</li>
+</ul>
+<p>它们对应的是不同的日志级别，当你运行应用时可以在下图所示位置进行设置：</p>
+<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20200823220537.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>当你设置日志级别时，它将显示该日志级别及<strong>更高级别</strong>的所有日志消息，所以“详情 (verbose)”日志级别显示的消息最多，而“错误”日志级别仅显示最严重的日志。</p>
+<h2 id="本地化"><a href="#本地化" class="headerlink" title="本地化"></a>本地化</h2><p>在Android中，你可以把所有的字符内容都储存在一个文件里面，每一个字符都有一个唯一的ID。这样的话，当你创建一个想要翻译这个APP是，就只需要改变这个文件里面的东西了，而不用跑到每个文件里更改。这个文件就是 <em>res/values/strings.xml</em> 文件。</p>
+<p>看上去是下面这个样子的</p>
+<figure class="highlight xml"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs xml"><span class="hljs-meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">resources</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">string</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;name&quot;</span>&gt;</span> 姓名<span class="hljs-tag">&lt;/<span class="hljs-name">string</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">string</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;toppings&quot;</span>&gt;</span>配料<span class="hljs-tag">&lt;/<span class="hljs-name">string</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">string</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;order&quot;</span>&gt;</span>预定<span class="hljs-tag">&lt;/<span class="hljs-name">string</span>&gt;</span><br>    ...<br><span class="hljs-tag">&lt;/<span class="hljs-name">resources</span>&gt;</span><br></code></pre></div></td></tr></table></figure>
+<p>其中第一个<code>&quot; &quot;</code> 里的就是id，后面的那个就是翻译的内容。</p>
+<p>注：除了编写 string.xml 文件外，还可以使用 Android Studio 自身的 <strong>Translations Editor</strong> ，用起来很舒服。界面简单易懂，这里就不做介绍了。</p>
+<p>调用这个文件的方式还是使用id进行调用，具体实现方式如下</p>
+<ul>
+<li>Java： <code>getString(R.string.name)</code> ，得到字符串</li>
+<li>XML： <code>@string/name</code></li>
+</ul>
+<h2 id="Style-amp-Theme"><a href="#Style-amp-Theme" class="headerlink" title="Style &amp; Theme"></a>Style &amp; Theme</h2><p>emmmmmm不想写了，有生之年再来填坑吧</p>
+<p>到时候看官方文档得了</p>
+<h2 id="让你的应用连接到别的应用？"><a href="#让你的应用连接到别的应用？" class="headerlink" title="让你的应用连接到别的应用？"></a>让你的应用连接到别的应用？</h2><p>这里是运用 <strong>Intent</strong> 知识。<strong>Intent</strong> 是要求其他应用组件完成的一个信息，让我们的应用调用其他的应用，比如说连接到邮箱啊，相机啊日历啊等等。当然必须要确保有应用可以实现这个功能，要不然程序就会崩溃。</p>
+<p>一般的 Intent 的里面有动作、数据URI、目录还有一些其他的消息等等</p>
+<p>在 <a target="_blank" rel="noopener" href="http://developer.android.youdaxue.com/guide/components/intents-common.html?utm_source=udacity&amp;utm_medium=course&amp;utm_campaign=android_basics">这里</a> 有一个比较基础的介绍。</p>
+<p>例如，你想链接到邮件，就可以在 Java 文件中写入下面类似的语句</p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">composeEmail</span><span class="hljs-params">(String[] addresses, String subject)</span> </span>&#123;<br>    Intent intent = <span class="hljs-keyword">new</span> Intent(Intent.ACTION_SENDTO);<br>    intent.setData(Uri.parse(<span class="hljs-string">&quot;mailto:&quot;</span>)); <span class="hljs-comment">// only email apps should handle this</span><br>    intent.putExtra(Intent.EXTRA_EMAIL, addresses);<br>    <span class="hljs-comment">//收件人地址，不过好像没效果</span><br>    intent.putExtra(Intent.EXTRA_SUBJECT, subject);<span class="hljs-comment">//主题</span><br>    <span class="hljs-keyword">if</span> (intent.resolveActivity(getPackageManager()) != <span class="hljs-keyword">null</span>) &#123;<br>        startActivity(intent);&#125;<br>    <span class="hljs-comment">//这个是为了防止没有应用可以外链而避免程序的崩溃</span><br>&#125;<br></code></pre></div></td></tr></table></figure>
+<h1 id="多屏应用"><a href="#多屏应用" class="headerlink" title="多屏应用"></a>多屏应用</h1><h2 id="Android资源文件"><a href="#Android资源文件" class="headerlink" title="Android资源文件"></a>Android资源文件</h2><p>这里只说 res 文件夹里的东西。这个里面的一般都是控制程序外观的文件，包括一些XML文件、图片、还有其他媒体文件</p>
+<ul>
+<li>layout文件夹：这个里面存放着的就是一些 activity 的XML文件，定义了应用的布局</li>
+<li>mipmap文件夹：放应用图标的文件夹</li>
+<li>value 文件夹<ul>
+<li>color.xml：定义了应用的颜色，反正是各种颜色</li>
+<li>dimensions.xml：包括不同的维度，高度，宽度等等，这一系列的</li>
+<li>strings.xml：放置字符的，让我们很容易的将应用翻译成其他语言，以及更改文字等等</li>
+<li>style.xml：包含主题和样式</li>
+</ul>
+</li>
+</ul>
+<h2 id="AndroidManifest-xml"><a href="#AndroidManifest-xml" class="headerlink" title="AndroidManifest.xml"></a>AndroidManifest.xml</h2><p>每个文件都必须有的一个文件。这个里面存放着应用的一些重要信息，比如java的包名、应用组件、Intent权限等等，以及所有的activity。</p>
+<p>在这个里面，有一个 <strong>intent-filter</strong> 代码。具体长这样：</p>
+<figure class="highlight xml"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">intent-filter</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">action</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.intent.action.MAIN&quot;</span> /&gt;</span><br>	<span class="hljs-tag">&lt;<span class="hljs-name">category</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.intent.category.LAUNCHER&quot;</span> /&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">intent-filter</span>&gt;</span><br></code></pre></div></td></tr></table></figure>
+<p>这个Intent是一种代码，用来要求其他应用执行操作；这个Intent-filter就厉害些，它相当于表明程序的入口。当点击应用图标时，Android将会发送一个Intent来启动我们的应用</p>
+<p>当然在这里还可以更改每一个 Activity  的 lable 名称</p>
+<figure class="highlight xml"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs xml">android:label=&quot;@string/category_about&quot;<br></code></pre></div></td></tr></table></figure>
+<h2 id="使用Intent打开其他Activity"><a href="#使用Intent打开其他Activity" class="headerlink" title="使用Intent打开其他Activity"></a>使用Intent打开其他Activity</h2><p>要使用Intent必须首先要创建一个Intent对象。然后传入两个值，一个 <em>context</em> 和一个 <em>class</em> 组件</p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java">Intent intentName = <span class="hljs-keyword">new</span> Intent(<span class="hljs-keyword">this</span>, ActivityName.class)<br></code></pre></div></td></tr></table></figure>
+<p>其中 <code>this</code> 表示当前 Activity 的 context</p>
+<p>然后呢，打开这个Activity</p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java">startActivity(intentName);<br></code></pre></div></td></tr></table></figure>
+<p>这样的话安卓就会启动我们的Activity，应用也就相对应的切换到 <em>ActivityName</em> 这个里面了。</p>
+<p>当然这个与上文 <strong>让你的应用连接到别的应用</strong> 的Intent是有所不同的。因此Intent可以被分为两类：<em>显式的 intent</em>和 <em>隐式的 intent</em> 。</p>
+<p>显式的 intent 是指知道执行那个操作的是谁，是十分具体的指向。就是 <strong>本块</strong> 中的示例</p>
+<p>隐式的 intent 是指你不知道执行那个操作的是谁，只要是可以执行的都可以执行操作。到最后是谁执行还不清楚。 <strong>让你的应用连接到别的应用</strong> 中的就是隐式的 intent </p>
+<h2 id="事件监视器Listener"><a href="#事件监视器Listener" class="headerlink" title="事件监视器Listener"></a>事件监视器Listener</h2><p>之前点击应用，完成一系列的操作，我们是在 XML 文件中进行的</p>
+<figure class="highlight xml"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs xml">android:onclick = &quot;methodInJava&quot;<br></code></pre></div></td></tr></table></figure>
+<p>下面介绍的这个可以不用 XML 文件执行（其实也就是探究 <em>onclick</em> 的本质）</p>
+<p>首先了解一下 <strong>过程</strong>，在用户点击按钮时（用户输入事件），物理设备会检测到一些数据，然后通知Android发生了这个事件，安卓就会通过点击的位置信息定位到相对应的View上。<strong>事件监视器</strong> 就是来获取这些信息的，如果有特定的信息传入[比如点击]，你知道这个事件发生了，就可以执行一些交互了，如 <code>methodInJava</code> 方法。</p>
+<p>注：事件监视器在Java中其实是一个接口类。接口类中，方法全为抽象方法，也没有数据成员。</p>
+<p>了解了过程，接下来就是要使用了，使用事件监视器可以按照以下3步走：</p>
+<ol>
+<li><p>建立一个事件监视器类</p>
+<p>在 <em>Name.java</em>文件：</p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ClickTest</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">View</span>.<span class="hljs-title">OnClickListener</span> </span>&#123;<br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onClick</span><span class="hljs-params">(View view)</span> </span>&#123;<br>        <span class="hljs-comment">//做你想做的事情</span><br>    &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+</li>
+<li><p>创建事件监视器的实例</p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java">ClickTest cickTest = <span class="hljs-keyword">new</span>  ClickTest();<br></code></pre></div></td></tr></table></figure>
+</li>
+<li><p>连接你的事件监视器和对应的 View</p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java">TextView about = (TextView) findViewById(R.id.about);	<br><span class="hljs-comment">//首先要构造一个TextView的实例才能对它进行操作嘛</span><br>about.setOnClickListener(cickTest)<br><span class="hljs-comment">//连接你的事件监视器和对应的 View</span><br></code></pre></div></td></tr></table></figure>
+</li>
+</ol>
+<p>这样的话，事件监视器就被使用了。当然，为了代码的可读性，还可以进行简化，该文件为 <em>MainActivity.java</em></p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-comment">// 将活动的内容设置为使用activity_main.xml布局文件，一般系统会自动生成</span><br><span class="hljs-comment">// 也就是说下面的内容定义在了 activity_main.xml 中</span><br><span class="hljs-comment">// 如果注释掉就会使 setOnClickListener 报错：NullPointerException</span><br>setContentView(R.layout.activity_main);<br><br><span class="hljs-comment">//创造出一个about的TextView实例出来，这样就可以对它进行操作了</span><br>TextView about = (TextView) findViewById(R.id.about);<br><br><span class="hljs-comment">//用户点击about这个文字的时候做出一些操作的方法</span><br><span class="hljs-comment">//使用事件监视器(Listener)需要调用set...Listener方法</span><br><span class="hljs-comment">//set...Listener方法需要传入一个...Listener对象</span><br><span class="hljs-comment">//此处本来应该构造一个有OnClickListener接口的aboutOnClickListener类的对象，然后将他示例化，但是本例中把这个简化了</span><br>about.setOnClickListener(<span class="hljs-keyword">new</span> OnClickListener() &#123;<br>	<span class="hljs-meta">@Override</span><br>	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onClick</span><span class="hljs-params">(View view)</span> </span>&#123;<br>	<span class="hljs-comment">//下面，创建一个Intent类对象，并直接把这个当做参数传递给startActivity方法</span><br>	<span class="hljs-comment">//用来打开AboutActivity</span><br>		startActivity(<span class="hljs-keyword">new</span> Intent(MainActivity.<span class="hljs-keyword">this</span>, AboutActivity.class));<br>		&#125;<br>	&#125;<span class="hljs-comment">//直接创建一个OnClickListener的类，然后实例化当做setOnClickListener的参数</span><br>);<br><span class="hljs-comment">//以后可以看谁不爽直接 new 一个类出来</span><br></code></pre></div></td></tr></table></figure>
+<h2 id="ArrayList-数组列表"><a href="#ArrayList-数组列表" class="headerlink" title="ArrayList[数组列表]"></a>ArrayList[数组列表]</h2><p>其实跟数组差不多。与数组的区别有以下几个方面：</p>
+<ol>
+<li>数组列表的长度是可以改变的，数组列表中有多少元素其长度就是多少</li>
+<li>数组列表是一种类型，数组的话，就比较基本</li>
+<li>既然是一种类型，就可以调用各种各样的方法，你还可以继承它，覆盖一些方法等等（可玩性更高吧）</li>
+<li>数组列表只能包含对象数据类型，向 int 这种就只能使用它们的包装类了</li>
+</ol>
+<p>注：一般来说固定长度的使用数组，不固定长度的使用数组列表</p>
+<p>ArrayList 的文档在：<a target="_blank" rel="noopener" href="http://developer.android.youdaxue.com/reference/java/util/ArrayList.html?utm_source=udacity&amp;utm_medium=course&amp;utm_campaign=android_basics">这里</a></p>
+<p>在 Java 中，ArrayList 继承自<a target="_blank" rel="noopener" href="http://developer.android.youdaxue.com/reference/java/util/AbstractList.html">AbstractList</a><E>，实现implements <a target="_blank" rel="noopener" href="http://developer.android.youdaxue.com/reference/java/util/List.html">List</a><E>接口，是一个泛型类</p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java">注：泛型类有主要以下类型参数：<br>	E:元素	K:键		N:数字	T:类型	V:值<br></code></pre></div></td></tr></table></figure>
+<p>下面列举一些常见的ArrayList使用方法</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>用途</th>
+<th>Java</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>创建数组列表</td>
+<td><code>ArrayList&lt;Word&gt; familyList = new ArrayList&lt;Word&gt;();</code></td>
+</tr>
+<tr>
+<td>增加元素</td>
+<td><code>familyList.add(new Word(getString(R.string.phrase_Where), &quot;minto wuksus&quot;));</code></td>
+</tr>
+<tr>
+<td>去除元素</td>
+<td><code>familyList.remove(new Word(getString(R.string.phrase_Where), &quot;minto wuksus&quot;));</code></td>
+</tr>
+<tr>
+<td>查看元素</td>
+<td><code>familyList.get(0);</code>、<code>familyList.get(1);</code>、<code>familyList.get(2);</code></td>
+</tr>
+<tr>
+<td>查看元素数量</td>
+<td><code>familyList.size();</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="内存优化——ListView-ArrayAdapter"><a href="#内存优化——ListView-ArrayAdapter" class="headerlink" title="内存优化——ListView+ArrayAdapter"></a>内存优化——ListView+ArrayAdapter</h2><p>我们之前要创建一串列表时，肯定是这样的</p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java">LinearLayout number_LinearLayout = (LinearLayout) findViewById(R.id.numbers_LinearLayout);<span class="hljs-comment">//先建立一个LinearLayout</span><br>TextView[] textViews = <span class="hljs-keyword">new</span> TextView[restaurantsToTry.size()];<br><span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; restaurantsToTry.size(); i++) &#123;<br>    textViews[i] = <span class="hljs-keyword">new</span> TextView(<span class="hljs-keyword">this</span>);<br>    textViews[i].setText(restaurantsToTry.get(i));<br>    number_LinearLayout.addView(textViews[i]);<br>&#125;<span class="hljs-comment">//然后填上TextView</span><br></code></pre></div></td></tr></table></figure>
+<p>但是随着数据的增大，一次显示的东西也曰来越多，所占用的内存也会越来越大，从而导致卡顿。这个是我们很不愿意看到了。为了解决这个问题，有以下的思路：</p>
+<p>我们不一次显示所有的啊东西，只是显示屏幕上需要的东西。<strong>就是根据屏幕，创建所需要的视图</strong>。如果屏幕不需要，我们就不显示，把它抛弃了；如果需要就建立一个。这样成了一个可循环的了，屏幕上不需要的循环到屏幕上需要的。</p>
+<p>做到这一步需要 <strong>一个可循环的ViewGroup</strong> + <strong>一个配适器(ArrayAdapter)</strong> 。可循环的ViewGroup有：ListView、GridView、RecylcerView 等等</p>
+<p>下面来以ListView为例说原理：</p>
+<p>ArrayAdapter会处理数据，将他们调用或传输到ListView上，然后在上面显示</p>
+<p>ListView可以看成是用户界面，ArrayAdapter是处理数据的。</p>
+<p>ListView首先会向ArrayAdapter询问数据的长度。然后ListView会向ArrayAdapter调用一个方法（相当于一个请求），传入一个position，即用户正在查看的列表的位置。得到了请求之后，ArrayAdapter会查看数据结构，然后<strong>创造出一个View</strong>出来。当屏幕占满的时候，ListView就会停止请求。当屏幕滚动的时候，不在可见的View就会到一个 Scrap Views 的地方，然后ListView请求新的东西，传入 Scrap Views 的position，然后达到循环利用。</p>
+<p>原理部分说明完毕。（其实最后还是有些不清楚。。。）</p>
+<p>实现这个还是要三步走：</p>
+<ol>
+<li><p>构造一个ListView对象</p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java">ListView listview = (ListView) findViewById(R.id.list)<br></code></pre></div></td></tr></table></figure>
+<p>这样才能对ListView进行操作嘛。当然，为了实现这个必须想要建立一个id为R.id.list的ListView在xml文件中，比如这个</p>
+<figure class="highlight xml"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">ListView</span></span><br><span class="hljs-tag">    <span class="hljs-attr">xmlns:android</span>=<span class="hljs-string">&quot;http://schemas.android.com/apk/res/android&quot;</span></span><br><span class="hljs-tag">    <span class="hljs-attr">android:id</span>=<span class="hljs-string">&quot;@+id/list&quot;</span></span><br><span class="hljs-tag">    <span class="hljs-attr">android:orientation</span>=<span class="hljs-string">&quot;vertical&quot;</span></span><br><span class="hljs-tag">    <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span></span><br><span class="hljs-tag">    <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;match_parent&quot;</span></span><br><span class="hljs-tag">    <span class="hljs-attr">android:padding</span>=<span class="hljs-string">&quot;@dimen/activity_vertical_margin&quot;</span>/&gt;</span><br></code></pre></div></td></tr></table></figure>
+</li>
+<li><p>构造一个ArrayAdapter对象</p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java">ArrayAdapter arrayAdapter = <span class="hljs-keyword">new</span> WordAdapter(<span class="hljs-keyword">this</span>, arrayListName);<br></code></pre></div></td></tr></table></figure>
+<p>第一个参数为context，第二个参数为要传入其中的arrayList，数组啊等等</p>
+</li>
+<li><p>将ListView对象与ArrayAdapter对象联系起来</p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java">listView.setAdapter(arrayAdapter);<br></code></pre></div></td></tr></table></figure>
+</li>
+</ol>
+<p>这样的话，一个列表就形成了。不过目前还有一个问题：ArrayList一次只能传入一个参数。ArrayAdapter只能生成一个TextView。如果想要产生一个比较复杂的列表（比如通讯录既有图片又有文字），采用刚刚那样就会报错。</p>
+<p>如果需要解决就必须要自定义一些内容，下面介绍自定义的东西：</p>
+<ul>
+<li><p>数据类</p>
+<p>这是由于ArrayList造成的。ArrayList一次只能传入一个参数。如果一个列有两个项目（比如一个单词的翻译放在List就有中文和英文两项），就必须要自己创造一种类型。这种类型包含两个项目。比如说这里就可以创造一个 Word 类型</p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Word</span> </span>&#123;<br>    <span class="hljs-keyword">private</span> String defaultWord;<br>    <span class="hljs-keyword">private</span> String anotherWord;<br><br>    <span class="hljs-comment">//获取default语言</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getDefaultWord</span><span class="hljs-params">()</span> </span>&#123;<span class="hljs-keyword">return</span> defaultWord;&#125;<br><br>    <span class="hljs-comment">//获取另外一种语言</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getAnotherWord</span><span class="hljs-params">()</span> </span>&#123;<span class="hljs-keyword">return</span> anotherWord;&#125;<br><br>    <span class="hljs-comment">//构造函数无返回值</span><br>    Word(String defaultWord, String anotherWord) &#123;<br>        <span class="hljs-keyword">this</span>.defaultWord = defaultWord;<br>        <span class="hljs-keyword">this</span>.anotherWord = anotherWord;<br>    &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+</li>
+<li><p>配适器（Adapter）类</p>
+<p>这回是要创建自己的Adapter，让它能够一次生成多个View出来（改写getView方法）</p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">WordAdapter</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">ArrayAdapter</span>&lt;<span class="hljs-title">Word</span>&gt; </span>&#123;<br><br>    <span class="hljs-comment">//构造函数，不写这个不给用ArrayAdapter</span><br>    WordAdapter(Activity context, ArrayList&lt;Word&gt; wordArrayList) &#123;<br>        <span class="hljs-comment">//第二个参数设置，在 getView 方法中会得到，因此可以是任何数字</span><br>        <span class="hljs-keyword">super</span>(context, <span class="hljs-number">0</span>, wordArrayList);<br>    &#125;<br><br>    <span class="hljs-comment">//为 AdapterView 提供（构件）View</span><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> View <span class="hljs-title">getView</span><span class="hljs-params">(<span class="hljs-keyword">int</span> position, View convertView, ViewGroup parent)</span> </span>&#123;<br>        <span class="hljs-comment">// Check if the existing view is being reused, otherwise inflate the view</span><br>        View listItemView = convertView;<br>        <span class="hljs-keyword">if</span> (listItemView == <span class="hljs-keyword">null</span>) &#123;<br>            listItemView = LayoutInflater.from(getContext()).inflate(<br>                    R.layout.list_item, parent, <span class="hljs-keyword">false</span>);<br>        &#125;<br><br>        <span class="hljs-comment">// 获取 restaurantsToTry[ArrayList类] 在position这个位置上的值</span><br>        <span class="hljs-comment">// 在这个例子中，这个值是一个 Word 类型的</span><br>        Word currentAndroidFlavor = getItem(position);<br><br>        <span class="hljs-comment">// 建立一个指定id的 TextView 的实例，并且命名为 nameTextView</span><br>        <span class="hljs-comment">// 注意：findViewById方法在 View中有，在这里没有</span><br>        <span class="hljs-comment">//因此要通过 listItemView.findViewById调用</span><br>        TextView nameTextView = (TextView) listItemView.findViewById(R.id.numbers_translate_TextView);<br>        nameTextView.setText(currentAndroidFlavor.getDefaultWord());<br><br>        TextView numberTextView = (TextView) listItemView.findViewById(R.id.numbers_micwok_TextView);<br>        numberTextView.setText(currentAndroidFlavor.getMiwokWord());<br><br>        <span class="hljs-keyword">return</span> listItemView;<br>    &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+</li>
+</ul>
+<p>这样的话一些自定义也结束了。</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9B%B8%E5%85%B3/">计算机相关</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E7%BC%96%E7%A8%8B/">编程</a>
+                    
+                      <a class="hover-with-bg" href="/tags/Android/">Android</a>
+                    
+                      <a class="hover-with-bg" href="/tags/Google/">Google</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2018/06/15/WHUT/MechanismDesign/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">机械设计笔记</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2018/01/28/WHUT/CourseDesignOfMechanicalPrinciple/">
+                        <span class="hidden-mobile">课程设计：牛头刨床机构的分析与综合</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"DNr2pgYBNbnn4YMKmdstH2Sw-gzGzoHsz","appKey":"6RRAdTwPs2Y3Tk5iKNo2qo1D","placeholder":"说点什么","path":"window.location.pathname","avatar":"retro","meta":["nick","mail"],"pageSize":10,"lang":"zh-CN","highlight":true,"recordIP":false,"serverURLs":"https://dnr2pgyb.lc-cn-n1-shared.com","emojiCDN":null,"emojiMaps":null,"enableQQ":false,"requiredFields":[],"appid":"DNr2pgYBNbnn4YMKmdstH2Sw-gzGzoHsz","appkey":"6RRAdTwPs2Y3Tk5iKNo2qo1D"},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

@@ -1,0 +1,812 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.ico">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="学的时候没太在意，不过在后面遇到了蛮多相关的知识点（机器学习、起重机等都有它的身影）。">
+  <meta name="author" content="Fu Qingchen">
+  <meta name="keywords" content="MSE, CS">
+  
+  <title>最优化技术笔记 | Fu&#39;s Web</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/vs2015.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.11","typing":{"enable":false,"typeSpeed":30,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null},"tajs":null},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 50vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Fu's Web</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('https://gitee.com/fuqingchen/picture-lib/raw/master/img/Test_Tree.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="最优化技术笔记">
+              
+                最优化技术笔记
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2018-12-21 23:06" pubdate>
+        2018年12月21日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      6.7k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      94
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">最优化技术笔记</h1>
+            
+            <div class="markdown-body">
+              <p>学的时候没太在意，不过在后面遇到了蛮多相关的知识点（机器学习、起重机等都有它的身影）。</p>
+<span id="more"></span>
+<h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><h2 id="优化的概念"><a href="#优化的概念" class="headerlink" title="优化的概念"></a>优化的概念</h2><ul>
+<li>可以理解为：求极小值</li>
+<li>优化问题的解决离不开数学手段</li>
+<li>优化技术要解决的问题<ul>
+<li>数学建模</li>
+<li>优化问题的求解</li>
+<li>优化结果的评价</li>
+</ul>
+</li>
+</ul>
+<h2 id="最优化问题的数学模型"><a href="#最优化问题的数学模型" class="headerlink" title="最优化问题的数学模型"></a>最优化问题的数学模型</h2><blockquote>
+<p>例 : 某工厂生产A、B产品如下 表 ，合理分配使利润最大</p>
+</blockquote>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">产品</th>
+<th style="text-align:center">材料</th>
+<th style="text-align:center">工时</th>
+<th style="text-align:center">电力</th>
+<th style="text-align:center">利润</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">A</td>
+<td style="text-align:center">9</td>
+<td style="text-align:center">3</td>
+<td style="text-align:center">4</td>
+<td style="text-align:center">60</td>
+</tr>
+<tr>
+<td style="text-align:center">B</td>
+<td style="text-align:center">4</td>
+<td style="text-align:center">10</td>
+<td style="text-align:center">5</td>
+<td style="text-align:center">120</td>
+</tr>
+<tr>
+<td style="text-align:center">供应量</td>
+<td style="text-align:center">360</td>
+<td style="text-align:center">300</td>
+<td style="text-align:center">200</td>
+<td style="text-align:center">-</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="优化问题的数学模型的概念"><a href="#优化问题的数学模型的概念" class="headerlink" title="优化问题的数学模型的概念"></a>优化问题的数学模型的概念</h3><ul>
+<li>设计变量：设计方案中待求的可变的量（是独立变量)，用 $X=(x_1,x_2…x_n)^T$ 表示</li>
+<li>预定参数：设计中的已知项</li>
+<li>设计空间：以设计分量 $x_i$ 为坐标轴所构成的空间</li>
+<li>目标函数：将优化的目标表达成设计变量的函数，记为 $F(X)$，用于评价方案的好坏</li>
+<li>约束函数限制条件：用 $g_u(X)\leq0,h_v(X)=0(u,v=1,2…)$ </li>
+<li>可行域：同时满足 $g_u(X),h_v(X)$ 的点的集合</li>
+<li>等值线：等值线上的所有 $X$ 使目标函数或约束函数值相等</li>
+</ul>
+<h3 id="优化问题的数学模型的标准模式"><a href="#优化问题的数学模型的标准模式" class="headerlink" title="优化问题的数学模型的标准模式"></a>优化问题的数学模型的标准模式</h3><p>求设计变量 $X=(x_1,x_2…x_n)^T$ ，使得</p>
+<script type="math/tex; mode=display">
+f(X)\rightarrow\min</script><p>并且满足</p>
+<script type="math/tex; mode=display">
+g_u(X)\leq0,u=1,2...\\
+h_v(X)=0,v=1,2...</script><h2 id="优化问题的分类"><a href="#优化问题的分类" class="headerlink" title="优化问题的分类"></a>优化问题的分类</h2><ul>
+<li><p>有无约束</p>
+</li>
+<li><p>目标函数约束函数性质</p>
+<ul>
+<li><p>线性规划：$F,g,h$ 中 <strong>均为</strong> 线性</p>
+</li>
+<li><p>非线性规划：$F,g,h$ 中 <strong>有一个不是</strong> 线性</p>
+</li>
+</ul>
+</li>
+<li><p>目标函数个数</p>
+<ul>
+<li><p>单目标优化：模型中只有一个目标函数</p>
+</li>
+<li><p>多 目标优化：模型有多个目标函数</p>
+</li>
+</ul>
+</li>
+<li><p>设计变量</p>
+</li>
+</ul>
+<h2 id="优化问题的求解思路"><a href="#优化问题的求解思路" class="headerlink" title="优化问题的求解思路"></a>优化问题的求解思路</h2><ul>
+<li>解析法</li>
+<li>数值计算方法</li>
+</ul>
+<p>对于优化问题，依次从初始点出发，找到一串点 $X^0,X^1…X^k$ ，对应的目标函数值 $f(X^0)&gt;f(X^1)&gt;…$ 若存在最优解，$f(X)$ 最终收敛于 $f(X^<em>)$ ，$X^</em>$ 为最优解</p>
+<p>根据 $X^k$ 和 $X^*$ 的接近程度，有 3 种收敛条件</p>
+<ul>
+<li>$|X^{k+1}-X^k|&lt;\varepsilon$ </li>
+<li>$|F(X^{k+1})-F(X^k)|&lt;\varepsilon$ </li>
+<li>$|\nabla F(X^k)|&lt;\varepsilon$</li>
+</ul>
+<h3 id="迭代一般格式"><a href="#迭代一般格式" class="headerlink" title="迭代一般格式"></a>迭代一般格式</h3><ol>
+<li>给定初始点 $X^{k}|_{k=0}$，收敛精度 $\varepsilon$</li>
+<li>按某种规则构造搜索方向 $S^{k}$</li>
+<li>从 $X^{k}$ 出发 , 沿 $S^k$ 方向，找到在此方向上的最优点 $X^{k+1}$</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c">x[k]=&#123;<span class="hljs-number">0</span>&#125;;<br><span class="hljs-keyword">for</span>(k=<span class="hljs-number">0</span>;Z(X)&lt;ε;k++)&#123;<br>    X[k+<span class="hljs-number">1</span>]=X[k]+α[k]S[k]<br>&#125;<br></code></pre></div></td></tr></table></figure>
+<p>​    其中<code>Z(X)</code> 为收敛条件，<code>α[k]</code>为步长因子</p>
+<h1 id="数学基础"><a href="#数学基础" class="headerlink" title="数学基础"></a>数学基础</h1><h2 id="极值理论"><a href="#极值理论" class="headerlink" title="极值理论"></a>极值理论</h2><h3 id="一元函数极值"><a href="#一元函数极值" class="headerlink" title="一元函数极值"></a>一元函数极值</h3><ul>
+<li><p>必要条件：$f’(x_0)=0$ ，$x_0$ 为驻点</p>
+</li>
+<li><p>充分条件：$f’’(x_0)&gt;0$ ， $x_0$ 为极小值；$f’’(x_0)&lt;0$ ， $x_0$ 为极大值；</p>
+</li>
+</ul>
+<h3 id="二元函数极值"><a href="#二元函数极值" class="headerlink" title="二元函数极值"></a>二元函数极值</h3><ul>
+<li>必要条件：$f’_x(x_0,y_0)=0,f’_y(x_0,y_0)=0$ </li>
+<li>充分条件：若 $\partial^2f/\partial x^2=A$，$\partial^2f/\partial xy=B$，$\partial^2f/\partial x^2=C$，$AC-B^2&gt;0$ 有极值；$AC-B^2&lt;0$ 无极值</li>
+</ul>
+<h3 id="多元函数极值"><a href="#多元函数极值" class="headerlink" title="多元函数极值"></a>多元函数极值</h3><h4 id="方向导数与梯度"><a href="#方向导数与梯度" class="headerlink" title="方向导数与梯度"></a>方向导数与梯度</h4><p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20200823204527.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>以二元函数为例，在点 $X^0$ 沿任意方向 $S_0$ 的变化率</p>
+<script type="math/tex; mode=display">
+\frac{\partial f}{\partial S_0}\\
+=\lim\limits_{ds\rightarrow0}\frac{f(X^1)-f(X^0)}{ds}\\
+=\lim\limits_{dx,dy\rightarrow0}\left[\frac{f(x_0+dx,y_0)-f(x_0,y_0)}{dx}\frac{dx}{ds}+\frac{f(x_0+dx,y_0+dy)-f(x_0+dx,y_0)}{dy}\frac{dy}{ds}\right]\\
+=\frac{\partial f}{\partial x}\cos\theta_1+\frac{\partial f}{\partial y}\cos\theta_2=\begin{bmatrix}
+\frac{\partial f}{\partial x}\\
+\frac{\partial f}{\partial y}
+\end{bmatrix}\begin{bmatrix}
+\cos\theta_1\\
+\cos\theta_2
+\end{bmatrix}=\nabla f\begin{bmatrix}
+\cos\theta_1\\
+\cos\theta_2
+\end{bmatrix}</script><blockquote>
+<p>这里写成 $\cos\theta_1,\cos\theta_2$ 是考虑到多元函数</p>
+</blockquote>
+<p>​    其中：$\nabla f$ 为梯度，$\begin{bmatrix}<br>\cos\theta_1\\<br>\cos\theta_2<br>\end{bmatrix}$ 为单位向量，记为 $S$ </p>
+<script type="math/tex; mode=display">
+\frac{\partial f}{\partial S}=|\nabla f|\cos\theta,\theta=<\nabla f,S></script><h5 id="梯度性质"><a href="#梯度性质" class="headerlink" title="梯度性质"></a>梯度性质</h5><ul>
+<li>$\nabla F$ 表示该函数上升最快的方向，也是等值线的法线方向</li>
+<li>梯度是函数在一点邻域的局部描述，离开邻域不一定是下降最快的方向</li>
+</ul>
+<h4 id="多元函泰勒展开"><a href="#多元函泰勒展开" class="headerlink" title="多元函泰勒展开"></a>多元函泰勒展开</h4><ul>
+<li>作用：对复杂函数在一点邻域内简化</li>
+</ul>
+<script type="math/tex; mode=display">
+f(X)=f(X_0)+\nabla f(X)(X-X_0)+\frac12(X-X_0)^T\nabla^2f(X)(X-X_0)</script><p>​    其中 $\nabla=\begin{bmatrix}<br>\partial/\partial x \\<br>\partial /\partial y<br>\end{bmatrix},\nabla^2=\begin{bmatrix}<br>\partial^2/\partial x^2 &amp;\partial^2/\partial x\partial y\\<br>\partial ^2/\partial y\partial x&amp;\partial^2/\partial y^2<br>\end{bmatrix}$ </p>
+<blockquote>
+<p>$\nabla^2f$ 又称海塞矩阵 </p>
+</blockquote>
+<h3 id="函数在-X-处取极值条件"><a href="#函数在-X-处取极值条件" class="headerlink" title="函数在 $X^*$ 处取极值条件"></a>函数在 $X^*$ 处取极值条件</h3><ul>
+<li>必要条件：$\nabla f(X^*)=0$ <blockquote>
+<p>对任意 $S,\nabla f·S\geq0$ ，取 $S=S_0,S=-S_0$ 得到</p>
+</blockquote>
+</li>
+<li>充分条件：$\nabla^2f(X^*)$ 正定</li>
+</ul>
+<blockquote>
+<p>其他点都要比极小点大</p>
+<p>设 $M$ 是 $n$ 阶方阵，如果对任何非零向量 $z$ ，都有 $z^TMz\geq0$ ，其中 $z^T$ 表示 $z$ 的转置，就称 $M$ 为正定矩阵。</p>
+<p>【补充：判断正定矩阵的方法】</p>
+<p>计算对称矩阵A的各阶顺序主子式。若A的各阶顺序主子式均大于零，则A是正定的</p>
+</blockquote>
+<h2 id="函数凹凸性"><a href="#函数凹凸性" class="headerlink" title="函数凹凸性"></a>函数凹凸性</h2><p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20200823204604.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ul>
+<li>凸集：任意连接<strong>点集</strong>中任意两点 $x_1,x_2$ 的线段全包含在集合内</li>
+<li>凸函数：$f[\alpha x_1+(1-\alpha)x_2]\leq\alpha f(x_1)+(1-\alpha)f(x_2),0&lt;\alpha&lt;1$ </li>
+<li>若 $f(X)$ 的海塞矩阵 $\nabla f$ 处处正定，$f(X)$ 为严格凸函数</li>
+<li>凹凸性应用<ul>
+<li>约束函数 $g(X)$ 是凸函数，$g(X)&lt;0$ 围成区域为凸集</li>
+<li>约束函数 $g(X)$ 是凹函数，$g(X)&gt;0$ 围成区域为凸集</li>
+<li>凹凸性与极值关系<ul>
+<li>目标函数<strong>是</strong>凸函数，约束函数<strong>是</strong>凸函数，极值点在可行域内（a）</li>
+<li>目标函数<strong>是</strong>凸函数，约束函数<strong>是</strong>凸函数，极值点不在可行域内（b）</li>
+<li>目标函数<strong>是</strong>凸函数，约束函数<strong>不是</strong>凸函数（c）</li>
+<li>目标函数<strong>不是</strong>凸函数，约束函数<strong>是</strong>凸函数（d）</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20200823204629.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h1 id="一维搜索"><a href="#一维搜索" class="headerlink" title="一维搜索"></a>一维搜索</h1><p>对于一个优化问题 $\min f(X)$ ，通过搜索方向 $S$ 的构造，从初始点 $X_0$ 出发，寻找一组是目标函数下降的点的序列。在迭代的每一步 $X^{k+1}=X^K+\alpha_KS^K$ ，带入到目标函数，得 $f(\alpha_K)$ ，每一步迭代都归结于求 $\alpha_k$ （$X,S$ 已知）</p>
+<blockquote>
+<p>$f(X^K)\rightarrow f(X^{K+1})$ 转变为 $f(\alpha_K)\rightarrow f(X^{K=1})$</p>
+</blockquote>
+<p>求解基本步骤</p>
+<ol>
+<li>找到一个包含极小点的区间</li>
+<li>在区间内找到 $\alpha^*$</li>
+</ol>
+<h2 id="进退法（搜索区间的确定）"><a href="#进退法（搜索区间的确定）" class="headerlink" title="进退法（搜索区间的确定）"></a>进退法（搜索区间的确定）</h2><p>从某给定初值 $\alpha_0$ 开始，以初始步长 $h$ 向前试探。如果函数值上升，则步长变号，即改变试探方向；如果函数值下降，则维持原来的试探方向。区间的始点、中间点依次沿试探方向移动一步。此过程一直进行到函数值再次上升时为止，即可找到搜索区间的终点。最后得到的三点即为搜索区间的始点、中间点和终点，形成函数值的 “高—低—高” 趋势。</p>
+<p>步骤：给定初始点及步长 $\alpha_0,h$</p>
+<ul>
+<li><p>若 $f(\alpha_k+h)&gt;f(\alpha_k)$ ，最优步长位于 $\alpha_k+h$ 左侧，右端点可以确定。搜索方向不对，使 $h=-h$ ,重新搜索，直到出现 $f(a_K+h)&gt;f(\alpha_k))$ 。这个 $\alpha_K+h$ 就是左端点</p>
+<figure class="highlight c"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c"><span class="hljs-keyword">if</span> (f(alpha_k + h) &gt; f(alpha_k))&#123;<br>    b = alpha_k + h;<br>    <span class="hljs-keyword">while</span>(f(alpha_k - h) &gt; f(alpha_k))&#123;<br>        alpha_k -= h;<br>    &#125;<br>    a = alpha_k - h;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+</li>
+<li><p>反过来也是类似的</p>
+<figure class="highlight c"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c"><span class="hljs-keyword">if</span> (f(alpha_k + h) &lt; f(alpha_k))&#123;<br>    a = alpha_k;<br>    <span class="hljs-keyword">while</span>(f(alpha_k + h) &gt; f(alpha_k))&#123;<br>        alpha_k += h;<br>    &#125;<br>    a = alpha_k + h;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+</li>
+</ul>
+<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20200823204752.png" srcset="/img/loading.gif" lazyload alt="进退法"></p>
+<h2 id="区间消去法（不断减少区间最终获得极小点）"><a href="#区间消去法（不断减少区间最终获得极小点）" class="headerlink" title="区间消去法（不断减少区间最终获得极小点）"></a>区间消去法（不断减少区间最终获得极小点）</h2><p>已知区间 $[a,b]$ 在其中任取 $a_1&lt;b_2$ </p>
+<ul>
+<li>若 $f(a_1)&lt;f(b_1)$ ，极值点在 $b_1$ 左侧，消去无用区间得到$[a,b_1]$ </li>
+<li>若 $f(a_1)=f(b_1)$ ，极值点在 $a_1,b_1$ 中间，消去无用区间得到$[a_1,b_1]$ </li>
+<li>若 $f(a_1)&gt;f(b_1)$ ，极值点在 $a_1$ 右侧，消去无用区间得到$[a_1,b]$ </li>
+</ul>
+<h3 id="黄金分割法"><a href="#黄金分割法" class="headerlink" title="黄金分割法"></a>黄金分割法</h3><p>以搜索区间的0.618倍作为比较点 $a_1,b_1$ 的确定原则</p>
+<ul>
+<li>$a_1=a+0.618(b-a)$</li>
+<li>$b_1=b-0.618(b-a)$</li>
+</ul>
+<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20200823204832.png" srcset="/img/loading.gif" lazyload alt="黄金分割法"></p>
+<h3 id="格点法"><a href="#格点法" class="headerlink" title="格点法"></a>格点法</h3><p>其算法为：给定区间 $[a,b]$，将其等分为 $n+1$ 个区间 $(n\geq3)$，计算 $f(a_1),f(a_2)…f(a_n)$，找出其中的最小点 $f(a_m)=\min\{f(a_1),f(a_2)…f(a_n)\}$，$a_m$左右两点就构成搜索区间 $[a_{m-1},a_{m+1}]$，直至 $|a_{m+1}-a_{m-1}|\leq\varepsilon$ </p>
+<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20200823204916.png" srcset="/img/loading.gif" lazyload alt="格点法"></p>
+<h3 id="平分法"><a href="#平分法" class="headerlink" title="平分法"></a>平分法</h3><p>取 $a,b$ 中点 $a_K=(a+b)/2$ 利用中点附近的导数的正负性，判断取舍区间</p>
+<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20200823204955.png" srcset="/img/loading.gif" lazyload alt="平分法"></p>
+<blockquote>
+<p>当一阶导数无法求时，可以使用 $f(\alpha_k+\varepsilon)-f(\alpha_k-\varepsilon)$ 代替</p>
+</blockquote>
+<h2 id="二次插值法"><a href="#二次插值法" class="headerlink" title="二次插值法"></a>二次插值法</h2><p>原理：</p>
+<p>对函数$f(x)$取三点 ${x_1}&lt;{x_2}&lt;{x_3}$ 对应函数值 $f(x_1)&gt;f(x_2)&lt;f(x_3) $ ，以此构造插值多项式 $ P(x)=a_0+a_1x+a_2x^2 $ ，其极值点 $ x^*=-a_1/2a_2 $ </p>
+<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20200823205103.png" srcset="/img/loading.gif" lazyload alt="二次插值法"></p>
+<h1 id="无约束规划"><a href="#无约束规划" class="headerlink" title="无约束规划"></a>无约束规划</h1><p>上一章确定了步长，但是没有确定方向，这一章就是在无约束问题中确定方向的</p>
+<h2 id="梯度法（最速下降法）"><a href="#梯度法（最速下降法）" class="headerlink" title="梯度法（最速下降法）"></a>梯度法（最速下降法）</h2><p>$-\nabla f(X)$ 方向是函数值下降最快的方向，取方向 $S=-\nabla f(X)$ </p>
+<ul>
+<li>迭代格式：$X^{K+1}=X^K-\alpha_K\nabla f(X)$ </li>
+<li>收敛条件：$||\nabla f(X)||&lt;\varepsilon$ </li>
+</ul>
+<h3 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h3><p>相邻两次搜索正交，搜索路径呈锯齿形，越靠近极点，越慢，搜索效率越低</p>
+<h2 id="牛顿法"><a href="#牛顿法" class="headerlink" title="牛顿法"></a>牛顿法</h2><p>由于<strong>高次</strong>函数的导数不好求，于是现将其用泰勒公式<strong>转化为二次</strong> ，再求梯度</p>
+<ul>
+<li>迭代格式 $X^{K+1}=X^K-[\nabla^2 f(X)]^{-1}\nabla f(X)$ </li>
+</ul>
+<p>流程图太简单了。。。。</p>
+<h3 id="特点-1"><a href="#特点-1" class="headerlink" title="特点"></a>特点</h3><p>工作量大、对高次函数，泰勒展开只是近似解，且步长恒为1，其极值不准确</p>
+<h2 id="修正牛顿法"><a href="#修正牛顿法" class="headerlink" title="修正牛顿法"></a>修正牛顿法</h2><p>在牛顿法的基础上引入了最优步长，确保沿 $\nabla f(X)$ 方向下降最快</p>
+<ul>
+<li>迭代格式 $X^{K+1}=X^K-\alpha_K[\nabla^2 f(X)]^{-1}\nabla f(X)$ </li>
+</ul>
+<p>流程图与梯度法类似，知识把迭代格式改了一下</p>
+<h2 id="共轭方向法"><a href="#共轭方向法" class="headerlink" title="共轭方向法"></a>共轭方向法</h2><p>构造共轭方向，函数值下降的方向就是共轭方向，这样得出极小点</p>
+<h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><p>设 $A$ 为正定矩阵， 若一组向量 $s_1,s_2…s_k$ 满足 $s_i^TAs_j=0,i,j=1,2…k,i\neq j$ 则称这组向量关于 $A$ 共轭。当 $A=E$ 时，则这组向量为共轭向量。 </p>
+<blockquote>
+<p>设 $M$ 是 $n$ 阶方阵，如果对任何非零向量 $z$ ，都有 $z^TMz\geq0$ ，其中 $z^T$ 表示 $z$ 的转置，就称 $M$ 为正定矩阵。</p>
+</blockquote>
+<h3 id="共轭性质"><a href="#共轭性质" class="headerlink" title="共轭性质"></a>共轭性质</h3><ul>
+<li>要使 $X^2$ 为二元函数的极小点，只需要使两次一维搜索方向 $S^0,S^1$ 与 $\nabla^2 f(X)$ 共轭</li>
+<li>对 n 元二次函数，若 $S^i,i=1,2…n$ 与 $\nabla^2f(X)$ 共轭，沿着这几个方向进行一维搜索，最多进行 n 次即可找到极小点</li>
+</ul>
+<h3 id="共轭方向的构造"><a href="#共轭方向的构造" class="headerlink" title="共轭方向的构造"></a>共轭方向的构造</h3><h4 id="平行搜索法"><a href="#平行搜索法" class="headerlink" title="平行搜索法"></a>平行搜索法</h4><ul>
+<li>对函数 $f(X)=\frac12X^T\nabla^2fX+BX+C$ 任意两个点 $X_1^0,X_2^0$ ，分别沿着同一方向 $S^0$ 进行一维搜索，得到两个一维搜索点 $X_1^1,X_2^1$ ，连接两点的方向 $S^1=X_2^1-X_1^1$ 与 $S^0$ 关于 $\nabla^2f(X)$ 共轭</li>
+</ul>
+<h4 id="共轭梯度法"><a href="#共轭梯度法" class="headerlink" title="共轭梯度法"></a>共轭梯度法</h4><ul>
+<li>$S^0=\nabla f(X^0),S^{K+1}=-\nabla f(X)+\beta_KS^K,\beta_K=||\nabla f(X^{K+1})||^2/||\nabla f(X^{K})||^2$ </li>
+</ul>
+<h1 id="实验报告"><a href="#实验报告" class="headerlink" title="实验报告"></a>实验报告</h1><h2 id="1-进退法求解初始区间"><a href="#1-进退法求解初始区间" class="headerlink" title="1. 进退法求解初始区间"></a>1. 进退法求解初始区间</h2><p>实验日期：2018 年 11 月 8 日</p>
+<h3 id="1-1-实验目的"><a href="#1-1-实验目的" class="headerlink" title="1.1 实验目的"></a>1.1 实验目的</h3><ol>
+<li>加深对进退法的基本理论和算法步骤的理解。</li>
+<li>培养学生独立编制计算机程序的能力。</li>
+<li>掌握常用进退法程序的使用方法。</li>
+</ol>
+<h3 id="1-2-上机内容"><a href="#1-2-上机内容" class="headerlink" title="1.2 上机内容"></a>1.2 上机内容</h3><h4 id="1-2-1-算法概述"><a href="#1-2-1-算法概述" class="headerlink" title="1.2.1 算法概述"></a>1.2.1 算法概述</h4><p>进退法用于求解一元函数 $f(\alpha)$ 极小点 ${\alpha^❀}$ 所在区间 $[a,b]$ 。假设函数 $f(\alpha)$ 为单态函数，根据单态区间的性质，为了确定极小点 $\alpha^❀$ 所在区间 $[a,b]$ ，应使函数 $f(\alpha)$ 在 $[a,b]$ 区间形成 “高—低—高” 趋势。</p>
+<p>其算法为：从某给定初值 $\alpha_0$ 开始，以初始步长 $h$ 向前试探。如果函数值上升，则步长变号，即改变试探方向；如果函数值下降，则维持原来的试探方向。区间的始点、中间点依次沿试探方向移动一步。此过程一直进行到函数值再次上升时为止，即可找到搜索区间的终点。最后得到的三点即为搜索区间的始点、中间点和终点，形成函数值的 “高—低—高” 趋势。</p>
+<h4 id="1-2-2-程序框图"><a href="#1-2-2-程序框图" class="headerlink" title="1.2.2 程序框图"></a>1.2.2 程序框图</h4><p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20200823204752.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h4 id="1-2-3-源程序"><a href="#1-2-3-源程序" class="headerlink" title="1.2.3 源程序"></a>1.2.3 源程序</h4><figure class="highlight c"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c"><span class="hljs-comment">/*************************************************</span><br><span class="hljs-comment">* @Author: Fu_Qingchen</span><br><span class="hljs-comment">* @Date: 2018-11-7 </span><br><span class="hljs-comment">* @Description: 进退法求解区间</span><br><span class="hljs-comment">*************************************************/</span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;stdlib.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> A0 1234</span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> H 1069</span><br><br><span class="hljs-comment">/*************************************************</span><br><span class="hljs-comment">* @Description: 要找区间的函数</span><br><span class="hljs-comment">*************************************************/</span><br><span class="hljs-function"><span class="hljs-keyword">double</span> <span class="hljs-title">function</span><span class="hljs-params">(<span class="hljs-keyword">double</span> x)</span> </span>&#123;<br>	<span class="hljs-keyword">return</span> (x * x + <span class="hljs-number">15</span> * x + <span class="hljs-number">1</span>);<br>&#125;<br><br><span class="hljs-comment">/*************************************************</span><br><span class="hljs-comment">* @Description: 进退法主函数</span><br><span class="hljs-comment">* @Input: a0:初始值,h:步长,*range:区间左右端点</span><br><span class="hljs-comment">* @Return: 区间左右端点</span><br><span class="hljs-comment">*************************************************/</span><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">jintui</span><span class="hljs-params">(<span class="hljs-keyword">double</span> a0, <span class="hljs-keyword">double</span> h, <span class="hljs-keyword">double</span> *range)</span> </span>&#123;<br>	<span class="hljs-keyword">if</span> (function(a0)==function(a0+h))<br>	&#123;<br>		*(range) = a0;<br>		*(range + <span class="hljs-number">1</span>) = a0 + h;<br>	&#125;<br>	<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (function(a0) &gt; function(a0 + h))<br>	&#123;<br>		*(range) = a0;<br>		<span class="hljs-keyword">do</span><br>		&#123;<br>			a0 += h;<br>		&#125; <span class="hljs-keyword">while</span> (function(a0)&gt;function(a0 + h));<br>		*(range + <span class="hljs-number">1</span>) = a0 + h;<br>	&#125;<br>	<span class="hljs-keyword">else</span><br>	&#123;<br>		*(range + <span class="hljs-number">1</span>) = a0 + h;<br>		<span class="hljs-keyword">do</span><br>		&#123;<br>			a0 -= h;<br>		&#125; <span class="hljs-keyword">while</span> (function(a0)&lt;function(a0 + h));<br>		*(range) = a0 - h;<br>	&#125;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>	<span class="hljs-keyword">double</span> a0 = A0, h = H;<br>	<span class="hljs-keyword">double</span> range[<span class="hljs-number">2</span>] = &#123;<span class="hljs-number">0</span>,<span class="hljs-number">0</span>&#125;;<br>	jintui(a0, h, range);<br>	<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Result:%f,%f\n&quot;</span>, range[<span class="hljs-number">0</span>], range[<span class="hljs-number">1</span>]);<br>	system(<span class="hljs-string">&quot;pause&quot;</span>);<br>&#125;<br></code></pre></div></td></tr></table></figure>
+<h3 id="1-3-过程分析"><a href="#1-3-过程分析" class="headerlink" title="1.3 过程分析"></a>1.3 过程分析</h3><p>遇到的问题：</p>
+<h4 id="1-3-1-数组在函数中的传递"><a href="#1-3-1-数组在函数中的传递" class="headerlink" title="1.3.1 数组在函数中的传递"></a>1.3.1 数组在函数中的传递</h4><p>我发现C语言函数一般只能返回一个值，传递数组就比较麻烦</p>
+<h5 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h5><p>使用指针在函数之间传递数组</p>
+<p>例如：主函数中，调用的 <code>jintui</code> 函数通过 <code>range</code> 传递区间左右两个端点值</p>
+<figure class="highlight c"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c"><span class="hljs-keyword">double</span> range[<span class="hljs-number">2</span>] = &#123;<span class="hljs-number">0</span>,<span class="hljs-number">0</span>&#125;;<br>jintui(a0, h, range);<br></code></pre></div></td></tr></table></figure>
+<h3 id="1-4-结果分析"><a href="#1-4-结果分析" class="headerlink" title="1.4 结果分析"></a>1.4 结果分析</h3><p>给定函数：</p>
+<script type="math/tex; mode=display">
+f(\alpha)=\alpha^2+15\alpha+1</script><p>其理论极小点为 $\alpha^*=-7.5$ </p>
+<p>给定初值 $\alpha_0=1234$ ，给定步长 $h=1069$</p>
+<p>结果：</p>
+<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20200823205311.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>所求区间 $[-1973.000000,2303.000000]$ 包含极小点 $\alpha=-7.5$ ，通过验证</p>
+<h2 id="2-一维搜索法求解最优步长"><a href="#2-一维搜索法求解最优步长" class="headerlink" title="2. 一维搜索法求解最优步长"></a>2. 一维搜索法求解最优步长</h2><p>实验日期：2018 年 11 月 15 日</p>
+<h3 id="2-1-实验目的"><a href="#2-1-实验目的" class="headerlink" title="2.1 实验目的"></a>2.1 实验目的</h3><ol>
+<li>加深对一维搜索方法的基本理论和算法步骤的理解。</li>
+<li>培养学生独立编制计算机程序的能力。</li>
+<li>掌握常用一维搜索方法程序的使用方法。</li>
+</ol>
+<h3 id="2-2-上机内容"><a href="#2-2-上机内容" class="headerlink" title="2.2 上机内容"></a>2.2 上机内容</h3><h4 id="2-2-1-算法概述"><a href="#2-2-1-算法概述" class="headerlink" title="2.2.1 算法概述"></a>2.2.1 算法概述</h4><p>此处使用格点法进行求解。格点法用于通过给定区间 $[a,b]$ 求解函数极小点 $\alpha^*$ 。</p>
+<p>其算法为：给定区间 $[a,b]$，将其等分为 $n+1$ 个区间 $(n\geq3)$，计算 $f(a_1),f(a_2)…f(a_n)$，找出其中的最小点 $f(a_m)=\min\{f(a_1),f(a_2)…f(a_n)\}$，$a_m$左右两点就构成搜索区间 $[a_{m-1},a_{m+1}]$，直至 $|a_{m+1}-a_{m-1}|\leq\varepsilon$ </p>
+<h4 id="2-2-2-程序框图"><a href="#2-2-2-程序框图" class="headerlink" title="2.2.2 程序框图"></a>2.2.2 程序框图</h4><p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20200823204916.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h4 id="2-2-3-源程序"><a href="#2-2-3-源程序" class="headerlink" title="2.2.3 源程序"></a>2.2.3 源程序</h4><figure class="highlight c"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c"><span class="hljs-comment">/*************************************************</span><br><span class="hljs-comment">* @Author: Fu_Qingchen</span><br><span class="hljs-comment">* @Date: 2018-10-30</span><br><span class="hljs-comment">* @Description: 格点法求解迭代步长</span><br><span class="hljs-comment">*************************************************/</span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;stdlib.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> A0 999</span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> H 10	<span class="hljs-comment">//格点法步长</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> N 10 <span class="hljs-comment">//格点法等分数</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> V 0.00001	<span class="hljs-comment">//精度</span></span><br><br><span class="hljs-comment">/*************************************************</span><br><span class="hljs-comment">* @Description: 要找极小点的函数</span><br><span class="hljs-comment">*************************************************/</span><br><span class="hljs-function"><span class="hljs-keyword">double</span> <span class="hljs-title">function</span><span class="hljs-params">(<span class="hljs-keyword">double</span> x)</span> </span>&#123;<br>	<span class="hljs-keyword">return</span> (x * x + <span class="hljs-number">2</span> * x + <span class="hljs-number">1</span>);<br>&#125;<br><br><br><span class="hljs-comment">/*************************************************</span><br><span class="hljs-comment">* @Description: 进退法主函数</span><br><span class="hljs-comment">* @Input: a0:初始值,h:步长,*range:区间左右端点</span><br><span class="hljs-comment">* @Return: 区间左右端点</span><br><span class="hljs-comment">*************************************************/</span><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">jintui</span><span class="hljs-params">(<span class="hljs-keyword">double</span> a0, <span class="hljs-keyword">double</span> h, <span class="hljs-keyword">double</span> *range)</span> </span>&#123;<br>	<span class="hljs-keyword">if</span> (function(a0) == function(a0 + h))<br>	&#123;<br>		*(range) = a0;<br>		*(range + <span class="hljs-number">1</span>) = a0 + h;<br>	&#125;<br>	<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (function(a0) &gt; function(a0 + h))<br>	&#123;<br>		*(range) = a0;<br>		<span class="hljs-keyword">do</span><br>		&#123;<br>			a0 += h;<br>		&#125; <span class="hljs-keyword">while</span> (function(a0)&gt;function(a0 + h));<br>		*(range + <span class="hljs-number">1</span>) = a0 + h;<br>	&#125;<br>	<span class="hljs-keyword">else</span><br>	&#123;<br>		*(range + <span class="hljs-number">1</span>) = a0 + h;<br>		<span class="hljs-keyword">do</span><br>		&#123;<br>			a0 -= h;<br>		&#125; <span class="hljs-keyword">while</span> (function(a0)&lt;function(a0 + h));<br>		*(range) = a0 - h;<br>	&#125;<br>&#125;<br><br><br><span class="hljs-comment">/*************************************************</span><br><span class="hljs-comment">* @Description: 平分区间[a,b]为(n+1)等分</span><br><span class="hljs-comment">* @Input: a:区间左端点,b:区间右端点,A:等分点数组</span><br><span class="hljs-comment">* @Return: A[i]</span><br><span class="hljs-comment">*************************************************/</span><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">findA</span><span class="hljs-params">(<span class="hljs-keyword">double</span> a, <span class="hljs-keyword">double</span> b, <span class="hljs-keyword">double</span> *A)</span> </span>&#123;<br>	<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; N; i++)<br>	&#123;<br>		*(A + i) = (b - a) / (N + <span class="hljs-number">1</span>)*(i + <span class="hljs-number">1</span>) + a;<br>	&#125;<br>&#125;<br><br><span class="hljs-comment">/*************************************************</span><br><span class="hljs-comment">* @Description: 求数组最小值序号</span><br><span class="hljs-comment">* @Input: A:数组</span><br><span class="hljs-comment">* @Return: 最小值序号</span><br><span class="hljs-comment">*************************************************/</span><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">findMin</span><span class="hljs-params">(<span class="hljs-keyword">double</span> *A)</span> </span>&#123;<br>	<span class="hljs-keyword">double</span> tem = *(A + <span class="hljs-number">0</span>);<br>	<span class="hljs-keyword">int</span> num = <span class="hljs-number">0</span>;<br>	<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; N; i++)<br>	&#123;<br>		<span class="hljs-keyword">if</span> (tem &gt; *(A+i))<br>		&#123;<br>			num = i;<br>			tem = *(A + i);<br>		&#125;<br>	&#125;<br>	<span class="hljs-keyword">return</span> num;<br>&#125;<br><br><span class="hljs-comment">/*************************************************</span><br><span class="hljs-comment">* @Description: 格点法求解主要函数</span><br><span class="hljs-comment">* @Input: a:区间左端点,b:区间右端点,varepsilon：精度</span><br><span class="hljs-comment">* @Return: A[i]</span><br><span class="hljs-comment">*************************************************/</span><br><span class="hljs-function"><span class="hljs-keyword">double</span> <span class="hljs-title">geDian</span><span class="hljs-params">(<span class="hljs-keyword">double</span> a, <span class="hljs-keyword">double</span> b, <span class="hljs-keyword">double</span> varepsilon)</span> </span>&#123;<br>	<span class="hljs-keyword">int</span> num;<br>	<span class="hljs-keyword">double</span> A[N], F[N];	<span class="hljs-comment">//A为等分的点，F为等分点的函数值</span><br>	<span class="hljs-keyword">do</span><br>	&#123;<br>		findA(a, b, A);	<span class="hljs-comment">//得到等分点</span><br>		<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; N; i++)	<span class="hljs-comment">//得到等分点对应函数值</span><br>		&#123;<br>			F[i] = function(A[i]);<br>		&#125;<br>		num = findMin(F);<br>		<span class="hljs-keyword">switch</span> (num)	<span class="hljs-comment">//迭代</span><br>		&#123;<br>		<span class="hljs-keyword">case</span> <span class="hljs-number">0</span>:b = A[num + <span class="hljs-number">1</span>]; <span class="hljs-keyword">break</span>;<br>		<span class="hljs-keyword">case</span> N:a = A[num - <span class="hljs-number">1</span>]; <span class="hljs-keyword">break</span>;<br>        <span class="hljs-keyword">case</span> N - <span class="hljs-number">1</span>:a = A[(num - <span class="hljs-number">1</span>)]; <span class="hljs-keyword">break</span>;<br>		<span class="hljs-keyword">default</span>:a = A[num - <span class="hljs-number">1</span>]; b = A[num + <span class="hljs-number">1</span>]; <span class="hljs-keyword">break</span>;<br>		&#125;<br>	&#125; <span class="hljs-keyword">while</span> (b - a &gt; <span class="hljs-number">0</span> ? ((b - a) &gt; varepsilon) : ((a - b) &gt; varepsilon));<br>	<span class="hljs-keyword">return</span> <span class="hljs-number">1.0</span> / <span class="hljs-number">2</span> * (a + b);<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>	<span class="hljs-keyword">double</span> a0 = A0, h = H, range[<span class="hljs-number">2</span>] = &#123; <span class="hljs-number">0</span>,<span class="hljs-number">0</span> &#125;, varepsilon = V, result;<br>	jintui(a0, h, range);<br>	result = geDian(range[<span class="hljs-number">0</span>],range[<span class="hljs-number">1</span>],varepsilon);<br>	<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Result:%f\n&quot;</span>, result);<br>	system(<span class="hljs-string">&quot;pause&quot;</span>);<br>&#125;<br></code></pre></div></td></tr></table></figure>
+<h3 id="2-3-过程分析"><a href="#2-3-过程分析" class="headerlink" title="2.3 过程分析"></a>2.3 过程分析</h3><p>遇到的问题</p>
+<h4 id="2-3-1-C语言与C-的区别"><a href="#2-3-1-C语言与C-的区别" class="headerlink" title="2.3.1 C语言与C++的区别"></a>2.3.1 C语言与C++的区别</h4><p>我的循环是这样写的：</p>
+<figure class="highlight c"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c"><span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; length; i++)&#123;<br>    <span class="hljs-comment">//Do Some Thing</span><br>&#125;<br></code></pre></div></td></tr></table></figure>
+<p>C++及Java等语言是支持这个的</p>
+<p>但是我发现在【VC6.0】中的标准C语言不支持临时变量在for循环中定义</p>
+<h5 id="解决方法-1"><a href="#解决方法-1" class="headerlink" title="解决方法"></a>解决方法</h5><p>在函数的开始申明变量，之后再使用变量</p>
+<figure class="highlight c"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c"><span class="hljs-keyword">int</span> i;<br><span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; length; i++)&#123;<br>    <span class="hljs-comment">//Do Some Thing</span><br>&#125;<br></code></pre></div></td></tr></table></figure>
+<h4 id="2-3-2-数组的越界"><a href="#2-3-2-数组的越界" class="headerlink" title="2.3.2 数组的越界"></a>2.3.2 数组的越界</h4><p>当输入为一个很大的负数时，输出结果就会出现一个比较奇怪的数据</p>
+<h5 id="解决方法-2"><a href="#解决方法-2" class="headerlink" title="解决方法"></a>解决方法</h5><p>调试程序，分析异常数据，最后发现是在 <code>geDian</code> 函数中，<code>switch</code> 语句少考虑了一种情况，导致数组越界。</p>
+<p>将 <code>geDian</code> 函数中：</p>
+<figure class="highlight c"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c"><span class="hljs-keyword">switch</span> (num)	<span class="hljs-comment">//迭代</span><br>		&#123;<br>		<span class="hljs-keyword">case</span> <span class="hljs-number">0</span>:a = a; b = A[num + <span class="hljs-number">1</span>]; <span class="hljs-keyword">break</span>;<br>		<span class="hljs-keyword">case</span> N:b = b; a = A[num - <span class="hljs-number">1</span>]; <span class="hljs-keyword">break</span>;<br>		<span class="hljs-keyword">default</span>:a = A[num - <span class="hljs-number">1</span>]; b = A[num + <span class="hljs-number">1</span>]; <span class="hljs-keyword">break</span>;<br>		&#125;<br></code></pre></div></td></tr></table></figure>
+<p>改为：</p>
+<figure class="highlight c"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c"><span class="hljs-keyword">switch</span> (num)	<span class="hljs-comment">//迭代</span><br>		&#123;<br>		<span class="hljs-keyword">case</span> <span class="hljs-number">0</span>:b = A[num + <span class="hljs-number">1</span>]; <span class="hljs-keyword">break</span>;<br>		<span class="hljs-keyword">case</span> N:a = A[num - <span class="hljs-number">1</span>]; <span class="hljs-keyword">break</span>;<br>        <span class="hljs-keyword">case</span> N - <span class="hljs-number">1</span>:a = A[(num - <span class="hljs-number">1</span>)]; <span class="hljs-keyword">break</span>;<br>		<span class="hljs-keyword">default</span>:a = A[num - <span class="hljs-number">1</span>]; b = A[num + <span class="hljs-number">1</span>]; <span class="hljs-keyword">break</span>;<br>		&#125;<br></code></pre></div></td></tr></table></figure>
+<p>成功解决问题</p>
+<h3 id="2-4-结果分析"><a href="#2-4-结果分析" class="headerlink" title="2.4 结果分析"></a>2.4 结果分析</h3><p>给定函数：</p>
+<script type="math/tex; mode=display">
+f(\alpha)=\alpha^2+2\alpha+1</script><p>其理论极小点为 $\alpha^*=-1$ </p>
+<p>给定初值 $\alpha_0=999$ ，给定步长 $h=10$</p>
+<p>结果：</p>
+<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20200823205447.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>所求极小点 $\alpha^*=-1.000000$ ，满足精度，通过验证</p>
+<h2 id="3-求解多元函数的最优解"><a href="#3-求解多元函数的最优解" class="headerlink" title="3. 求解多元函数的最优解"></a>3. 求解多元函数的最优解</h2><p>实验日期：2018 年 11 月 22 日，2018 年 11 月 29 日</p>
+<h3 id="3-1-实验目的"><a href="#3-1-实验目的" class="headerlink" title="3.1 实验目的"></a>3.1 实验目的</h3><ol>
+<li>加深对多元函数无约束优化方法的基本理论和算法步骤的理解。</li>
+<li>培养学生独立编制计算机程序的能力。</li>
+<li>掌握常用多元函数无约束优化方法程序的使用方法。</li>
+</ol>
+<h3 id="3-2-上机内容"><a href="#3-2-上机内容" class="headerlink" title="3.2 上机内容"></a>3.2 上机内容</h3><h4 id="3-2-1-算法概述"><a href="#3-2-1-算法概述" class="headerlink" title="3.2.1 算法概述"></a>3.2.1 算法概述</h4><p>此处使用改进鲍威尔法进行求解。改进鲍威尔法用于求解多元函数函数极小点 $\alpha^*$ 。</p>
+<p>其算法为：在每一轮迭代中总有个始点（第一轮的始点是任选的初始点）和 $n$ 个线性独立的搜索方向。从始点出发顺次沿 $n$ 个方向作一维搜索得一终点，由始点和终点决定了一个新的搜索方向。判断是否需要替换，若需要替换，用这个方向替换原来 $n$ 个方向中的一个，形成新的搜索方向组。这样就形成算法的循环。</p>
+<p>替换的原则是去掉原方向组的第一个方向而将新方向排在原方向的最后。此外规定，从这一轮的搜索终点出发沿新的搜索方向作一维搜索而得到的极小点，作为下一轮迭代的始点。</p>
+<h4 id="3-2-2-程序框图"><a href="#3-2-2-程序框图" class="headerlink" title="3.2.2 程序框图"></a>3.2.2 程序框图</h4><p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20200823205507.png" srcset="/img/loading.gif" lazyload alt="改进鲍威尔法"></p>
+<h4 id="3-2-3-源程序"><a href="#3-2-3-源程序" class="headerlink" title="3.2.3 源程序"></a>3.2.3 源程序</h4><figure class="highlight c"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c"><span class="hljs-comment">/*************************************************</span><br><span class="hljs-comment">* @Author: Fu_Qingchen</span><br><span class="hljs-comment">* @Date: 2018-11-22</span><br><span class="hljs-comment">* @Description: 改进鲍威尔法无约束优化</span><br><span class="hljs-comment">*************************************************/</span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;stdlib.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;math.h&gt;</span></span><br><br><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> A0	0	<span class="hljs-comment">//给定初值1</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> A1	0	<span class="hljs-comment">//给定初值2</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> V	0.000001	<span class="hljs-comment">//给定精度</span></span><br><br><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> N	2	<span class="hljs-comment">//函数变量个数</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> H	10	<span class="hljs-comment">//格点法步长</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> N_1d	10	<span class="hljs-comment">//格点法等分数-1</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> function_main(x1,x2) ((x1)*(x1)+2*(x2)*(x2)-4*(x1)-2*(x1)*(x2))	<span class="hljs-comment">//要求解的函数</span></span><br><br><span class="hljs-comment">/*************************************************</span><br><span class="hljs-comment">* @Description: 进退法主函数</span><br><span class="hljs-comment">* @Input: a0:初始值,h:步长,*range:区间左右端点,*x:无约束问题的点，*S:搜索方向</span><br><span class="hljs-comment">* @Return: 区间左右端点</span><br><span class="hljs-comment">*************************************************/</span><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">jintui</span><span class="hljs-params">(<span class="hljs-keyword">double</span> a0, <span class="hljs-keyword">double</span> h, <span class="hljs-keyword">double</span> *range,<span class="hljs-keyword">double</span> *x,<span class="hljs-keyword">double</span> *S)</span> </span>&#123;<br>	<span class="hljs-keyword">if</span> (function_main(*(x)+a0*S[<span class="hljs-number">0</span>],*(x+<span class="hljs-number">1</span>)+a0*S[<span class="hljs-number">1</span>]) == function_main(*(x)+(a0+h) * S[<span class="hljs-number">0</span>], *(x + <span class="hljs-number">1</span>) + (a0+h) * S[<span class="hljs-number">1</span>]))<br>	&#123;<br>		*(range) = a0;<br>		*(range + <span class="hljs-number">1</span>) = a0 + h;<br>	&#125;<br>	<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (function_main(*(x)+a0 * S[<span class="hljs-number">0</span>], *(x + <span class="hljs-number">1</span>) + a0 * S[<span class="hljs-number">1</span>]) &gt; function_main(*(x)+(a0 + h) * S[<span class="hljs-number">0</span>], *(x + <span class="hljs-number">1</span>) + (a0 + h) * S[<span class="hljs-number">1</span>]))<br>	&#123;<br>		*(range) = a0;<br>		<span class="hljs-keyword">do</span><br>		&#123;<br>			a0 += h;<br>		&#125; <span class="hljs-keyword">while</span> (function_main(*(x)+a0 * S[<span class="hljs-number">0</span>], *(x + <span class="hljs-number">1</span>) + a0 * S[<span class="hljs-number">1</span>])&gt;function_main(*(x)+(a0 + h) * S[<span class="hljs-number">0</span>], *(x + <span class="hljs-number">1</span>) + (a0 + h) * S[<span class="hljs-number">1</span>]));<br>		*(range + <span class="hljs-number">1</span>) = a0 + h;<br>	&#125;<br>	<span class="hljs-keyword">else</span><br>	&#123;<br>		*(range + <span class="hljs-number">1</span>) = a0 + h;<br>		<span class="hljs-keyword">do</span><br>		&#123;<br>			a0 -= h;<br>		&#125; <span class="hljs-keyword">while</span> (function_main(*(x)+a0 * S[<span class="hljs-number">0</span>], *(x + <span class="hljs-number">1</span>) + a0 * S[<span class="hljs-number">1</span>])&lt;function_main(*(x)+(a0 + h) * S[<span class="hljs-number">0</span>], *(x + <span class="hljs-number">1</span>) + (a0 + h) * S[<span class="hljs-number">1</span>]));<br>		*(range) = a0 - h;<br>	&#125;<br>&#125;<br><br><span class="hljs-comment">/*************************************************</span><br><span class="hljs-comment">* @Description: 平分区间[a,b]为(n+1)等分</span><br><span class="hljs-comment">* @Input: a:区间左端点,b:区间右端点,A:等分点数组</span><br><span class="hljs-comment">* @Return: A[i]</span><br><span class="hljs-comment">*************************************************/</span><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">findA</span><span class="hljs-params">(<span class="hljs-keyword">double</span> a, <span class="hljs-keyword">double</span> b, <span class="hljs-keyword">double</span> *A)</span> </span>&#123;<br>	<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; N_1d; i++)<br>	&#123;<br>		*(A + i) = (b - a) / (N_1d + <span class="hljs-number">1</span>)*(i + <span class="hljs-number">1</span>) + a;<br>	&#125;<br>&#125;<br><br><span class="hljs-comment">/*************************************************</span><br><span class="hljs-comment">* @Description: 求数组最小值序号</span><br><span class="hljs-comment">* @Input: A:数组</span><br><span class="hljs-comment">* @Return: 最小值序号</span><br><span class="hljs-comment">*************************************************/</span><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">findMin</span><span class="hljs-params">(<span class="hljs-keyword">double</span> *A)</span> </span>&#123;<br>	<span class="hljs-keyword">double</span> tem = *(A + <span class="hljs-number">0</span>);<br>	<span class="hljs-keyword">int</span> num = <span class="hljs-number">0</span>;<br>	<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; N_1d; i++)<br>	&#123;<br>		<span class="hljs-keyword">if</span> (tem &gt; *(A + i))<br>		&#123;<br>			num = i;<br>			tem = *(A + i);<br>		&#125;<br>	&#125;<br>	<span class="hljs-keyword">return</span> num;<br>&#125;<br><br><span class="hljs-comment">/*************************************************</span><br><span class="hljs-comment">* @Description: 求数组最大值序号</span><br><span class="hljs-comment">* @Input: A:数组</span><br><span class="hljs-comment">* @Return: 最小值序号</span><br><span class="hljs-comment">*************************************************/</span><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">findMax</span><span class="hljs-params">(<span class="hljs-keyword">double</span> *A)</span> </span>&#123;<br>	<span class="hljs-keyword">double</span> tem = *(A + <span class="hljs-number">0</span>);<br>	<span class="hljs-keyword">int</span> num = <span class="hljs-number">0</span>;<br>	<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; N; i++)<br>	&#123;<br>		<span class="hljs-keyword">if</span> (tem &lt; *(A + i))<br>		&#123;<br>			num = i;<br>			tem = *(A + i);<br>		&#125;<br>	&#125;<br>	<span class="hljs-keyword">return</span> num;<br>&#125;<br><br><span class="hljs-comment">/*************************************************</span><br><span class="hljs-comment">* @Description: 格点法求解主要函数</span><br><span class="hljs-comment">* @Input: a:区间左端点,b:区间右端点,varepsilon:精度,*x:无约束问题的点，*S:搜索方向</span><br><span class="hljs-comment">* @Return: A[i]</span><br><span class="hljs-comment">*************************************************/</span><br><span class="hljs-function"><span class="hljs-keyword">double</span> <span class="hljs-title">geDian</span><span class="hljs-params">(<span class="hljs-keyword">double</span> a, <span class="hljs-keyword">double</span> b, <span class="hljs-keyword">double</span> varepsilon,<span class="hljs-keyword">double</span> *x, <span class="hljs-keyword">double</span> *S)</span> </span>&#123;<br>	<span class="hljs-keyword">int</span> num;<br>	<span class="hljs-keyword">double</span> A[N_1d], F[N_1d];	<span class="hljs-comment">//A为等分的点，F为等分点的函数值</span><br>	<span class="hljs-keyword">do</span><br>	&#123;<br>		findA(a, b, A);	<span class="hljs-comment">//得到等分点</span><br>		<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; N_1d; i++)	<span class="hljs-comment">//得到等分点对应函数值</span><br>		&#123;<br>			F[i] = function_main(*(x)+A[i] * S[<span class="hljs-number">0</span>], *(x + <span class="hljs-number">1</span>) + A[i] * S[<span class="hljs-number">1</span>]);<br>		&#125;<br>		num = findMin(F);<br>		<span class="hljs-keyword">switch</span> (num)	<span class="hljs-comment">//迭代</span><br>		&#123;<br>		<span class="hljs-keyword">case</span> <span class="hljs-number">0</span>:b = A[(num + <span class="hljs-number">1</span>)]; <span class="hljs-keyword">break</span>;<br>		<span class="hljs-keyword">case</span> N_1d:a = A[(num - <span class="hljs-number">1</span>)]; <span class="hljs-keyword">break</span>;<br>		<span class="hljs-keyword">case</span> N_1d - <span class="hljs-number">1</span>:a = A[(num - <span class="hljs-number">1</span>)]; <span class="hljs-keyword">break</span>;<br>		<span class="hljs-keyword">default</span>:a = A[(num - <span class="hljs-number">1</span>)]; b = A[(num + <span class="hljs-number">1</span>)]; <span class="hljs-keyword">break</span>;<br>		&#125;<br>	&#125; <span class="hljs-keyword">while</span> (b - a &gt; <span class="hljs-number">0</span> ? ((b - a) &gt; varepsilon) : ((a - b) &gt; varepsilon));<br>	<span class="hljs-keyword">return</span> <span class="hljs-number">1.0</span> / <span class="hljs-number">2</span> * (a + b);<br>&#125;<br><br><span class="hljs-comment">/*************************************************</span><br><span class="hljs-comment">* @Description: 鲍威尔法求解主要函数</span><br><span class="hljs-comment">* @Input: *a0:初始点,varepsilon：精度</span><br><span class="hljs-comment">* @Return: *a0极小点</span><br><span class="hljs-comment">*************************************************/</span><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">powell</span><span class="hljs-params">(<span class="hljs-keyword">double</span> *a0, <span class="hljs-keyword">double</span> varepsilon)</span> </span>&#123;<br>	<span class="hljs-comment">//设置初值</span><br>	<span class="hljs-keyword">double</span> S[N+<span class="hljs-number">1</span>][N+<span class="hljs-number">1</span>] = &#123; <span class="hljs-number">0</span> &#125;;	<span class="hljs-comment">//前进方向</span><br>	<span class="hljs-keyword">double</span> S_new[N+<span class="hljs-number">1</span>] = &#123; <span class="hljs-number">0</span> &#125;,sn1 = <span class="hljs-number">0</span>,sn2 = <span class="hljs-number">0</span>;	<span class="hljs-comment">//构造的新方向</span><br>	<span class="hljs-keyword">double</span> f[N + <span class="hljs-number">1</span>] = &#123; <span class="hljs-number">0</span> &#125;;	<span class="hljs-comment">//迭代中的极小点</span><br>	<span class="hljs-keyword">double</span> size[N] = &#123; <span class="hljs-number">0</span> &#125;;	<span class="hljs-comment">//步长</span><br>	<span class="hljs-keyword">double</span> delta[N] = &#123; <span class="hljs-number">0</span> &#125;;	<span class="hljs-comment">//每前进一步的下降量</span><br>	<span class="hljs-keyword">int</span> delta_max = <span class="hljs-number">0</span>;	<span class="hljs-comment">//最大下降量对应序号</span><br>	<span class="hljs-keyword">double</span> a00[N] = &#123; <span class="hljs-number">0</span> &#125;;	<span class="hljs-comment">//初始点</span><br>	<span class="hljs-keyword">double</span> a000[N] = &#123; <span class="hljs-number">0</span> &#125;;	<span class="hljs-comment">//反射点</span><br>	<span class="hljs-keyword">double</span> f1 = <span class="hljs-number">0</span>, f2 = <span class="hljs-number">0</span>, f3 = <span class="hljs-number">0</span>;	<span class="hljs-comment">//方向有效性中的f1,f2,f3</span><br>	<span class="hljs-keyword">double</span> h = H, range[<span class="hljs-number">2</span>] = &#123; <span class="hljs-number">0</span>,<span class="hljs-number">0</span> &#125;;	<span class="hljs-comment">//一维搜索相关参数</span><br>	<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>, j = <span class="hljs-number">0</span>, k = <span class="hljs-number">0</span>;<br>	<span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; N; i++)<br>	&#123;<br>		S[i][i] = <span class="hljs-number">1</span>;<br>	&#125;<br>	<span class="hljs-keyword">do</span><br>	&#123;<br>		k++;<br>		<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d\n&quot;</span>, k);<br>		f[<span class="hljs-number">0</span>] = function_main(*(a0), *(a0 + <span class="hljs-number">1</span>));<br>		a00[<span class="hljs-number">0</span>] = *(a0);<br>		a00[<span class="hljs-number">1</span>] = *(a0 + <span class="hljs-number">1</span>);<br>		<span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; N; i++)	<span class="hljs-comment">//一维搜索</span><br>		&#123;<br>			jintui(a0[i], h, range, a0, S[i]);<br>			size[i] = geDian(range[<span class="hljs-number">0</span>], range[<span class="hljs-number">1</span>], varepsilon, a0, S[i]);	<span class="hljs-comment">//获取最优步长</span><br>			*(a0 + <span class="hljs-number">0</span>) = *(a0 + <span class="hljs-number">0</span>) + size[i] * S[i][<span class="hljs-number">0</span>];	<span class="hljs-comment">//获取极值点</span><br>			*(a0 + <span class="hljs-number">1</span>) = *(a0 + <span class="hljs-number">1</span>) + size[i] * S[i][<span class="hljs-number">1</span>];<br>			f[i + <span class="hljs-number">1</span>] = function_main(*(a0), *(a0 + <span class="hljs-number">1</span>));	<span class="hljs-comment">//获取极值点函数值</span><br>			delta[i] = f[i] - f[i + <span class="hljs-number">1</span>];<br>		&#125;<br>		<span class="hljs-keyword">if</span> (<span class="hljs-built_in">sqrt</span>(<span class="hljs-built_in">pow</span>(*(a0)-a00[<span class="hljs-number">0</span>], <span class="hljs-number">2</span>) + <span class="hljs-built_in">pow</span>(*(a0+<span class="hljs-number">1</span>)-a00[<span class="hljs-number">1</span>], <span class="hljs-number">2</span>))&lt;varepsilon)	<span class="hljs-comment">//收敛判断</span><br>		&#123;<br>			<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>		&#125;<br>		delta_max = findMax(delta);	<span class="hljs-comment">//找到最大下降值</span><br>		<span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; N; i++)<br>		&#123;<br>			S_new[i] = *(a0 + i) - a00[i];	<span class="hljs-comment">//构造新方向</span><br>			a000[i] = <span class="hljs-number">2</span> * (*(a0 + i)) - a00[i];<br>		&#125;<br>		sn1 = S_new[<span class="hljs-number">0</span>];<br>		sn2 = S_new[<span class="hljs-number">1</span>];<br>		f1 = f[<span class="hljs-number">0</span>], f2 = f[N], f3 = function_main(a000[<span class="hljs-number">0</span>], a000[<span class="hljs-number">1</span>]);<br>		<span class="hljs-keyword">if</span> (f3&lt;f1 &amp;&amp; ((f1 - <span class="hljs-number">2</span> * f2 + f3)*<span class="hljs-built_in">pow</span>(f1 - f2 - delta[delta_max], <span class="hljs-number">2</span>)&lt;<span class="hljs-number">0.5</span>*delta[delta_max] * <span class="hljs-built_in">pow</span>(f1 - f3, <span class="hljs-number">2</span>)))	<span class="hljs-comment">//方向有效</span><br>		&#123;<br>			jintui(a0[<span class="hljs-number">0</span>], h, range, a00, S_new);<br>			size[<span class="hljs-number">0</span>] = geDian(range[<span class="hljs-number">0</span>], range[<span class="hljs-number">1</span>], varepsilon, a00, S_new);	<span class="hljs-comment">//获取最优步长</span><br>			*(a0 + <span class="hljs-number">0</span>) = *(a00 + <span class="hljs-number">0</span>) + size[<span class="hljs-number">0</span>] * S_new[<span class="hljs-number">0</span>];	<span class="hljs-comment">//获取极值点</span><br>			*(a0 + <span class="hljs-number">1</span>) = *(a00 + <span class="hljs-number">1</span>) + size[<span class="hljs-number">0</span>] * S_new[<span class="hljs-number">1</span>];<br>			f[<span class="hljs-number">0</span>] = function_main(*(a0), *(a0 + <span class="hljs-number">1</span>));	<span class="hljs-comment">//获取极值点函数值</span><br>			<span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; N; i++)<br>			&#123;<br>				<span class="hljs-keyword">if</span> (i&gt;=delta_max)<br>				&#123;<br>					<span class="hljs-keyword">for</span> ( j = <span class="hljs-number">0</span>; j &lt; N; j++)<br>					&#123;<br>						S[i - <span class="hljs-number">1</span>][j] = S[i][j];<br>					&#125;<br>				&#125;<br>			&#125;<br>			S[N - <span class="hljs-number">1</span>][<span class="hljs-number">0</span>] = sn1;<br>			S[N - <span class="hljs-number">1</span>][<span class="hljs-number">1</span>] = sn2;<br>		&#125;<br>		<span class="hljs-keyword">else</span>	<span class="hljs-comment">//方向无效</span><br>		&#123;<br>			<span class="hljs-keyword">if</span> (f3&lt;f2)<br>			&#123;<br>				*(a0 + <span class="hljs-number">0</span>) = a000[<span class="hljs-number">0</span>];	<span class="hljs-comment">//获取新初值</span><br>				*(a0 + <span class="hljs-number">1</span>) = a000[<span class="hljs-number">1</span>];<br>			&#125;<br>		&#125;<br>	&#125; <span class="hljs-keyword">while</span> (<span class="hljs-number">1</span>);<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>	<span class="hljs-keyword">double</span> a0[N], varepsilon = V;<br>	a0[<span class="hljs-number">0</span>] = A0;<br>	a0[<span class="hljs-number">1</span>] = A1;<br>	powell(a0, varepsilon);<br>	<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;x1:%lf\nx2:%lf\n&quot;</span>, a0[<span class="hljs-number">0</span>], a0[<span class="hljs-number">1</span>]);<br>	system(<span class="hljs-string">&quot;pause&quot;</span>);<br>&#125;<br></code></pre></div></td></tr></table></figure>
+<h3 id="3-3-过程分析"><a href="#3-3-过程分析" class="headerlink" title="3.3 过程分析"></a>3.3 过程分析</h3><p>遇到的问题</p>
+<h4 id="3-3-1-参数的传递"><a href="#3-3-1-参数的传递" class="headerlink" title="3.3.1 参数的传递"></a>3.3.1 参数的传递</h4><p>在改进鲍威尔法中进行方向替换时，发现有一处一直替换不了</p>
+<p>调试程序：<code>powell</code> 函数</p>
+<figure class="highlight c"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c"><span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%lf;%lf\n&quot;</span>,S_new[<span class="hljs-number">0</span>],S_new[<span class="hljs-number">1</span>]);<br><span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; N; i++)<br>&#123;<br>	<span class="hljs-keyword">if</span> (i&gt;=delta_max)<br>	&#123;<br>		<span class="hljs-keyword">for</span> ( j = <span class="hljs-number">0</span>; j &lt; N; j++)<br>		&#123;<br>			S[i - <span class="hljs-number">1</span>][j] = S[i][j];<br>		&#125;<br>	&#125;<br>&#125;<br><span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%lf;%lf\n&quot;</span>,S_new[<span class="hljs-number">0</span>],S_new[<span class="hljs-number">1</span>]);<br>S[N - <span class="hljs-number">1</span>][<span class="hljs-number">0</span>] = S_new[<span class="hljs-number">0</span>];<br>S[N - <span class="hljs-number">1</span>][<span class="hljs-number">1</span>] = S_new[<span class="hljs-number">1</span>];<br></code></pre></div></td></tr></table></figure>
+<p>发现两次输出不一样</p>
+<h5 id="解决方法-3"><a href="#解决方法-3" class="headerlink" title="解决方法"></a>解决方法</h5><p>引入变量 <code>sn1</code> 和  <code>sn2</code> 通过它们来传递新方向</p>
+<figure class="highlight c"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c"><span class="hljs-keyword">double</span> sn1 = <span class="hljs-number">0</span>,sn2 = <span class="hljs-number">0</span>;	<span class="hljs-comment">//引入的新方向</span><br>...<br>sn1 = S_new[<span class="hljs-number">0</span>];<br>sn2 = S_new[<span class="hljs-number">1</span>];<br>...<br><span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; N; i++)<br>&#123;<br>	<span class="hljs-keyword">if</span> (i&gt;=delta_max)<br>	&#123;<br>		<span class="hljs-keyword">for</span> ( j = <span class="hljs-number">0</span>; j &lt; N; j++)<br>		&#123;<br>			S[i - <span class="hljs-number">1</span>][j] = S[i][j];<br>		&#125;<br>	&#125;<br>&#125;<br>S[N - <span class="hljs-number">1</span>][<span class="hljs-number">0</span>] = sn1;<br>S[N - <span class="hljs-number">1</span>][<span class="hljs-number">1</span>] = sn2;<br></code></pre></div></td></tr></table></figure>
+<h4 id="3-3-2-原来代码的调用"><a href="#3-3-2-原来代码的调用" class="headerlink" title="3.3.2 原来代码的调用"></a>3.3.2 原来代码的调用</h4><p>通过一维搜索求步长时，发现一维搜索的函数总是改变的，因此无法直接套用之前的一维搜索方法</p>
+<h5 id="解决方法-4"><a href="#解决方法-4" class="headerlink" title="解决方法"></a>解决方法</h5><ul>
+<li>宏定义函数，这样就可以带表达式计算了</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> function_main(x1,x2) ((x1)*(x1)+2*(x2)*(x2)-4*(x1)-2*(x1)*(x2))	<span class="hljs-comment">//要求解的函数</span></span><br></code></pre></div></td></tr></table></figure>
+<ul>
+<li>更改之前的代码</li>
+</ul>
+<p>以 <code>geDian</code> 函数为例，将其中的：</p>
+<figure class="highlight c"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c">F[i] = function(A[i]);<br></code></pre></div></td></tr></table></figure>
+<p>改为：</p>
+<figure class="highlight c"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c">F[i] = function_main(*(x)+A[i] * S[<span class="hljs-number">0</span>], *(x + <span class="hljs-number">1</span>) + A[i] * S[<span class="hljs-number">1</span>]);<br></code></pre></div></td></tr></table></figure>
+<p>成功解决问题</p>
+<h4 id="3-3-3-数组的越界"><a href="#3-3-3-数组的越界" class="headerlink" title="3.3.3 数组的越界"></a>3.3.3 数组的越界</h4><p>输出结果时，一开始总是提示堆栈溢出的错误，但是无视这个错误之后能够输出正确的结果</p>
+<h5 id="解决方法-5"><a href="#解决方法-5" class="headerlink" title="解决方法"></a>解决方法</h5><p>根据报错信息， <code>powell</code> 函数中为数组越界问题</p>
+<p>将 <code>powell</code> 函数中：</p>
+<figure class="highlight c"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c"><span class="hljs-keyword">double</span> S[N][N] = &#123; <span class="hljs-number">0</span> &#125;;	<span class="hljs-comment">//前进方向</span><br><span class="hljs-keyword">double</span> S_new[N] = &#123; <span class="hljs-number">0</span> &#125;,sn1 = <span class="hljs-number">0</span>,sn2 = <span class="hljs-number">0</span>;	<span class="hljs-comment">//构造的新方向</span><br></code></pre></div></td></tr></table></figure>
+<p>改为：</p>
+<figure class="highlight c"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c"><span class="hljs-keyword">double</span> S[N+<span class="hljs-number">1</span>][N+<span class="hljs-number">1</span>] = &#123; <span class="hljs-number">0</span> &#125;;	<span class="hljs-comment">//前进方向</span><br><span class="hljs-keyword">double</span> S_new[N+<span class="hljs-number">1</span>] = &#123; <span class="hljs-number">0</span> &#125;,sn1 = <span class="hljs-number">0</span>,sn2 = <span class="hljs-number">0</span>;	<span class="hljs-comment">//构造的新方向</span><br></code></pre></div></td></tr></table></figure>
+<p>成功解决问题</p>
+<h3 id="3-4-结果分析"><a href="#3-4-结果分析" class="headerlink" title="3.4 结果分析"></a>3.4 结果分析</h3><p>给定函数：</p>
+<script type="math/tex; mode=display">
+f(x_1,x_2)=x_1^2+2x_2^2-4x_1-2x_1x_2</script><p>其理论极小点为 $\left[<br>\begin{matrix}<br>x_0^❀\\<br>x_1^❀\\<br>\end{matrix}<br>\right]=\left[<br>\begin{matrix}<br>4\\<br>2\\<br>\end{matrix}<br>\right]$ </p>
+<p>给定初值 $\left[<br>\begin{matrix}<br>x_0\\<br>x_1\\<br>\end{matrix}<br>\right]=\left[<br>\begin{matrix}<br>0\\<br>0\\<br>\end{matrix}<br>\right]$ </p>
+<p>结果：</p>
+<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20200823205548.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>所求极小点 $\left[<br>\begin{matrix}<br>x_0^❀\\<br>x_1^❀\\<br>\end{matrix}<br>\right]=\left[<br>\begin{matrix}<br>4.000000\\<br>2.000000\\<br>\end{matrix}<br>\right]$ ，满足精度，通过验证</p>
+<h1 id="笔记"><a href="#笔记" class="headerlink" title="笔记"></a>笔记</h1><p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/【最优化技术】笔记_Page_03.png" srcset="/img/loading.gif" lazyload alt=""><br><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/【最优化技术】笔记_Page_04.png" srcset="/img/loading.gif" lazyload alt=""><br><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/【最优化技术】笔记_Page_05.png" srcset="/img/loading.gif" lazyload alt=""><br><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/【最优化技术】笔记_Page_06.png" srcset="/img/loading.gif" lazyload alt=""><br><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/【最优化技术】笔记_Page_07.png" srcset="/img/loading.gif" lazyload alt=""><br><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/【最优化技术】笔记_Page_08.png" srcset="/img/loading.gif" lazyload alt=""><br><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/【最优化技术】笔记_Page_09.png" srcset="/img/loading.gif" lazyload alt=""><br><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/【最优化技术】笔记_Page_10.png" srcset="/img/loading.gif" lazyload alt=""><br><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/【最优化技术】笔记_Page_11.png" srcset="/img/loading.gif" lazyload alt=""><br><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/【最优化技术】笔记_Page_12.png" srcset="/img/loading.gif" lazyload alt=""><br><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/【最优化技术】笔记_Page_13.png" srcset="/img/loading.gif" lazyload alt=""><br><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20200823210809.png" srcset="/img/loading.gif" lazyload alt=""><br><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20200823210907.png" srcset="/img/loading.gif" lazyload alt=""><br><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/【最优化技术】笔记_Page_16.png" srcset="/img/loading.gif" lazyload alt=""><br><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/【最优化技术】笔记_Page_17.png" srcset="/img/loading.gif" lazyload alt=""><br><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/【最优化技术】笔记_Page_18.png" srcset="/img/loading.gif" lazyload alt=""><br><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20200823211048.png" srcset="/img/loading.gif" lazyload alt=""><br><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/【最优化技术】笔记_Page_21.png" srcset="/img/loading.gif" lazyload alt=""><br><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/【最优化技术】笔记_Page_22.png" srcset="/img/loading.gif" lazyload alt=""><br><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20200823211224.png" srcset="/img/loading.gif" lazyload alt=""><br><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/【最优化技术】笔记_Page_27.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<hr>
+<p>Learning By Sharing，2018©Fu_Qingchen，Markdown，$\LaTeX$</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E8%87%AA%E5%8A%A8%E5%8C%96%E7%9B%B8%E5%85%B3/">自动化相关</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%9C%80%E4%BC%98%E5%8C%96/">最优化</a>
+                    
+                      <a class="hover-with-bg" href="/tags/C%E8%AF%AD%E8%A8%80/">C语言</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2019/01/18/WHUT/TechnicalEconomics/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">技术经济学笔记</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2018/12/20/WHUT/MechanicalControlEngineering/">
+                        <span class="hidden-mobile">控制工程基础笔记</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"DNr2pgYBNbnn4YMKmdstH2Sw-gzGzoHsz","appKey":"6RRAdTwPs2Y3Tk5iKNo2qo1D","placeholder":"说点什么","path":"window.location.pathname","avatar":"retro","meta":["nick","mail"],"pageSize":10,"lang":"zh-CN","highlight":true,"recordIP":false,"serverURLs":"https://dnr2pgyb.lc-cn-n1-shared.com","emojiCDN":null,"emojiMaps":null,"enableQQ":false,"requiredFields":[],"appid":"DNr2pgYBNbnn4YMKmdstH2Sw-gzGzoHsz","appkey":"6RRAdTwPs2Y3Tk5iKNo2qo1D"},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

@@ -1,0 +1,643 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.ico">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="蛮有用的一门（尤其是做数学动画的时候），应该边写程序边上这门课。">
+  <meta name="author" content="Fu Qingchen">
+  <meta name="keywords" content="MSE, CS">
+  
+  <title>数值分析笔记 | Fu&#39;s Web</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/vs2015.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.11","typing":{"enable":false,"typeSpeed":30,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null},"tajs":null},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 50vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Fu's Web</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('https://gitee.com/fuqingchen/picture-lib/raw/master/img/Test_Tree.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="数值分析笔记">
+              
+                数值分析笔记
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-10-03 09:52" pubdate>
+        2020年10月3日 上午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      2.3k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      33
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">数值分析笔记</h1>
+            
+            <div class="markdown-body">
+              <p>蛮有用的一门（尤其是做数学动画的时候），应该边写程序边上这门课。</p>
+<span id="more"></span>
+<h1 id="误差部分"><a href="#误差部分" class="headerlink" title="误差部分"></a>误差部分</h1><p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/2020%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E8%AF%AF%E5%B7%AE%E5%88%86%E6%9E%90.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>在对实际问题建模、计算时会有很多误差，这些方法有时候会变的很大，导致数据不可用。因此研究误差时数值计算的基本。</p>
+<h2 id="误差的来源"><a href="#误差的来源" class="headerlink" title="误差的来源"></a>误差的来源</h2><p>误差总共分为4类：系统误差、观测误差、截断误差、舍入误差</p>
+<blockquote>
+<p> 数值计算环节误差主要来源于 <strong>截断误差、舍入误差</strong> </p>
+</blockquote>
+<h2 id="误差的衡量"><a href="#误差的衡量" class="headerlink" title="误差的衡量"></a>误差的衡量</h2><p>$x$为准确值，$x^❀$为近似值 </p>
+<ul>
+<li>绝对误差 $e(x) = x^❀-x$， </li>
+<li>相对误差 $e_r(x) = {({x^❀}-x)/x}$，不过由于$x$无法算出，一般取$e_r(x)=({x^❀}-x)/{x^❀}$</li>
+<li>有效数字$n:x^❀ = \pm10^m\times0.a_1a_2…a_n,|x-x^❀|\leq0.5\times10^{m-n+1}$</li>
+</ul>
+<h2 id="数值计算中的误差"><a href="#数值计算中的误差" class="headerlink" title="数值计算中的误差"></a>数值计算中的误差</h2><p>$x=[x_1,x_2,…,x_n]^T$为准确解，$x^❀=[x^❀_1,x^❀_2,…,x^❀_n]^T$为近似值，$A^❀ = f(x^❀)$为误差</p>
+<ul>
+<li><p>绝对误差$e(A) = A^❀-A=\sum\limits_{j=1}^n\frac{\partial f(x)}{\partial x_j}e(x_j)$</p>
+<blockquote>
+<p>这里用到了Taylor展开取到一阶导</p>
+</blockquote>
+</li>
+<li><p>相对误差$e_r(A)=\frac{A^❀-A}{A}=\sum\limits_{j=1}^n\frac{x_j}{f(x)}\frac{\partial f(x)}{\partial x_j}e_r(x_j)$</p>
+</li>
+</ul>
+<blockquote>
+<p>注意$\partial f(x)/\partial x,\frac{x_j}{f(x)}\frac{\partial f(x)}{\partial x_j}$ 对误差的影响很大，后者成为条件数，当其值&gt;10时，称该算法不稳定</p>
+</blockquote>
+<h2 id="防止误差过大方法"><a href="#防止误差过大方法" class="headerlink" title="防止误差过大方法"></a>防止误差过大方法</h2><ul>
+<li>避免大数除小数</li>
+<li>避免大数加小数</li>
+<li>避免相近数相减</li>
+</ul>
+<blockquote>
+<p>改变计算公式，可以去除这些。</p>
+</blockquote>
+<h1 id="插值与拟合部分"><a href="#插值与拟合部分" class="headerlink" title="插值与拟合部分"></a>插值与拟合部分</h1><p>插值和拟合主要将一些离散的数值点用函数来表示。</p>
+<h2 id="插值"><a href="#插值" class="headerlink" title="插值"></a>插值</h2><p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/2020%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E6%8F%92%E5%80%BC%E6%B3%95.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>插值是在一些基函数的线性组合中找到一个函数$y=f(x)$，这个函数要经过每个数值点$y$。下面就只讨论多项式插值了:$f(x)=a_0x^0+a_1x^1+…+a_nx^n$</p>
+<blockquote>
+<p>常见的基函数有多项式，三角函数。</p>
+</blockquote>
+<h3 id="插值函数的个数"><a href="#插值函数的个数" class="headerlink" title="插值函数的个数"></a>插值函数的个数</h3><ul>
+<li><p>对于（n+1）个节点，n 次插值多项式存在且唯一</p>
+<blockquote>
+<p>证明：各个节点处建立方程，系数行列式为 范德姆行列式，存在且唯一（n+1个方程，n+1个未知数，因此存在且唯一）</p>
+<p>如果两个式子次数相同为 n，且对所有（n+1）个节点式子成立，那么这两个式子相等</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="拉格朗日插值"><a href="#拉格朗日插值" class="headerlink" title="拉格朗日插值"></a>拉格朗日插值</h3><p>插值函数的求解方法有很多。先说拉格朗日的方法：</p>
+<p>为了满足那些数值点在函数上，就改写一下函数，同时改个名字为$L(x)$</p>
+<script type="math/tex; mode=display">
+L_n(x)=l_0(x)y_0+l_1(x)y_1+...+l_n(x)y_n=\sum\limits_{i=0}^ny_il_i(x)</script><p>这些$l(x)$就是需要构造的函数，目前还不知道。为了让点在$f(x)$上这个函数上，它满足下面的规律：</p>
+<script type="math/tex; mode=display">
+l_i(x)= \left\{
+\begin{array}{rl}
+0 & \text{if } x \neq x_i,\\
+1 & \text{if } x = x_i.
+\end{array} \right.</script><p>因此可以构造为：</p>
+<script type="math/tex; mode=display">
+l_k(x)=\prod\limits_{i=0,i\neq k}^n {(x-x_i)\over(x_k-x_i)}</script><p>这个就是拉格朗日插值基函数，其插值余项（截断误差）为                                 </p>
+<script type="math/tex; mode=display">
+R_n(x)=f(x)-L_n(x)=\frac{f^{(n+1)}(\xi)}{(n+1)!}\prod\limits_{i=0}^n(x-x_i)</script><blockquote>
+<p>这个里面的$f(x)$为原始的要去插值贴近的函数。</p>
+</blockquote>
+<p>在实际问题中，往往不知道$f(x)$的具体解析表达式，因此要估计$f^{(n+1)}(x)$的上界是不现实的。在这种情形下，可以采用误差的事后估计法：</p>
+<script type="math/tex; mode=display">
+i=0,1,...,n-1\Rightarrow L_{n-1}(x)\\
+i=1,2,...,n\Rightarrow \hat{L}_{n-1}(x)\\
+R_{n-1}(x)=f(x)-L_{n-1}(x)\approx\frac{x-x_0}{x_0-x_n}[L_{n-1}(x)-\hat{L}_{n-1}(x)]</script><p>其误差有以下特点：</p>
+<ul>
+<li>对多项式插值，增加阶数不一定能提高精度</li>
+<li>插值多项式仅与已知数据有关，与$f(x)$原来形式无关，但余项与$f(x)$密切相关</li>
+<li>增加一个插值结点，所有的基函数都要重新计算。（没有沿承性）</li>
+</ul>
+<h3 id="牛顿插值"><a href="#牛顿插值" class="headerlink" title="牛顿插值"></a>牛顿插值</h3><p>拉格朗日插值法没有沿承性，牛顿插值就是用来解决这个问题的。因此要构造</p>
+<script type="math/tex; mode=display">
+N_{n+1}(x)=N_{n}(x)+q_{n+1}(x)\\
+N_0(x) = a</script><p>其中$a$为设的一常数，$q_{n+1}$是设的一函数，下面就需要构造$q_{n+1}(x)$，然后求解$a$</p>
+<p>由于$N_{n+1},N_n$是插值多项式，因此在$x_0.x_1,…,x_n$上是相等的，根据上面那个式子，可以得到：$q_{n+1}(x_i)=0,i=0,1,…n$。根据这个性质，可以构造$q_{n+1}(x)=a_{n+1}\prod\limits_{i=0}^n(x-x_i)$</p>
+<p>根据$q_{n+1}(x)$ 可以反推出$N_{n}(x)=a_0+a_1(x-x_0) + …+a_n(x-x_0)…(x-x_{n-1})$</p>
+<p>将我们的节点带入，可以得到一堆方程：</p>
+<script type="math/tex; mode=display">
+N_n(x_0)=a_0=f(x_0)\\
+N_n(x_1)=a_0+a_1(x-x_0)=f(x_1)\\
+N_n(x_2)=a_0+a_1(x-x_0)+a_2(x-x_0)(x-x_1)=f(x_2)\\
+...</script><p>(n+1)个方程，(n+1)个未知数，可以解出$a_i,i=0,1,…,n$的值。由于这个数字比较重要，我们把这些数字叫做差商，其表达式如下：</p>
+<script type="math/tex; mode=display">
+f[x_0]=f[x_0]\\
+f[x_0,x_1,...,x_k]=\frac{f[x_0,x_1,...,x_{k-1}]-f[x_1,x_2,...,x_{k}]}{x_0-x_{k}}</script><p>差商有很多重要的性质，比如说下面的：</p>
+<ul>
+<li>0阶差商：$f[x_0]=f[x_0]$</li>
+</ul>
+<ul>
+<li><p>k阶差商：$f[x_0,x_1,…,x_k]=\frac{f[x_0,x_1,…,x_{k-1}]-f[x_1,x_2,…,x_{k}]}{x_0-x_{k}}$ </p>
+<blockquote>
+<p>例如：1阶次差商：$f[x_0,x_1]=\frac{f(x_1)-f(x_0)}{x_1-x_0}$</p>
+</blockquote>
+</li>
+<li><p>交换差商节点的位置，差商的值没有变化（差商的对称性）</p>
+<blockquote>
+<p>例如：$f[x_0,x_1,x_2]=f[x_1,x_0,x_2]$</p>
+</blockquote>
+</li>
+<li><p>差商除了用递归式写，还可以用迭代式表示：</p>
+</li>
+</ul>
+<script type="math/tex; mode=display">
+f[x_0,x_1,...,x_k]=\sum_{i=0}^{k}\frac{f(x_i)}{\prod\limits_{j=0\\j\neq i}^k(x_i-x_j)}</script><ul>
+<li><p>差商和导数的关系可以由拉格朗日中值定理套娃给出：$f[x_0,x_1,…,x_k]=f^{(k)}(\xi)/(n!)$</p>
+<blockquote>
+<p>其实差商可以想象成导数，只不过离散化了。</p>
+</blockquote>
+</li>
+</ul>
+<p>有了差商，牛顿插值多项式就构造出来了</p>
+<script type="math/tex; mode=display">
+N_n(x)=f(x_0)+f[x_0,x_1]\times(x-x_0)+...+f[x_0,x_1,...,x_n]\prod\limits_{i=0}^{n-1}(x-x_i)</script><p>余项（截断误差）：$R_n(x)=f[x_0,x_1,…,x_n,x]\prod\limits_{i=0}^n(x-x_i)$ </p>
+<blockquote>
+<p>这个与拉格朗日插值的误差是一样的</p>
+</blockquote>
+<h2 id="拟合"><a href="#拟合" class="headerlink" title="拟合"></a>拟合</h2><p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/2020%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E5%87%BD%E6%95%B0%E9%80%BC%E8%BF%91.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ul>
+<li><p>正则方程组</p>
+<p>设有 n 个节点的拟合函数为 $y=a_0+a_1x+…+a_mx^m$ ：</p>
+<ul>
+<li>$a_on+a_1\sum\limits_{i=0}^nx_i^{1+0}+a_2\sum\limits_{i=0}^nx_i^{2+0}+…+a_m\sum\limits_{i=0}^nx_i^{m+0}=\sum\limits_{i=0}^ny_ix_i^{0}$</li>
+<li>$a_o\sum\limits_{i=0}^nx_i^{0+1}+a_1\sum\limits_{i=0}^nx_i^{1+1}+a_2\sum\limits_{i=0}^nx_i^{2+1}+…+a_m\sum\limits_{i=0}^nx_i^{m+1}=\sum\limits_{i=0}^ny_ix_i^{1}$</li>
+<li>$a_o\sum\limits_{i=0}^nx_i^{0+2}+a_1\sum\limits_{i=0}^nx_i^{1+2}+a_2\sum\limits_{i=0}^nx_i^{2+2}+…+a_m\sum\limits_{i=0}^nx_i^{m+2}=\sum\limits_{i=0}^ny_ix_i^{2}$</li>
+<li>…</li>
+<li>$a_o\sum\limits_{i=0}^nx_i^{0+m}+a_1\sum\limits_{i=0}^nx_i^{1+2}+a_2\sum\limits_{i=0}^nx_i^{2+m}+…+a_m\sum\limits_{i=0}^nx_i^{m+m}=\sum\limits_{i=0}^ny_ix_i^{m}$ </li>
+</ul>
+</li>
+</ul>
+<h1 id="数值积分与微分"><a href="#数值积分与微分" class="headerlink" title="数值积分与微分"></a>数值积分与微分</h1><p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/2020%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E6%95%B0%E5%80%BC%E7%A7%AF%E5%88%86.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ul>
+<li><p>机械求积公式 $\int_a^bf(x)dx=\sum\limits_{i=1}^nA_if(x_i)$ </p>
+</li>
+<li><p>机械求积公式余项 $R_n[f]=Kf^{(m+1)}(\xi)$ （<em>m</em>为代数精度）</p>
+<blockquote>
+<p>其中 $K=\frac{1}{(m+1)!}[\int_a^bf(x)dx-\sum\limits_{i=1}^nA_if(x_i)]$ ，通常化简得 $K=\frac{1}{(m+1)!}[\frac{1}{m+2}(b^{m+2}-a^{m+2})-\sum\limits_{i=1}^nA_if(x_i)]$  </p>
+</blockquote>
+</li>
+<li><p>中矩形公式 $\int_a^bf(x)dx=f(\frac{a+b}2)(b-a),R_n[f]=\frac{f^{(2)}(\xi)}{24}(b-a)^3$ </p>
+</li>
+<li><p>梯形公式 $\int_a^bf(x)dx=\frac{f(a)+f(b)}2(b-a),R_n[f]=-\frac{f^{(2)}}{12}(b-a)^3$ </p>
+</li>
+<li><p>辛普森公式 $\int_a^bf(x)=\frac{f(a)+4f[(a+b)/2]+f(b)}6(b-a),R_n[f]=-\frac{f^{(4)}}{2880}(b-a)^5$ </p>
+</li>
+<li><p>插值型机械求积公式 $\int_a^bf(x)dx=\sum\limits_{i=1}^n\int_a^bl_i(x)dxf(x_i),R_n[f]=\int_a^b\frac{f^{(n+1)}(\xi)}{(n+1)!}\prod\limits_{i=0}^n(x-x_i)$ </p>
+</li>
+<li><p>梯形法递推公式 $T_{2n}(h)=\frac12T_n(h)+\frac {h_n}2[\sum\limits f(x_{k+\frac12})]$ </p>
+</li>
+<li><p>$S_n=\frac{4T_{2n}-T_n}3,C_n=\frac{16S_{2n}-S_n}{15},R_n=\frac{64C_{2n}-C_n}{63}$ </p>
+</li>
+<li><p>高斯求积公式：在高斯求积公式中， 如果选择 n 个节点和求积公式，使其代数精度为 2m-1 ，这样的求积公式叫做高斯求积公式</p>
+<blockquote>
+<p>通常令 $f(x)=1,x,x^2,…,x^k$ ，带入 $\int_a^bf(x)dx=\sum\limits_{i=1}^nA_if(x_i)$ 得到方程组，求解得到 $A_i,x_i$</p>
+<p>两点高斯求积公式：$\int_{-1}^1f(x)dx=1\cdot f(\frac{-1}{\sqrt3})+1\cdot f(\frac{1}{\sqrt3})$</p>
+</blockquote>
+</li>
+<li><p>勒让德多项式 $P_n(x)=\frac{n!}{(2n!)}\frac{d^{n}}{dx^n}[(x^2-1)^n]$ </p>
+<ul>
+<li>正交性：$\int_{-1}^1P_n^2(x)dx=\frac{2}{2n+1}$，勒让德多项式对一切次数低于 n 次的多项式正交</li>
+<li>奇偶性：n 为奇数，Pn(x) 为奇函数；n 为偶数，Pn(x) 为偶函数</li>
+<li>$P_n(\pm1)=\frac{(\pm 2)^nn!}{(2n)!}$ </li>
+<li>递推公式：$P_{n+1}(x)=xP_n(x)-\frac{n^2}{4n^2-1}P_{n-1}(x)$ </li>
+<li>Pn(x) 的 n 个零点在（-1,1）上而且都是单根</li>
+</ul>
+</li>
+<li><p>向前差商：$f’(a)=\frac{f(a+h)-f(a)}{h}$ ；中间差商：$f’(a)=\frac{f(a+h)-f(a-h)}{2h}$  </p>
+</li>
+<li><p>利用外推公式求导数$f’(a)$：</p>
+<ul>
+<li>先用中间差商法求，得到一个关于 <em>h</em> 的函数：$f’(a)=\frac{f(a+h)-f(a)}{h}$ ，记为 G_0(h)</li>
+<li>将步长二分，得到 G_0(h/2)，等等 </li>
+<li>对 G_0(h) 进行修正，得到 G_1(h) = [4G(h/2) - G(h)] / 3</li>
+<li>同理，得到 G_n</li>
+</ul>
+</li>
+</ul>
+<h1 id="常微分方程数值解"><a href="#常微分方程数值解" class="headerlink" title="常微分方程数值解"></a>常微分方程数值解</h1><p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/2020%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E5%B8%B8%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A3.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h1 id="线性代数方程组求解"><a href="#线性代数方程组求解" class="headerlink" title="线性代数方程组求解"></a>线性代数方程组求解</h1><p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/2020%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0%E6%96%B9%E7%A8%8B%E7%BB%84%E7%9A%84%E8%A7%A3%E6%B3%95.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h1 id="非线性方程求解"><a href="#非线性方程求解" class="headerlink" title="非线性方程求解"></a>非线性方程求解</h1><p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/2020%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E6%96%B9%E7%A8%8B%E6%B1%82%E6%A0%B9.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<hr>
+<p>Learning By Sharing，2018-2020©Fu_Qingchen，Markdown，LaTeX</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E6%95%B0%E5%AD%A6%E7%9B%B8%E5%85%B3/">数学相关</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/MATLAB/">MATLAB</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90/">数值分析</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/11/06/HUST/LinuxCrash/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Linux快速入门</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2020/09/18/HUST/Introduction2Algorithms/">
+                        <span class="hidden-mobile">数据结构与算法笔记</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"DNr2pgYBNbnn4YMKmdstH2Sw-gzGzoHsz","appKey":"6RRAdTwPs2Y3Tk5iKNo2qo1D","placeholder":"说点什么","path":"window.location.pathname","avatar":"retro","meta":["nick","mail"],"pageSize":10,"lang":"zh-CN","highlight":true,"recordIP":false,"serverURLs":"https://dnr2pgyb.lc-cn-n1-shared.com","emojiCDN":null,"emojiMaps":null,"enableQQ":false,"requiredFields":[],"appid":"DNr2pgYBNbnn4YMKmdstH2Sw-gzGzoHsz","appkey":"6RRAdTwPs2Y3Tk5iKNo2qo1D"},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

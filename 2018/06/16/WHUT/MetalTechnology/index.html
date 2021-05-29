@@ -1,0 +1,2523 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.ico">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="这玩意全靠背诵记忆，期末捣鼓了好一阵子，当时靠写这玩意来复习了。">
+  <meta name="author" content="Fu Qingchen">
+  <meta name="keywords" content="MSE, CS">
+  
+  <title>金属工艺学笔记 | Fu&#39;s Web</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/vs2015.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.11","typing":{"enable":false,"typeSpeed":30,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null},"tajs":null},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 50vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Fu's Web</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('https://gitee.com/fuqingchen/picture-lib/raw/master/img/Test_Tree.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="金属工艺学笔记">
+              
+                金属工艺学笔记
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2018-06-16 23:11" pubdate>
+        2018年6月16日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      24.7k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      256
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">金属工艺学笔记</h1>
+            
+            <div class="markdown-body">
+              <p>这玩意全靠背诵记忆，期末捣鼓了好一阵子，当时靠写这玩意来复习了。</p>
+<span id="more"></span>
+<h1 id="金属材料的主要性能"><a href="#金属材料的主要性能" class="headerlink" title="金属材料的主要性能"></a>金属材料的主要性能</h1><h2 id="力学性能"><a href="#力学性能" class="headerlink" title="力学性能"></a>力学性能</h2><p>主要有5个力学性能：强度、塑性、硬度、冲击韧度、疲劳强度</p>
+<h3 id="强度"><a href="#强度" class="headerlink" title="强度"></a>强度</h3><p>指材料在外力作用下抵抗 变形和断裂 的能力</p>
+<p>在<code>静拉伸试验</code>中测定</p>
+<ul>
+<li>弹性极限 $\sigma_e$</li>
+<li>屈服极限 $\sigma_s$ ：此时曲线比较平缓，无需增大外力即可产生变形</li>
+<li>强度极限 $\sigma_b$ ：超过强度极限后，会发生紧缩现象，并断裂</li>
+</ul>
+<h3 id="塑性"><a href="#塑性" class="headerlink" title="塑性"></a>塑性</h3><p>指材料在外力作用下产生塑性变形而不破坏的能力</p>
+<p>在<code>静拉伸试验</code>中测定</p>
+<ul>
+<li>伸长率 $\delta=\frac{\Delta l}{l_0}\times100\%$</li>
+<li>断面伸缩率 $\Psi=\frac{A_0-A}{A_0}\times100\%$</li>
+</ul>
+<h3 id="硬度"><a href="#硬度" class="headerlink" title="硬度"></a>硬度</h3><p>金属材料受压时抵抗局部变形，特别是塑性变形、压痕的能力。即抵抗外力压入其中的能力。</p>
+<ul>
+<li>布氏硬度 $HBS=\frac {P}{\pi D(D-\sqrt{D^2-d^2})} $ （P：加载力；D：压头直径；d压痕直径）。其实就是 载荷/表面积<ul>
+<li>测量方法：将一定质量的球体在一定载荷作用压入试验表面一段时间，测量压痕得出</li>
+<li>优缺点：准确性高当对金属伤害大</li>
+<li>取值为8~650HBW</li>
+</ul>
+</li>
+<li>洛氏硬度 $HRC$<ul>
+<li>测量方法：用120°锥角金刚石压头，先后施加预载荷和总载荷（预载荷+主载荷），随后撤去主载荷，测量压痕深度。</li>
+<li>优缺点：简单方便，可用于成品，但精度不高</li>
+<li>一般高速钢的硬度在62~66HRC</li>
+</ul>
+</li>
+</ul>
+<p>换算关系：$HRC = 52.76-\sqrt{(103500000-218600HB)/HB^2}$</p>
+<h3 id="冲击韧度"><a href="#冲击韧度" class="headerlink" title="冲击韧度"></a>冲击韧度</h3><p>材料在冲击载荷作用下抵抗变形和断裂的能力</p>
+<p>冲击韧度：$a_k$，数值越高，韧性越好</p>
+<h3 id="疲劳强度"><a href="#疲劳强度" class="headerlink" title="疲劳强度"></a>疲劳强度</h3><p>材料在交变应力作用下，在远远小于强度极限下发生断裂，而且没有任何征兆</p>
+<p>材料经过无数次应力循环测验而不发生疲劳破坏的最高应力值</p>
+<h3 id="物理化学及工艺性能"><a href="#物理化学及工艺性能" class="headerlink" title="物理化学及工艺性能"></a>物理化学及工艺性能</h3><p>不重要，略</p>
+<h2 id="MOOC-问答"><a href="#MOOC-问答" class="headerlink" title="[MOOC]问答"></a>[MOOC]问答</h2><ul>
+<li>在做材料的拉伸试验时是否一定要做成标准试样？为什么？</li>
+</ul>
+<blockquote>
+<p>需要做成标准试样。 要得到符合标准的强度、塑性指标，就一定要<strong>控制变量</strong>，即试样的长度，截面形状，直径等。不同规格材料受到试验机的拉伸作用，其受力状况不同，这样测出来的数据也就没有意义。</p>
+</blockquote>
+<ul>
+<li>材料刚度与（   ）有关</li>
+</ul>
+<blockquote>
+<p>弹性模量</p>
+</blockquote>
+<h1 id="铁碳合金"><a href="#铁碳合金" class="headerlink" title="铁碳合金"></a>铁碳合金</h1><h2 id="金属及合金的晶体结构"><a href="#金属及合金的晶体结构" class="headerlink" title="金属及合金的晶体结构"></a>金属及合金的晶体结构</h2><h3 id="晶体结构"><a href="#晶体结构" class="headerlink" title="晶体结构"></a>晶体结构</h3><p>金属主要有三种晶体结构</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>晶体类型</th>
+<th>体心立方晶胞</th>
+<th>面心立方晶胞</th>
+<th>密排六方晶胞</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>所含原子数</td>
+<td>8×1/8+1 = 2</td>
+<td>8×1/8+6×1/2 = 4</td>
+<td>12×1/6+2×1/2+3 = 6</td>
+</tr>
+<tr>
+<td>常见物质</td>
+<td>$\alpha-Fe,\delta-Fe,Ti…$</td>
+<td>$\beta-Fe,Cu,Ag,Au,Pt…$</td>
+<td>$Mg,Zn…$</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>其中，对应的晶胞示意图如下</p>
+<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20200823213555.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="金属的结晶"><a href="#金属的结晶" class="headerlink" title="金属的结晶"></a>金属的结晶</h3><p>随着温度的降低，金属的结晶有以下几个过程：</p>
+<p>原子团→形核（有自发的也有外来的）→晶核长大（变为树枝状）→小晶粒→晶粒</p>
+<p><strong>固态向液态转变过程中，会放出结晶潜热，会使冷却曲线出现一段水平段</strong>，如下图（理论）<code>横坐标为时间，纵坐标为温度</code>。在实际上，由于金属有过冷度，因此曲线会下降一部分，如图（实际）。加入其它元素的合金，由于其他元素的影响将不会是直线，而是水平线，如图（合金）。然后可以看出 <strong>合金的结晶是在一个范围内完成的</strong></p>
+<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20200823213634.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>晶粒粗细对材料力学性能具有很大的影响：<strong>对同一金属，晶粒越细，其强度、硬度越高；同时塑性和韧性越好</strong></p>
+<blockquote>
+<p><strong>这是因为晶粒越小，晶界表面积越大，晶界越曲折，晶体的变形抗力也就越大，强度硬度也就越高。同时由于晶粒小，晶粒受力比较分散，每个单独的晶粒受力小，塑性变形也就越分散越均匀，因此塑性韧性高。</strong></p>
+</blockquote>
+<p>因此，在工程上，晶粒越小越好，下面有一些细化晶粒的措施：</p>
+<ul>
+<li><strong>提高冷却速度</strong>，增加过冷度，从而增加晶核数量</li>
+<li>在金属浇筑之前，向金属液<strong>加入变质剂或孕育剂</strong>，引入外来晶核，增加晶核数量</li>
+<li>在金属凝固过程中采用机械<strong>振动</strong>、超声波振动、电磁<strong>搅拌</strong>等将长大的树枝状晶核打断，变小</li>
+<li><strong>热处理或塑性加工</strong>，使晶粒变小</li>
+</ul>
+<p>随着温度的降低，金属在 <strong>固态</strong> 下随着温度的变化，会有一种晶格转化为另一种晶格，这种现象就是<strong>同素异构转变</strong></p>
+<p>对于纯铁来说，会有以下转变</p>
+<script type="math/tex; mode=display">
+Fe(l)^{1538°}\Rightarrow\alpha-Fe^{1394°}\Rightarrow\gamma-Fe^{912°}\Rightarrow\delta-Fe</script><p><em>Fe</em> 会从<strong>体心立方晶胞</strong>变为<strong>面心立方晶胞</strong>最后再变为<strong>体心立方晶胞</strong>。晶体结构发生变化，与晶体的结晶比较类似，也会释放出潜热，在图上出现水平台阶，因此<strong>金属的同素异构体的转变</strong>也叫做<strong>重结晶、二次结晶</strong></p>
+<h3 id="铁碳合金的晶体结构"><a href="#铁碳合金的晶体结构" class="headerlink" title="铁碳合金的晶体结构"></a>铁碳合金的晶体结构</h3><p>按照 Fe 与 C 的作用形式的不同，铁碳合金的组织可以分为<strong>固溶体、金属化合物、机械混合物</strong> 三种类型。</p>
+<h4 id="固溶体"><a href="#固溶体" class="headerlink" title="固溶体"></a>固溶体</h4><p>合金组元通过溶解形成一种成分和性能均匀，且结构与组员之一相同的固相称为<strong>固溶体</strong>。根据溶质原子在溶剂晶格中的位置，可以分为 <strong>替换固溶体和间隙固溶体</strong> （原子半径相差小的就是替换固溶体…）。由于溶剂分子的加入，晶格会发生畸变，导致材料强度硬度升高。</p>
+<h5 id="铁素体（F）"><a href="#铁素体（F）" class="headerlink" title="铁素体（F）"></a>铁素体（F）</h5><p>C 溶解在 $\alpha-Fe$ 中形成的 <strong>间隙固溶体</strong>，通常用符号 <strong>F</strong> 表示</p>
+<p>F 溶 C 极少，固溶强化效果甚微，因此<strong>力学性能与纯铁相近</strong>，表现为：强度硬度低、塑性韧性好</p>
+<h5 id="奥氏体（A）"><a href="#奥氏体（A）" class="headerlink" title="奥氏体（A）"></a>奥氏体（A）</h5><p>C 溶解在 $\gamma-Fe$ 中形成的 <strong>间隙固溶体</strong>，通常用符号 <strong>A</strong> 表示</p>
+<p> $\gamma-Fe$ 的溶碳能力比 $\alpha-Fe$ 高，在1148℃溶解度最高为$W_C=2.11\%$，但是由于固溶体的一些性质， A 还是<strong>强度硬度不高，属性优良</strong> 。同时， <strong>A 为高温组织</strong></p>
+<h4 id="金属化合物"><a href="#金属化合物" class="headerlink" title="金属化合物"></a>金属化合物</h4><p>金属化合物是合金组元互相作用形成的晶格类型和晶格特征<strong>不同于任一组元</strong>的新相</p>
+<h5 id="渗碳体（-Fe-3C-）"><a href="#渗碳体（-Fe-3C-）" class="headerlink" title="渗碳体（${Fe}_3C$）"></a>渗碳体（${Fe}_3C$）</h5><p>Fe 与 C 形成的金属化合物，$W_C=6.69\%$，其 <strong>硬度高，脆性大，塑性差</strong>。渗碳体过多会导致机械性能变差，少量渗碳体会提高材料的强度和硬度。</p>
+<h4 id="机械混合物"><a href="#机械混合物" class="headerlink" title="机械混合物"></a>机械混合物</h4><p>结晶过程中所形成的两相混合组织（前面两个是单相组织，这个直接是两相组织）</p>
+<h5 id="珠光体（P）"><a href="#珠光体（P）" class="headerlink" title="珠光体（P）"></a>珠光体（P）</h5><p>由 F 和 $Fe_3C$ 组成的机械混合物，$W_C=0.77\%$，层片越往细密，强度越高。珠光体兼具两者的优点，即具有较高的硬度、强度和良好的塑性、韧性</p>
+<h5 id="莱氏体（Ld）"><a href="#莱氏体（Ld）" class="headerlink" title="莱氏体（Ld）"></a>莱氏体（Ld）</h5><p>由 A或P 和 $Fe_3C$ 组成的机械混合物，$W_C=4.33\%$</p>
+<h2 id="铁碳合金相图"><a href="#铁碳合金相图" class="headerlink" title="铁碳合金相图"></a>铁碳合金相图</h2><p>注图中1128应该改为1148，$Ld_H$为高温莱氏体，$Fe_3C_1$为一次渗碳体</p>
+<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20200823213647.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="点的含义"><a href="#点的含义" class="headerlink" title="点的含义"></a>点的含义</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">代号</th>
+<th style="text-align:center">温度(℃)</th>
+<th style="text-align:center">含碳量(%)</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">A</td>
+<td style="text-align:center">1538</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">铁的熔点</td>
+</tr>
+<tr>
+<td style="text-align:center">C</td>
+<td style="text-align:center">1148</td>
+<td style="text-align:center">4.3</td>
+<td style="text-align:center">共晶点，发生共晶反应，由液态直接变为固态，$L\Rightarrow Ld_H(A+Fe_3C)$</td>
+</tr>
+<tr>
+<td style="text-align:center">D</td>
+<td style="text-align:center">1127</td>
+<td style="text-align:center">6.69</td>
+<td style="text-align:center">渗碳体的熔点</td>
+</tr>
+<tr>
+<td style="text-align:center">E</td>
+<td style="text-align:center">1148</td>
+<td style="text-align:center">2.21</td>
+<td style="text-align:center">C在 $\gamma-Fe$ 的最大溶解度</td>
+</tr>
+<tr>
+<td style="text-align:center">F</td>
+<td style="text-align:center">1148</td>
+<td style="text-align:center">6.69</td>
+<td style="text-align:center">渗碳体的成分</td>
+</tr>
+<tr>
+<td style="text-align:center">G</td>
+<td style="text-align:center">912</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">$\gamma-Fe\Leftrightarrow\alpha-Fe$同素异构体转变点</td>
+</tr>
+<tr>
+<td style="text-align:center">S</td>
+<td style="text-align:center">727</td>
+<td style="text-align:center">0.77</td>
+<td style="text-align:center">共析点，发生共析反应，$A\Rightarrow P(F+Fe_3C)$</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>注：</p>
+<ul>
+<li>共晶反应：由液态直接变为固态，$L\Rightarrow Ld_H(A+Fe_3C)$，只有与共晶点成分相同的才会发生共晶反应</li>
+<li>共析反应：由一种固相变为另外一种固相，$A\Rightarrow P(F+Fe_3C)$，只有与共析点成分相同的才会发生共析反应</li>
+</ul>
+<blockquote>
+<p>注意：各个点的符号要求记住</p>
+</blockquote>
+<h3 id="线的分析"><a href="#线的分析" class="headerlink" title="线的分析"></a>线的分析</h3><ul>
+<li><p>ACD：液相线，ACD以上全是液体，冷却至ACD以下开始结晶。</p>
+</li>
+<li><p>AECF：固相线，AECF以下全为固体，加热至AECF以上开始熔化。</p>
+</li>
+<li><p>ECF：共晶线，发生共晶反应的区域，$W_C=2.11\%-6.69\%$可以发生共晶反应</p>
+<blockquote>
+<p>EC段会发生共晶反应的原因：在冷却过程中会析出 A ，而 A 的含碳量比较少，此时剩余部分的含碳量会增加，导致达到 C点，这样就可以发生共晶反应了。同理CF段也是这样。</p>
+</blockquote>
+</li>
+<li><p>共析线：发生共析反应的区域，$W_C=0.02\%-6.69\%$可以发生共析反应，原因同上</p>
+</li>
+<li><p>GS：不同含碳量 A 冷却时析出 F 的线，<strong>也叫 $A_3$ 线</strong>。下面那条是 F 析出的终止线</p>
+</li>
+<li><p>ES：C在 A 中溶解度曲线，<strong>也叫 $A_{cm} $ 线</strong></p>
+</li>
+</ul>
+<h3 id="相图中的铁碳合金分类"><a href="#相图中的铁碳合金分类" class="headerlink" title="相图中的铁碳合金分类"></a>相图中的铁碳合金分类</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">含碳量</th>
+<th style="text-align:center">&lt;0.77%</th>
+<th style="text-align:center">0.77%</th>
+<th style="text-align:center">0.77%~2.11%</th>
+<th style="text-align:center">2.11%~6.69%</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">类别</td>
+<td style="text-align:center">亚共析钢</td>
+<td style="text-align:center">共析钢</td>
+<td style="text-align:center">过共析钢</td>
+<td style="text-align:center">铸铁</td>
+</tr>
+<tr>
+<td style="text-align:center">室温成分</td>
+<td style="text-align:center">$F+P$</td>
+<td style="text-align:center">$P$</td>
+<td style="text-align:center">$P+Fe_3C$</td>
+<td style="text-align:center">有$Ld$</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="碳对铁碳合金力学性能的影响"><a href="#碳对铁碳合金力学性能的影响" class="headerlink" title="碳对铁碳合金力学性能的影响"></a>碳对铁碳合金力学性能的影响</h3><p>如图，<strong>随着含碳量的增加，强度先升高后下降，硬度上升，塑性韧性下降</strong></p>
+<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20200823213659.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>注：在室温下，含碳0.8%的钢其强度比含碳1.2%的钢高。</p>
+<blockquote>
+<p>铁碳合金中渗碳体是强化相，对于以<strong>铁素体为基体</strong>的钢来说，渗碳体的数量愈多，分布愈均匀，其强度愈高。但随着含碳量的增加，<strong>Fe3C以网状分布于晶界上或呈粗大片状</strong>，尤其是作为基体时就使得铁碳合金的强度、塑性、韧性大大下降。</p>
+</blockquote>
+<h2 id="常见金属材料及选用"><a href="#常见金属材料及选用" class="headerlink" title="常见金属材料及选用"></a>常见金属材料及选用</h2><h3 id="金属杂质对钢性能的影响"><a href="#金属杂质对钢性能的影响" class="headerlink" title="金属杂质对钢性能的影响"></a>金属杂质对钢性能的影响</h3><h4 id="P、S"><a href="#P、S" class="headerlink" title="P、S"></a>P、S</h4><p><strong>有害元素，可以使材料的塑性韧性急速下降</strong></p>
+<p>S会使 Fe 在1000~1200℃压力加工时，使晶粒脱开，发生 <strong>热脆</strong> 现象</p>
+<p>P会使钢的塑性韧性急速下降，转化温度升高，发生 <strong>冷脆</strong> 现象</p>
+<h4 id="Mn、Si"><a href="#Mn、Si" class="headerlink" title="Mn、Si"></a>Mn、Si</h4><p><strong>Mn 可以与 S 结合成 MnS，抵消 S 的有害作用</strong></p>
+<p>Si 溶于 F 中，可以使铁素体强化</p>
+<h3 id="碳素钢"><a href="#碳素钢" class="headerlink" title="碳素钢"></a>碳素钢</h3><h4 id="碳钢的分类"><a href="#碳钢的分类" class="headerlink" title="碳钢的分类"></a>碳钢的分类</h4><p>铁碳合金中，碳质量分数小于2.11%的合金称为钢，常用的碳钢 W(C) 一般都小于1.3%。</p>
+<ul>
+<li>按 W(C) 分<ul>
+<li>低碳钢： W(C) ≤ 0.25%</li>
+<li>中碳钢：0.25% ≤ W(C) ≤ 0.6%</li>
+<li>高碳钢：0.6% ≤ W(C) ≤ 2.1%</li>
+</ul>
+</li>
+<li>按 钢的质量 分<ul>
+<li>普通碳素钢：w（S）≤0.055%； w（P）≤0.045%</li>
+<li>优质碳素钢：w（S）≤0.040%； w（P）≤0.040%</li>
+<li>高级优质碳素钢：w（S）≤0.030%； w（P）≤0.035%</li>
+</ul>
+</li>
+<li>按 用途 分<ul>
+<li>碳素结构钢</li>
+<li>优质碳素结构钢</li>
+<li>碳素工具钢</li>
+</ul>
+</li>
+</ul>
+<h4 id="碳素结构钢"><a href="#碳素结构钢" class="headerlink" title="碳素结构钢"></a>碳素结构钢</h4><p>碳素结构钢的含碳量wc&lt;0.38%，而以wc&lt;0.25%的最常见，即以<strong>低碳钢</strong>为主。</p>
+<p>碳素结构钢的牌号用 <strong>Q+数字</strong> 表示，Q代表屈服点的“屈”字汉语拼音首字母，后面的三位数字表示该钢种厚度小于16mm时的<strong>最低屈服强度（MPa）</strong>。<code>如Q235表示屈服强度为235MPa的碳素结构钢</code>。在钢号尾部可用A、B、C、D表示钢的质量等级，<strong>A级钢含硫、磷含量最高，D级含硫、磷含量最低</strong>。若在牌号后面加注字母 <strong>“F”</strong> 则为<strong>沸腾钢</strong>，标注 <strong>“B”</strong> 为<strong>半镇静钢</strong>，<strong>不标注</strong>“F”或“B”者为<strong>镇静钢</strong>。</p>
+<p><strong>碳素结构钢一般在供应状态下使用，不再进行热处理</strong>，常见的碳素结构钢有：Q195、Q215，Q235A、Q235B、Q255、Q275等</p>
+<h4 id="优质碳素结构钢"><a href="#优质碳素结构钢" class="headerlink" title="优质碳素结构钢"></a>优质碳素结构钢</h4><p>其硫、磷含量较低（&lt;0.035%），供货时既保证化学成分，又保证力学性能，主要用于制造机器零件。</p>
+<p>优质碳素结构钢的钢号用平均碳质量分数的 <strong>万分数</strong> 表示。<code>如20钢表示平均含碳量为0.20%的优质碳素结构钢</code>。若钢中<strong>锰含量较高</strong>，钢号后应加符号 <strong>“Mn”</strong>，<code>如15Mn，45Mn等</code>。</p>
+<p><strong>优质碳素结构钢使用前一般都要经过热处理。</strong>08F——塑性好，可制造冷冲压零件。10、20钢——冷冲压性与焊接性能良好，可用作冲压件和焊接件，经热处理（<strong>渗碳+淬火+回火</strong>）可制造轴、销等零件（表面要求耐磨的）。35、40、45、50钢——属于中碳钢，因钢中珠光体含量增多，其强度、硬度有所提高，而<strong>淬火+低温回火</strong>后的硬度提高明显。60、65钢——属于高碳钢，经淬火、回火后，不仅强度、硬度显著提高，且弹性优良，常用于制造小弹簧、发条、钢丝绳、轧辊、凸轮等；此类钢的热处理方式：<strong>淬火+中温回火</strong>。</p>
+<h4 id="碳素工具钢"><a href="#碳素工具钢" class="headerlink" title="碳素工具钢"></a>碳素工具钢</h4><p>碳素工具钢的碳质量分数在0.65%~1.35%之间</p>
+<p>钢号用平均碳质量分数的<strong>千分数</strong>的数字表示，数字之前加 <strong>“T”</strong>（碳的拼音首字母）。<code>如：T9表示碳质量分数为0.9%（即千分之九）的碳素工具钢</code>。碳素工具钢均为优质钢，若硫、磷含量更低，为<strong>高级优质钢</strong>，则在钢号后面标注 <strong>“A”</strong> 字。<code>如：T12A表示碳质量分数为1.2%的高级优质碳素工具钢</code>。</p>
+<p>碳素工具钢较合金工具钢便宜，但<strong>淬透性</strong>和<strong>热硬性</strong>差。<strong>碳素工具钢使用前都要经过热处理，如淬火+低温回火。</strong></p>
+<h3 id="合金钢"><a href="#合金钢" class="headerlink" title="合金钢"></a>合金钢</h3><p>合金钢可以避免碳钢以下部分的不足：<strong>渗透性低、强度低、回火稳定性差、不能满足特殊性能要求</strong></p>
+<p>合金钢按用途分（我国采用）：合金结构钢、合金工具钢、特殊性能钢</p>
+<p>合金钢的编号：</p>
+<ol>
+<li><p>碳的质量分数：在牌号首部用数字标明碳质量分数。</p>
+<ul>
+<li><p>结构钢</p>
+<p>以万分之一为单位的数字（两位数）表示平均碳质量分数。<code>40Cr 平均碳质量分数为0.40%;20CrMnTi 平均碳质量分数为0.20%</code></p>
+</li>
+<li><p>工具钢</p>
+<p>以千分之一为单位的数字（一位数）表示平均碳质量分数。工具钢的<br>碳质量分数超过1%时，碳质量分数不标出。<code>5CrMnMo 平均碳质量分数为0.5%；Cr2 平均碳质量分数为1.0%</code></p>
+</li>
+<li><p>不锈钢和耐热钢</p>
+<p>碳质量分数大于或等于0.04%时，以万分之一为单位的数字（两位数）表示；碳质量分数小于或等于0.03%时，以十万分之一为单位的数字（三位数）表示。<code>12Cr13 平均碳质量分数为0.12%;022Cr22Ni5Mo3N 平均碳质量分数为0.022%</code></p>
+</li>
+</ul>
+</li>
+<li><p>主要合金元素</p>
+<p>用元素符号表明钢中主要合金元素，其后标明质量分数。质量分数少于1.5%时不标数字，质量分数为1.5%-2.49%、2.5%-3.49%…时，相应地标2、3…。<code>40Cr Cr的质量分数在1.5%以下;5CrMnMo Cr、Mn、Mo的质量分数均在1.5%以下;60Si2Mn Si的质量分数为1.5~2.0% ，Mn质量分数均为0.7~1.0%</code></p>
+</li>
+</ol>
+<h4 id="低合金高强度结构钢"><a href="#低合金高强度结构钢" class="headerlink" title="低合金高强度结构钢"></a>低合金高强度结构钢</h4><p>高强度、高韧性、良好的焊接性能和冷成型性能、低的冷脆转变温度、良好的耐蚀性。</p>
+<h5 id="成分特点"><a href="#成分特点" class="headerlink" title="成分特点"></a>成分特点</h5><ul>
+<li>低碳：韧性、焊接性和冷成型性能要求高，碳质量分数不超过0.20%。</li>
+<li>加入以锰为主的合金元素。锰可以产生较强的固溶强化效果（溶入F），还可以大大降低奥氏体分解温度，细化F晶粒，并使珠光体变细，消除晶界上粗大的片状碳化物，提高钢的强度和韧性。</li>
+</ul>
+<ul>
+<li>加入铌、钛或钒等元素：形成细碳化物或氮化物，获得细小铁素体晶粒，提高钢的强度和韧性。</li>
+<li>加入少量的铜（0.4%）和磷（0.1%左右），可提高抗腐蚀性能。</li>
+<li>加入少量的稀土元素，可脱硫、去气，使钢材净化，改善韧性和工艺性能。</li>
+</ul>
+<h5 id="常用的低合金高强度结构钢"><a href="#常用的低合金高强度结构钢" class="headerlink" title="常用的低合金高强度结构钢"></a>常用的低合金高强度结构钢</h5><ul>
+<li><strong>Q345（16Mn）</strong><ul>
+<li>使用状态组织：细晶粒铁素体+索氏体。</li>
+<li>强度比普通碳素结构钢Q235高约20%-30%，耐大气腐蚀性能高20-38%，用来制造结构件时，重量可减轻20~30%</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p><strong>Q420（15MnVN）</strong></p>
+<p>强度较高。 加入V、N后，生产钒的氮化物，可细化晶粒，又有析出强化的作用，强度较高，韧性、焊接性及低温韧性较好。可制造桥梁、锅炉、船舶等大型结构。 </p>
+</li>
+</ul>
+<h2 id="MOOC-问答-1"><a href="#MOOC-问答-1" class="headerlink" title="[MOOC]问答"></a>[MOOC]问答</h2><ul>
+<li>对同一成分的金属，晶粒越细，其强度、硬度愈高，为什么塑性和韧性也越好。对一般的材料，强度、硬度增加，塑性、韧性会降低。</li>
+</ul>
+<blockquote>
+<p>晶粒越细，晶界就越多，晶界处的晶格排列方向极不一致，犬牙交错、互相咬合，从而增加了塑性变形的抗力，提高了金属的强度。同时，金属的塑性和韧性也可得到提高。</p>
+</blockquote>
+<ul>
+<li>根据Fe-C相图，解释以下现象<ol>
+<li>在室温下，含碳0.8%的钢其强度比含碳1.2%的钢高。</li>
+<li>在1100℃，含碳0.4%的钢能进行锻造，含碳4.0%的生铁不能锻造。</li>
+</ol>
+</li>
+</ul>
+<blockquote>
+<p>(1)含碳量大于1.0%时，钢组织中析出的二次渗碳体在晶界形成连续的网络状，钢的脆性增加，强度下降。因此含碳0.8%的钢的强度高于含碳1.2%的钢。<br>(2)含碳量0.4%的钢在1100℃时处于A区，容易发生塑性变形。适于锻造。含碳量4%的生铁在1100℃时，组织是由Ld和Fe3C组成，硬度高硬，脆性大，塑性变形能力差，因而不能锻造。</p>
+</blockquote>
+<h1 id="金属材料热处理"><a href="#金属材料热处理" class="headerlink" title="金属材料热处理"></a>金属材料热处理</h1><p>热处理是将钢在固态下以一定的方式进行 <strong>加热</strong> 、 <strong>保温</strong> ，然后采取合适的方式 <strong>冷却</strong> ，让其获得所需要的组织结构和性能的工艺。</p>
+<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20200823213712.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="钢在加热时的组织转变"><a href="#钢在加热时的组织转变" class="headerlink" title="钢在加热时的组织转变"></a>钢在加热时的组织转变</h2><p>大多数热处理工艺（如淬火、正火等）都要将钢加热到临界温度以上，获得全部或部分奥氏体组织，即进行<strong>奥氏体化</strong>。</p>
+<p>然后在实际的热处理过程中：铁碳合金相图和上面说的有所不同，上面的铁碳合金相图是充分反应状态下的情况，在实际过程中，<strong>处理的时间是有限的</strong>。因此实际上会有变化。<strong>加热到原来的组织需要更高的温度</strong>，因此加热的线比原来高（如红线），同理降温的线比原来低（如南线）。这个现象叫<strong>过热</strong>和<strong>过冷</strong> </p>
+<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20200823213724.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="影响-A-转变速度的因素"><a href="#影响-A-转变速度的因素" class="headerlink" title="影响 A 转变速度的因素"></a>影响 A 转变速度的因素</h3><ul>
+<li><p>加热温度  $T\uparrow\Rightarrow v(A)\uparrow$</p>
+</li>
+<li><p>加热速度 $\Delta v_T\uparrow\Rightarrow v(A)\uparrow$</p>
+</li>
+<li><p>钢中碳质量分数 $W(C)\uparrow\Rightarrow S\uparrow\Rightarrow v(A)\uparrow$</p>
+</li>
+<li><p>原始组织 </p>
+<p>原始组织中渗碳体为<strong>片状</strong>时，<strong>奥氏体形成速度快</strong>，因为它的<strong>相界面积较大</strong>；并且，渗碳体间距越小，相界面越大，同时奥氏体晶粒中碳浓度梯度也大，所以长大速度更快。</p>
+</li>
+</ul>
+<h3 id="奥氏体的晶粒度及其影响因素"><a href="#奥氏体的晶粒度及其影响因素" class="headerlink" title="奥氏体的晶粒度及其影响因素"></a>奥氏体的晶粒度及其影响因素</h3><p>晶粒度就是晶粒大小。晶粒度越小，金属强度硬度韧性塑形越好。生产中一般采用标准晶粒度等级图，由比较的方法来<strong>测定钢的奥氏体晶粒大小</strong>。</p>
+<p><strong>加热温度越高，保温时间越长，晶粒度越大，材料性能越差</strong>。奥氏体中碳的含量增高时，晶粒长大的倾向增多。若碳以未溶碳化物的形式存在，则它有阻碍晶粒长大的倾向。 </p>
+<h3 id="钢在冷却时的组织转变"><a href="#钢在冷却时的组织转变" class="headerlink" title="钢在冷却时的组织转变"></a>钢在冷却时的组织转变</h3><p>从铁碳合金相图可知，当温度在A1以上时，奥氏体是稳定的，能长期存在。当温度降到A1以下时，奥氏体即处于过冷状态，这种奥氏体称为<strong>过冷奥氏体</strong>。过冷奥氏体是不稳定的，它会转变为其他组织，钢在冷却时的转变，实质上是过冷奥氏体的转变。</p>
+<p>过冷奥氏体的等温转变过程和转变产物可用<strong>等温转变曲线</strong>（<strong>TTT曲线</strong>）:</p>
+<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20200823213758.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>奥氏体从过冷到转变开始这段时间称为<strong>孕育期</strong>，孕育期的长短反映了过冷奥氏体的稳定性大小。曲线的“鼻尖”处（约550℃）孕育期最短，过冷奥氏体的稳定性最小。</p>
+<p>可以看到，等温转变曲线被分为三块：高温转变区（珠光体转变区）、中温转变区（贝氏体转变区）、低温转变区（马氏体转变区）</p>
+<p>在高温转变区内，根据珠光体的形态，又分为：粗片状P; 15～22HRC、细片状P[ <strong>索氏体S</strong> ]; 22～27HRC、极细片状P[ <strong>屈氏体T</strong> ];27～43HRC。奥氏体向珠光体转变是一种<strong>扩散</strong>型的生核、长大过程，是通过碳、铁的扩散和晶体结构的重构来实现的。</p>
+<p>贝氏体转变是介于珠光体和马氏体转变之间的一种转变，又称中温转变。转变产物为贝氏体（B）是<strong>含 C 过饱和的 F 和碳化物的机械混合物</strong>。由于温度降低， $\gamma-Fe$ 转变为了 $\alpha-Fe$ ，发生了重结晶，使C从F中析出。<strong>共析钢与过共析钢没有贝氏体转变区</strong>（因为没有 F ）。</p>
+<p>马氏体型(M)转变( 230～-50℃ ): <strong>M 是一种 C 在 α–Fe 中的过饱和 间隙固溶体。</strong>有以下转变特点:①在一个温度范围内<strong>连续</strong>冷却完成;②转变<strong>速度极快</strong>,即瞬间形核与长大;③无扩散转变( Fe、C原子均不扩散 ), M与原A的成分相同,造成晶格畸变；④转变不完全性, 冷却到室温时仍残余奥氏体存在-50℃才转变完全。</p>
+<h3 id="奥氏体连续冷却转变"><a href="#奥氏体连续冷却转变" class="headerlink" title="奥氏体连续冷却转变"></a>奥氏体连续冷却转变</h3><h4 id="CCT曲线"><a href="#CCT曲线" class="headerlink" title="CCT曲线"></a>CCT曲线</h4><p>这个曲线下面有，这里就不画了。与TTT曲线比较，CCT图中的所有曲线均向右下“漂移”；所有转变均呈现“滞后”现象。同时，CCT曲线中的 P 和 B 的“C”形曲线也只有上半部分。相变滞后现象可能导致贝氏体转变被抑制。</p>
+<blockquote>
+<p>这是因为 F 析出使 A 碳的质量分数升高，因而开始转变线线右端下降</p>
+</blockquote>
+<h4 id="连续冷却转变产物"><a href="#连续冷却转变产物" class="headerlink" title="连续冷却转变产物"></a>连续冷却转变产物</h4><p>由于共析钢在连续冷却时的转变测定较困难，生产中常利用TTT曲线分析估计连续冷却转变的结果，即按TTT与CCT曲线叠加后相交的大致位置，估计连续冷却后得到的组织。</p>
+<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20200823213813.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">冷速类型</th>
+<th style="text-align:center">冷却方法</th>
+<th style="text-align:center">转变产物</th>
+<th style="text-align:center">硬度</th>
+<th style="text-align:center">解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">$v_1$</td>
+<td style="text-align:center">相当于炉冷</td>
+<td style="text-align:center">P</td>
+<td style="text-align:center">15-25HRC</td>
+<td style="text-align:center">过冷A转变为P</td>
+</tr>
+<tr>
+<td style="text-align:center">$v_2$</td>
+<td style="text-align:center">相当于空冷</td>
+<td style="text-align:center">S</td>
+<td style="text-align:center">25-35HRC</td>
+<td style="text-align:center">过冷A转变为S</td>
+</tr>
+<tr>
+<td style="text-align:center">$v_3$</td>
+<td style="text-align:center">相当于油冷</td>
+<td style="text-align:center">T+M+A</td>
+<td style="text-align:center">45-55HRC</td>
+<td style="text-align:center">尽管穿过了贝氏体区，但因在CCT曲线中无B转变区，所以在连续冷却时不会得到B组织，而会转变为T、M和残余A的混合组织</td>
+</tr>
+<tr>
+<td style="text-align:center">$v_k$</td>
+<td style="text-align:center">相当于油冷或水冷</td>
+<td style="text-align:center">M+A</td>
+<td style="text-align:center">55-65HRC</td>
+<td style="text-align:center">过冷奥氏体转变为M和残余A</td>
+</tr>
+<tr>
+<td style="text-align:center">$v_4$</td>
+<td style="text-align:center">相当于水冷</td>
+<td style="text-align:center">M+A</td>
+<td style="text-align:center">55-65HRC</td>
+<td style="text-align:center">过冷奥氏体转变为M和残余A</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="热处理工艺方法"><a href="#热处理工艺方法" class="headerlink" title="热处理工艺方法"></a>热处理工艺方法</h2><p>分为整体热处理（退火、正火、淬火、回火）、表面热处理、化学热处理</p>
+<h3 id="退火"><a href="#退火" class="headerlink" title="退火"></a>退火</h3><p>将钢加热至临界温度，保温一段时间，然后埋入导热性较差的物质，缓慢冷却，以得到平衡状态组织的热处理工艺</p>
+<h4 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h4><ul>
+<li>降低硬度、提高塑性，以利于切削加工或继续冷变形加工</li>
+<li>细化晶粒，提高钢的塑性和韧性</li>
+<li>消除内应力，为淬火供需做好准备</li>
+</ul>
+<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20200823213828.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><strong>注：图中完全退火冷却时的斜率搞反了</strong></p>
+<h4 id="完全退火"><a href="#完全退火" class="headerlink" title="完全退火"></a>完全退火</h4><p>钢加热到Ac3线以上30～50℃，保温一定时间而获得完全的 A 组织，然后随炉冷却到500℃以下，再出炉并在空气中冷却，最终获得平衡组织 <strong>F+P</strong>。</p>
+<p>作用是：提高塑性韧性，降低硬度，改善切削加工性能</p>
+<p>主要应用与 <strong>亚共析钢</strong> ，过共析钢不宜使用。</p>
+<blockquote>
+<p>这是由于过共析钢缓冷时会析出二次网状渗碳体，大大降低材料的属性和韧性，可能在之后的加工中开裂</p>
+</blockquote>
+<h4 id="球化退火"><a href="#球化退火" class="headerlink" title="球化退火"></a>球化退火</h4><p>是将钢件加热到Acl线以上20～30℃，保温较长时间，然后以极其缓慢的速度冷却到600℃以下，再出炉空冷的热处理工艺。</p>
+<p>保留较多的未溶碳化物粒子或使较大的奥氏体中碳浓度分布不均匀，促进球化物的生成，将 <strong>网状渗碳体</strong> 转化为 <strong>球状渗碳体</strong>。</p>
+<p>主要应用于 <strong>过共析钢</strong>，用来降低硬度，改善切削加工性能，为淬火做准备</p>
+<h4 id="再结晶退火"><a href="#再结晶退火" class="headerlink" title="再结晶退火"></a>再结晶退火</h4><p>再结晶退火(recrystallization annealing) 是将钢件加热到再结晶温度以上150～250℃，即650～750℃范围内，保温一定时间后<strong>随炉冷却</strong>，通过再结晶使钢材的<strong>塑性恢复</strong>到冷变形以前的状况。</p>
+<p>低温再结晶退火可用于冷轧、冷拉、冷压等产生<strong>加工硬化</strong>的各种金属材料处理。</p>
+<h4 id="去应力退火"><a href="#去应力退火" class="headerlink" title="去应力退火"></a>去应力退火</h4><p>去应力退火(stress relieving) 是将钢件<strong>随炉缓慢加热</strong>(100～150℃/h)至500～650℃，保温一定时间，然后<strong>随炉</strong>缓慢冷却(50～100℃/h)至300～200℃以下再出炉<strong>空冷</strong>。</p>
+<p>目的是 <strong>消除</strong> 铸造、锻造、焊接等中的 <strong>内应力</strong> 。<strong>去应力退火不发生组织转变</strong> 。</p>
+<h4 id="等温退火"><a href="#等温退火" class="headerlink" title="等温退火"></a>等温退火</h4><p>（课本上没有）</p>
+<p>是将钢件加热到Ac3线以上(对亚共析钢)或Ac1线以上(对共析钢和过共析钢)，保温后较快冷却到稍低于Ac1线温度，即珠光体型转变温度范围内，一直等温保持到奥氏体<strong>全部转变为 珠光体</strong> 型组织为止，然后出炉置空气中冷却。</p>
+<p>等温退火与完全退火目的、加热方法及保温时间基本相同，但可通过控制等温温度，更快获得所需的均匀组织和性能，退火效果较好，并可大大<strong>缩短</strong>约一半以上的退火<strong>时间</strong>，主要用于奥氏体较稳定的<strong>合金工具钢和高合金钢</strong>等</p>
+<h3 id="正火"><a href="#正火" class="headerlink" title="正火"></a>正火</h3><p>正火是将钢件加热至Ac3(对亚共析钢)或Accm(对过共析钢)以上30～50℃，经保温后从炉中取出并在空气中冷却的热处理工艺。正火冷却速度稍快，过冷度较大，可获得较细的 <strong>珠光体型索氏体</strong> 组织。</p>
+<h4 id="目的-1"><a href="#目的-1" class="headerlink" title="目的"></a>目的</h4><ul>
+<li>对于普通碳素钢、低合金钢，正火可以细化晶粒，并使组织均匀化；</li>
+<li>提高低碳钢工件的硬度和切削加工性能；</li>
+<li><strong>消除过共析钢中的网状碳化物</strong>，为球化退火或淬火作准备；</li>
+<li>消除切削加工后的硬化现象和去除内应力；</li>
+</ul>
+<blockquote>
+<p>关于退火与正火的选择：退火比正火的生产周期短，耗能少，且操作简便，故在可能的条件下，应优先考虑以退火代替正火。 </p>
+</blockquote>
+<h3 id="淬火"><a href="#淬火" class="headerlink" title="淬火"></a>淬火</h3><p>淬火是将钢加热到Ac3(亚共析钢)或Ac1(共析或过共析钢)以上即30～50℃间，保温一定时间使其奥氏体化，然后在冷却介质中迅速冷却的热处理工艺。</p>
+<p>淬火的目的：获得 M(马氏体) (个别情况下获得 B )组织，以提高钢的硬度和耐磨性，如各种工模具、量具、滚动轴承等均需通过淬火提高硬度和耐磨性。</p>
+<blockquote>
+<p>过饱和的碳造成了 <strong>M 晶格的严重畸变</strong>，使其变形抗力比较大，因此 M 具有较高的耐磨性和硬度。绝大多数要求高硬度和高耐磨性的中高碳钢都要进行淬火工艺</p>
+</blockquote>
+<p>淬火是一种复杂的热处理工艺，又是决定产品质量的关键工序之一，淬火后要<strong>得到小的马氏体组织</strong>又<strong>不致产生严重的变形和开裂</strong>，必须根据钢的成分、零件的大小、形状等，结合C曲线合理地确定淬火加热和冷却的方法。</p>
+<h4 id="淬火加热温度的确定"><a href="#淬火加热温度的确定" class="headerlink" title="淬火加热温度的确定"></a>淬火加热温度的确定</h4><div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">钢种</th>
+<th style="text-align:center">温度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">亚共析钢</td>
+<td style="text-align:center">$A_{c3}$ + (30-50) ℃</td>
+</tr>
+<tr>
+<td style="text-align:center">共析钢、过共析钢</td>
+<td style="text-align:center">$A_{c1}$ + (30-50) ℃</td>
+</tr>
+<tr>
+<td style="text-align:center">一般合金钢</td>
+<td style="text-align:center">$A_{c1}$ 或 $A_{c3}$ + (30-50) ℃</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 id="淬火冷却介质的选择"><a href="#淬火冷却介质的选择" class="headerlink" title="淬火冷却介质的选择"></a>淬火冷却介质的选择</h4><p>淬火介质的冷却速度又不能过快，在满足能获得马氏体的条件下，应使冷却速度尽可能低，以减少工件的开裂和变形。</p>
+<blockquote>
+<p><strong>冷却速度：盐水 &gt; 水 &gt; 盐浴 &gt; 油</strong></p>
+</blockquote>
+<h4 id="淬火方法的选择"><a href="#淬火方法的选择" class="headerlink" title="淬火方法的选择"></a>淬火方法的选择</h4><p>这里需要考虑到零件是有厚度的，零件内部各个地方温度不一样</p>
+<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20200823213843.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ul>
+<li><strong>单介质淬火</strong>是将奥氏体化后的工件放入一种淬火介质中连续冷却到室温的淬火方法，如碳钢在水中淬火，合金钢在油中淬火，操作简单，易于实现机械化与自动化，适用于形状简单的工件。</li>
+<li><strong>双介质淬火</strong>是将奥氏体化工件先放入一种冷却能力较强的介质中，当工件冷到300℃左右时，再放到另外一种冷却能力较弱的介质中冷却。如先水冷后油冷、先水冷后空冷或先油冷后空冷等。双介质淬火法的马氏体转变是在冷却能力较低的介质中进行，故产生的内应力较小，可减小变形和开裂的可能性，常用于形状较复杂的工件，如碳素工具钢中的钻头、铰刀。</li>
+<li><strong>分级淬火</strong>是将奥氏体化工件放入温度稍高于Ms点(约260℃)的冷却介质(盐浴或碱浴)中，停留2～5 min，使工件内外温度达到均匀后取出空冷，以获得马氏体组织，此法仅适用于截面尺寸较小(或厚度小于10mm)的工件。</li>
+<li><strong>等温淬火</strong>是将奥氏体化工件放入温度稍高于Ms温度(260～400℃)的盐浴中等温一定时间，使过冷奥氏体转变为强度高、韧性好的<strong>下贝氏体</strong>，然后再用空气中冷却的淬火方法。此法只应用于尺寸要求精确、形状复杂、有较高强韧性的小型工件及工模具，如弹簧、小齿轮及丝锥等。</li>
+</ul>
+<h4 id="钢的淬透性"><a href="#钢的淬透性" class="headerlink" title="钢的淬透性"></a>钢的淬透性</h4><p>淬透性是指钢在淬火时 <strong>获得马氏体</strong> 的能力, 它是钢的固有属性，取决于钢的临界冷却速度、过冷奥氏体的稳定性。</p>
+<h4 id="钢的淬硬性"><a href="#钢的淬硬性" class="headerlink" title="钢的淬硬性"></a>钢的淬硬性</h4><p>淬硬性是指钢淬火后形成的淬火态组织（M+Ar）所达到的 <strong>最高硬度</strong>，即钢在淬火时的硬化能力。钢的淬硬性取决于马氏体含碳量和残余奥氏体数量。</p>
+<h3 id="回火"><a href="#回火" class="headerlink" title="回火"></a>回火</h3><p>回火是消除内应力并获得要求的组织和性能，淬硬后加热到AC1线以下的某一温度，保温一定时间，然后冷却到室温的热处理工艺。</p>
+<p>回火的目的是：</p>
+<ul>
+<li>消除回火的残余应力，提高材料的塑形和韧性</li>
+<li>使材料获得良好的综合力学性能</li>
+<li>促进残余奥氏体向稳定的平衡组织转化，稳定工件尺寸，使其不变</li>
+</ul>
+<p>淬火钢不能直接使用，必须进行回火处理</p>
+<blockquote>
+<p>首先，淬火得到的 M 与残余 A 都是不稳定的组织，在工作中会向平衡组织转化，会导致零件尺寸的变化；其次，马氏体硬度高，脆性大，并存在很大的内应力，很容易造成工件的变形和断裂；最后，回火可以获得要求的塑性韧性。</p>
+</blockquote>
+<p>回火有以下规律：回火温度越高，材料强度硬度下降越大，塑性韧性升高越大。</p>
+<h4 id="低温回火"><a href="#低温回火" class="headerlink" title="低温回火"></a>低温回火</h4><ul>
+<li>温度：150-250℃</li>
+<li>回火后组织：回火 M + 残余 A </li>
+<li>目的：降低淬火应力，提高工件韧性、保证淬火后高硬度与高耐磨</li>
+<li>应用：各种刃具、模具、滚动轴承</li>
+</ul>
+<h4 id="中温回火"><a href="#中温回火" class="headerlink" title="中温回火"></a>中温回火</h4><ul>
+<li>温度：350-500℃</li>
+<li>回火后组织：回火 T</li>
+<li>目的：使工件获得较高的<strong>弹性</strong>和强度，适当的韧性和硬度</li>
+<li>性能：35-50HRC，较高的弹性极限和屈服强度、冲击韧性</li>
+</ul>
+<blockquote>
+<p>常常用于制作弹簧</p>
+</blockquote>
+<h4 id="高温回火"><a href="#高温回火" class="headerlink" title="高温回火"></a>高温回火</h4><ul>
+<li>温度：500-650℃</li>
+<li>回火后组织：回火 S（其中的渗碳体为颗粒）</li>
+<li>目的：使工件获得强度、塑性和韧性都较好的综合力学性能。</li>
+<li>性能：强度、塑性和韧性都比较好，硬度一般为25～35HRC。</li>
+</ul>
+<blockquote>
+<p>通常将淬火 + 高温回火称为<strong>调质处理</strong>，简称调质。调质钢硬度高，而且塑形和韧性也比较高</p>
+<p>二次硬化：在回火过程中发生<strong>残余 A 向 M 转变</strong>的二次淬火现象。这可使某些钢的硬度在回火后有所升高，形成二次硬化。</p>
+</blockquote>
+<h4 id="淬火钢回火后的力学性能"><a href="#淬火钢回火后的力学性能" class="headerlink" title="淬火钢回火后的力学性能"></a>淬火钢回火后的力学性能</h4><h5 id="第一类回火脆性"><a href="#第一类回火脆性" class="headerlink" title="第一类回火脆性"></a>第一类回火脆性</h5><p>淬火碳钢在250-400℃温度范围内回火，室温冲击韧度出现低谷，它几乎在所有钢中出现。 </p>
+<p>防止方法：避免在脆化温度范围内回火；加热重新淬火</p>
+<h5 id="第二类回火脆性"><a href="#第二类回火脆性" class="headerlink" title="第二类回火脆性"></a>第二类回火脆性</h5><p>某些合金钢在450-650℃范围内回火，或在稍高温度回火后缓慢冷却后出现的脆性，叫第二类回火脆性（或马氏体高温回火脆性）。</p>
+<p>防止方法：重新回火，回火后快速冷却，可避免回火脆性发生；另外，在钢中加入W（1%）、Mo（0.5%）等合金元素，可有效地抑制这类回火脆性的产生。 </p>
+<h3 id="表面淬火处理"><a href="#表面淬火处理" class="headerlink" title="表面淬火处理"></a>表面淬火处理</h3><p>用于获得高强度、高耐磨性的表面，而心部保持原来良好的韧性，常常用于齿轮、曲轴等的加工</p>
+<h2 id="MOOC-问答-2"><a href="#MOOC-问答-2" class="headerlink" title="[MOOC]问答"></a>[MOOC]问答</h2><ul>
+<li>为什么合金钢通常不在水中淬火？</li>
+</ul>
+<blockquote>
+<p><strong>合金钢淬火稳定性高</strong>，在油中可以获得单一的马氏体组织，为了防止淬火<strong>变形和开裂</strong>，故合金钢一般在油中淬火而不在水中淬火。</p>
+</blockquote>
+<ul>
+<li>柴油机凸轮轴，要求凸轮表面有高的硬度(HRC&gt;50)，而心部具有良好的韧性(Ak&gt;40J)，原来用含碳量为0.45%的碳钢调质，再在凸轮表面进行高频淬火，最后低温回火。现因库存钢材用完，拟用含碳量为0.15%的碳钢代替。试说明：原含碳量为0.45%钢的各热处理工序的作用。</li>
+</ul>
+<blockquote>
+<p><strong>调质</strong>：得到回火索氏体，使工件具有良好的综合机械性能。<strong>表面高频淬火</strong>：表面获得良好的强度硬度，心部保持良好的塑性韧性。<strong>低温回火</strong>：降低淬火应力和脆性，提高工件韧性，保证淬火后的高强度与耐磨性</p>
+</blockquote>
+<ul>
+<li>精加工后可安排的热处理有<strong>氮化处理</strong></li>
+</ul>
+<h1 id="铸造工艺基础"><a href="#铸造工艺基础" class="headerlink" title="铸造工艺基础"></a>铸造工艺基础</h1><p>铸造是指将<strong>熔炼</strong>好的液态金属浇筑到与零件相适应的<strong>铸型</strong>型腔中，待其冷却凝固后，获得<strong>毛坯或零件</strong>的方法。</p>
+<p>优点：</p>
+<ul>
+<li>可以制造形状复杂的零件</li>
+<li>适用范围广</li>
+<li>铸造用零部件来源广泛、价格低廉</li>
+<li>铸铁加工的唯一方式</li>
+</ul>
+<p>不足：</p>
+<ul>
+<li>工艺复杂，比较难控制</li>
+<li>液态成形内部均匀性差、致密性差</li>
+<li>零件容易出现<strong>缩孔</strong>、<strong>气孔</strong>、<strong>沙眼</strong>、<strong>夹杂</strong>、<strong>裂纹</strong>等缺陷，产品不稳定</li>
+<li>内部晶粒粗大组织不均匀，力学性能差</li>
+</ul>
+<p>液态合金的工艺性能表征为液态合金的 <strong>铸造性能</strong>（包括 <strong>流动性、凝固特性、收缩性、吸气性及偏析</strong>等性能）</p>
+<h2 id="液态合金的充型"><a href="#液态合金的充型" class="headerlink" title="液态合金的充型"></a>液态合金的充型</h2><p>液态金属 <strong>充满型腔并是铸件形态完整、轮廓清晰</strong> 的能力，称为合金的 <strong>充型能力</strong></p>
+<p>充型能力不足可能会导致：<strong>浇不足、冷隔、气孔、夹砂、夹杂</strong> 等缺陷</p>
+<blockquote>
+<p>造成铸件产生浇不足的主要原因是充型能力不足。</p>
+</blockquote>
+<p>充型能力的决定因素为：<strong>合金的流动性</strong>、<strong>铸件性质</strong>、<strong>浇注条件</strong>、<strong>铸件结构</strong></p>
+<blockquote>
+<p>上方文字选填题预定</p>
+</blockquote>
+<h3 id="合金的流动性"><a href="#合金的流动性" class="headerlink" title="合金的流动性"></a>合金的流动性</h3><p>同种合金中成分不同的合金具有不同的结晶特点，流动性也不同。 </p>
+<p>有以下特性：</p>
+<ul>
+<li><strong>两相区结晶，流动性较差</strong>（共晶点处流动性最好）（由于在两相区，结晶是在一个温度区间进行的，初生的树枝状会使已结晶的地方比较粗糙，使流动性变差）</li>
+</ul>
+<ul>
+<li><strong>恒温下结晶，流动性较好</strong>（恒温下，金属结晶有表层逐层向内，已结晶的金属比较光滑）</li>
+</ul>
+<blockquote>
+<p>含碳量为4.3%的铁有良好的可铸性</p>
+</blockquote>
+<h3 id="浇注条件"><a href="#浇注条件" class="headerlink" title="浇注条件"></a>浇注条件</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">浇注条件</th>
+<th style="text-align:center">解释</th>
+<th style="text-align:center">结论</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">浇注温度</td>
+<td style="text-align:center">浇注温度越高，液态金属含热量高、粘度小，保持液体时间长，充型能力强</td>
+<td style="text-align:center">T↑ → ↑</td>
+</tr>
+<tr>
+<td style="text-align:center">充型压力</td>
+<td style="text-align:center">这个不用解释。。。</td>
+<td style="text-align:center">P↑ → ↑</td>
+</tr>
+<tr>
+<td style="text-align:center">浇注系统</td>
+<td style="text-align:center">结构越复杂，阻力越大，充型能力越差</td>
+<td style="text-align:center">复杂↑ → ↓</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="铸型性质"><a href="#铸型性质" class="headerlink" title="铸型性质"></a>铸型性质</h3><ul>
+<li>铸型温度↑ → 充型能力↑</li>
+<li>蓄热能力↑ → 充型能力↑</li>
+<li>铸型中气体↑ → 内部压力↑ → 充型能力↑</li>
+</ul>
+<h3 id="提高流动性"><a href="#提高流动性" class="headerlink" title="提高流动性"></a>提高流动性</h3><ol>
+<li>选用共晶成分的材料，或结晶温度范围窄的材料</li>
+<li>提高浇注温度、充型压力</li>
+<li>提高合金液体质量，减少气体、杂质</li>
+<li>合理设置浇注系统，改进铸件结构</li>
+</ol>
+<h2 id="铸造合金的凝固与收缩"><a href="#铸造合金的凝固与收缩" class="headerlink" title="铸造合金的凝固与收缩"></a>铸造合金的凝固与收缩</h2><h3 id="液态金属的凝固"><a href="#液态金属的凝固" class="headerlink" title="液态金属的凝固"></a>液态金属的凝固</h3><p>在铸件的凝固过程中，截面一般存在三个区域，即液相区、凝固区、固相区。<strong>对铸件质量影响较大的主要是液固并存的凝固区的宽窄</strong>。铸件的凝固方式就是依据凝固区的宽窄来划分的。 </p>
+<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20200823213901.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>一般来说逐层凝固，合金的充型能力强，便于防止缩松和缩孔等缺陷</p>
+<h4 id="影响凝固方式的因素"><a href="#影响凝固方式的因素" class="headerlink" title="影响凝固方式的因素"></a>影响凝固方式的因素</h4><p>主要是合金的 <strong>结晶温度范围</strong> 和 <strong>铸件的温度梯度</strong>（就是温度变化的斜率）（铸型蓄热能力↑、铸型温度↑ → 温度梯度↑ → 凝固区域窄）</p>
+<blockquote>
+<p>填空题预定</p>
+</blockquote>
+<h3 id="铸造合金的收缩"><a href="#铸造合金的收缩" class="headerlink" title="铸造合金的收缩"></a>铸造合金的收缩</h3><p>铸件在<strong>液态、凝固态和固态</strong>冷却过程中所发生的体积减小的现象，称为收缩。 收缩是多种铸造缺陷（如缩孔、缩松、裂纹、变形等）产生的根源。 </p>
+<p>有两种：<strong>体收缩</strong>（液态收缩、凝固收缩）和 <strong>线收缩</strong>（固态收缩）</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">类型</th>
+<th style="text-align:center">收缩类型</th>
+<th style="text-align:center">铸造缺陷</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">线收缩</td>
+<td style="text-align:center">固态收缩</td>
+<td style="text-align:center">应力、变形、裂纹</td>
+</tr>
+<tr>
+<td style="text-align:center">体收缩</td>
+<td style="text-align:center">液态收缩、凝固收缩</td>
+<td style="text-align:center">缩松、缩孔</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 id="影响因素"><a href="#影响因素" class="headerlink" title="影响因素"></a>影响因素</h4><ul>
+<li>化学成分（<strong>石墨</strong>的析出产生的体积膨胀，会抵消部分凝固收缩）</li>
+<li>浇注温度（温度越高，过热度越大，收缩量越大）（<strong>在满足流动性要求的前提下，尽可能降低浇注温度</strong>）</li>
+<li>铸件结构与铸型条件</li>
+</ul>
+<h3 id="缩松与缩孔"><a href="#缩松与缩孔" class="headerlink" title="缩松与缩孔"></a>缩松与缩孔</h3><h4 id="缩孔"><a href="#缩孔" class="headerlink" title="缩孔"></a>缩孔</h4><p><strong>纯金属、共晶成分和凝固温度范围窄的合金</strong>（条件①），浇注后在型腔内是由表及里的<strong>逐层凝固</strong>（条件②）。在凝固过程中，如得不到合金液的补充，在铸件最后凝固的地方就会产生<strong>缩孔</strong>.</p>
+<p>产生原因：合金的液态收缩和凝固收缩值大于固态收缩值，且得不到补偿。</p>
+<p>缩孔产生的部位在铸件<strong>最后凝固区域</strong>，如壁较厚大的上部或铸件两壁相交处，这些地方称为热节。</p>
+<p><strong>合金的液态收缩和凝固收缩愈大、浇注温度愈高、铸件愈厚，缩孔的体积愈大。</strong></p>
+<h4 id="缩松"><a href="#缩松" class="headerlink" title="缩松"></a>缩松</h4><p>非共晶成分的合金或有较宽结晶温度的合金成 <strong>糊状凝固</strong> 。</p>
+<p><strong>缩松形成的条件</strong>：铸件主要呈糊状凝固方式凝固，成分为非共晶成分或有较宽结晶温度范围的合金。 </p>
+<h4 id="影响因素-1"><a href="#影响因素-1" class="headerlink" title="影响因素"></a>影响因素</h4><ul>
+<li><p>合金成分</p>
+<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20200823213914.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><strong>结晶范围小的合金，产生缩孔的倾向大；结晶范围大的合金，产生缩松的倾向大</strong></p>
+</li>
+<li><p>浇注条件</p>
+<p><strong>浇注温度越高，缩松缩孔倾向越大</strong></p>
+</li>
+<li><p>铸型材料</p>
+</li>
+<li><p>铸件结构</p>
+</li>
+</ul>
+<h4 id="防止方法"><a href="#防止方法" class="headerlink" title="防止方法"></a>防止方法</h4><ul>
+<li><p>控制铸件的凝固过程</p>
+<p>使铸件 <strong>顺序凝固</strong> 或 <strong>同时凝固</strong> 。</p>
+<ul>
+<li><p>顺序凝固：让铸件远离冒口的地方先凝固，靠近冒口的地方后凝固。最后才是冒口本身凝固。适用于收缩大，或壁厚大的合金铸件</p>
+<p>冒口补缩作用好，但是容易产生铸造应力、变形及裂纹等等</p>
+<blockquote>
+<p>为保证铸件质量，通常同时凝固适合于 <strong>缩孔</strong> 倾向大的铸造合金</p>
+</blockquote>
+</li>
+<li><p>同时凝固：采取必要的措施，使得部件各个部分的冷却速度相同，几乎同时凝固完全。（添加冷铁、将浇注口设置在壁厚较小的地方）</p>
+<p>不用设置冒口，使工艺简化，提高了良品率</p>
+<blockquote>
+<p>为保证铸件质量，通常同时凝固适合于 <strong>变形和裂纹</strong> 倾向大的铸造合金</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p>合理应用冒口、冷铁等工艺措施</p>
+<ul>
+<li><p>冒口一般设置在热节处，这样防止变形和裂纹的效果最好，同时冒口应该保证比铸件凝固晚，然后有足够的金属液</p>
+<blockquote>
+<p>不要将冒口设置在铸件重要的或受力较大的部位，以防组织粗大，降低该处强度。 </p>
+</blockquote>
+</li>
+<li><p>冷铁用来加大某一部分的冷却速度</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="铸件的内应力、变形与裂纹"><a href="#铸件的内应力、变形与裂纹" class="headerlink" title="铸件的内应力、变形与裂纹"></a>铸件的内应力、变形与裂纹</h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:left">名称</th>
+<th style="text-align:left">解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">热应力</td>
+<td style="text-align:left">由于铸件<strong>厚薄不一致</strong>，各部分 <strong>冷却速度</strong> 也不相同，使在同一时间内，各部分 <strong>收缩不一致</strong> 而造成的内应力</td>
+</tr>
+<tr>
+<td style="text-align:left">机械应力</td>
+<td style="text-align:left">铸件在收缩过程中 <strong>受到铸件或型芯阻扰</strong> 造成的应力</td>
+</tr>
+<tr>
+<td style="text-align:left">变形</td>
+<td style="text-align:left"><strong>残余热应力</strong> 的存在，使得铸件存在于一种非稳定的状态中，铸件将 <strong>自发的通过变形来减缓热应力</strong>，来达到平衡的状态</td>
+</tr>
+<tr>
+<td style="text-align:left">裂纹</td>
+<td style="text-align:left">当铸件应力超过金属的材料极限是，铸件产生裂纹</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="热应力"><a href="#热应力" class="headerlink" title="热应力"></a>热应力</h3><p>由于铸件<strong>厚薄不一致</strong>，各部分 <strong>冷却速度</strong> 也不相同，使在同一时间内，各部分 <strong>收缩不一致</strong> 而造成的内应力。下面说说热应力的形成</p>
+<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20200823213927.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>温度在 $t_K$ 以上，金属处于塑形阶段；在 $t_K$ 以下，金属处于弹性阶段。</p>
+<p>这样的话热应力的形成就可以分为三个部分：</p>
+<ul>
+<li>$\tau_0-\tau_1$：金属<strong>都处于塑性变形阶段</strong>，收缩引起的热应力会通过塑形变形消除。此时 <strong>无应力产生</strong></li>
+<li>$\tau_1-\tau_2$：<strong>厚壁金属</strong>由于比较厚因此冷却的比较慢，还<strong>处于塑形变形阶段</strong>，<strong>薄壁部分处于弹性变形阶段</strong>。薄壁金属短收到压应力，厚壁金属收到压应力。但由于还是有塑形变形，因此依然<strong>无应力产生</strong></li>
+<li>$\tau_2-\tau_3$：两者<strong>都进入弹性变形阶段</strong>。不过薄壁的变形变完了，厚壁部分还有一些要变形的部分，因此此时厚壁部分收缩量大于薄壁部分。厚壁部分收到拉应力，薄壁部分受到压应力。</li>
+</ul>
+<blockquote>
+<p>消除铸件中残余热应力的方法是 <strong>时效处理</strong></p>
+</blockquote>
+<h3 id="机械应力"><a href="#机械应力" class="headerlink" title="机械应力"></a>机械应力</h3><p>铸件在收缩过程中 <strong>受到铸件或型芯阻扰</strong> 造成的应力</p>
+<p>防止措施</p>
+<ul>
+<li>工艺上：采用合理的铸造工艺，使其 <strong>同时凝固</strong> 原则</li>
+<li>造型上：采取措施较小铸造应力（合理设置冒口等）</li>
+<li>结构上：尽量避免牵制到收缩的结构（是结构尽量对称，壁厚尽量均匀）</li>
+<li>去应力退火</li>
+</ul>
+<blockquote>
+<p>消除铸件中残余热应力的方法是 <strong>及时落砂</strong></p>
+</blockquote>
+<h3 id="变形"><a href="#变形" class="headerlink" title="变形"></a>变形</h3><p>具有残余应力的铸件是不稳定的，它将自发地通过变形来减缓其内应力，以便趋于稳定状态。</p>
+<p>原来受拉伸部分产生压缩变形、受压缩部分产生拉伸变形，才能使残余内应力减小或消除。 </p>
+<p><strong>厚部、心部受拉应力，出现内凹变形；薄部、表面受压应力，出现外凸变形</strong></p>
+<p>例如下图：</p>
+<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20200823213937.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">代号</th>
+<th style="text-align:center">加工方式</th>
+<th style="text-align:center">结论</th>
+<th style="text-align:center">解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">b</td>
+<td style="text-align:center">去除外表面</td>
+<td style="text-align:center">铸件变短</td>
+<td style="text-align:center">由外表面引起的心部拉应力减少，铸件变短</td>
+</tr>
+<tr>
+<td style="text-align:center">c</td>
+<td style="text-align:center">去除心部</td>
+<td style="text-align:center">铸件变长</td>
+<td style="text-align:center">由心部引起的外表面压应力减少，铸件变长</td>
+</tr>
+<tr>
+<td style="text-align:center">d</td>
+<td style="text-align:center">从侧面切一层</td>
+<td style="text-align:center">铸件变弯</td>
+<td style="text-align:center">中间厚两边薄，中间受到拉应力，两边受到压应力，铸件要恢复因此中间往回缩，两边往外开，就变弯了</td>
+</tr>
+</tbody>
+</table>
+</div>
+<blockquote>
+<p>一定要掌握的</p>
+</blockquote>
+<h2 id="MOOC-问答-3"><a href="#MOOC-问答-3" class="headerlink" title="[MOOC]问答"></a>[MOOC]问答</h2><ul>
+<li>某厂采用树脂砂砂型铸造生产新能源铝合金电机壳体，生产中发现铸件上部出现气孔缺陷，为消除此类缺陷，可以采取的措施有哪些？</li>
+</ul>
+<blockquote>
+<p>铸件上部出现气孔缺陷，说明这是 <strong>侵入气孔 。</strong></p>
+<p>预防侵入气孔的方法有：<strong>降低型砂的发气量</strong>和<strong>增加铸型的排气能力</strong></p>
+</blockquote>
+<h1 id="常用合金铸件的生产"><a href="#常用合金铸件的生产" class="headerlink" title="常用合金铸件的生产"></a>常用合金铸件的生产</h1><h2 id="铸铁件的生产"><a href="#铸铁件的生产" class="headerlink" title="铸铁件的生产"></a>铸铁件的生产</h2><p>C 在 铸铁中主要以两种形式存在： <strong>$Fe_3C$ (渗碳体)和 石墨(游离碳)</strong></p>
+<p>有以下分类：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">名称</th>
+<th style="text-align:center">主要成分</th>
+<th style="text-align:center">力学性能</th>
+<th style="text-align:center">牌号</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">白口铸铁</td>
+<td style="text-align:center">$Fe_3C$</td>
+<td style="text-align:center">硬而脆，很差</td>
+<td style="text-align:center">-</td>
+</tr>
+<tr>
+<td style="text-align:center">麻口铸铁</td>
+<td style="text-align:center">一部分$ Fe_3C$，一部分石墨</td>
+<td style="text-align:center">介于上下之间</td>
+<td style="text-align:center">-</td>
+</tr>
+<tr>
+<td style="text-align:center">普通灰口铸铁</td>
+<td style="text-align:center">片状石墨</td>
+<td style="text-align:center">硬度低塑性差，但铸造性能好</td>
+<td style="text-align:center">ZT</td>
+</tr>
+<tr>
+<td style="text-align:center">可锻铸铁</td>
+<td style="text-align:center">团絮状石墨</td>
+<td style="text-align:center">韧性塑形好</td>
+<td style="text-align:center">KTH、KTZ</td>
+</tr>
+<tr>
+<td style="text-align:center">球墨铸铁</td>
+<td style="text-align:center">球状石墨</td>
+<td style="text-align:center">强度塑性比可锻铸铁高</td>
+<td style="text-align:center">QT</td>
+</tr>
+<tr>
+<td style="text-align:center">蠕墨铸铁</td>
+<td style="text-align:center">蠕虫状石墨</td>
+<td style="text-align:center">同时有普通灰口铸铁和球墨铸铁的性质</td>
+<td style="text-align:center">-</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>由于有了石墨，铸铁有很多铸钢没有的性质：</p>
+<ul>
+<li>良好的铸造性能，流动性大，收缩小</li>
+<li>良好的切削加工性能</li>
+<li>耐磨性好</li>
+<li>良好的吸振缓冲性能</li>
+<li>低的缺口敏感性</li>
+</ul>
+<blockquote>
+<p>PPT中标红</p>
+</blockquote>
+<h3 id="石墨化"><a href="#石墨化" class="headerlink" title="石墨化"></a>石墨化</h3><p>石墨化：石墨析出的过程。</p>
+<p>从上面可以看出，石墨对铸铁件的力学性能影响很大，石墨的形态与数量是关键</p>
+<p>由于 C 在铸铁中由 石墨 和 $Fe_3C$ 构成，因此根据 $Fe_3C$ 的不同，可以将灰口铸铁分为：铁素体灰铸铁（全部为石墨）、铁素体-珠光体灰铸铁（化合碳&lt;0.8%）、珠光体灰铸铁（化合碳0.8%）</p>
+<p>影响石墨化的因素：</p>
+<ul>
+<li><p>化学成分</p>
+<p>C 和 Si 的含量对石墨化影响是其决定性的。C是形成石墨化的元素，Si 是强烈促进石墨化的元素。含 C 、Si 量越多，石墨越粗大，基体 F 增加，P 减少。</p>
+<p>P 也会促进石墨化，但是一旦多了就会出现冷脆性</p>
+<p>S 会抑制石墨化，属于有害元素</p>
+</li>
+<li><p>冷却速度</p>
+<p>冷却速度减缓，会促进石墨化</p>
+<blockquote>
+<p>当其他条件一定时，壁厚越大，金属冷却速度越大，石墨化倾向大，会形成粗大的铁素体和石墨，导致铸铁强度，硬度的下降。不过当壁厚小到一定程度时，·无法进行，会形成白口组织</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="灰口铸铁"><a href="#灰口铸铁" class="headerlink" title="灰口铸铁"></a>灰口铸铁</h3><p>灰口铸铁的性能不仅取决于化学性能，还取决于铸件的壁厚，因此牌号用 <strong>力学性能</strong> 来表示。用 <strong>HT×××</strong> 表示，后面的三位数字表示其抗拉强度。铸件设计时，应该根据铸件的平均壁厚选择。</p>
+<blockquote>
+<p>灰口铸铁力学性能较差，几乎没有塑性，抗拉能力较差，但是抗压能力还可以；有着良好的铸造性和切削加工性能（石墨润滑）；良好的耐磨性、减震性，缺口敏感性好。</p>
+</blockquote>
+<h4 id="孕育处理"><a href="#孕育处理" class="headerlink" title="孕育处理"></a>孕育处理</h4><p>普通灰铸铁的主要缺点是<strong>粗大的石墨片</strong>严重地割裂金属基体，致使铸铁<strong>强度低</strong>。 实践证明，提高灰铸铁抗拉强度最有效的途径是：对出炉铁液进行<strong>孕育处理</strong>再行浇注。</p>
+<p>孕育处理是向含C、Si量少的 Fe 中加入孕育剂（促进石墨化）。常用的孕育剂为：<strong>含 Si 量为75%的硅铁合金</strong>。硅铁加入量为铁水质量的0.25%-0.60%。</p>
+<p>孕育处理后的金属组织特点为：细小的 P 晶粒上附着着细小的石墨片。相比于普通的灰口铸铁，孕育处理后的铸铁[孕育铸铁]，强度硬度耐磨性好，但是铸造性能下降</p>
+<h3 id="可锻铸铁"><a href="#可锻铸铁" class="headerlink" title="可锻铸铁"></a>可锻铸铁</h3><p>（不可锻造）<strong>可锻铸铁是将白口铸铁经过长时间高温退火得到的一种高塑形和高韧性的铸铁</strong>。根据退火工艺不同，可分为三种。</p>
+<ul>
+<li><p>黑心可锻铸铁（KYH×××-××）</p>
+<p>$Fe_3C$ 全部分解为团絮状石墨，基体为铁素体</p>
+</li>
+<li><p>珠光体可锻铸铁（KYZ×××-××）</p>
+<p>退火时速度比较快，共析渗碳体未完全石墨化，组织为珠光体基体附着团絮状石墨</p>
+</li>
+<li><p>白心可锻铸铁</p>
+<p>白口坯件在氧化氛围脱碳退火得到，组织与钢相近心部为铁素体+团絮状石墨</p>
+</li>
+</ul>
+<p>注：牌号后面第一组数孖表示最小抗拉强度值，第二组数孖表示最小延伸率值。球墨铸铁同</p>
+<blockquote>
+<p>制造自来水管的弯头、接头、三通应选用 <strong>可锻铸铁</strong></p>
+</blockquote>
+<h3 id="球墨铸铁"><a href="#球墨铸铁" class="headerlink" title="球墨铸铁"></a>球墨铸铁</h3><p>球墨铸铁是通过浇注前向铁水加入一定量<strong>球化剂</strong>和<strong>孕育剂</strong>，以促进碳呈球状石墨结合，从而获得一种高强度和良好塑形的铸铁。</p>
+<h4 id="生产特点"><a href="#生产特点" class="headerlink" title="生产特点"></a>生产特点</h4><ul>
+<li>严格控制化学成分 （C、Si 高；S、P 低）</li>
+<li>较高的出铁温度</li>
+<li>进行球化处理（作用是使石墨呈球状析出）</li>
+<li>进行孕育处理（作用是促进石墨化）</li>
+</ul>
+<blockquote>
+<p>球墨铸铁保留了灰口铸铁的优良特性而且焊接性能和热处理性能也比其他灰口铸铁好。不过铸造性能比灰口铸铁差</p>
+</blockquote>
+<h4 id="热处理"><a href="#热处理" class="headerlink" title="热处理"></a>热处理</h4><ul>
+<li><strong>退火</strong>（可以得到铁素体球墨铸铁）</li>
+<li><strong>正火</strong>（可以得到珠光体球墨铸铁）</li>
+</ul>
+<h3 id="蠕墨铸铁"><a href="#蠕墨铸铁" class="headerlink" title="蠕墨铸铁"></a>蠕墨铸铁</h3><p>有灰口铸铁和球墨铸铁的一系列优点，而且热疲劳性能好（&gt;&gt;球墨），壁厚敏感性好（&gt;&gt;灰口）</p>
+<h2 id="铸钢"><a href="#铸钢" class="headerlink" title="铸钢"></a>铸钢</h2><p>优点是：力学性能高（塑性韧性高），焊接性能优良</p>
+<p>缺点是：铸造性能、减震性和切口敏感性比铸铁差</p>
+<h2 id="有色金属"><a href="#有色金属" class="headerlink" title="有色金属"></a>有色金属</h2><p>略</p>
+<h1 id="砂型铸造"><a href="#砂型铸造" class="headerlink" title="砂型铸造"></a>砂型铸造</h1><h2 id="造型方法的选择"><a href="#造型方法的选择" class="headerlink" title="造型方法的选择"></a>造型方法的选择</h2><p>在砂型铸造中，造型和造芯是最基本的工序。根据造型生产方法的特点，通常分为 <strong>手工造型</strong> 和 <strong>机器造型</strong> 两大类。</p>
+<h3 id="手工造型"><a href="#手工造型" class="headerlink" title="手工造型"></a>手工造型</h3><ul>
+<li>按砂箱特征分类</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">造型方法</th>
+<th style="text-align:center">分型面</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">两箱造型</td>
+<td style="text-align:center">各类模样，可机器造型</td>
+</tr>
+<tr>
+<td style="text-align:center">多箱造型</td>
+<td style="text-align:center">一般用于铸件中间截面较两端小的情况</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul>
+<li><p>按模样特征分</p>
+<p>课件上的比较好，这里就不说了</p>
+</li>
+</ul>
+<h2 id="浇注位置的选择"><a href="#浇注位置的选择" class="headerlink" title="浇注位置的选择"></a>浇注位置的选择</h2><ul>
+<li>铸件的重要工作面、主要加工面应该朝下或侧立放置 <code>气孔、缩孔容易出现在铸件的上方</code></li>
+<li>铸件的大平面应朝下，以免形成夹渣和夹砂等缺陷。</li>
+<li>应将铸件薄而大的平面放在下部、侧面或倾斜位置，以利于合金液填充铸型。</li>
+<li>铸件厚大部分应该放在上面或侧面，方便安放冒口</li>
+</ul>
+<blockquote>
+<p>核心重点</p>
+</blockquote>
+<h2 id="分型面的选择"><a href="#分型面的选择" class="headerlink" title="分型面的选择"></a>分型面的选择</h2><ul>
+<li>应保证模样能顺利从铸型中取出。 </li>
+<li>应尽量减少分型面的数量。</li>
+<li>应尽量使分型面是一个平直的面。</li>
+<li>应尽量使型芯和活块的数量减少。</li>
+<li>应使全部或大部分铸件，或加工基准面与重要的加工面处于同一半型内，以防止错型。</li>
+</ul>
+<blockquote>
+<p>核心重点</p>
+</blockquote>
+<ul>
+<li><p>例题</p>
+<p>试对下图所示轴座铸件选择两个可能的分型方案，用符号表示在图上，并比较其优缺点，然后按你认为最好的分型面用符号表示出浇注位置、加工余量、拔模斜度和型芯的轮廓，并指出造型方法。</p>
+<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20200823213952.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>答案：</p>
+<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20200823214003.png" srcset="/img/loading.gif" lazyload alt=""></p>
+</li>
+</ul>
+<h2 id="铸造工艺参数的选择"><a href="#铸造工艺参数的选择" class="headerlink" title="铸造工艺参数的选择"></a>铸造工艺参数的选择</h2><h3 id="机械加工余量和铸孔"><a href="#机械加工余量和铸孔" class="headerlink" title="机械加工余量和铸孔"></a>机械加工余量和铸孔</h3><p>设计铸造工艺图时，为铸件预先增加要切去的金属层厚度，称为机械加工余量。</p>
+<p>机械加工余量与以下内容有关：</p>
+<ul>
+<li><p>合金种类</p>
+<p>铸钢件的表面粗糙，加工余量应该更大；有色合金价格昂贵，表面光洁，其加工余量较小</p>
+</li>
+<li><p>铸件尺寸</p>
+<p>铸件尺寸越大，机械加工余量越大</p>
+</li>
+<li><p>加工面位置</p>
+<p>注浇时朝上的表面缺陷多，其加工余量比底面和侧面大</p>
+</li>
+</ul>
+<p>铸孔：铸件上的孔、槽是否需要铸出，不仅要考虑工艺上的可能性，尤其应结合 <strong>铸件的批量分析其必要性</strong>。（一般大孔铸出，小孔不铸）</p>
+<h3 id="铸造收缩率"><a href="#铸造收缩率" class="headerlink" title="铸造收缩率"></a>铸造收缩率</h3><p>由于合金在冷却过程中要发生 <strong>固态收缩(线收缩)</strong>，这将使铸件各部分尺寸小于模样原来的尺寸，因此，为了使铸件冷却后的尺寸与铸件图示尺寸一致，则需要在模样或芯盒上加上其收缩的尺寸。</p>
+<script type="math/tex; mode=display">
+K=\frac{L_0-L}{L_0}\times100\%</script><p>其中，<em>L0</em> 为模样尺寸，<em>L</em> 为铸件尺寸</p>
+<h3 id="拔模斜度"><a href="#拔模斜度" class="headerlink" title="拔模斜度"></a>拔模斜度</h3><p>为了在造型和制芯时便于起模而不致损坏砂型和砂芯，凡垂直于分型面的立壁，在<strong>制造模型</strong>时，必须留出一定的倾斜度，此斜度称为<strong>拨模斜度</strong>。（不是设计）（<strong>垂直壁越高，斜度越小</strong>）</p>
+<h3 id="铸造圆角"><a href="#铸造圆角" class="headerlink" title="铸造圆角"></a>铸造圆角</h3><p>制造模型和设计铸件时，壁的连接和转角处都要做成圆弧过渡，称为铸造圆角。</p>
+<p>有时零件上并不需要圆角，为了铸造工艺的需要，也要做成圆角，但铸型分型面处则不宜做成圆角。</p>
+<h3 id="冒口与冷铁"><a href="#冒口与冷铁" class="headerlink" title="冒口与冷铁"></a>冒口与冷铁</h3><p>冒口的作用：</p>
+<ul>
+<li>在凝固期间进行补缩</li>
+<li>调节冷却速度</li>
+</ul>
+<p>冷铁的作用：</p>
+<ul>
+<li>调节冷却速度，改变凝固顺序</li>
+<li>减少冒口数量，增加金属利用率</li>
+<li>在无法安放冒口的地方起到同样的作用</li>
+<li>消除局部热应力</li>
+</ul>
+<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20200823214028.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="铸件的结构设计"><a href="#铸件的结构设计" class="headerlink" title="铸件的结构设计"></a>铸件的结构设计</h2><ul>
+<li>避免外部侧凹</li>
+<li>肋板、凸台设计考虑起模方便</li>
+<li>尽量避免或减少型腔</li>
+<li>应该避免封闭内腔</li>
+<li>铸件要有结构斜度（<strong>斜度值较大</strong>）</li>
+<li>应该合理设计壁厚</li>
+<li>铸件连接处应该有圆角</li>
+<li>铸件厚薄不一致时，力求平缓过渡</li>
+<li>减少交叉和锐角</li>
+<li>避免大的平面（不利于金属液的填充，易发生浇不足、冷隔等现象）</li>
+</ul>
+<blockquote>
+<p>例题</p>
+</blockquote>
+<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20200823214040.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>答案：</p>
+<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20200823214050.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ul>
+<li>a：壁厚相差太大</li>
+<li>b：凸台和筋条结构应便于起模。</li>
+<li>c：①分型面处不应该设置圆角②凸台应便于起模</li>
+<li>d：凸台应便于起模</li>
+</ul>
+<h2 id="MOOC-问答-4"><a href="#MOOC-问答-4" class="headerlink" title="[MOOC]问答"></a>[MOOC]问答</h2><ul>
+<li>某工厂用T10钢制造的钻头给一批铸铁件钻10mm深孔，钻几个孔以后钻头很快就磨损，经检验，钻头的材质、热处理工艺、金相组织、硬度均合格，试问失败原因，并请提出解决办法。</li>
+</ul>
+<blockquote>
+<p>失败原因：①铸件产生麻口或白口组织，硬度过高，使钻头磨损 ②铸件表面有粘砂</p>
+<p>解决办法：①退火处理，消除铸件麻口或白口组织 ②将铸件表面磨一下，去除表面粘砂</p>
+</blockquote>
+<h1 id="特种铸造"><a href="#特种铸造" class="headerlink" title="特种铸造"></a>特种铸造</h1><h2 id="MOOC-问答-5"><a href="#MOOC-问答-5" class="headerlink" title="[MOOC]问答"></a>[MOOC]问答</h2><ul>
+<li><p><strong>挤压铸造</strong> 生产铝连杆铸件，铸件晶粒最小</p>
+</li>
+<li><p><strong>砂型铸造</strong> 可以用来生产大型铸件</p>
+</li>
+<li><p>热烈倾向大的合金 <strong>不适用</strong> 于金属型铸造。</p>
+</li>
+<li><p>压铸件<strong>不能</strong>进行热处理或在高温下工作。</p>
+</li>
+<li><p>如铸件有致密度要求，如用压力铸造方法生产能否满足要求？什么是真空压铸？</p>
+<blockquote>
+<p><strong>不能</strong>，因为铸件内部组织疏松，而且内部存在气孔，缩孔和缩松等缺陷。</p>
+<p>真空压铸是通过在压铸过程中 <strong>抽除压铸模具型腔内的气体</strong> 而消除或显著减少压铸件内的气孔和溶解气体，从而提高压铸件力学性能和表面质量的先进压铸工艺。（百度百科）</p>
+</blockquote>
+</li>
+</ul>
+<h1 id="金属压力加工基础"><a href="#金属压力加工基础" class="headerlink" title="金属压力加工基础"></a>金属压力加工基础</h1><p><strong>固态金属</strong>在外力作用下产生<strong>塑形变形</strong>，获得一定形状、尺寸和力学性能的零件等的生产方法</p>
+<p>良好是塑形是金属压力加工的必要条件（要求断面收缩率大、延伸率大）</p>
+<h2 id="金属塑形变形的实质"><a href="#金属塑形变形的实质" class="headerlink" title="金属塑形变形的实质"></a>金属塑形变形的实质</h2><p>金属塑形变形的实质可以用 <strong>晶粒内部、晶粒间产生滑移和晶粒发生转动</strong> 来解释</p>
+<p>金属收到外力作用→内部产生应力→原子离开平衡位置→弹性变形→塑形变形</p>
+<h3 id="单晶体变形"><a href="#单晶体变形" class="headerlink" title="单晶体变形"></a>单晶体变形</h3><ul>
+<li><p>滑移</p>
+<p>近代物理学证明，实际晶体内部存在大量缺陷，其中以 <strong>位错</strong> 对金属塑性变形的影响最为明显。</p>
+</li>
+<li><p>孪生</p>
+</li>
+</ul>
+<h3 id="多晶体变形"><a href="#多晶体变形" class="headerlink" title="多晶体变形"></a>多晶体变形</h3><p>机械制造中大多数是多晶体，其中多晶体是由很多单晶体构成的，因此多晶体变形分为两类：<strong>晶内变形、晶间变形</strong>（滑动转动）</p>
+<ul>
+<li>一般来说，同一成分的金属，晶粒越细，其强度、硬度越高，而且塑性和韧性也越好。</li>
+</ul>
+<blockquote>
+<p>晶粒细小→晶界强化区大→变形受阻→强度硬度高→变形分散度大→每一个变形大→塑性韧性高</p>
+</blockquote>
+<h2 id="塑形变形对金属组织和性能的影响"><a href="#塑形变形对金属组织和性能的影响" class="headerlink" title="塑形变形对金属组织和性能的影响"></a>塑形变形对金属组织和性能的影响</h2><p>金属在常温下塑形加工过后，内部组织将发生如下变化</p>
+<ul>
+<li>晶粒向最大变形的方向延展</li>
+<li>晶格与晶粒发生扭曲，产生内应力</li>
+<li>晶粒间产生碎晶</li>
+</ul>
+<p>宏观上表现为：硬度增加，塑性下降。这种现象被称为 <strong>加工硬化</strong></p>
+<blockquote>
+<p>单晶体内发生滑移，产生内应力，滑动阻力增大；晶粒间产生碎粒，滑动阻力增大。进一步变形会比较困难，表现为强度硬度上升，塑形下降。</p>
+<p>加工硬化的主要原因是：<strong>位错密度增加</strong></p>
+</blockquote>
+<p>加工硬化是一种不稳定的现象，会自发的恢复。当温度升高时，原子热运动加剧，原子的排列会恢复到之前的状态，从而消除晶格扭曲，得到 <strong>部分消除</strong>（<strong>回复</strong>现象）</p>
+<p>这时的温度被称为 <strong>回复温度</strong> ，其中：<strong>T回=(0.25-0.3)T熔</strong>。不过此时晶体形状没有变化。</p>
+<p>当温度继续升高，金属原子获得更多的热能，开始以某些碎晶或杂质为核心，按变形前的晶格结构结晶成新的晶粒，这一过程称为<strong>再结晶</strong>。 此时加工硬化现象可以<strong>完全消除</strong></p>
+<p>这时的温度叫做 <strong>再结晶温度</strong>，其中 <strong>T再=0.4T熔</strong>。</p>
+<blockquote>
+<p>再结晶退火就是这个原理</p>
+</blockquote>
+<h3 id="冷变形与热变形"><a href="#冷变形与热变形" class="headerlink" title="冷变形与热变形"></a>冷变形与热变形</h3><ul>
+<li><p>在结晶温度<strong>以下</strong>发生的塑形变形是冷变形，<strong>会</strong>产生加工硬化现象。</p>
+</li>
+<li><p>在结晶温度<strong>以上</strong>发生的塑形变形是热变形，<strong>不会</strong>产生加工硬化现象。</p>
+<blockquote>
+<p>加工硬化与再结晶现象同时发生，加工硬化会被再结晶消除</p>
+</blockquote>
+</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>温度</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>熔化温度</td>
+<td>T熔</td>
+<td>熔化</td>
+</tr>
+<tr>
+<td>再结晶温度</td>
+<td>T再 = 0.4 T熔</td>
+<td>热变形，加工硬化可完全恢复（再结晶现象）</td>
+</tr>
+<tr>
+<td>回复温度</td>
+<td>T再 = (0.25-0.3) T熔</td>
+<td>冷变形，加工硬化部分恢复（回复现象）</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="纤维组织变化"><a href="#纤维组织变化" class="headerlink" title="纤维组织变化"></a>纤维组织变化</h3><p>铸锭在压力加工中产生塑性变形时，基体金属的晶粒形状和沿晶界分布的杂质形状都发生了变形，它们都将沿着 <strong>变形方向</strong> 被拉长，呈纤维形状。这种结构叫纤维组织。（要记）</p>
+<p>变形后纤维组织纤维组织使金属在性能上具有了<strong>方向性</strong> 。纤维组织越明显，金属在纵向(平行纤维方向)上塑性和韧性提高，而在横向(垂直纤维方向)上塑性和韧性降低。</p>
+<p><strong>变形程度越大，纤维组织越明显。</strong>压力加工过程中，常用锻造比(y)来表示变形程度。</p>
+<blockquote>
+<p> 纤维组织的稳定性很高，<strong>不能用热处理方法加以消除</strong>，只有经过 <strong>压力加工</strong> 使金属变形，才能变其方向和形状。 （判断题）</p>
+</blockquote>
+<p>纤维组织的利用原则：</p>
+<ul>
+<li><p>使纤维分布与零件的轮廓相符合而不被切断</p>
+<blockquote>
+<p>局部镦粗的螺钉比切削加工的螺钉承载能力强</p>
+</blockquote>
+</li>
+<li><p>零件所受的最大拉应力与纤维方向一致，最大切应力与纤维方向垂直。 </p>
+</li>
+</ul>
+<h2 id="金属的可锻性"><a href="#金属的可锻性" class="headerlink" title="金属的可锻性"></a>金属的可锻性</h2><p>受到塑形变形而不开裂的能力</p>
+<p>可锻性常用金属的 <strong>塑性和变形抗力</strong> 来综合衡量。塑性越好，变形抗力越小，则金属的可锻性好。反之则差。</p>
+<p>金属的可锻性取决于<strong>金属的本质</strong>（内因）和<strong>加工条件</strong>（外因）。</p>
+<h3 id="金属的本质（内因）"><a href="#金属的本质（内因）" class="headerlink" title="金属的本质（内因）"></a>金属的本质（内因）</h3><ol>
+<li><p>化学成分</p>
+<p>合金元素含量越多，合金成分越复杂，其塑性越差，变形抗力越大。</p>
+</li>
+<li><p>金属组织</p>
+<p>纯金属及单一固溶体组成的合金（如奥氏体）的可锻性好；碳化物（如渗碳体）的可锻性差。</p>
+</li>
+</ol>
+<h3 id="加工条件（外因）"><a href="#加工条件（外因）" class="headerlink" title="加工条件（外因）"></a>加工条件（外因）</h3><h4 id="变形温度"><a href="#变形温度" class="headerlink" title="变形温度"></a>变形温度</h4><p>在一定的变形温度范围内，随着温度升高，原子动能升高，从而塑性提高，变形抗力减小，有效改善了可锻性。</p>
+<p>但是温度过高会出现各种缺陷</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>原因</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>过热</td>
+<td>T大→晶粒大→金属力学性能下降</td>
+</tr>
+<tr>
+<td>过烧</td>
+<td>接近熔点→晶界氧化→塑性丧失→工件报废</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>因此控制温度就很重要了。于是乎就有 <strong>始锻温度</strong> 和 <strong>终锻温度</strong></p>
+<h4 id="变形速度"><a href="#变形速度" class="headerlink" title="变形速度"></a>变形速度</h4><ul>
+<li>v增大 → 再结晶来不及 → 不能及时克服加工硬化 → 可锻性差</li>
+<li>v增大 → 热效应明显 → 塑性韧性好（一般压力加工不明显）</li>
+</ul>
+<h4 id="应力状态"><a href="#应力状态" class="headerlink" title="应力状态"></a>应力状态</h4><p>对于本质塑性较好的金属，变形时出现拉应力是有利的。对于本质塑性较差的金属，则应尽量在三向压应力下变形，以免产生裂纹。</p>
+<blockquote>
+<p>实践证明：三个方向的应力中，<strong>压应力的数目越多，则金属的塑性越好</strong>；拉应力的数目越多，则金属的塑性越差。但压应力使金属内部摩擦阻力增大，变形抗力亦随之增大，所以拉拔加工比挤压加工省力。（了解）</p>
+<p>某种铁合金塑性较差，但又要用压力加工方法成型，此时，以选用 <strong>挤压</strong> 方法的成型效果最好。</p>
+</blockquote>
+<h1 id="常用的锻造方法"><a href="#常用的锻造方法" class="headerlink" title="常用的锻造方法"></a>常用的锻造方法</h1><p>锻造是使加热好的金属坯料，在外力的作用下发生塑性变形，通过控制金属的流动，使其成形为所需形状、尺寸和组织的方法。</p>
+<h2 id="自由锻"><a href="#自由锻" class="headerlink" title="自由锻"></a>自由锻</h2><p>只用简单的通用性工具，或在锻造设备的上、下砧间直接使坯料变形而获得所需的锻件，这种方法称为自由锻。 </p>
+<blockquote>
+<p><strong>自由锻是大型件唯一的锻造方法。</strong></p>
+</blockquote>
+<p>自由锻工序可分为<strong>基本工序</strong>（使金属坯料实现主要的变形要求，达到或基本达到锻件所需形状和尺寸的工序。）、<strong>辅助工序</strong>和<strong>修整工序</strong>三大类。</p>
+<p>基本工序主要有：</p>
+<ul>
+<li>墩粗：是坯料高度减小、横截面积增大的锻造工序</li>
+<li>拔长：使坯料横断面积减小、长度增加的锻造工序 （有反复翻转和螺旋式翻转两种）</li>
+<li>冲孔：在坯料上冲出通孔或盲孔的锻造工序称为冲<br>孔</li>
+<li>弯曲</li>
+<li>扭转</li>
+<li>切割</li>
+</ul>
+<h3 id="自由锻结构设计要求"><a href="#自由锻结构设计要求" class="headerlink" title="自由锻结构设计要求"></a>自由锻结构设计要求</h3><ul>
+<li>避免窄的凹槽、圆锥面等结构</li>
+<li>不允许有小的肋板、小凸台和相贯线等异形结构</li>
+<li>.自由锻件的横截面若有急剧变化或形状较复杂时，应设计成由几个简单件构成的几何体。</li>
+</ul>
+<h2 id="模锻"><a href="#模锻" class="headerlink" title="模锻"></a>模锻</h2><p>利用锻模使坯料变形而获得锻件的锻造方法称为<strong>模锻</strong>。 </p>
+<p>模锻分<strong>胎模锻</strong>和<strong>固定模锻</strong>两类。</p>
+<h3 id="胎模锻"><a href="#胎模锻" class="headerlink" title="胎模锻"></a>胎模锻</h3><p>胎模锻是在<strong>自由锻设备上</strong>使用<strong>可移动模具</strong>生产模锻件的一种方法。</p>
+<p>胎模不固定在锤头或砧座上，只是在使用时才放上去，它介于自由锻和模锻之间。</p>
+<h3 id="固定模锻"><a href="#固定模锻" class="headerlink" title="固定模锻"></a>固定模锻</h3><p>固定模锻根据所用设备不同可分为<strong>锤上模锻</strong>和<strong>压力机上模锻</strong>。</p>
+<p><strong>锤上模锻</strong>是我国当前模锻生产的基本方法。</p>
+<p>模锻生产的工艺规程制定包括：<strong>模锻锻件图制定、锻模模膛设计</strong>、毛坯计算、工序确定、设备选择、毛坯加热、锻模及模锻件的修正工序等。</p>
+<h4 id="锻件图的制定"><a href="#锻件图的制定" class="headerlink" title="锻件图的制定"></a>锻件图的制定</h4><ul>
+<li><p>分模面</p>
+<ul>
+<li><p>保证锻件能从模膛取出（a）</p>
+</li>
+<li><p>使模膛深度最浅（b）</p>
+</li>
+<li><p>分模面上下模锻外形一致（c）</p>
+</li>
+<li><p>使所需辅料最少</p>
+</li>
+<li><p>平面</p>
+<p><img src="http://jpkc.hhuc.edu.cn/clcxjs/web/picture/2-3.ht3.gif" srcset="/img/loading.gif" lazyload alt=""></p>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>余料、公差和敷料</p>
+<p>为了简化锻件形状，不予锻出添加的那部分金属称为敷料。</p>
+<blockquote>
+<p>孔的中间留有冲孔连皮（由于模锻无法直接锻出透孔，需在该处留有较薄的金属，称为冲孔连皮）</p>
+</blockquote>
+</li>
+<li><p>模锻斜度</p>
+<p>为了使锻件易于从模膛中取出，锻件与模膛侧壁接触部分需带一定斜度，锻件上的这一斜度称为模锻斜度</p>
+</li>
+</ul>
+<h4 id="锻模模膛"><a href="#锻模模膛" class="headerlink" title="锻模模膛"></a>锻模模膛</h4><p>根据模膛的功能，锻模的模腔分为<strong>模锻模膛</strong>和<strong>制坯模膛</strong>两大类。</p>
+<h5 id="模锻模膛"><a href="#模锻模膛" class="headerlink" title="模锻模膛"></a>模锻模膛</h5><ul>
+<li><p>预锻模膛</p>
+<p>使坯料变形接近锻件要求的形状和尺寸，这样在终锻模膛是，金属更容易填充模膛，从而减少模膛的磨损，延长寿命</p>
+<blockquote>
+<p><strong>预锻模膛的圆角和斜度要比终锻模膛要大，而且没有飞边槽</strong></p>
+</blockquote>
+</li>
+<li><p>终锻模膛</p>
+<p>终锻模膛的作用是使毛坯最后变形到锻件所要求的形状和尺寸，因此，它的形状应和锻件的<strong>形状相同</strong>，但因锻件冷却时要收缩，故终锻模膛的尺寸应比锻件<strong>尺寸放大一个收缩量</strong>。</p>
+<p>沿模膛四周有飞边槽</p>
+<blockquote>
+<p>飞边槽的作用：①增加金属从模膛流出的阻力，使金属充满模膛②容纳多余的金属</p>
+</blockquote>
+</li>
+</ul>
+<h5 id="制坯模膛"><a href="#制坯模膛" class="headerlink" title="制坯模膛"></a>制坯模膛</h5><p>对于形状复杂的锻件，为了使毛坯形状基本符合锻件形状，以便使金属能合理分布和很好地充满模膛，就必须预先在制坯模膛内制坯。</p>
+<ul>
+<li>拔长模膛</li>
+<li>滚压模膛</li>
+<li>弯曲模膛</li>
+<li>切断模膛</li>
+</ul>
+<h4 id="模锻工序的确定"><a href="#模锻工序的确定" class="headerlink" title="模锻工序的确定"></a>模锻工序的确定</h4><ul>
+<li>长轴：常选用拔长、滚压、弯曲、预锻和终锻等工序</li>
+<li>短轴（齿轮）：常选用镦粗、预锻和终锻等工序</li>
+</ul>
+<h4 id="修整工序"><a href="#修整工序" class="headerlink" title="修整工序"></a>修整工序</h4><ul>
+<li>切边和冲孔</li>
+<li>矫正</li>
+</ul>
+<h3 id="模锻将结构工艺性"><a href="#模锻将结构工艺性" class="headerlink" title="模锻将结构工艺性"></a>模锻将结构工艺性</h3><p>由于模锻件在锻模模膛中的成型条件比自由锻更加优越，因此模锻件形状比自由锻复杂</p>
+<p>设计时应该遵循：</p>
+<ul>
+<li>必须保证锻件从模膛取出</li>
+<li>模锻件形状应该简单（最小截面与最大截面之比如果小于0.5，那么锻件不易锻出）</li>
+<li>模锻件尺寸精度高，表面粗糙度低。因此只有与其他机件配合才需要进行机械加工，零件上与锤击方向平行的应该设计出斜度，非加工表面形成的角应该为圆角</li>
+<li>避免深孔、多孔结构</li>
+<li>采用组合工艺</li>
+</ul>
+<h1 id="板料冲压"><a href="#板料冲压" class="headerlink" title="板料冲压"></a>板料冲压</h1><p>使板料经分离或成型而制件的工艺称为冲压</p>
+<p>板料厚度＜4mm 时的金属板在常温下进行冲压，因此称为 <strong>冷冲压</strong>。只有当板料厚度超过 8-10mm 才采用 <strong>热冲压</strong></p>
+<p>优点：</p>
+<ul>
+<li>便于自动化生产，生产率高</li>
+<li>节省原材料，节省能源</li>
+<li>产品重量轻，强度高，刚性好</li>
+<li>产品尺寸稳定，互换性好，可加工形状复杂的零件</li>
+</ul>
+<h2 id="板料冲压基本工序"><a href="#板料冲压基本工序" class="headerlink" title="板料冲压基本工序"></a>板料冲压基本工序</h2><p>板料冲压的基本工序可以分为 <strong>分离工序</strong> 和 <strong>变形工序</strong> 两大类</p>
+<h3 id="分离工序"><a href="#分离工序" class="headerlink" title="分离工序"></a>分离工序</h3><p>落料和冲孔统称<strong>冲裁</strong></p>
+<p>落料是为了制取工件的外形，故冲下的部分为工件，带孔的为废料。</p>
+<p>冲孔则相反，是要制取工件的内孔，故冲下的部分为废料，带孔的部分为工件。</p>
+<h4 id="冲裁变形和分离过程"><a href="#冲裁变形和分离过程" class="headerlink" title="冲裁变形和分离过程"></a>冲裁变形和分离过程</h4><blockquote>
+<p>记过程</p>
+</blockquote>
+<p>此过程分为<strong>弹性变形、塑形变形、断裂分离</strong>三个阶段</p>
+<h4 id="冲裁件断面质量及其影响因素"><a href="#冲裁件断面质量及其影响因素" class="headerlink" title="冲裁件断面质量及其影响因素"></a>冲裁件断面质量及其影响因素</h4><p>冲裁面由 <strong>圆角带（a）、光亮带（b）、断裂带（c）和毛刺（d）</strong>组成</p>
+<ul>
+<li>圆角带a：冲裁过程中刃口附近材料被牵连拉入变形</li>
+<li>光亮带b：人口切入金属板料后，板料与模具侧面挤压而形成的光亮而垂直的断面</li>
+<li>断裂带c：刃口处微裂纹扩展形成</li>
+<li>毛刺d：刃口附近侧面材料出现微裂纹</li>
+</ul>
+<p><strong>提高冲裁件质量，就是要增大光亮带高度，缩小圆角带和毛刺的高度，并较少从裁剪翘曲</strong></p>
+<h4 id="凸凹模间隙"><a href="#凸凹模间隙" class="headerlink" title="凸凹模间隙"></a>凸凹模间隙</h4><p>凹凸模的间隙不仅严重影响冲裁件的断面质量，也影响模具寿命、卸料力、推件力和冲裁件的尺寸精度</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>效果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>间隙过小</td>
+<td>光亮面宽度增加，毛刺与圆角宽度减小，工件质量高，但是刀具寿命会减小，然后也会出现二次光带</td>
+</tr>
+<tr>
+<td>间隙合适</td>
+<td>光面占板厚的1/2-1/3，切断面的毛刺圆角和斜度均比较小，完全满足使用要求</td>
+</tr>
+<tr>
+<td>间隙过大</td>
+<td>断面光面减小，圆角与斜度增大，容易形成后而大的拉长毛刺，而且难以去除</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 id="凸凹模刃口尺寸的确定"><a href="#凸凹模刃口尺寸的确定" class="headerlink" title="凸凹模刃口尺寸的确定"></a>凸凹模刃口尺寸的确定</h4><p>确定原则如下：</p>
+<ul>
+<li>落料时，落料件的尺寸是由 <strong>凹模刃口</strong> 尺寸决定的，因此，应该以<strong>落料凹模</strong>为设计基准，考虑到凹模磨损后会使落料件尺寸增大，为提高刀具寿命，凹模刃口基本尺寸应该是落料件的<strong>最小极限尺寸</strong>。凸模尺寸 = 凹模尺寸 - 最小间隙值。</li>
+<li>冲孔时，冲孔件的尺寸是由 <strong>凸模刃口</strong> 尺寸所确定的，因此应该以 <strong>冲孔凸模</strong> 为基准。考虑到凸模磨损会变小，因此，凸模刃口是冲孔件的 <strong>最大极限尺寸</strong>。凹模尺寸 = 凸模尺寸 + 最小间隙值</li>
+</ul>
+<h4 id="冲裁力计算"><a href="#冲裁力计算" class="headerlink" title="冲裁力计算"></a>冲裁力计算</h4><p>冲裁时材料对凸模的最大抗力称为冲裁力。</p>
+<p>其大小与<strong>材质、料厚及冲裁件周边长度</strong>有关。</p>
+<h4 id="修整"><a href="#修整" class="headerlink" title="修整"></a>修整</h4><p>修整是利用修整模沿冲裁件外缘或内孔刮削一薄层金属，以切掉普通冲裁时在冲裁件断面上存留的剪裂带和毛刺，从而提高冲裁件的尺寸精度和降低表面粗糙度。 </p>
+<h4 id="切断"><a href="#切断" class="headerlink" title="切断"></a>切断</h4><p>切断是指用剪刃或冲模将板料沿不封闭轮廓进行分离的工序。</p>
+<h3 id="变形工序"><a href="#变形工序" class="headerlink" title="变形工序"></a>变形工序</h3><ul>
+<li><p>弯曲：将板料在弯矩作用下完成具有一定曲率和角度的制件的成型方法</p>
+<p>弯曲时还应尽可能使<strong>弯曲线与坯料纤维方向垂直</strong>。若弯曲线与纤维方向一致，则容易产生破裂。</p>
+<p><strong>回弹现象</strong>：由于材料的弹性形变的恢复，坯料会稍微弹回一点（凸凹模小一回转角）</p>
+<p>工程中常用最小相对弯曲半径（$r_{\min}/\delta$，$\delta$为工件厚度）来限制弯曲变形的程度</p>
+</li>
+<li><p>拉深：变形区一拉一压的作用下，是平板成为<strong>开口的中心件</strong>而厚度不变的加工方法。</p>
+<p>当拉深系数 $m=d/D$；一般来说，有$0.5\leq m\leq 0.8$。</p>
+<p>当筒形件直径d与坯料直径D相差较大时，不能一次拉深至产品尺寸，而应进行多次拉深，并在中间穿插进行<strong>再结晶退火处理</strong>，以消除前几次拉深变形所产生的<strong>加工硬化现象</strong>。</p>
+<p>拉深缺陷：</p>
+<ul>
+<li><p>拉裂（拉应力超过强度极限）</p>
+</li>
+<li><p>折皱（凸缘和凸模圆角部位变形最大，凸缘部分在圆周切线方向受压应力，压应力过大时，会发生折皱,坯料厚度愈小，拉深深度H愈大，愈容易产生折皱）</p>
+<blockquote>
+<p>可以使用有压板拉深来避免这个现象</p>
+</blockquote>
+</li>
+</ul>
+<p>防止措施</p>
+<ul>
+<li>凸凹模圆角半径应该合适 </li>
+<li>凸凹模间隙应合适</li>
+<li>合理控制拉深系数 m</li>
+</ul>
+</li>
+<li><p>起伏</p>
+</li>
+<li><p>翻边</p>
+</li>
+<li><p>胀形</p>
+</li>
+</ul>
+<h2 id="冲压件结构设计要求"><a href="#冲压件结构设计要求" class="headerlink" title="冲压件结构设计要求"></a>冲压件结构设计要求</h2><h3 id="对冲裁件要求"><a href="#对冲裁件要求" class="headerlink" title="对冲裁件要求"></a>对冲裁件要求</h3><ol>
+<li>对冲裁剪力求结构简单、对称，尽可能使用圆形矩形等规则形状，应避免窄而长的形状</li>
+<li>避免尖角，以圆弧过渡，以避免应力集中</li>
+<li>冲裁件尺寸应考虑到厚度</li>
+</ol>
+<h3 id="对弯曲件要求"><a href="#对弯曲件要求" class="headerlink" title="对弯曲件要求"></a>对弯曲件要求</h3><ol>
+<li>弯曲件应尽量对称，弯曲半径不能小于材料允许的最小弯曲半径，并考虑材料纤维方向</li>
+<li>弯曲边过短不易成型</li>
+<li>弯曲件带孔时，为了避免孔的变形，孔的边缘距弯曲中心应该有一段距离</li>
+</ol>
+<h3 id="对拉深件要求"><a href="#对拉深件要求" class="headerlink" title="对拉深件要求"></a>对拉深件要求</h3><ol>
+<li>拉深件的结构应该简单、对称、且不宜太高</li>
+<li>拉深件的圆角半径有要求</li>
+<li>拉深件的壁厚变薄量一般要求不超过拉伸工艺壁厚变化的规律</li>
+</ol>
+<h2 id="冲压模具"><a href="#冲压模具" class="headerlink" title="冲压模具"></a>冲压模具</h2><p>一般可分为<strong>简单模、连续模和复合模</strong>三类。</p>
+<h3 id="简单模"><a href="#简单模" class="headerlink" title="简单模"></a>简单模</h3><p>在压力机的一次行程中，只完成一道冲压工序的模具，称为简单模。 </p>
+<h3 id="连续模"><a href="#连续模" class="headerlink" title="连续模"></a>连续模</h3><p>压力机的一次行程中，在模具的不同部位上同时完成数道冲<br>压工序的模具，称为连续模。</p>
+<h3 id="复合模"><a href="#复合模" class="headerlink" title="复合模"></a>复合模</h3><p>利用压力机的一次行程，在模具的同一位置完成两道或两道以上工序的模具，称为复合模</p>
+<h1 id="焊接工艺基础"><a href="#焊接工艺基础" class="headerlink" title="焊接工艺基础"></a>焊接工艺基础</h1><p>焊接是一种永久性连接金属材料的工艺方法，焊接过程的实质是利用加热或加压等手段，借助金属原子的结合与扩散作用，是金属材料牢固的连接起来。</p>
+<p>焊接的方法可以分为3类：<strong>熔焊、压焊、钎焊</strong></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>定义</th>
+<th>细分</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>熔焊</td>
+<td>将焊接接头加热至熔化状态，不加压力的焊接方法</td>
+<td>手工电弧焊、埋弧焊、氩弧焊CO2焊、电渣焊、等离子弧焊</td>
+</tr>
+<tr>
+<td>压力焊</td>
+<td>焊接过程中必须对工件施加压力，已完成焊接的方法</td>
+<td>电阻焊（点焊、缝焊）等</td>
+</tr>
+<tr>
+<td>钎焊</td>
+<td>采用比母材熔点低的金属材料做钎焊，将焊件和钎料加热到高于钎料熔点，低于母材熔点的温度，利用液体钎料润湿母材</td>
+<td>硬钎焊、软钎焊</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="电弧焊工艺基础"><a href="#电弧焊工艺基础" class="headerlink" title="电弧焊工艺基础"></a>电弧焊工艺基础</h2><h3 id="焊接电弧"><a href="#焊接电弧" class="headerlink" title="焊接电弧"></a>焊接电弧</h3><p>焊接电弧是在具有一定电压的电极和工件之间的气体介质中长时间放电现象，即在局部气体介质中有大量电子流过的导电现象</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>接法</th>
+<th>解释</th>
+<th>适用范围</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>正接</td>
+<td>焊件接正极，焊条接负极</td>
+<td>厚板、酸性焊条</td>
+</tr>
+<tr>
+<td>反接</td>
+<td>焊件接负极，焊条接正极</td>
+<td>薄板、碱性焊条</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="熔化焊冶金特点"><a href="#熔化焊冶金特点" class="headerlink" title="熔化焊冶金特点"></a>熔化焊冶金特点</h3><ul>
+<li>熔化焊的本质是金属在焊接条件下的再次熔炼，是金属熔化结晶的过程</li>
+<li>熔池存在时间少，温度高，冶金过程不充分，氧化严重，热影响区大</li>
+<li>冷却速度快，结晶后易产生粗大的柱状晶</li>
+</ul>
+<h4 id="电弧焊冶金特点"><a href="#电弧焊冶金特点" class="headerlink" title="电弧焊冶金特点"></a>电弧焊冶金特点</h4><ul>
+<li>电弧和熔池温度高于一般冶炼温度，是金属强烈蒸发，导致金属<strong>烧损</strong>或形成<strong>有害杂质</strong></li>
+<li>熔池体积小，导致化学成分不均匀，容易产生<strong>气孔或夹杂</strong>等缺陷</li>
+<li>熔池不断更新，有害物质不断进入形成<strong>氧化物、气孔、杂质</strong>等缺陷</li>
+</ul>
+<h3 id="熔化焊三要素"><a href="#熔化焊三要素" class="headerlink" title="熔化焊三要素"></a>熔化焊三要素</h3><ul>
+<li><p><strong>热源</strong>：热量要集中，温度要高，以保证金属快速熔化，减小热影响区</p>
+</li>
+<li><p><strong>熔池的保护</strong>：渣保护、气保护、渣气保护</p>
+<ul>
+<li>形成熔融的液态焊剂薄膜，使熔池与空气隔绝，大大减少含气量，提高韧性</li>
+<li>延长熔池时间，加强冶金反应，有利于气孔夹渣的析出</li>
+</ul>
+<blockquote>
+<p>如焊条的药皮及二氧化碳加药芯是渣气联合保护</p>
+</blockquote>
+</li>
+<li><p><strong>填充金属</strong>：保证焊缝填满及给焊缝带入有益的合金元素，并达到力学性能和其它性能的要求，主要有焊芯和焊丝</p>
+</li>
+</ul>
+<h3 id="焊条"><a href="#焊条" class="headerlink" title="焊条"></a>焊条</h3><h4 id="焊条的型号"><a href="#焊条的型号" class="headerlink" title="焊条的型号"></a>焊条的型号</h4><ul>
+<li>“E”代表焊条</li>
+<li>前两位数字表示熔敷金属抗拉强度的最小值，单位为Mpa</li>
+<li>第三位数字表示焊条的焊接位置</li>
+<li>第三位和第四位数字组合时表示焊接电流种类及药皮类型</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>焊接工艺性</th>
+<th>焊件性能</th>
+<th>使用注意</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>酸性焊条</td>
+<td>好，适用于各种电源，操作性好，电弧稳定，成本低</td>
+<td>焊缝强度低，渗合金作用弱</td>
+<td>不宜用于承受重载和高强度要求的重要结构件</td>
+</tr>
+<tr>
+<td>碱性焊条</td>
+<td>差，一般要求采用直流电源，操作性差，电弧不稳定，成本高</td>
+<td>焊缝强度高，渗合金作用强</td>
+<td>只适合焊接重要结构件，易产生有毒物质，注意通风</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 id="选用原则"><a href="#选用原则" class="headerlink" title="选用原则"></a>选用原则</h4><ul>
+<li><strong>等强度原则</strong></li>
+<li>考虑<strong>焊接件的结构形状、钢板厚度、载荷性质和抗裂能力</strong></li>
+<li><strong>低碳钢</strong>与<strong>低合金钢结构钢</strong>焊接，按<strong>强度较小</strong>的定</li>
+<li>铸钢一般用碱性焊条</li>
+</ul>
+<h2 id="焊接接头组织与性能"><a href="#焊接接头组织与性能" class="headerlink" title="焊接接头组织与性能"></a>焊接接头组织与性能</h2><p>由于各点与焊缝中心位置距离不同，所受温度不同，相当于对焊接接头区域进行了一次不同规范的热处理，因此会有不同的结构与性能</p>
+<p>整个焊接接头由<strong>焊缝区、熔合区、热影响区</strong>构成。</p>
+<h3 id="焊缝区"><a href="#焊缝区" class="headerlink" title="焊缝区"></a>焊缝区</h3><p>在焊接接头横截面上的的金属。焊缝的结晶从熔池底壁开始向中心成长。由<strong>铁素体和少量珠光体</strong>所组成。因结晶是从熔池底部的半熔化区开始逐次进行的，低熔点的硫磷杂质和氧化铁等易偏析物集中在焊缝中心区，将影响焊缝的力学性能。</p>
+<h3 id="熔合区"><a href="#熔合区" class="headerlink" title="熔合区"></a>熔合区</h3><p>加热温度在固液两相区之间，有明显的化学不均匀性。<strong>组织为少量的铸态组织和粗大的过热组织</strong>。塑性差，强度低，脆性大，易产生焊缝裂纹和脆性断裂、<strong>决定了焊接接头的性能</strong>。</p>
+<h3 id="热影响区"><a href="#热影响区" class="headerlink" title="热影响区"></a>热影响区</h3><p>热影响区可分为<strong>过热区、正火区和部分相变区</strong>等。</p>
+<p> 过热区——加热温度在Ac3 以上100~200℃至固相线温度区间。由于该区域内奥氏体晶粒急剧长大，形成过热组织，故塑性及韧性降低。 也是一个薄弱环节。</p>
+<p>焊接热影响区的大小和组织性能变化的程度，决定于<strong>焊接方法、焊接参数、接头形式和焊接后冷却速度</strong>等因素。</p>
+<p>在保证焊接质量的条件下，增加<strong>焊接速度或减少焊接电流</strong>都能减小焊接热影响区。</p>
+<h2 id="焊缝应力与变形"><a href="#焊缝应力与变形" class="headerlink" title="焊缝应力与变形"></a>焊缝应力与变形</h2><h3 id="应力的产生"><a href="#应力的产生" class="headerlink" title="应力的产生"></a>应力的产生</h3><p>本质就是被焊结构件有不均匀的加热和冷却</p>
+<p>当焊缝及相邻区金属处于加热阶段时都会膨胀，但受到焊件冷金属的阻碍，不能自由伸长而受压，<strong>形成压应力</strong>，该压应力使处于塑性状态的金属产生压缩变形。</p>
+<p>随后再冷却到室温时，其收缩又受到周边冷金属的阻碍，不能缩到自由收缩所达到的位置，因而<strong>产生残余拉应力（焊接应力）</strong> </p>
+<h3 id="变形的基本形式"><a href="#变形的基本形式" class="headerlink" title="变形的基本形式"></a>变形的基本形式</h3><ul>
+<li>收缩变形：工件整体的变小，包括焊缝的纵向和横向收缩</li>
+<li>角变形：焊缝截面上下不对称，焊缝收缩横向不均匀</li>
+<li>弯曲变形：发生在焊缝在结构上不对称的情况下，纵向收缩不对称，导致工件向一侧弯曲</li>
+<li>波浪边形：发生在焊接薄板时</li>
+<li>扭曲变形：发生多对焊缝和长焊缝结构</li>
+</ul>
+<h3 id="防止措施（重点）"><a href="#防止措施（重点）" class="headerlink" title="防止措施（重点）"></a>防止措施（重点）</h3><p>等MOOC答案</p>
+<h1 id="常见的焊接方法"><a href="#常见的焊接方法" class="headerlink" title="常见的焊接方法"></a>常见的焊接方法</h1><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>特点</th>
+<th>适用范围</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>手工电弧焊</td>
+<td>有结构简单、应用灵活方便、可焊各种金属等优点</td>
+<td></td>
+</tr>
+<tr>
+<td>埋弧焊</td>
+<td>加工效率高；节约能源和材料；焊缝质量高；劳动条件好；使用位置，厚度受限制；对坡口加工要求高</td>
+<td>长直焊缝和环焊缝</td>
+</tr>
+<tr>
+<td>氩弧焊</td>
+<td>焊缝小，能量集中；熔池保护好；可以全位置焊接；贵</td>
+<td>易氧化的Fe合金等</td>
+</tr>
+<tr>
+<td>CO2焊</td>
+<td>成本低；生产效率高；合金元素烧损严重；易飞溅</td>
+<td>黑色金属</td>
+</tr>
+<tr>
+<td>电渣焊</td>
+<td>生产效率高；焊后要进行热处理；焊接质量好；热影响区宽</td>
+<td>厚板</td>
+</tr>
+<tr>
+<td>压力焊</td>
+<td>速度快；变形小；效率高；耗电；对接头形式有要求</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="手工电弧焊"><a href="#手工电弧焊" class="headerlink" title="手工电弧焊"></a>手工电弧焊</h2><p>焊芯与工件的熔化金属形成<strong>焊缝金属</strong>，焊条药皮产生的气体和熔渣<strong>保护熔池、稳定电弧、渗入合金</strong></p>
+<p>有<strong>结构简单、应用灵活方便、可焊各种金属</strong>等优点</p>
+<h2 id="埋弧焊"><a href="#埋弧焊" class="headerlink" title="埋弧焊"></a>埋弧焊</h2><blockquote>
+<p>课堂上展开讲解了</p>
+</blockquote>
+<p>埋弧焊是一种电弧在焊剂层下燃烧并进行焊接的电弧焊</p>
+<p>在焊接<strong>长直焊缝和环焊缝</strong>中与有明显的优点</p>
+<h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><ul>
+<li>焊接生产率高</li>
+<li>节省焊接材料、电能</li>
+<li>焊缝质量好（隔绝空气效果好，焊剂层保护效果好）</li>
+<li>劳动条件好</li>
+</ul>
+<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><ul>
+<li>焊接使用位置受限制</li>
+<li>焊接厚度受限制</li>
+<li>对坡口加工要求精度高，装配要求高</li>
+</ul>
+<h2 id="氩弧焊"><a href="#氩弧焊" class="headerlink" title="氩弧焊"></a>氩弧焊</h2><p>可以分为<strong>熔化氩弧焊和钨极氩弧焊</strong> </p>
+<h3 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h3><ul>
+<li>氩弧焊电弧直径小，能量集中，电弧稳定</li>
+<li>气体保护效果好，可以实现自动全位置焊接</li>
+<li>适用于各种金属的焊接，可以实现单面焊双面成型</li>
+<li>氩气贵</li>
+</ul>
+<h2 id="CO2焊"><a href="#CO2焊" class="headerlink" title="CO2焊"></a>CO2焊</h2><p>全位置焊接</p>
+<h3 id="防飞溅措施"><a href="#防飞溅措施" class="headerlink" title="防飞溅措施"></a>防飞溅措施</h3><ul>
+<li><strong>直流反接</strong></li>
+<li>用含Si、Mn、Ti、Al 焊丝</li>
+<li>采用药芯焊丝</li>
+</ul>
+<h3 id="不足"><a href="#不足" class="headerlink" title="不足"></a>不足</h3><ul>
+<li>CO2氧化性强，焊缝金属烧损严重</li>
+<li>只适用于黑色金属的焊接（低碳钢、低碳合金钢）</li>
+</ul>
+<h2 id="电渣焊"><a href="#电渣焊" class="headerlink" title="电渣焊"></a>电渣焊</h2><ul>
+<li>最适合焊接厚大金属，可一次焊成，成本低</li>
+<li>焊接材料和电能消耗少，焊接成本低（不需要预热）</li>
+<li>焊缝液态金属停留时间长，焊缝质量好</li>
+<li>热影响区宽，结晶晶粒粗大，焊后必须进行热处理（焊接能量大，加热冷却速度慢，高温停留时间长）</li>
+</ul>
+<h1 id="常用金属材料的焊接"><a href="#常用金属材料的焊接" class="headerlink" title="常用金属材料的焊接"></a>常用金属材料的焊接</h1><h2 id="金属焊接性"><a href="#金属焊接性" class="headerlink" title="金属焊接性"></a>金属焊接性</h2><p>用来评价金属焊接加工的难易程度。其内容包括两个方面：金属在焊接是对缺陷的敏感性（<strong>工艺焊接性</strong>）；焊接接头在使用过程中的可靠性，包括力学性能、耐热耐腐蚀等（<strong>使用焊接性</strong>）</p>
+<h3 id="评定方法"><a href="#评定方法" class="headerlink" title="评定方法"></a>评定方法</h3><ul>
+<li><p>实验法</p>
+</li>
+<li><p>碳当量法</p>
+<p><strong>将合金元素的含量对焊接性能的影响程度转化为C的含量</strong>，其总和为碳当量</p>
+<script type="math/tex; mode=display">
+W_{CE}=(W_C+\frac{W_{Mn}}{6}+\frac{W_{V}+W_{Cr}+W_{Mo}}{5}+\frac{W_{Ni}+W_{Cu}}{15})\times100\%</script><p>当 $W_{CE}\leq0.4\%$ 时，焊接性能优良（但是对板厚较大或在低温下应考虑预热）</p>
+<p>当 $0.4\%\leq W_{CE}\leq 0.6\%$ 时，焊接性能较差。应考虑预热、缓冷、焊后热处理等工艺措施</p>
+<p>当 $0.6\%\leq W_{CE}$ 时，焊接性能差，需要更高的温度和更严格的工艺措施防止焊接应力</p>
+</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>金属材料</th>
+<th>焊条电弧焊</th>
+<th>埋弧焊</th>
+<th>氩弧焊</th>
+<th>CO2焊</th>
+<th>电渣焊</th>
+<th>气焊</th>
+<th>点焊</th>
+<th>钎焊</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>铸铁</td>
+<td>A</td>
+<td>C</td>
+<td>B</td>
+<td>B</td>
+<td>B</td>
+<td>A</td>
+<td>D</td>
+<td>C</td>
+</tr>
+<tr>
+<td>铸钢</td>
+<td>A</td>
+<td>A</td>
+<td>A</td>
+<td>A</td>
+<td>A</td>
+<td>A</td>
+<td>D</td>
+<td>B</td>
+</tr>
+<tr>
+<td>低碳钢</td>
+<td>A</td>
+<td>A</td>
+<td>A</td>
+<td>A</td>
+<td>A</td>
+<td>A</td>
+<td>A</td>
+<td>A</td>
+</tr>
+<tr>
+<td>高碳钢</td>
+<td>A</td>
+<td>B</td>
+<td>B</td>
+<td>B</td>
+<td>B</td>
+<td>A</td>
+<td>B</td>
+<td>C</td>
+</tr>
+<tr>
+<td>低合金钢</td>
+<td>A</td>
+<td>A</td>
+<td>A</td>
+<td>A</td>
+<td>A</td>
+<td>B</td>
+<td>A</td>
+<td>A</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="碳钢的焊接"><a href="#碳钢的焊接" class="headerlink" title="碳钢的焊接"></a>碳钢的焊接</h2><h3 id="低碳钢"><a href="#低碳钢" class="headerlink" title="低碳钢"></a>低碳钢</h3><p><strong>焊接性能最好</strong>，一般不需要采取特殊的工艺措施。</p>
+<ul>
+<li>在零度以下的低温环境中需要预热</li>
+<li>在焊厚板时要焊后热处理（去应力退火）</li>
+</ul>
+<h3 id="中碳钢"><a href="#中碳钢" class="headerlink" title="中碳钢"></a>中碳钢</h3><ul>
+<li>焊缝容易产生热裂纹</li>
+<li>热影响区容易产生淬硬组织和冷裂纹</li>
+</ul>
+<p>需要采取以下措施：</p>
+<ul>
+<li><strong>焊前必须预热</strong>（使焊接时工件各部分的温差减小，以减小焊接应力，同时减慢热影响区的冷却速度，避免产生淬硬组织 ）</li>
+<li>开坡口分层焊</li>
+</ul>
+<h3 id="高碳钢"><a href="#高碳钢" class="headerlink" title="高碳钢"></a>高碳钢</h3><p>焊接特点与中碳钢基本相似，进行焊接时，应采用更高的预热温度、更严格的工艺措施。</p>
+<h3 id="低合金钢"><a href="#低合金钢" class="headerlink" title="低合金钢"></a>低合金钢</h3><ul>
+<li>热影响区有淬硬倾向（合金元素越多，倾向越明显）</li>
+<li>焊接接头有裂纹倾向</li>
+</ul>
+<blockquote>
+<p>Q345(16Mn)与低碳钢差不多；Q420(15MnVN)焊前要高于150℃预热，焊后要热处理，要用抗裂性好的焊条</p>
+</blockquote>
+<h2 id="铸铁的补焊"><a href="#铸铁的补焊" class="headerlink" title="铸铁的补焊"></a>铸铁的补焊</h2><p>铸铁含碳量高，组织不均匀塑形低，<strong>焊接性能差</strong>，不应用铸铁设计和制造焊接结构件</p>
+<h3 id="焊接特点"><a href="#焊接特点" class="headerlink" title="焊接特点"></a>焊接特点</h3><ul>
+<li>熔合区易产生白口组织</li>
+<li>易产生裂纹</li>
+<li>易产生气孔</li>
+<li>流动性好，因此只能用于平焊</li>
+</ul>
+<p>根据铸铁的焊接特点，易采用<strong>气焊和焊条电弧焊</strong></p>
+<h3 id="焊接方法"><a href="#焊接方法" class="headerlink" title="焊接方法"></a>焊接方法</h3><h4 id="热焊法"><a href="#热焊法" class="headerlink" title="热焊法"></a>热焊法</h4><p>是焊前将工件整体或局部预热到600～700℃，焊补后缓慢冷却。 </p>
+<p>热焊法能防止工件产生白口组织和裂纹，焊补质量较好，焊后可进行机械加工。</p>
+<p>但<strong>热焊法成本较高，生产率低，焊工劳动条件差，尽量少用</strong>。 一般用于焊补形状复杂焊后需要加工的重要铸件，如床头箱、汽缸体等。</p>
+<h4 id="冷焊法"><a href="#冷焊法" class="headerlink" title="冷焊法"></a>冷焊法</h4><p>补焊前工件不预热或只进行400℃以下的低温预热。</p>
+<p>主要依靠焊条来调整焊缝化学成分，以防止或减少白口组织和避免裂缝。</p>
+<p><strong>冷焊法方便灵活生产率高、成本低、劳动条件好，应用广泛</strong>。但焊接处切削加工性能较差。生产中多用于焊补要求不高的铸件以及怕高温预热引起变形的工件。</p>
+<h3 id="防止白口组织"><a href="#防止白口组织" class="headerlink" title="防止白口组织"></a>防止白口组织</h3><ul>
+<li>减缓冷却速度</li>
+<li>增加有利于石墨化元素的含量</li>
+<li>用异质材料焊接</li>
+</ul>
+<h2 id="焊接缺陷与检验"><a href="#焊接缺陷与检验" class="headerlink" title="焊接缺陷与检验"></a>焊接缺陷与检验</h2><p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20200823214129.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>缺陷</th>
+<th>原因</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>a</td>
+<td>焊瘤</td>
+<td>焊条熔化速度过快，电弧过长，电流过大，焊速过慢，运条不当</td>
+</tr>
+<tr>
+<td>b</td>
+<td>裂纹</td>
+<td>焊接结构不合理，焊缝冷却速度过快，含有 C、S、P 等元素</td>
+</tr>
+<tr>
+<td>c</td>
+<td>夹渣</td>
+<td>未搅拌熔池，焊件不洁，电流过小，分层焊时未除焊渣</td>
+</tr>
+<tr>
+<td>d</td>
+<td>气孔</td>
+<td>焊件不洁、焊条潮湿、电弧过长、电流过大，焊件含 C 高</td>
+</tr>
+<tr>
+<td>e</td>
+<td>咬边</td>
+<td>电流过大，运条不当，电弧过长、焊接角度不对</td>
+</tr>
+<tr>
+<td>f</td>
+<td>未焊透</td>
+<td>电流过大、焊速过快、运条不当</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>外观检验</p>
+<ul>
+<li>着色检验</li>
+<li>荧光检验</li>
+<li>磁粉检验</li>
+</ul>
+<p>无损探伤</p>
+<ul>
+<li>声发射探伤</li>
+<li>超声波探伤</li>
+<li>激光全息探伤</li>
+</ul>
+<h2 id="有色合金的焊接"><a href="#有色合金的焊接" class="headerlink" title="有色合金的焊接"></a>有色合金的焊接</h2><p>使用氩弧焊、气焊、钎焊</p>
+<h1 id="焊接结构设计"><a href="#焊接结构设计" class="headerlink" title="焊接结构设计"></a>焊接结构设计</h1><h2 id="焊接方法选择"><a href="#焊接方法选择" class="headerlink" title="焊接方法选择"></a>焊接方法选择</h2><ul>
+<li><p>小批量钢结构件</p>
+<ul>
+<li>板厚 &lt; 3mm ，焊缝较短 ：<strong>CO2焊</strong></li>
+<li>板厚 3-10mm，焊缝较短，强度较低：<strong>手工电弧焊</strong></li>
+<li>板厚 &gt;10mm，焊缝为长直焊缝或环焊缝：<strong>埋弧焊</strong></li>
+</ul>
+</li>
+<li><p>大批量钢结构件</p>
+<ul>
+<li>板厚 &lt;3mm，无密封要求：<strong>点焊</strong>；有密封要求：<strong>缝焊</strong></li>
+<li>板厚 3-10mm，长直焊缝或环焊缝：<strong>CO2自动焊</strong></li>
+<li>板厚 &gt;10mm，长直焊缝或环焊缝：<strong>埋弧焊</strong></li>
+</ul>
+</li>
+<li><p>不锈钢、铝合金、铜合金</p>
+<p>板厚 &lt;3mm，<strong>钨极氩弧焊</strong></p>
+<p>板厚 3-10mm，长直焊缝或环焊缝：<strong>熔化极电弧焊</strong></p>
+</li>
+</ul>
+<h2 id="焊接结构件的选择"><a href="#焊接结构件的选择" class="headerlink" title="焊接结构件的选择"></a>焊接结构件的选择</h2><ul>
+<li><p>在满足性能的前提下，尽量选择焊接性能好的材料</p>
+<blockquote>
+<p>碳含量小的低合金钢比较好</p>
+</blockquote>
+</li>
+<li><p>异种材料的焊接，特别需要注意焊接性能，尽量选择化学成分、物理性质相似的材料</p>
+</li>
+<li><p>减少焊缝数量，简化焊接工艺，增加焊件的强度与刚度</p>
+</li>
+<li><p>合理焊接结构件供应时的尺寸等</p>
+</li>
+</ul>
+<h2 id="焊接件接头工艺的选择"><a href="#焊接件接头工艺的选择" class="headerlink" title="焊接件接头工艺的选择"></a>焊接件接头工艺的选择</h2><h3 id="接头形式的选择"><a href="#接头形式的选择" class="headerlink" title="接头形式的选择"></a>接头形式的选择</h3><p>焊接接头的基本形式有：对接、角接、搭接、T形接</p>
+<ul>
+<li>对接：受力均匀，应力集中较小，易保证焊缝质量，静载和疲劳强度比较高；对下料尺寸精度要求较高</li>
+<li>搭接：两工件不在同一平面，受力复杂，容易产生附加弯矩；对下料尺寸精度要求不高，不需要坡口</li>
+<li>角接和T形接：受力复杂，和搭接一样容易产生缺陷</li>
+</ul>
+<blockquote>
+<p>接口形式与焊接方法的关系比较大。例如，<strong>手工电弧焊he埋弧焊可以用对接、角接、搭接、T形接；电渣焊可以用对接、角接、T形接；点焊和缝焊只能搭接；钎焊常用搭接</strong></p>
+</blockquote>
+<h3 id="坡口的选择"><a href="#坡口的选择" class="headerlink" title="坡口的选择"></a>坡口的选择</h3><ul>
+<li>采用对接接头时，当 厚度 &lt; 6mm 时，常常使用 <code>I形坡口</code> （对接处留适当间隙）</li>
+<li><code>V形坡口</code> 和 <code>U形坡口</code>，可以单向焊接，焊接性较好，但是角变形大，消耗焊条多</li>
+<li><code>双V形坡口</code> 和 <code>双U形坡口</code>，需要两面施焊，受热均匀，变形小，消耗焊条少，不过结构受限制</li>
+</ul>
+<h3 id="焊缝的合理布置"><a href="#焊缝的合理布置" class="headerlink" title="焊缝的合理布置"></a>焊缝的合理布置</h3><ul>
+<li><p>尽可能使焊缝分散布置</p>
+<p>焊缝过于密集会使金属过热，使接头组织粗大</p>
+</li>
+<li><p>尽可能使焊缝对称分布</p>
+<p>焊缝对称布置可减小焊接变形</p>
+</li>
+<li><p>使焊缝避开应力集中处</p>
+</li>
+<li><p>使焊缝避开机械加工表面</p>
+</li>
+<li><p>使焊缝处于便于操作的地方</p>
+</li>
+</ul>
+<h1 id="金属切削加工"><a href="#金属切削加工" class="headerlink" title="金属切削加工"></a>金属切削加工</h1><h2 id="切削三要素"><a href="#切削三要素" class="headerlink" title="切削三要素"></a>切削三要素</h2><p>切削速度、进给量、切削深度</p>
+<blockquote>
+<p>不考</p>
+</blockquote>
+<h2 id="刀具材料"><a href="#刀具材料" class="headerlink" title="刀具材料"></a>刀具材料</h2><h3 id="对刀具材料的基本要求"><a href="#对刀具材料的基本要求" class="headerlink" title="对刀具材料的基本要求"></a>对刀具材料的基本要求</h3><ul>
+<li>高的硬度和耐磨性</li>
+<li>高的耐热性和化学稳定性</li>
+<li>足够的强度和韧性</li>
+<li>良好的工艺性</li>
+<li>经济性</li>
+</ul>
+<h3 id="常用刀具材料"><a href="#常用刀具材料" class="headerlink" title="常用刀具材料"></a>常用刀具材料</h3><ul>
+<li><p>高速钢</p>
+<p>耐热性、硬度、耐磨性低于硬质合金；强度韧性工艺性优于硬质合金；价格比硬质合金便宜</p>
+<blockquote>
+<p>只能用于 <strong>中速切削</strong> </p>
+</blockquote>
+</li>
+<li><p>硬质合金</p>
+<p>以高熔点、高硬度的金属化合物做基体，以 Co 为黏合剂，用粉末冶金制成</p>
+<p>有两大类： WC 与 Co 组成的 钨钴类（TG类，塑性好）；WC、Ti、Co 组成的（YT类，硬度高）</p>
+<blockquote>
+<p>塑性好的刀具适合切削脆性材料（且塑性好的材料容易磨损）；硬度高的刀具适合切削塑性材料（切塑性差的材料容易受到脆性冲击，崩刃）</p>
+</blockquote>
+</li>
+<li><p>陶瓷材料</p>
+<p>硬度高，耐磨性好，耐热性好，怕脆性冲击，容易崩刃</p>
+</li>
+</ul>
+<h2 id="刀具的几何参数"><a href="#刀具的几何参数" class="headerlink" title="刀具的几何参数"></a>刀具的几何参数</h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>定义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>前刀面</td>
+<td>刀具上切削流过表面</td>
+</tr>
+<tr>
+<td>主后刀面</td>
+<td>刀具上与工件被切削面相对应的表面</td>
+</tr>
+<tr>
+<td>副后刀面</td>
+<td>刀具上与工件已加工表面相对应的表面</td>
+</tr>
+<tr>
+<td>基面 $p_r$</td>
+<td>过切削刃上某点，垂直于改点主运动方向的面</td>
+</tr>
+<tr>
+<td>切削平面 $p_s$</td>
+<td>过切削刃上某点，与切削刃相切并垂直于 $p_r$ 的面</td>
+</tr>
+<tr>
+<td>正交平面 $p_o$</td>
+<td>过切削刃上某点，同时垂直于 $p_r$ 和 $p_s$ 的面</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>定义</th>
+<th>影响</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>主偏角 $\kappa_r$</td>
+<td>在 $p_r$ 投影面内，主切削刃与进给运动方向夹角</td>
+<td>①影响刀具寿命（角越小寿命越长）②影响切削分力大小（角越小，径向分力越大，容易出现变形和振动）</td>
+</tr>
+<tr>
+<td>副偏角 $\kappa_r^{‘}$</td>
+<td>在 $p_r$ 投影面内，副切削刃与进给运动反方向夹角</td>
+<td>影响已加工表面粗糙度（角越小，粗糙度越小）（过小会使已加工表面与刀具接触摩擦，产生振动和噪音）</td>
+</tr>
+<tr>
+<td>前角 $\gamma_o$</td>
+<td>在 $p_o$ 投影面内，前刀面与基面夹角</td>
+<td>①影响切屑的变形程度（角大，减小切屑变形，使切削其轻快，降低切削温度，减小磨损）②影响刀刃强度（角大，强度低，散热面积小）（精加工、韧性好材料，增大前角）</td>
+</tr>
+<tr>
+<td>后角 $\alpha_o$</td>
+<td>在 $p_o$ 投影面内，后刀面与基面夹角</td>
+<td>①增大后角，减少摩擦，工件质量高②刀具强度低，散热体积减小，刀具寿命减小</td>
+</tr>
+<tr>
+<td>刃倾角 $\lambda_s$</td>
+<td>在 $p_s$ 投影面内，主切削刃与基面投影（下凹为正）</td>
+<td>①影响刀具强度（正的容易损坏，为了保护已加工表面，精加工去0值或正值；负的增强刀头，但可能引起震动，用于粗加工）②影响切削流出方向（正：流向待加工表面；0：沿着与主切削刃垂直的方向；负：流向已加工表面）</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="金属切削过程"><a href="#金属切削过程" class="headerlink" title="金属切削过程"></a>金属切削过程</h2><h3 id="切削的形成过程"><a href="#切削的形成过程" class="headerlink" title="切削的形成过程"></a>切削的形成过程</h3><figure class="highlight plaintext"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs flow">st=&gt;start: 切削层金属<br>op1=&gt;operation: 弹性变形<br>op2=&gt;operation: 塑形变形<br>op3=&gt;operation: 挤裂<br>op4=&gt;operation: 切离<br>end=&gt;end: 切屑<br><br>st-&gt;op1-&gt;op2-&gt;op3-&gt;op4-&gt;end<br></code></pre></div></td></tr></table></figure>
+<h3 id="切屑的种类"><a href="#切屑的种类" class="headerlink" title="切屑的种类"></a>切屑的种类</h3><ul>
+<li><p>带状切屑</p>
+<p>用大前角的刀具、较高的切削速度和较小的进给量切削<strong>塑性材料</strong>时，容易得到带状切屑。</p>
+<p>切削力平稳，加工面光洁，但是为了保护已加工表面需要进行断屑处理</p>
+</li>
+<li><p>节状切屑</p>
+<p>用较低的切削速度、较大的进给量切削粗加工<strong>中等硬度</strong>的材料时得到的。工件表面比较粗糙。</p>
+</li>
+<li><p>崩碎切屑</p>
+<p>在切削<strong>脆性材料</strong>时，产生的。刀尖容易磨损，振动，影响表面质量。</p>
+</li>
+</ul>
+<blockquote>
+<p>加大前角、提高切削速度、减小进给量 可以将节状切屑转化为带状切屑，试加工表面光滑</p>
+</blockquote>
+<h3 id="积屑瘤"><a href="#积屑瘤" class="headerlink" title="积屑瘤"></a>积屑瘤</h3><h4 id="产生原因"><a href="#产生原因" class="headerlink" title="产生原因"></a>产生原因</h4><p>当切屑沿着刀具的前刀面流出时，在一定的温度和压力作用下，与前刀面接触的切屑底层受到很大的切削阻力，导致这一层的流出速度减慢，逐渐形成了滞留层。当前刀面对滞留层的摩擦阻力超过金属材料内部结合力时，就会有一部分金属粘附在切削刃附近，形成<strong>积屑瘤</strong></p>
+<h4 id="对加工影响"><a href="#对加工影响" class="headerlink" title="对加工影响"></a>对加工影响</h4><ul>
+<li>起到了保护切削刃的作用，同时相当于增大了 $\gamma_o$ ，是切削轻快。<strong>粗加工</strong> 希望出现积屑瘤</li>
+<li>积屑瘤不断的形成与脱落，影响了尺寸精度，使表面粗糙。<strong>精加工</strong> 不希望出现</li>
+</ul>
+<h4 id="控制措施"><a href="#控制措施" class="headerlink" title="控制措施"></a>控制措施</h4><ul>
+<li><p><strong>塑形</strong>越大，越容易产生积屑瘤</p>
+</li>
+<li><p><strong>中温中速</strong>切削加工，最容易产生积屑瘤</p>
+<blockquote>
+<p>低速摩擦阻力小，不易产生积屑瘤；高速温高，摩擦阻力也小，不易产生</p>
+</blockquote>
+</li>
+</ul>
+<blockquote>
+<p>改变切削速度是控制积屑瘤最有效的方法，此外加入切削液、增大前角可以抑制积屑瘤的形成</p>
+</blockquote>
+<h3 id="切削温度"><a href="#切削温度" class="headerlink" title="切削温度"></a>切削温度</h3><p>切削摩擦产生的热量分为了3块</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>效果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>传入切屑</td>
+<td>对加工有利</td>
+</tr>
+<tr>
+<td>传入刀具</td>
+<td>加速刀具磨损</td>
+</tr>
+<tr>
+<td>传入工件</td>
+<td>产生形状尺寸误差</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>其主要影响因素为：</p>
+<ul>
+<li>切削速度</li>
+<li>工件强度</li>
+</ul>
+<p>此外，导热性好的金属材料，可以降低切削温度</p>
+<h3 id="刀具的磨损与耐用度"><a href="#刀具的磨损与耐用度" class="headerlink" title="刀具的磨损与耐用度"></a>刀具的磨损与耐用度</h3><ul>
+<li>磨损分为三个阶段：初期磨损阶段、正常磨损阶段、急剧磨损阶段</li>
+<li>耐用度是刃磨后的刀具自切削开始到磨损量达到磨钝标准所经历的切削时间</li>
+</ul>
+<h1 id="零件的结构工艺性"><a href="#零件的结构工艺性" class="headerlink" title="零件的结构工艺性"></a>零件的结构工艺性</h1><ul>
+<li>尽量采用标准化参数</li>
+<li>要便于装夹<ul>
+<li>设置工艺凸台</li>
+<li>设置凸缘或装夹孔</li>
+</ul>
+</li>
+<li>要便与加工<ul>
+<li>刀具不与工件干涉</li>
+<li>留出退到空间</li>
+<li>尽量采用标准刀具加工</li>
+<li>孔轴线与端面垂直</li>
+<li>配合表面尽量避免箱体外表面</li>
+<li>增加工艺孔</li>
+<li>增加加强肋</li>
+<li>适当的采用零件的组合</li>
+</ul>
+</li>
+<li>要便于提高生产效率<ul>
+<li>加工面应该等高</li>
+<li>同类结构要素要统一</li>
+<li>减少装夹次数</li>
+<li>键槽应该在同一侧</li>
+<li>要减少加工面积</li>
+</ul>
+</li>
+<li>要便于测量</li>
+<li>要便于装配<ul>
+<li>在配合要求的地方应该有倒角</li>
+<li>圆柱销与盲孔配合要有出气孔</li>
+<li>要留出扳手空间</li>
+<li>同一方向应该只有一对配合表面</li>
+</ul>
+</li>
+<li>要便于拆卸</li>
+</ul>
+<hr>
+<p>Learning By Sharing，2018©Fu_Qingchen，Markdown，LaTeX</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E6%9C%BA%E6%A2%B0%E7%9B%B8%E5%85%B3/">机械相关</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%95%99%E7%A8%8B/">教程</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E9%87%91%E5%B1%9E%E5%B7%A5%E8%89%BA%E5%AD%A6/">金属工艺学</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2018/06/23/WHUT/ProbabilityTheoryMathStatistic/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">概率论与数理统计笔记</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2018/06/15/WHUT/MechanismDesign/">
+                        <span class="hidden-mobile">机械设计笔记</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"DNr2pgYBNbnn4YMKmdstH2Sw-gzGzoHsz","appKey":"6RRAdTwPs2Y3Tk5iKNo2qo1D","placeholder":"说点什么","path":"window.location.pathname","avatar":"retro","meta":["nick","mail"],"pageSize":10,"lang":"zh-CN","highlight":true,"recordIP":false,"serverURLs":"https://dnr2pgyb.lc-cn-n1-shared.com","emojiCDN":null,"emojiMaps":null,"enableQQ":false,"requiredFields":[],"appid":"DNr2pgYBNbnn4YMKmdstH2Sw-gzGzoHsz","appkey":"6RRAdTwPs2Y3Tk5iKNo2qo1D"},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

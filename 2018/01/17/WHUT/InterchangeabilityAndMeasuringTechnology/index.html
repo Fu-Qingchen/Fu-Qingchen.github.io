@@ -1,0 +1,953 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.ico">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="听正在工作的师兄说这是一门非常重要的课程。
+基于《互换性与测量技术》（ISBN：978-7-118-08882-3）">
+  <meta name="author" content="Fu Qingchen">
+  <meta name="keywords" content="MSE, CS">
+  
+  <title>互换性与测量技术笔记 | Fu&#39;s Web</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/vs2015.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.11","typing":{"enable":false,"typeSpeed":30,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null},"tajs":null},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 50vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Fu's Web</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('https://gitee.com/fuqingchen/picture-lib/raw/master/img/Test_Tree.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="互换性与测量技术笔记">
+              
+                互换性与测量技术笔记
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2018-01-17 23:00" pubdate>
+        2018年1月17日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      5.3k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      59
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">互换性与测量技术笔记</h1>
+            
+            <div class="markdown-body">
+              <p>听正在工作的师兄说这是一门非常重要的课程。</p>
+<p>基于《互换性与测量技术》（ISBN：978-7-118-08882-3）</p>
+<span id="more"></span>
+<h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><h4 id="互换性"><a href="#互换性" class="headerlink" title="互换性"></a>互换性</h4><p>按照规定的几何、物理及其他质量参数的极限，来分别制造机械的各个组成部分，使其在装配与更换时不需辅助加工及修配，便能很好的满足使用和生产上的要求的特性</p>
+<p>简单点说就是：将一批工件按照一定的<strong>标准</strong>来制作，它们之间在功能上可以彼此相互替换，这样的性质就是互换性</p>
+<ul>
+<li>完全互换性与不完全互换性</li>
+</ul>
+<p>在装配和更换时，不需要选择或调整的互换为完全互换；需要对工件进行选择、分组替换的为不完全替换。<br><code>例如：滚珠轴承的维护或更换时采用完全互换；而它自身的生产则采用不完全互换。</code></p>
+<h4 id="优先数与优先数集"><a href="#优先数与优先数集" class="headerlink" title="优先数与优先数集"></a>优先数与优先数集</h4><p>国标规定优先数系是以公比q=10^(1/r) 的一串数字，其中常见的r有R5（q≈1.6）、R10(q≈1.25）、R20(q≈1.12)、R40(q≈1.06)<code>例如R5系列在1~10有：1、1.6、1.6^2≈2.5、2.5*1.6=4、4*1.6≈6.3、6.3*1.6≈10</code></p>
+<p>优先数的复合使用：在前面用较密的R10系列，在后面用较疏的R5系列；派生使用：使用R10/3系列（1,2,4…）(从R10中每3个数取一个数构成的数系)</p>
+<h4 id="尺寸"><a href="#尺寸" class="headerlink" title="尺寸"></a>尺寸</h4><h5 id="公称尺寸（D，d）"><a href="#公称尺寸（D，d）" class="headerlink" title="公称尺寸（D，d）"></a>公称尺寸（D，d）</h5><p>由图样规范确定的理想尺寸。</p>
+<h5 id="实际尺寸（Da，da）"><a href="#实际尺寸（Da，da）" class="headerlink" title="实际尺寸（Da，da）"></a>实际尺寸（Da，da）</h5><p>实际测量得到的尺寸</p>
+<h5 id="极限尺寸（Ds，ds，Di，di）"><a href="#极限尺寸（Ds，ds，Di，di）" class="headerlink" title="极限尺寸（Ds，ds，Di，di）"></a>极限尺寸（Ds，ds，Di，di）</h5><p>尺寸要素允许的最大尺寸称为上极限尺寸Ds，ds，尺寸要素允许的最小尺寸称为上极限尺寸Di，di。<br>工件合格的标准是：Di&lt;=Da&lt;=Ds; di&lt;=da&lt;=ds。</p>
+<h5 id="作用尺寸"><a href="#作用尺寸" class="headerlink" title="作用尺寸"></a>作用尺寸</h5><p>以下的“体外”可以理解为无材料的部分</p>
+<p>体外作用尺寸：在配合全长上，与实际体外相接的最(大/小)理想(轴/孔)的尺寸</p>
+<p>体外作用尺寸：在配合全长上，与实际体外相接的最(小/大)理想(轴/孔)的尺寸</p>
+<h5 id="实体尺寸（DM，DL，dM，dL）"><a href="#实体尺寸（DM，DL，dM，dL）" class="headerlink" title="实体尺寸（DM，DL，dM，dL）"></a>实体尺寸（DM，DL，dM，dL）</h5><p>MMC：组成要素的局部尺寸处处位于使工件材料量最多的状态称为最大实体尺寸DM=Di；dm=ds</p>
+<p>LMS：组成要素的局部尺寸处处位于使工件材料量最少的状态称为最小实体尺寸DM=Ds；dm=d</p>
+<p>MMVS：在达到MMC的情况下，中心要素的形位公差也达到最大，此时的体外作用尺寸称为<strong>最大实体实效尺寸</strong></p>
+<p>Dmv = Di - t            dmv = ds + t</p>
+<h4 id="公差与偏差"><a href="#公差与偏差" class="headerlink" title="公差与偏差"></a>公差与偏差</h4><h5 id="尺寸偏差（有正负号）"><a href="#尺寸偏差（有正负号）" class="headerlink" title="尺寸偏差（有正负号）"></a>尺寸偏差（有正负号）</h5><ul>
+<li>上极限偏差Es=Ds-D；es=ds-d</li>
+<li>下极限偏差Ei=Di-D；ei=di-d</li>
+<li>实际偏差Ea=Da-D；ea=da-d</li>
+</ul>
+<p>工件合格需满足：Ei&lt;=Ea&lt;=Es；ei&lt;=ea&lt;=es</p>
+<h5 id="尺寸公差（Th，Ts）"><a href="#尺寸公差（Th，Ts）" class="headerlink" title="尺寸公差（Th，Ts）"></a>尺寸公差（Th，Ts）</h5><p>孔的公差Th=Ds-Di=Es-Ei轴的公差Ts=ds-di=es-ei</p>
+<h5 id="公差带图"><a href="#公差带图" class="headerlink" title="公差带图"></a>公差带图</h5><p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20200822204143.png" srcset="/img/loading.gif" lazyload alt="公差带图"></p>
+<h4 id="配合"><a href="#配合" class="headerlink" title="配合"></a>配合</h4><h5 id="间隙配合"><a href="#间隙配合" class="headerlink" title="间隙配合"></a>间隙配合</h5><p>间隙配合包括最小间隙为0的配合</p>
+<p>最大间隙 Xmax = Ds - di = Es - ei    (&gt;0)<br>最小间隙 Xmin = Di - Ds = Ei - es    (&gt;0)<br>平均间隙 Xav = ( Xmax + Xmin ) / 2    (&gt;0)</p>
+<h5 id="过盈配合"><a href="#过盈配合" class="headerlink" title="过盈配合"></a>过盈配合</h5><p>间隙配合包括最小过盈为0的配合</p>
+<p>最大过盈 Ymax = Di - ds = Ei - es    (&lt;0)<br>最小过盈 Ymin  = Ds - di = Es - ei    (&lt;0)<br>平均间隙 Yav = ( Ymax + Ymin ) / 2    (&lt;0)</p>
+<h5 id="过渡配合"><a href="#过渡配合" class="headerlink" title="过渡配合"></a>过渡配合</h5><p>最大间隙 Xmax = Ds - di = Es - ei<br>最大过盈 Ymax = Di - ds = Ei - es<br>平均间隙 Xav = ( Xmax + Ymax ) / 2</p>
+<h5 id="配合公差"><a href="#配合公差" class="headerlink" title="配合公差"></a>配合公差</h5><p>组成配合的孔、轴公差之和</p>
+<p>Tf = Th +Ts</p>
+<p>Tf不能过大（会造成配合困难）；也不能过小（配合比较困难）</p>
+<h5 id="配合公差带图"><a href="#配合公差带图" class="headerlink" title="配合公差带图"></a>配合公差带图</h5><p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20200822204228.png" srcset="/img/loading.gif" lazyload alt="配合公差带图"></p>
+<h3 id="几何公差"><a href="#几何公差" class="headerlink" title="几何公差"></a>几何公差</h3><p>总共有14个形位公差，其中有8个位置公差</p>
+<h4 id="标注"><a href="#标注" class="headerlink" title="标注"></a>标注</h4><p>形位公差的标注主要有：框格、被测要素和基准要素</p>
+<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20200822204254.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ul>
+<li><p>注意：</p>
+<p>当需要标出的要素为<strong>组成要素</strong>（零件外形上可接触的点、线、面）时，箭头应<strong>垂直指向要素的轮廓或其引出线上</strong>，并且<strong>与尺寸线明显错开</strong></p>
+<p>当需要标出的要素为<strong>导出要素</strong>（不可接触的中心对称部分）时，箭头应<strong>与尺寸线对齐</strong>，并且可以代替其中一个箭头</p>
+</li>
+</ul>
+<h4 id="形状公差"><a href="#形状公差" class="headerlink" title="形状公差"></a>形状公差</h4><p>不涉及基准，其方向和位置随实际要素不同而浮动</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>特征</th>
+<th>公差带定义</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>直线度</td>
+<td>在给定平面内，公差带是距离为公差值的两直线间的区域</td>
+<td>被测要素必须位于平行于所给平面，距离为公差值的两直线内</td>
+</tr>
+<tr>
+<td></td>
+<td>在给定方向上，公差带是距离为公差值的两平面间的区域</td>
+<td>被测要素必须位于平行于所给方向，距离为公差值的两平面间</td>
+</tr>
+<tr>
+<td></td>
+<td>在任意方向上，公差带是直径为公差值的圆柱面内的区域</td>
+<td>被测要素必须位于直径为公差值的圆柱面内</td>
+</tr>
+<tr>
+<td>平面度</td>
+<td>公差带是距离为公差值的两平面间的区域</td>
+<td>被测表面必须位于距离为公差值的两平面间</td>
+</tr>
+<tr>
+<td>圆度</td>
+<td>公差带是半径差为公差值的两同心圆之间的区域</td>
+<td>被测表面必须位于距离为公差值的两同心圆之间</td>
+</tr>
+<tr>
+<td>圆柱度</td>
+<td>公差带是半径差为公差值的两同轴圆柱面之间的区域</td>
+<td>被测表面必须位于半径差为公差值的两同轴圆柱面之间</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 id="形状或位置公差"><a href="#形状或位置公差" class="headerlink" title="形状或位置公差"></a>形状或位置公差</h4><p>无基准时为形状公差，有基准时为位置公差。公差带是公差值的两等距曲线或曲面之间的区域</p>
+<h4 id="位置公差"><a href="#位置公差" class="headerlink" title="位置公差"></a>位置公差</h4><h5 id="定向公差"><a href="#定向公差" class="headerlink" title="定向公差"></a>定向公差</h5><p>用于限制被测形体对基准的方向变动。</p>
+<p>定向公差带相对基准有明确的方向，而且它不仅控制方向，也控制了形状。（一般标注了定向公差不再规定形状公差）</p>
+<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20200822204328.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20200822204354.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h5 id="定位公差"><a href="#定位公差" class="headerlink" title="定位公差"></a>定位公差</h5><p>用于限制被测要素对基准的位置变动</p>
+<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20200822204418.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h5 id="跳动公差"><a href="#跳动公差" class="headerlink" title="跳动公差"></a>跳动公差</h5><p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20200822204440.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h4 id="形位公差值之间的协调关系"><a href="#形位公差值之间的协调关系" class="headerlink" title="形位公差值之间的协调关系"></a>形位公差值之间的协调关系</h4><ul>
+<li>① 形状公差 &lt; 定向公差 &lt; 定位公差 &lt; 尺寸公差</li>
+<li>② 直线度 &lt; 平面度；圆度 &lt; 圆柱度</li>
+</ul>
+<h2 id="互换性要求"><a href="#互换性要求" class="headerlink" title="互换性要求"></a>互换性要求</h2><h3 id="《极限与配合》国家标准"><a href="#《极限与配合》国家标准" class="headerlink" title="《极限与配合》国家标准"></a>《极限与配合》国家标准</h3><h4 id="公差"><a href="#公差" class="headerlink" title="公差"></a>公差</h4><p>确定尺寸精确程度的等级称为公差等级，由公差代号IT 和 公差等级数字01、0、1、2……18表示，从IT01~IT18等级精度依次降低，相应的公差数值依次增大，加工越容易</p>
+<ul>
+<li>常见的标准公差数值</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">公称尺寸</th>
+<th style="text-align:center">IT6</th>
+<th style="text-align:center">IT7</th>
+<th style="text-align:center">IT8</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">&gt;30~50</td>
+<td style="text-align:center">16</td>
+<td style="text-align:center">25</td>
+<td style="text-align:center">39</td>
+</tr>
+<tr>
+<td style="text-align:center">&gt;50~80</td>
+<td style="text-align:center">19</td>
+<td style="text-align:center">30</td>
+<td style="text-align:center">46</td>
+</tr>
+<tr>
+<td style="text-align:center">&gt;80~120</td>
+<td style="text-align:center">22</td>
+<td style="text-align:center">35</td>
+<td style="text-align:center">54</td>
+</tr>
+<tr>
+<td style="text-align:center">&gt;120~180</td>
+<td style="text-align:center">25</td>
+<td style="text-align:center">40</td>
+<td style="text-align:center">63</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>工艺等价原则：配合的孔、轴加工难度应该相当。因此在间隙配合与过渡配合时，</p>
+<p>  ①当公称直径 <strong>D≤500mm</strong> 时且 <strong>IT≤8</strong> 时，有孔应该比轴的标准公差等级低一级，例如：Φ50G8/h7</p>
+<p>  ②当 <strong>IT&gt;9</strong> 时，孔和轴应该取同级</p>
+<h4 id="偏差"><a href="#偏差" class="headerlink" title="偏差"></a>偏差</h4><p><strong>基本偏差</strong>：<strong>一般</strong>指靠近零线或位于零线的那个极限偏差</p>
+<p>基本偏差代号：A、B、C、CD、E、EF、F、FG、G、H、J、JS、K、M、N、P、R、S、T、U、V、X、Y、Z、ZA、ZB、ZC（没有L、O、Q、W）</p>
+<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20200822204503.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ul>
+<li>a-h与 H 为间隙配合（A-H 与 h）</li>
+<li>j-n 与 H 为过渡配合（J-N 与 h ）</li>
+<li>p-zc与H为过盈配合（P-ZC与h）</li>
+</ul>
+<p>注：<strong>JS/js</strong>的上下偏差与IT有关，为 IT/2 或 ( IT -1)/2。其基本偏差可以是上偏差，也可以是下偏差。</p>
+<h4 id="配合制"><a href="#配合制" class="headerlink" title="配合制"></a>配合制</h4><p>国家标准中规定有基孔制配合和基轴制配合</p>
+<ul>
+<li>基孔制指定了优先配合13个，基轴制指定了优先配合13个</li>
+</ul>
+<p>选用：优先选择基孔制，其次基轴制<code>①与冷拉钢配合②与标准件配合③直径小的轴④一轴多孔</code>，特殊场合采用非基准值</p>
+<p>注：基孔制与基轴制平行，<code>例如：H7/k6与K7/h6的配合性质相同</code></p>
+<h3 id="几何公差相关要求"><a href="#几何公差相关要求" class="headerlink" title="几何公差相关要求"></a>几何公差相关要求</h3><h4 id="独立原则（IP）"><a href="#独立原则（IP）" class="headerlink" title="独立原则（IP）"></a>独立原则（IP）</h4><p>最严格的一种要求，图样上给定的各个尺寸和形状、位置公差要求都是独立的，应该分别满足要求。</p>
+<h4 id="包容要求（ER）"><a href="#包容要求（ER）" class="headerlink" title="包容要求（ER）"></a>包容要求（ER）</h4><p>实质：直接用尺寸公差来控制中心要素的形位误差，主要运用于保证配合性质</p>
+<p>合格性条件：</p>
+<p>1.体外作用尺寸受最大实体尺寸限制 <strong>Dfe ≥ Di</strong> 、 <strong>dfe ≤ ds</strong></p>
+<p>2.局部作用尺寸受最小实体尺寸限制 <strong>Da ≤ Ds</strong> 、 <strong>da ≥ di</strong></p>
+<p>注：当轴的实际尺寸等于最大实体尺寸时，不允许轴线有直线度误差。</p>
+<h4 id="最大实体要求（MMR）"><a href="#最大实体要求（MMR）" class="headerlink" title="最大实体要求（MMR）"></a>最大实体要求（MMR）</h4><p>实质：控制被测要素实际轮廓处于最大实体实效边界内的一种公差要求，运用于配合要求不严格，但能顺利的装入配上的场合</p>
+<p>合格性条件：</p>
+<p>1.体外作用尺寸受最大实体实效尺寸限制 <strong>Dfe ≥ Di - t</strong> 、 <strong>dfe ≤ ds + t</strong></p>
+<p>2.局部作用尺寸受尺寸公差限制 <strong>Di ≤ Da ≤ Ds</strong> 、 <strong>di ≤ da ≤ ds</strong></p>
+<h2 id="测量与检验"><a href="#测量与检验" class="headerlink" title="测量与检验"></a>测量与检验</h2><h3 id="技术测量"><a href="#技术测量" class="headerlink" title="技术测量"></a>技术测量</h3><p>测量就是将被测量与测量单位或标准量在数值上进行比较，从而确定两者比值的实验认知过程。包括测量对象、计量单位、测量方法、测量精度</p>
+<h4 id="量块"><a href="#量块" class="headerlink" title="量块"></a>量块</h4><p>一种 <strong>无刻度</strong> 的标准 端面 量具，其制造材料多为<strong>特殊合金钢</strong>，一般为长方六面体结构，其中两个<strong>互相平行的极为光滑的平面</strong>为测量面</p>
+<ul>
+<li>标称长度的位置</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">&lt;6mm</th>
+<th style="text-align:center">=6mm</th>
+<th style="text-align:center">&gt;6mm</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">测量面上</td>
+<td style="text-align:center">非测量面上，且该表面的左右两侧面在测量面上</td>
+<td style="text-align:center">非测量面上，且该表面的左右两侧面在测量面上</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul>
+<li>※第二套量块（83块）的尺寸系列</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">尺寸系列/mm</th>
+<th style="text-align:center">间隔/mm</th>
+<th style="text-align:center">数量</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">0.5</td>
+<td style="text-align:center">-</td>
+<td style="text-align:center">1</td>
+</tr>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">-</td>
+<td style="text-align:center">1</td>
+</tr>
+<tr>
+<td style="text-align:center">1.005</td>
+<td style="text-align:center">-</td>
+<td style="text-align:center">1</td>
+</tr>
+<tr>
+<td style="text-align:center">1.01,1.02,……1.49</td>
+<td style="text-align:center">0.01</td>
+<td style="text-align:center">49</td>
+</tr>
+<tr>
+<td style="text-align:center">1.5,1.6,……1.9</td>
+<td style="text-align:center">0.1</td>
+<td style="text-align:center">5</td>
+</tr>
+<tr>
+<td style="text-align:center">2.0,2.5,……9.5</td>
+<td style="text-align:center">0.5</td>
+<td style="text-align:center">16</td>
+</tr>
+<tr>
+<td style="text-align:center">10,20,……100</td>
+<td style="text-align:center">10</td>
+<td style="text-align:center">10</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul>
+<li><p>量块的使用</p>
+<p>①按级使用：直接将量块的标称长度作为工作长度（测量精度有影响，但不用加修订值）</p>
+<p>②按等使用：将量块经检定后给出的实际中心长度作为工作长度（排除了量块的制造误差）</p>
+</li>
+</ul>
+<h4 id="测量分类"><a href="#测量分类" class="headerlink" title="测量分类"></a>测量分类</h4><p>绝对测量：测量器具的式值直接反映被测量值 的测量。例如，直尺千分尺的测量</p>
+<p>相对测量：将被测量与一个标准量值进行比较得到两者差值 的测量。例如，立式光学比较仪的测量</p>
+<h3 id="表面粗糙度"><a href="#表面粗糙度" class="headerlink" title="表面粗糙度"></a>表面粗糙度</h3><p>零件的表面会存在几何误差，根据波距的大小，将表面误差分为3种：①波距小于1mm，称为表面粗糙度；②1~10mm称为表面波纹度；③大于10mm称为表面宏观形状误差</p>
+<h4 id="粗糙度对零件使用性能的影响"><a href="#粗糙度对零件使用性能的影响" class="headerlink" title="粗糙度对零件使用性能的影响"></a>粗糙度对零件使用性能的影响</h4><h5 id="摩擦磨损方面"><a href="#摩擦磨损方面" class="headerlink" title="摩擦磨损方面"></a>摩擦磨损方面</h5><p>零件表面越粗糙，表面的摩擦系数越大，摩擦阻力也就越大，零件配合表面的磨损也就越快。</p>
+<h5 id="配合性质方面"><a href="#配合性质方面" class="headerlink" title="配合性质方面"></a>配合性质方面</h5><p>表面粗糙度会影响配合性质。对于间隙配合，粗糙的表面会使峰顶迅速磨平，使间隙逐渐增大；对过盈配合，粗糙的表面会使峰顶挤平，实际有效过盈量减少。</p>
+<h5 id="疲劳强度方面"><a href="#疲劳强度方面" class="headerlink" title="疲劳强度方面"></a>疲劳强度方面</h5><p>粗糙度越大，一般表面的凹痕就越深，交变应力作用下的应力集中也就越大，越容易造成零件疲劳强度的降低。</p>
+<h5 id="耐腐蚀方面"><a href="#耐腐蚀方面" class="headerlink" title="耐腐蚀方面"></a>耐腐蚀方面</h5><p>表面越粗糙，腐蚀性的气体或液体越容易在谷底聚集，渗入金属内部，造成腐蚀。</p>
+<h5 id="结合面密封性方面"><a href="#结合面密封性方面" class="headerlink" title="结合面密封性方面"></a>结合面密封性方面</h5><p>粗糙的表面相互结合时，有为接触的部分，会产生间隙，影响密封性</p>
+<h4 id="粗糙度轮廓的评定参数"><a href="#粗糙度轮廓的评定参数" class="headerlink" title="粗糙度轮廓的评定参数"></a>粗糙度轮廓的评定参数</h4><p>有幅度参数、间距参数、形状参数等</p>
+<h5 id="轮廓算术平均偏差Ra"><a href="#轮廓算术平均偏差Ra" class="headerlink" title="轮廓算术平均偏差Ra"></a>轮廓算术平均偏差Ra</h5><p>在取样长度内，轮廓各点至基准线距离的算术平均值</p>
+<h5 id="轮廓的最大高度Rz"><a href="#轮廓的最大高度Rz" class="headerlink" title="轮廓的最大高度Rz"></a>轮廓的最大高度Rz</h5><p>在一个取样长度内，最大轮廓峰高和最大轮廓谷深之和</p>
+<h4 id="评定参数值的选择"><a href="#评定参数值的选择" class="headerlink" title="评定参数值的选择"></a>评定参数值的选择</h4><p>总原则：在满足零件功能的要求下，尽可能是参数的允许值大。具体选用时，先根据经验统计资料初步选择，然后对比工作条件做出适当的调整。调整时，需要注意：</p>
+<p>1.同一零件上，工作面上的粗糙度值比非工作面小</p>
+<p>2.摩擦表面的粗糙度值比非摩擦面小</p>
+<p>3.高速、大应力等的粗糙度小</p>
+<p>4.表面粗糙度参数值应该与尺寸公差及形状公差相协调</p>
+<h4 id="表面粗糙度的测量"><a href="#表面粗糙度的测量" class="headerlink" title="表面粗糙度的测量"></a>表面粗糙度的测量</h4><ul>
+<li>比较法，将被测表面与已知其幅度参数值的表面粗糙度标准样块比较</li>
+<li>光学测量法，其中有一种是光切法</li>
+</ul>
+<h3 id="光滑工件尺寸的检验"><a href="#光滑工件尺寸的检验" class="headerlink" title="光滑工件尺寸的检验"></a>光滑工件尺寸的检验</h3><p>孔轴的尺寸公差与几何公差的关系采用独立原则时，使用通用测量器来测量。而当采用包容要求是，则是采用光滑极限量规进行检验</p>
+<p>检验要求：只允许误废，不允许误收。</p>
+<h4 id="光滑极限量规"><a href="#光滑极限量规" class="headerlink" title="光滑极限量规"></a>光滑极限量规</h4><ul>
+<li>1.检验孔的称为塞规，检验轴的称为环规</li>
+<li>2.量规由通规和止规构成，通规按照最大实体尺寸制造；止规按照最小实体尺寸制造。</li>
+<li>3.量规按照使用方法的不同，分为三种：工作量规（一般使用的量规）、检收量规（检验量规的量规）、校对量规</li>
+<li>4.量规的尺寸设计：<ol>
+<li>通规的公称直径为工件的最大实体尺寸，止规的公称直径为工件的最小实体尺寸</li>
+<li>通规在使用时经常磨损，因此为了防止误收，需要为通规留出一定的预留量，即公差带内缩</li>
+</ol>
+</li>
+</ul>
+<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20200822204531.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="常见结构互换性"><a href="#常见结构互换性" class="headerlink" title="常见结构互换性"></a>常见结构互换性</h2><h3 id="滚动轴承"><a href="#滚动轴承" class="headerlink" title="滚动轴承"></a>滚动轴承</h3><h4 id="配合特点"><a href="#配合特点" class="headerlink" title="配合特点"></a>配合特点</h4><p>滚珠轴承外圈与外壳孔的配合采用<strong>基轴制</strong>，滚珠轴承内圈与轴颈的配合采用<strong>基孔制</strong></p>
+<p>滚珠轴承内圈与轴颈的基孔制与一般基孔制不同，标准规定：<strong>内圈基准孔公差带位于公称内径d为零线的下方，即上偏差为0，下偏差为负值</strong>。<code>原因：滚珠轴承配合时内圈经常磨损，为了防止这种情况，配合时应该有一定的过盈量。又由于这是薄壁零件，需要经常更换，因此过盈量不能过大。公差带布置在零件上方时，过盈量过大；采用间隙配合时，又会产生间隙。</code></p>
+<h4 id="配合表面要求"><a href="#配合表面要求" class="headerlink" title="配合表面要求"></a>配合表面要求</h4><p>①凡是与轴承内、外圈配合的表面，通常对粗糙度提出了较高的要求。</p>
+<p>②装配图上标注滚珠轴承和轴和壳体配合时，只标注轴和壳体的公差带代号</p>
+<h3 id="键、花键"><a href="#键、花键" class="headerlink" title="键、花键"></a>键、花键</h3><p>采用基轴制</p>
+<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20200822204553.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="圆柱齿轮"><a href="#圆柱齿轮" class="headerlink" title="圆柱齿轮"></a>圆柱齿轮</h3><p>齿轮一般都是传递动力和运动的，其使用要求因用途不同而异，但归纳起来主要有4个方面传递运动的准确性、传递运动的平稳性、载荷</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>要求</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>读数与分度齿轮</td>
+<td>传递运动的准确性</td>
+</tr>
+<tr>
+<td>高速齿轮</td>
+<td>传递运动的平稳性</td>
+</tr>
+<tr>
+<td>传递动力的齿轮</td>
+<td>载荷分布的均匀性</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 id="传递运动的准确性"><a href="#传递运动的准确性" class="headerlink" title="传递运动的准确性"></a>传递运动的准确性</h4><p>是指在<strong>一转</strong>范围内<strong>传动比</strong>的变动量。即一转范围内，从动齿轮转角误差的最大变动量。</p>
+<p>如图所示，将理论转角与最大转角误差用图表画出，一般为余弦图像，转角误差的最大变化量△φ∑即为最大变动量。</p>
+<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20200822204615.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h5 id="评定参数"><a href="#评定参数" class="headerlink" title="评定参数"></a>评定参数</h5><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>解释说明</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>齿距累积总偏差Fp</td>
+<td>齿轮各齿距与理论齿距偏差累计值的代数差的最大值（将齿轮各个齿以同一个齿为基准，由于加工误差，会出现齿距，此时测量的各个齿距误差为累计误差，各个齿累计误差的代数差最大的就是齿距累积总偏差）</td>
+<td>必检项目，既可以反应切线误差也可以反应径向误差</td>
+</tr>
+<tr>
+<td>齿距累积偏差Fpk</td>
+<td>k个齿距的单个齿距偏差代数和（前面的是找出最大的代数差，这个是找出其中k个点的）</td>
+<td>有时为必检项目</td>
+</tr>
+<tr>
+<td>径向跳动Fr</td>
+<td>-</td>
+<td>主要反应同轴度误差</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20200822204634.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h4 id="传递运动的平稳性"><a href="#传递运动的平稳性" class="headerlink" title="传递运动的平稳性"></a>传递运动的平稳性</h4><p>是指齿轮回转过程中，瞬时传动比的变化尽量小。即在一齿过程中的最大转角误差。</p>
+<p>一般来说，齿轮传递的不准确性及不平稳性，是同时存在的</p>
+<h5 id="评定参数-1"><a href="#评定参数-1" class="headerlink" title="评定参数"></a>评定参数</h5><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>解释说明</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>单个齿距偏差Fpt</td>
+<td>一个齿齿距与理论值的偏差</td>
+<td>必检项目</td>
+</tr>
+<tr>
+<td>齿廓总偏差Fα</td>
+<td>在计值范围内，包含实际廓线的两条设计迹线之间的距离</td>
+<td>必检项目</td>
+</tr>
+<tr>
+<td>齿廓形状偏差Ffα</td>
+<td>在计值范围内，包含实际齿廓的两条与平均齿廓迹线等距的曲线间的距离</td>
+<td>-</td>
+</tr>
+<tr>
+<td>齿廓倾斜偏差FHα</td>
+<td>在计值范围内，两端与平均迹线相交的两设计齿廓迹线间的距离</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20200822204651.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h4 id="载荷分布的均匀性"><a href="#载荷分布的均匀性" class="headerlink" title="载荷分布的均匀性"></a>载荷分布的均匀性</h4><p>用沿齿长和齿高方向上的接触面积表示。</p>
+<h5 id="评定参数-2"><a href="#评定参数-2" class="headerlink" title="评定参数"></a>评定参数</h5><p>螺旋线偏差是评定轮齿载荷分布均匀性的指标</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>解释说明</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>螺旋线总偏差Fβ</td>
+<td>在计值范围内，包含实际廓线的两条设计迹线之间的距离</td>
+<td>必检项目</td>
+</tr>
+<tr>
+<td>螺旋线形状偏差Ffβ</td>
+<td>在计值范围内，包含实际齿廓的两条与平均齿廓迹线等距的曲线间的距离</td>
+<td>-</td>
+</tr>
+<tr>
+<td>螺旋线倾斜偏差FHβ</td>
+<td>在计值范围内，两端与平均迹线相交的两设计齿廓迹线间的距离</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20200822204718.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h4 id="齿轮副精度、传动侧隙"><a href="#齿轮副精度、传动侧隙" class="headerlink" title="齿轮副精度、传动侧隙"></a>齿轮副精度、传动侧隙</h4><p>为了保证齿轮转动灵活，通常留出一些侧隙用于储存润滑油等等物质</p>
+<h5 id="评定参数-3"><a href="#评定参数-3" class="headerlink" title="评定参数"></a>评定参数</h5><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>解释说明</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>轴线平面内的平行度偏差f∑δ</td>
+<td>公共平面上两轴线的平行度误差</td>
+<td>推荐值：f∑δ = ( L/b )·Fβ（L为箱体轴承孔跨距，b为齿轮齿厚）</td>
+</tr>
+<tr>
+<td>垂直平面内的平行度偏差f∑β</td>
+<td>垂直平面上两轴线的平行度误差</td>
+<td>推荐值：f∑β = 0.5f∑δ</td>
+</tr>
+<tr>
+<td>中心距允许偏差fa</td>
+<td>顾名思义</td>
+<td>5、6级精度齿轮：fa = IT7/2；7、8级精度齿轮：fa = IT9/2</td>
+</tr>
+<tr>
+<td>齿厚偏差Esn</td>
+<td>齿厚的实际值与公称值之差</td>
+<td>公称齿厚 S = mzsin( 90°/z )</td>
+</tr>
+<tr>
+<td>齿轮副最小法向侧隙jbn min</td>
+<td>顾名思义</td>
+<td>jbn min = 2/3( 0.06 + 0.0005a + 0.03mn)（工作时齿轮节圆线速度小于15m/s时）</td>
+</tr>
+<tr>
+<td>分度圆上偏差Esns</td>
+<td>不解释</td>
+<td>Esns = -jbn min / (2cosαn)</td>
+</tr>
+<tr>
+<td>齿厚公差Tsn</td>
+<td>不解释</td>
+<td>Tsn = 2tanαn · sqrt( Fr² + br² )（br为切齿时径向进刀公差允许值，Fr为齿轮径向跳动公差允许值）</td>
+</tr>
+<tr>
+<td>分度圆下偏差Esni</td>
+<td>不解释</td>
+<td>Esni = Esns - Tsn = -jbn min/(2cosαn) - 2tanαn · sqrt( Fr² + br²)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20200822204736.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h4 id="齿轮坯公差"><a href="#齿轮坯公差" class="headerlink" title="齿轮坯公差"></a>齿轮坯公差</h4><h5 id="精度等级表示方法"><a href="#精度等级表示方法" class="headerlink" title="精度等级表示方法"></a>精度等级表示方法</h5><p>示例：7Fp6(FαFβ)GB/T 10095.1—2008</p>
+<p>含义：齿轮各项偏差项目均应符合GB/T10095.1—2008的要求，且Fp为7级精度，Fα与Fβ为6级精度</p>
+<h5 id="齿轮检验组"><a href="#齿轮检验组" class="headerlink" title="齿轮检验组"></a>齿轮检验组</h5><p>①Fp（齿距累积总偏差）、Fα（齿廓总偏差）、Fβ（螺旋线总偏差）、Fr（齿轮径向跳动公差）、Esn（分度圆偏差）、Ebn（公法线长度极限偏差）</p>
+<p>②Fp（齿距累积总偏差）、Fα（齿廓总偏差）、Fβ（螺旋线总偏差）、Fr（齿轮径向跳动公差）、Esn（分度圆偏差）、Ebn（公法线长度极限偏差）、Fpk（齿距累积偏差）</p>
+<h5 id="齿轮坯顶圆直径偏差"><a href="#齿轮坯顶圆直径偏差" class="headerlink" title="齿轮坯顶圆直径偏差"></a>齿轮坯顶圆直径偏差</h5><p>= ±0.05mn</p>
+<h4 id="齿轮精度的确定"><a href="#齿轮精度的确定" class="headerlink" title="齿轮精度的确定"></a>齿轮精度的确定</h4><p>①确定齿轮精度等级</p>
+<p>​    可根据齿轮圆周线速度 v 确定齿轮精度等级</p>
+<p>②确定最小侧隙和齿厚偏差</p>
+<p>​    公称齿厚：<strong>S = m·z1·sin( 90°/z1 )</strong></p>
+<p>​    最小侧隙：<strong>jbn min = 2/3 · ( 0.06 + 0.0005a + 0.03mn )</strong></p>
+<p>​        其中：<strong>a = m( z1+z2 ) / 2</strong></p>
+<p>​    齿厚偏差：<strong>Esns = - jbn min / ( 2cosαn )、Tsn = 2tanαn · sqrt( Fr² + br² )、Esni = Esns - Tsn</strong></p>
+<p>​        其中：根据分度圆直径 <strong>d = m·z1</strong> 查表可得<strong>Fr、br</strong></p>
+<p>​    综上，得到公称齿厚及偏差</p>
+<p>③确定检验组</p>
+<p>​    一般可取：<strong>Fp、Fα、Fβ、Fr、Esn、Ebn</strong></p>
+<p>④确定齿轮副精度</p>
+<p>​    中心距公差 <strong> ±fa = IT7/2（5、6级精度）</strong>或 <strong>±fa = IT9/2 （7、8级精度）</strong></p>
+<p>​    轴线平行度偏差 <strong>f∑δ = (L/b)·Fβ</strong> 和 <strong>f∑β = 0.5 · f∑δ</strong></p>
+<p>⑤齿轮坯精度</p>
+<p>​    内孔尺寸偏差：根据 齿轮精度等级 查表得</p>
+<p>​    齿顶圆直径偏差：<strong>±0.05m</strong></p>
+<p>​    基准面尺寸公差：根据类型查表可得</p>
+<p>​    表面粗糙度：根据 齿轮精度 查表可得</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E6%9C%BA%E6%A2%B0%E7%9B%B8%E5%85%B3/">机械相关</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%9C%BA%E6%A2%B0/">机械</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E4%BA%92%E6%8D%A2%E6%80%A7%E4%B8%8E%E6%B5%8B%E9%87%8F%E6%8A%80%E6%9C%AF/">互换性与测量技术</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2018/01/28/WHUT/CourseDesignOfMechanicalPrinciple/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">课程设计：牛头刨床机构的分析与综合</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2018/01/16/WHUT/PrincipleOfMechanism/">
+                        <span class="hidden-mobile">机械原理笔记</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"DNr2pgYBNbnn4YMKmdstH2Sw-gzGzoHsz","appKey":"6RRAdTwPs2Y3Tk5iKNo2qo1D","placeholder":"说点什么","path":"window.location.pathname","avatar":"retro","meta":["nick","mail"],"pageSize":10,"lang":"zh-CN","highlight":true,"recordIP":false,"serverURLs":"https://dnr2pgyb.lc-cn-n1-shared.com","emojiCDN":null,"emojiMaps":null,"enableQQ":false,"requiredFields":[],"appid":"DNr2pgYBNbnn4YMKmdstH2Sw-gzGzoHsz","appkey":"6RRAdTwPs2Y3Tk5iKNo2qo1D"},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

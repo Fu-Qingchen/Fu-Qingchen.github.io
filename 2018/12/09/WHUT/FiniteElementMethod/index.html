@@ -1,0 +1,554 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.ico">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="这玩意好难，对材料力学和线性代数的基础要求很高，而且APDL对新手来说也很不友好。这个在毕业设计的时候也涉及到了，不过用的是Workbench，方便很多。">
+  <meta name="author" content="Fu Qingchen">
+  <meta name="keywords" content="MSE, CS">
+  
+  <title>机械有限元分析笔记 | Fu&#39;s Web</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/vs2015.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.11","typing":{"enable":false,"typeSpeed":30,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null},"tajs":null},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 50vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Fu's Web</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('https://gitee.com/fuqingchen/picture-lib/raw/master/img/Test_Tree.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="机械有限元分析笔记">
+              
+                机械有限元分析笔记
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2018-12-09 16:16" pubdate>
+        2018年12月9日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.6k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      18
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">机械有限元分析笔记</h1>
+            
+            <div class="markdown-body">
+              <p>这玩意好难，对材料力学和线性代数的基础要求很高，而且APDL对新手来说也很不友好。这个在毕业设计的时候也涉及到了，不过用的是Workbench，方便很多。</p>
+<span id="more"></span>
+<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20200822203910.png" srcset="/img/loading.gif" lazyload alt="思维导图"></p>
+<h1 id="基础理论"><a href="#基础理论" class="headerlink" title="基础理论"></a>基础理论</h1><h2 id="有限元分析步骤"><a href="#有限元分析步骤" class="headerlink" title="有限元分析步骤"></a>有限元分析步骤</h2><ul>
+<li><p>离散化结构：把连续结构的力学模型转变为离散的力学模型</p>
+</li>
+<li><p>单元分析：求出表示各个单元力学特性的单元刚度矩阵</p>
+</li>
+<li>整体分析：将各单元刚度矩阵组集成整个结构的总刚矩阵，引入边界条件，求解</li>
+</ul>
+<h1 id="有限元概念"><a href="#有限元概念" class="headerlink" title="有限元概念"></a>有限元概念</h1><h2 id="设置节点的原则"><a href="#设置节点的原则" class="headerlink" title="设置节点的原则"></a>设置节点的原则</h2><ul>
+<li>同一单元内，单元的各项特性数据和材料数据应该保持一致</li>
+<li>在载荷突变处，集中载荷作用点要设置节点</li>
+<li>欲知道单元应力状况、位移状况、内力状况的地方要设置节点</li>
+</ul>
+<h2 id="形函数及性质"><a href="#形函数及性质" class="headerlink" title="形函数及性质"></a>形函数及性质</h2><script type="math/tex; mode=display">
+N_i=\frac 1{2A}(a_i+b_ix+c_iy)</script><p>​    其中 $a_i=\left|<br>\begin{matrix}<br>x_j&amp;y_j\\<br>x_m&amp;y_m\\<br>\end{matrix}<br>\right|,b_i=-\left|<br>\begin{matrix}<br>1&amp;y_j\\<br>1&amp;y_m\\<br>\end{matrix}<br>\right|c_i=-\left|<br>\begin{matrix}<br>x_j&amp;1\\<br>x_m&amp;1\\<br>\end{matrix}<br>\right|$</p>
+<ul>
+<li><p>单元内任意一点的三个形函数之和恒等于1。$N_i+N_j+N_m=1$ </p>
+</li>
+<li><p>在 i,j,m 三个顶点处，有</p>
+<ul>
+<li><p>在 i 节点处：$N_i=1,N_j=N_m=0$ </p>
+</li>
+<li><p>在 j 节点处：$N_j=1,N_i=N_m=0$ </p>
+</li>
+<li><p>在 m 节点处：$N_m=1,N_j=N_i=0$ </p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="位移模式收敛性分析"><a href="#位移模式收敛性分析" class="headerlink" title="位移模式收敛性分析"></a>位移模式收敛性分析</h2><h3 id="完备性"><a href="#完备性" class="headerlink" title="完备性"></a>完备性</h3><blockquote>
+<p>充分条件</p>
+</blockquote>
+<h4 id="位移模式需包括常应变状态"><a href="#位移模式需包括常应变状态" class="headerlink" title="位移模式需包括常应变状态"></a>位移模式需包括常应变状态</h4><p>即应变分量 $\{\varepsilon\}$ 与 x,y 无关</p>
+<h4 id="位移模式需包括单元的刚体位移"><a href="#位移模式需包括单元的刚体位移" class="headerlink" title="位移模式需包括单元的刚体位移"></a>位移模式需包括单元的刚体位移</h4><p>即应变分量 $\{\varepsilon\}=0$ 时的位移方程，要和质点做刚体运动的方程对应</p>
+<h3 id="协调性"><a href="#协调性" class="headerlink" title="协调性"></a>协调性</h3><blockquote>
+<p>必要条件</p>
+</blockquote>
+<h4 id="位移模式必须反映位移的连续性"><a href="#位移模式必须反映位移的连续性" class="headerlink" title="位移模式必须反映位移的连续性"></a>位移模式必须反映位移的连续性</h4><p>各个单元在变形之后单元内、单元间保持连续，不撕裂，不侵入</p>
+<h2 id="载荷的移置"><a href="#载荷的移置" class="headerlink" title="载荷的移置"></a>载荷的移置</h2><p>原则是原载荷在任何虚位移上做的虚功，与移置到各节点的力所做的虚功相等</p>
+<p>对于三角形三节点单元：</p>
+<ul>
+<li>集中力的移置：$\{R\}=[N]^T{\{P\}}$ ，其中 $\{P\}$ 为集中力</li>
+<li>面力的移置：$\{R\}=\int[N]^T\{p\}ds$ ，其中 $\{p\}$ 为面力密度</li>
+<li>体力的移置：$\{R\}=\int[N]^T\{p\}tdxdy$ ，其中  $t$ 为厚度</li>
+</ul>
+<p>对于轴对称单元：</p>
+<ul>
+<li>集中力的移置：$\{R\}=2\pi r[N]^T{\{P\}}$ ，其中 $\{P\}$ 为集中力</li>
+<li>面力的移置：$\{R\}=\int2\pi r[N]^T\{p\}ds$ ，其中 $\{p\}$ 为面力密度</li>
+<li>体力的移置：$\{R\}=\int2\pi r[N]^T\{p\}drdz$ ，其中  $t$ 为厚度</li>
+</ul>
+<h2 id="总刚组集"><a href="#总刚组集" class="headerlink" title="总刚组集"></a>总刚组集</h2><h3 id="原则"><a href="#原则" class="headerlink" title="原则"></a>原则</h3><ol>
+<li>变形后各节点任然协调的相互连接（连续性）</li>
+<li>各节点满足静力平衡条件，节点力 = 外载荷</li>
+</ol>
+<h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><ol>
+<li><p><strong>扩大</strong>各单元矩阵，使之成为与总刚矩阵相同的阶数</p>
+<blockquote>
+<p>此处的阶数 = 位移分量个数 × 节点数</p>
+</blockquote>
+</li>
+<li><p>按照总刚矩阵的编号，<strong>移动</strong>各单元矩阵的各个子块</p>
+</li>
+<li>将各个矩阵相加</li>
+</ol>
+<h2 id="总刚性质"><a href="#总刚性质" class="headerlink" title="总刚性质"></a>总刚性质</h2><ul>
+<li><p>位置无关性（总刚与位置无关，只与材料特性、几何形状、尺寸大小有关）</p>
+</li>
+<li><p>对称性</p>
+</li>
+<li><p>奇异性（ $[K]$ 无逆矩阵，即在 $\{F\}=[K]\{\delta\}$ 只能由位移求力，不能由力求位移）</p>
+</li>
+<li><p>稀疏性（总刚中0多，非0少）</p>
+</li>
+<li><p>带状性（只有中间有数值，呈带状，两边都是0）</p>
+<blockquote>
+<p><strong>半带宽值 B = ( 相邻节点最大差值 + 1 ) × 单个节点自由度数</strong>（对平面问题，单个节点自由度数 = 2）</p>
+<p>半带宽值与计算机处理性能有关，可越小越好</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="总刚矩阵的内存压缩机制"><a href="#总刚矩阵的内存压缩机制" class="headerlink" title="总刚矩阵的内存压缩机制"></a>总刚矩阵的内存压缩机制</h3><p>总刚矩阵具有对称性，只需存入主对角线上半带或下半带的元素，就可以完成解方程的运算。此即为总刚矩阵的半带宽存储方法。 </p>
+<p>假定取主对角线上半带元素存储，具体做法就是每行元素以主对角线上的元素开始，存储每行半带宽数值的元素个数。如此各元素的行号不变，改变的只是列号。新列号和原列号的关系式如下： </p>
+<p><strong>新列号 = 原列号 - 行号 + 1</strong> </p>
+<h2 id="总体边界条件的引入"><a href="#总体边界条件的引入" class="headerlink" title="总体边界条件的引入"></a>总体边界条件的引入</h2><h3 id="边界节点固定"><a href="#边界节点固定" class="headerlink" title="边界节点固定"></a>边界节点固定</h3><p>$u_{i}=u_{j}=0$</p>
+<p>使用 <strong>置0-1法</strong> ：</p>
+<p>即首先在总刚矩阵 $[K]$ 中与已知位移分量相对应的行和列元素改为 0，但主对角线上的元素改为 1 ，然后在节点载荷向量的列阵中，与已知对应元素的位移用代替，其余元素减去已知位移分别乘 $[K]$ 中相应元素。</p>
+<h3 id="边界有特定位移值"><a href="#边界有特定位移值" class="headerlink" title="边界有特定位移值"></a>边界有特定位移值</h3><p>$u_{i}=C$ </p>
+<p>使用 <strong>乘大数法</strong> ：</p>
+<p>在总刚矩阵 $[K]$ 中，把与已知位移位移相对应的行与列主对角线上的元素乘一个很大的数 $10^{10}$ ，然后把载荷向量中的对应元素代以给定位移乘以相应主对角线上的元素，再同样乘以一个很大的数。 </p>
+<h3 id="应力平滑处理"><a href="#应力平滑处理" class="headerlink" title="应力平滑处理"></a>应力平滑处理</h3><p>由于三角形单元求得的应力或应变是不连续的，为了使模拟更加准确，因此要平滑应力的突变。 </p>
+<p>就是将绕某一节点的各单元形心应力加以平均，来表示该节点的应力。</p>
+<h1 id="常见单元类型"><a href="#常见单元类型" class="headerlink" title="常见单元类型"></a>常见单元类型</h1><p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20200822203953.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h1 id="命令流"><a href="#命令流" class="headerlink" title="命令流"></a>命令流</h1><p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20200822204022.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python">/BATCH	!批处理<br>/PREP7	!输入该指令后开始建模<br>/*定义材料*/<br>ET,<span class="hljs-number">1</span>,BEAM188	!单元类型：ElementType 序号,单元类型<br>KEYOPT,<span class="hljs-number">1</span>,<span class="hljs-number">3</span>,<span class="hljs-number">3</span>	!对 BEAM188 的设置：ET1 的 (KEYOPT3) 的值为 <span class="hljs-number">3</span>,这里是选择了空间类型<br>MP,EX,<span class="hljs-number">1</span>,<span class="hljs-number">2.1E5</span>	!设置材料属性，ET1 的弹性模量值为 <span class="hljs-number">2.1E5</span><br>MP,NUXY,<span class="hljs-number">1</span>,<span class="hljs-number">0.3</span>	!设置材料属性，ET1 的柏松比值为 <span class="hljs-number">0.3</span><br>/*定义梁截面*/<br>SECTYPE,<span class="hljs-number">1</span>,BEAM,RECT	!设置第一种梁截面为矩形<br>SECDATE,<span class="hljs-number">30</span>,<span class="hljs-number">10</span>	!矩形高宽为 <span class="hljs-number">30</span>,<span class="hljs-number">10</span><br>SECTYPE,<span class="hljs-number">2</span>,BEAM,CSOLID	!设置第二种截面为实心圆<br>SECDATE,<span class="hljs-number">10</span>	!圆半径 <span class="hljs-number">10</span><br>/*设置节点*/<br>N,<span class="hljs-number">1</span>,-<span class="hljs-number">2000</span><br>N,<span class="hljs-number">2</span><br>N,<span class="hljs-number">3</span><br>N,<span class="hljs-number">4</span>,,<span class="hljs-number">2000</span><br>N,<span class="hljs-number">5</span>,<span class="hljs-number">2000</span><br>N,<span class="hljs-number">6</span>,-<span class="hljs-number">1000</span><br>N,<span class="hljs-number">7</span>,<span class="hljs-number">1000</span><br>/*设置单元*/<br>E,<span class="hljs-number">1</span>,<span class="hljs-number">6</span><br>E,<span class="hljs-number">6</span>,<span class="hljs-number">2</span><br>E,<span class="hljs-number">2</span>,<span class="hljs-number">7</span><br>E,<span class="hljs-number">7</span>,<span class="hljs-number">5</span><br>SECNUM,<span class="hljs-number">2</span><br>E,<span class="hljs-number">3</span>,<span class="hljs-number">4</span><br>/*创建耦合条件*/<br>CP,<span class="hljs-number">1</span>,UX,<span class="hljs-number">2</span>,<span class="hljs-number">3</span><br>CP,<span class="hljs-number">2</span>,UY,<span class="hljs-number">2</span>,<span class="hljs-number">3</span><br>CP,<span class="hljs-number">3</span>,UZ,<span class="hljs-number">2</span>,<span class="hljs-number">3</span><br>CP,<span class="hljs-number">4</span>,ROTX,<span class="hljs-number">2</span>,<span class="hljs-number">3</span><br>CP,<span class="hljs-number">5</span>,ROTY,<span class="hljs-number">2</span>,<span class="hljs-number">3</span><br>FINISH<br><br>/SOLV<br>/*添加约束和力*/<br>D,<span class="hljs-number">1</span>,ALL,<span class="hljs-number">1</span><br>D,<span class="hljs-number">2</span>,ALL,<span class="hljs-number">5</span><br>D,<span class="hljs-number">3</span>,UX,<span class="hljs-number">4</span><br>D,<span class="hljs-number">4</span>,UY,<span class="hljs-number">4</span><br>F,<span class="hljs-number">1</span>,FY,<span class="hljs-number">6</span>,-<span class="hljs-number">1000</span><br>F,<span class="hljs-number">2</span>,FY,<span class="hljs-number">7</span>,-<span class="hljs-number">1000</span><br>SOLV<br>FINISH<br></code></pre></div></td></tr></table></figure>
+<hr>
+<p>Learning By Sharing，2018©Fu_Qingchen，Markdown，$\LaTeX$</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9B%B8%E5%85%B3/">计算机相关</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%9C%89%E9%99%90%E5%85%83/">有限元</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2018/12/12/WHUT/EngineeringFluidMechanics/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">工程流体力学笔记</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2018/12/09/WHUT/Microcontroller/">
+                        <span class="hidden-mobile">单片机原理及接口技术笔记</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"DNr2pgYBNbnn4YMKmdstH2Sw-gzGzoHsz","appKey":"6RRAdTwPs2Y3Tk5iKNo2qo1D","placeholder":"说点什么","path":"window.location.pathname","avatar":"retro","meta":["nick","mail"],"pageSize":10,"lang":"zh-CN","highlight":true,"recordIP":false,"serverURLs":"https://dnr2pgyb.lc-cn-n1-shared.com","emojiCDN":null,"emojiMaps":null,"enableQQ":false,"requiredFields":[],"appid":"DNr2pgYBNbnn4YMKmdstH2Sw-gzGzoHsz","appkey":"6RRAdTwPs2Y3Tk5iKNo2qo1D"},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

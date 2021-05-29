@@ -1,0 +1,697 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.ico">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="矩阵论就是线性代数Plus，然后线性代数就是把一堆矩阵分解为一些简单的矩阵">
+  <meta name="author" content="Fu Qingchen">
+  <meta name="keywords" content="MSE, CS">
+  
+  <title>矩阵论笔记 | Fu&#39;s Web</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/vs2015.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.11","typing":{"enable":false,"typeSpeed":30,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null},"tajs":null},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 50vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Fu's Web</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('https://gitee.com/fuqingchen/picture-lib/raw/master/img/Test_Tree.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="矩阵论笔记">
+              
+                矩阵论笔记
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-11-22 15:12" pubdate>
+        2020年11月22日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      2.1k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      32
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">矩阵论笔记</h1>
+            
+            <div class="markdown-body">
+              <p>矩阵论就是线性代数Plus，然后线性代数就是把一堆矩阵分解为一些简单的矩阵</p>
+<span id="more"></span>
+<h1 id="线性代数复习"><a href="#线性代数复习" class="headerlink" title="线性代数复习"></a>线性代数复习</h1><p>Review of Linear Algebra</p>
+<h2 id="常见的分解"><a href="#常见的分解" class="headerlink" title="常见的分解"></a>常见的分解</h2><p>Basic</p>
+<ul>
+<li>$A=CR=\left[ \begin{array}{c}\\\\\end{array} \right] \left[ \begin{matrix}&amp;\\\end{matrix} \right]$ ：将 A 分解为所有列都不相关的矩阵 C</li>
+<li>$A=LU=\left[\begin{matrix}{}\diagdown\ 0\\\ \ \ \ \ \ \diagdown\\\end{matrix} \right]\left[ \begin{matrix}{}\diagdown \ \ \ \ \ \\0 \ \diagdown\\\end{matrix} \right]$ ：将 A 分解为上三角矩阵 U 和下三角矩阵 L </li>
+<li>$A=QR=\left[ \begin{matrix}|&amp;|\\ \boldsymbol {q_1}&amp;\boldsymbol{q_n} \\ |&amp;|\end{matrix} \right]\left[ \begin{matrix}{}\diagdown \ \ \ \ \ \\0 \ \diagdown\\\end{matrix} \right]$ ：将 A 分解为正交矩阵 Q ，其实跟第一个是一样的</li>
+<li>$S=Q\Lambda Q^T,Q^T=Q^{-1}$ ：将一个对称矩阵 S 分解为正交矩阵 Q 和特征值 $\Lambda$ 组成的矩阵</li>
+<li>$A=X\Lambda X^T$：将方阵 A 分解为特征向量组成的矩阵 X 和特征值 $\lambda$ 组成的矩阵 $\Lambda$</li>
+<li>$A=U\varSigma V^T$：将矩阵 A 分解为正交向量组组成的矩阵 $U,V$ （$U^TU=V^TV=I$）和奇异值 $\sigma=\sqrt{\lambda(A^TA)}$ 组成的矩阵 $\varSigma$</li>
+</ul>
+<h2 id="矩阵的列空间"><a href="#矩阵的列空间" class="headerlink" title="矩阵的列空间"></a>矩阵的列空间</h2><p>The column space of Matrixes</p>
+<p>A的列空间 $C(A)$ ：A中所有列向量的线性组合</p>
+<h3 id="A-CR"><a href="#A-CR" class="headerlink" title="$A=CR$"></a>$A=CR$</h3><p>举例</p>
+<script type="math/tex; mode=display">
+A=\begin{bmatrix}1&4&5\\3&2&5\\2&1&3\end{bmatrix}=\begin{bmatrix}1&2\\3&2\\2&1\end{bmatrix}\begin{bmatrix}1&0&1\\0&1&1\end{bmatrix}=CR</script><p>对于一个 $m\times n$ 的矩阵 A，如果 A 中有 r 个线性无关的列向量，则可以分解为 $m\times r,r\times n$ 的两个矩阵 C 和 R。</p>
+<ul>
+<li><p>C 的列向量就是那 r 个线性无关的列向量</p>
+</li>
+<li><p>R 的行向量包含 $r\times r$ 的单位矩阵 $I$ -&gt; R 也线性无关</p>
+</li>
+</ul>
+<p>对 $A\boldsymbol x=\boldsymbol 0$ 来说，有 $n-r$ 个线性无关的解</p>
+<ul>
+<li>秩为1的矩阵：如果 A 中所有的列都是第一列的倍数，那么 A 就可以分解为一个列向量和一个行向量</li>
+</ul>
+<h2 id="线性代数一览"><a href="#线性代数一览" class="headerlink" title="线性代数一览"></a>线性代数一览</h2><p>The Big Picture of Linear Algebra</p>
+<h3 id="四个子空间"><a href="#四个子空间" class="headerlink" title="四个子空间"></a>四个子空间</h3><script type="math/tex; mode=display">
+Ax=\begin{bmatrix}\text{row}1\\\vdots\\\text{row}n\\\end{bmatrix}\begin{bmatrix}\\x\\\\\end{bmatrix}=\begin{bmatrix}0\\\vdots\\0\\\end{bmatrix}=0</script><p>x 在 A 的零空间中，与 A 中的每一个行向量都不相关。$N(A)\perp C(A^T),N(A^T)\perp C(A)$</p>
+<ul>
+<li><p>$N(A)$：所有使 $A\boldsymbol x=\boldsymbol 0$ 的向量张成的空间，$R^n$中维度为 $n-r$ 的空间</p>
+</li>
+<li><p>$C(A^T)$：A行向量张成的空间，$R^n$中维度为 $r$ 的空间</p>
+</li>
+<li><p>$N(A^T)$：所有使得 $\boldsymbol yA^T=\boldsymbol 0$ 的向量张成的空间，$R^m$ 中维度为 $m-r$ 的空间</p>
+</li>
+<li><p>$C(A)$：A列向量张成的空间，$R^m$ 中维度为 $r$ 的空间</p>
+</li>
+</ul>
+<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20201015182427.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="矩阵乘法"><a href="#矩阵乘法" class="headerlink" title="矩阵乘法"></a>矩阵乘法</h3><p>有两种特殊的方法，有时候会算的快一些</p>
+<script type="math/tex; mode=display">
+B C=\left[\begin{array}{cccc}
+\mid & \mid & & \mid \\
+\boldsymbol b_{1} & \boldsymbol b_{2} & \cdots & \boldsymbol b_{n} \\
+\mid & \mid & & \mid
+\end{array}\right]\left[\begin{array}{ccc}
+- & \boldsymbol c_{1}^{*} & - \\
+- & \boldsymbol c_{2}^{*} & - \\
+& \vdots & \\
+- & \boldsymbol c_{n}^{*} & -
+\end{array}\right]=\boldsymbol b_{1} \boldsymbol c_{1}^{*}+\boldsymbol b_{2} \boldsymbol c_{2}^{*}+\cdots+\boldsymbol b_{n} \boldsymbol c_{n}^{*}</script><script type="math/tex; mode=display">
+A\left[\begin{array}{cccc}
+\mid & \mid & & \mid \\
+\boldsymbol b_{1} & \boldsymbol b_{2} & \cdots & \boldsymbol b_{n} \\
+\mid & \mid & & \mid
+\end{array}\right]=\left[\begin{array}{cccc}
+\mid & \mid & & \mid \\
+A\boldsymbol b_{1} & A\boldsymbol b_{2} & \cdots & A\boldsymbol b_{n} \\
+\mid & \mid & & \mid
+\end{array}\right]</script><h3 id="A-LU"><a href="#A-LU" class="headerlink" title="$A=LU$"></a>$A=LU$</h3><p>LU分解的一大作用就是解方程，这个分解只考虑行向量的加减和数乘运算，如果考虑行的交换，原式需要变为 $PA=LU$</p>
+<p>这个分解来源于解方程 $Ax=b$</p>
+<p>分解方法就是去逐行消元</p>
+<script type="math/tex; mode=display">
+\begin{aligned}A&=\begin{bmatrix}1\\l_{21}\\\vdots\\l_{n1}\end{bmatrix}\left[\begin{array}{ccc}
+- & a_{1} & - \\
+\end{array}\right]+\begin{bmatrix}0&0&0&0\\0\\0&&A_2\\0\end{bmatrix}\\
+&=\left[\begin{array}{cccc}
+1 & 0 & 0 & 0 \\
+\ell_{21} & 1 & & \\
+\vdots & \vdots & 1 & 0 \\
+\ell_{n 1} & \ell_{n 2} & \ell_{n 3} & 1
+\end{array}\right]\left[\begin{array}{ccc} 
+{\text { row } 1 \text { of } A} \\
+0 & {\text { row } 1 \text { of } A_{2}} \\
+\vdots & \vdots & \ddots \\
+0 & 0 & 0 &\quad \text { row } 1 \text { of } A_{n}
+\end{array}\right]\end{aligned}</script><h3 id="求解-A-boldsymbol-x-boldsymbol-b"><a href="#求解-A-boldsymbol-x-boldsymbol-b" class="headerlink" title="求解$A\boldsymbol x=\boldsymbol b$"></a>求解$A\boldsymbol x=\boldsymbol b$</h3><p>$A\boldsymbol x=\boldsymbol b$ 的通解可以分解为 $A\boldsymbol x =\boldsymbol 0$ 的通解加上 $A\boldsymbol x= \boldsymbol b$ 的特解</p>
+<p>先求解 $A\boldsymbol x=\boldsymbol 0$ 的通解，初等行变换并不会改变矩阵的行空间， $N(A)=N(R)$</p>
+<script type="math/tex; mode=display">
+A=\left[\begin{array}{lllll}
+p & p & f & p & f \\
+\mid & \mid & \mid & \mid & \mid\\
+\mid & \mid & \mid & \mid & \mid\\
+\mid & \mid & \mid & \mid & \mid\\
+\end{array}\right],R=\left[\begin{array}{lllll}
+\mathbf{1} & 0 & a & 0 & c \\
+0 & \mathbf1 & b & 0 & d \\
+0 & 0 & 0 & \mathbf{1} & e \\
+0 & 0 & 0 & 0 & 0
+\end{array}\right],\boldsymbol s_1=\left[\begin{array}{c}
+-a\\-b\\\mathbf1\\0\\\mathbf0
+\end{array}\right]\boldsymbol s_2=\left[\begin{array}{c}
+-c\\-d\\\mathbf0\\-e\\\mathbf1
+\end{array}\right]\\
+x=c_1\boldsymbol s_1+c_2\boldsymbol s_2</script><p>然后求解 $A\boldsymbol x=\boldsymbol b$ 的特解，$A\boldsymbol x =\boldsymbol b\Rightarrow R\boldsymbol x=\boldsymbol d$</p>
+<h2 id="正交向量"><a href="#正交向量" class="headerlink" title="正交向量"></a>正交向量</h2><p>Orthogonal Vectors</p>
+<ul>
+<li>$Q^T=Q^{-1}$，对于单位正交矩阵，有 $Q^TQ=I$，注意 $QQ^T\ne I$</li>
+<li>$||Q\boldsymbol x||=\boldsymbol x^TQ^TQ\boldsymbol x=\boldsymbol x^T\boldsymbol x=||\boldsymbol x||$</li>
+</ul>
+<h3 id="应用：最小二乘法"><a href="#应用：最小二乘法" class="headerlink" title="应用：最小二乘法"></a>应用：最小二乘法</h3><p>当 $A\boldsymbol x=\boldsymbol b$ 无解，求解 $A^TA\boldsymbol x =A^T\boldsymbol b$ 可以得到最相近的</p>
+<p>最小二乘法是数据很多时的一个曲线拟合，求解使 $\min(||A\boldsymbol x-\boldsymbol b||^2)$ 的 $\boldsymbol x$ ，其中 A 为 $m&gt;n$ 的数据矩阵。然后可以将问题转化为求解 $\boldsymbol b$ 在 $ C(A)$ 上的投影 $\boldsymbol p$ 和 $A\boldsymbol x = \boldsymbol p$</p>
+<ul>
+<li><p>直线上的投影</p>
+<ul>
+<li>$\hat x=(a^Tb)/(a^Ta)$： $a\perp(e=b-p)\Rightarrow a·(b-\hat xa)=0$</li>
+<li>$p=a\hat x=(aa^Tb)/(a^Ta)$</li>
+<li>$p=Pb\Rightarrow P=(aa^T)/(a^Ta)$</li>
+</ul>
+</li>
+<li><p>子空间投影</p>
+<ul>
+<li>$\hat x:A^T(b-A\hat x)=0\Rightarrow A^TAx=A^Tb$</li>
+<li>$p:p=Ax=A(A^TA)^{-1}A^Tb$</li>
+<li>$P:p=Pb\Rightarrow P=A(A^TA)^{-1}A^T$</li>
+</ul>
+</li>
+<li><p>最小二乘法</p>
+</li>
+</ul>
+<h3 id="A-QR-：Grant-Schmidt法"><a href="#A-QR-：Grant-Schmidt法" class="headerlink" title="$A=QR$：Grant-Schmidt法"></a>$A=QR$：Grant-Schmidt法</h3><p>这里是将一个可逆矩阵转化为正交矩阵的方法。</p>
+<p>方法就是把一个个列向量（基向量）减去已经正交化的向量的投影</p>
+<ul>
+<li>$a_1’=a_1,q_1=a_1’/||a_1’||$</li>
+<li>$a_i’=a_i-\frac{a_1^Ta_i}{a_1^Ta_1}a_1-\dots-\frac{a_{i-1}^Ta_i}{a_{i-1}^Ta_{i-1}}a_{i-1},q_i=a_i’/||a_i’||$</li>
+</ul>
+<p>分解如下</p>
+<script type="math/tex; mode=display">
+A=\left[\begin{array}{c}
+|&|&|\\
+a_1 & a_2 & a_3\\
+|&|&|
+\end{array}\right]=\left[\begin{array}{c}
+|&|&|\\
+q_{1} & q_{2} & q_{3}\\
+|&|&|\\
+\end{array}\right]\left[\begin{array}{c}
+\begin{array}{c}
+q_{1}^{\mathrm{T}} a_1 \\
+0\\
+0
+\end{array} & \begin{array}{c}
+q_{1}^{\mathrm{T}} a_2 \\
+q_{2}^{\mathrm{T}} a_2 \\
+0
+\end{array} & \left.\begin{array}{c}
+q_{1}^{\mathrm{T}} a_3 \\
+q_{2}^{\mathrm{T}} a_3 \\
+q_{3}^{\mathrm{T}} a_3
+\end{array}\right]
+\end{array}\right.=QR</script><h2 id="特征值与特征向量"><a href="#特征值与特征向量" class="headerlink" title="特征值与特征向量"></a>特征值与特征向量</h2><p>Eigenvalue and Eigenvectors</p>
+<p>线性代数解方程是一大块，特征值与特征向量就是另外一大块内容了。</p>
+<h3 id="S-Q-Lambda-Q-T"><a href="#S-Q-Lambda-Q-T" class="headerlink" title="$S=Q\Lambda Q^T$"></a>$S=Q\Lambda Q^T$</h3><p>概念</p>
+<ul>
+<li><p>对称矩阵：$S=S^T$</p>
+</li>
+<li><p>特征值 $\lambda$ 与特征向量 $\boldsymbol x$ ：$A\boldsymbol x=\lambda\boldsymbol x$</p>
+</li>
+<li><p>所有特征值非负</p>
+</li>
+</ul>
+<p>对于对称矩阵 $S$，有</p>
+<script type="math/tex; mode=display">
+S\left[\begin{array}{c}
+|&|&|\\
+\boldsymbol{q}_{1} & \cdots & \boldsymbol{q}_{n}\\
+|&|&|\\
+\end{array}\right]=\left[\begin{array}{c}
+|&|&|\\
+\lambda_{1} \boldsymbol{q}_{1} & \cdots & \lambda_{n} \boldsymbol{q}_{n}\\
+|&|&|\\
+\end{array}\right]=\left[\begin{array}{c}
+|&|&|\\
+\boldsymbol{q}_{1} & \cdots & \boldsymbol{q}_{n}\\
+|&|&|\\
+\end{array}\right]\left[\begin{array}{ll}
+\lambda_{1} \\
+& \ddots \\
+&&\lambda_n
+\end{array}\right]\\
+SQ=Q\Lambda\Rightarrow S=Q\Lambda Q^{-1}=Q\Lambda Q^{T}</script><p>对称矩阵的特征向量是正交的，证明：</p>
+<ul>
+<li><p>假设有 $S\boldsymbol x=\lambda \boldsymbol x,S\boldsymbol y=\alpha \boldsymbol y,\lambda\ne\alpha$</p>
+</li>
+<li><p>$\boldsymbol x^TS\boldsymbol y=(S^T\boldsymbol x)^T\boldsymbol y=(S\boldsymbol x)^T\boldsymbol y=\lambda\boldsymbol x^T\boldsymbol y$，$\boldsymbol x^TS\boldsymbol y=\boldsymbol x^T\alpha\boldsymbol y=\alpha \boldsymbol x^T\boldsymbol y$ $\Rightarrow\boldsymbol x^T\boldsymbol y=0$</p>
+</li>
+</ul>
+<p>正定矩阵：对所有 $\boldsymbol x&gt;0$ ， $\boldsymbol x^TS\boldsymbol x&gt;0$</p>
+<h3 id="A-X-Lambda-X-1"><a href="#A-X-Lambda-X-1" class="headerlink" title="$A=X\Lambda X^{-1}$"></a>$A=X\Lambda X^{-1}$</h3><p>上面那个式子更一般的情况，这个对有 $n$ 个线性无关特征值的方阵</p>
+<ul>
+<li><p>$A^n=X\Lambda^nX^{-1}$</p>
+</li>
+<li><p>$\text{All: }|\lambda_i|&lt;1,\Lambda^n\rightarrow0,A^n\rightarrow0$</p>
+</li>
+</ul>
+<p>特征向量与特征根的求解</p>
+<ul>
+<li><p>设 $\lambda$ ，计算 $\det(A-\lambda I)$</p>
+</li>
+<li><p>求解使 $\det(A-\lambda I)=0$ 的特征值 $\lambda$</p>
+</li>
+<li><p>对每个 $\lambda$，求解使 $(A-\lambda I)\boldsymbol x=\boldsymbol 0$ 的特征向量 $\boldsymbol x$</p>
+</li>
+</ul>
+<p>其他的</p>
+<ul>
+<li><p>矩阵相似：特征值相同的两个矩阵相似 $\text{All } A=BCB^{-1}\sim C$</p>
+</li>
+<li><p>$\det(A)=\prod\lambda_i$</p>
+</li>
+<li><p>$\sum a_{ii}=\text{trace}=\sum\lambda_i$</p>
+</li>
+</ul>
+<h2 id="奇异值与奇异矩阵"><a href="#奇异值与奇异矩阵" class="headerlink" title="奇异值与奇异矩阵"></a>奇异值与奇异矩阵</h2><p>Singular values and Singular vectors</p>
+<p>特征值和特征向量是对于方阵而言的，奇异值和奇异矩阵是对非方阵而言的。</p>
+<h4 id="A-U-varSigma-V-T"><a href="#A-U-varSigma-V-T" class="headerlink" title="$A=U\varSigma V^T$"></a>$A=U\varSigma V^T$</h4><ul>
+<li><p>$A^TA\boldsymbol v_i=\sigma_i^2\boldsymbol v_i,AA^T\boldsymbol u_i=\sigma^2_i\boldsymbol u_i,A\boldsymbol v_i=\sigma\boldsymbol u_i$</p>
+</li>
+<li><p>$A^TA=(V\varSigma^T U^T)U\varSigma V^T=V\varSigma^2$</p>
+</li>
+<li><p>$AA^T=U\varSigma V^T(V\varSigma^TU^T)=U\varSigma^2U^T$</p>
+</li>
+<li><p>$AV=U\varSigma,V^TV=U^TU=I$</p>
+</li>
+</ul>
+<h1 id="线性空间与线性变换"><a href="#线性空间与线性变换" class="headerlink" title="线性空间与线性变换"></a>线性空间与线性变换</h1><h2 id="线性空间"><a href="#线性空间" class="headerlink" title="线性空间"></a>线性空间</h2><p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/2020%E7%9F%A9%E9%98%B5%E8%AE%BA%E7%BA%BF%E6%80%A7%E7%A9%BA%E9%97%B4.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="线性变换"><a href="#线性变换" class="headerlink" title="线性变换"></a>线性变换</h2><p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/2020%E7%9F%A9%E9%98%B5%E8%AE%BA%E7%BA%BF%E6%80%A7%E5%8F%98%E6%8D%A2.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h1 id="矩阵的相似化简"><a href="#矩阵的相似化简" class="headerlink" title="矩阵的相似化简"></a>矩阵的相似化简</h1><h2 id="特征多项式与最小多项式"><a href="#特征多项式与最小多项式" class="headerlink" title="特征多项式与最小多项式"></a>特征多项式与最小多项式</h2><p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/2020%E7%9F%A9%E9%98%B5%E8%AE%BA%E6%9C%80%E5%B0%8F%E5%A4%9A%E9%A1%B9%E5%BC%8F.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="Jordan标准型"><a href="#Jordan标准型" class="headerlink" title="Jordan标准型"></a>Jordan标准型</h2><p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/2020%E7%9F%A9%E9%98%B5%E8%AE%BAJordan%E6%A0%87%E5%87%86%E5%9E%8B.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<hr>
+<p>2020©Fu_Qingchen, <strong>Learning</strong>By<strong>Sharing</strong></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E6%95%B0%E5%AD%A6%E7%9B%B8%E5%85%B3/">数学相关</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E7%9F%A9%E9%98%B5%E8%AE%BA/">矩阵论</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/">线性代数</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/05/02/HUST/ComputerNetworking/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">计算机网络</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2020/11/21/HUST/LearnCPP/">
+                        <span class="hidden-mobile">C++ Primer 阅读笔记</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"DNr2pgYBNbnn4YMKmdstH2Sw-gzGzoHsz","appKey":"6RRAdTwPs2Y3Tk5iKNo2qo1D","placeholder":"说点什么","path":"window.location.pathname","avatar":"retro","meta":["nick","mail"],"pageSize":10,"lang":"zh-CN","highlight":true,"recordIP":false,"serverURLs":"https://dnr2pgyb.lc-cn-n1-shared.com","emojiCDN":null,"emojiMaps":null,"enableQQ":false,"requiredFields":[],"appid":"DNr2pgYBNbnn4YMKmdstH2Sw-gzGzoHsz","appkey":"6RRAdTwPs2Y3Tk5iKNo2qo1D"},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/mermaid@8.10.1/dist/mermaid.min.js" ></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({"theme":"default"});
+    }
+  </script>
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

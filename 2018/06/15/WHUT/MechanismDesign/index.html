@@ -1,0 +1,2480 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.ico">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="主要讲了一些机械零件的选型计算。老师上复习课的时候说了下要记忆的公式，然后考了90%……
+注：基于武汉理工大学MOOC、《机械原理与机械设计》（ISBN：9787040402827）">
+  <meta name="author" content="Fu Qingchen">
+  <meta name="keywords" content="MSE, CS">
+  
+  <title>机械设计笔记 | Fu&#39;s Web</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/vs2015.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.11","typing":{"enable":false,"typeSpeed":30,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null},"tajs":null},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 50vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Fu's Web</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('https://gitee.com/fuqingchen/picture-lib/raw/master/img/Test_Tree.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="机械设计笔记">
+              
+                机械设计笔记
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2018-06-15 22:13" pubdate>
+        2018年6月15日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      15.4k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      176
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">机械设计笔记</h1>
+            
+            <div class="markdown-body">
+              <p>主要讲了一些机械零件的选型计算。老师上复习课的时候说了下要记忆的公式，然后考了90%……</p>
+<p>注：基于武汉理工大学MOOC、《机械原理与机械设计》（ISBN：9787040402827）</p>
+<span id="more"></span>
+<h1 id="机械设计需要记忆的公式汇总"><a href="#机械设计需要记忆的公式汇总" class="headerlink" title="机械设计需要记忆的公式汇总"></a>机械设计需要记忆的公式汇总</h1><hr>
+<p><code>机械设计基础</code></p>
+<script type="math/tex; mode=display">
+\psi_\sigma=\frac{2\sigma_{-1}-\sigma_0}{\sigma_0}</script><ul>
+<li>$\psi_\sigma$ <strong>材料受循环正应力时的材料特性系数</strong></li>
+<li>$\sigma_{-1},\sigma_0$ 循环特征值 r 为 -1、0 时的极限应力<blockquote>
+<p>上面的式子可以通过 在极限应力图中AD段方程求解化简 得到</p>
+</blockquote>
+</li>
+</ul>
+<hr>
+<p><code>机械设计基础</code></p>
+<script type="math/tex; mode=display">
+S_\sigma=\frac{\sigma_{\max}^{'}}{\sigma_{\max}}=\frac{\sigma_{-1}}{(K_{\sigma})_D\sigma_a+\psi_\sigma\sigma_m}</script><ul>
+<li>$S_\sigma$ <strong>稳定变应力状态下正应力安全系数</strong></li>
+<li>$\sigma_\max^{‘}$ 极限应力</li>
+<li>$\sigma_\max$ 危险界面上的最大应力</li>
+<li>$(K_\sigma)_D$ 考虑到 <strong>应力集中、表面情况和绝对尺寸</strong> 而添加的系数<blockquote>
+<p>其实 $\sigma_\max=(K_\sigma)_D\sigma_a+\psi_\sigma\sigma_m$ 是极限应力图中线段AD的方程（没错，又是它）</p>
+</blockquote>
+</li>
+</ul>
+<hr>
+<p><code>机械设计基础</code></p>
+<script type="math/tex; mode=display">
+S=\frac{S_\sigma S_\tau}{\sqrt{S_\sigma^2+S_\tau^2}}</script><ul>
+<li>$S_\sigma,S_\tau$ 正应力、切应力安全系数</li>
+</ul>
+<hr>
+<p><code>齿轮传动设计</code></p>
+<script type="math/tex; mode=display">
+\sigma_F=Y_{Fa}Y_{Sa}Y_\epsilon\frac{KF_{t1}}{bm}</script><ul>
+<li>$\sigma_F$ <strong>齿轮齿根弯曲疲劳应力</strong></li>
+<li>$F_{t1}(N)$ 为小轮上圆周力 $F_{t1}=2000T_1(N\cdot m)/d_1(mm)$</li>
+<li>$Y_{Fa},Y_{Sa},Y_\epsilon$ 齿形系数、应力修正系数、重合度系数；前两个乘起来又叫做复合系数</li>
+<li>$K=K_AK_vK_\beta K_\alpha$</li>
+<li>$b,m(mm)$ 轮齿齿宽、模数</li>
+</ul>
+<hr>
+<p><code>齿轮传动设计</code></p>
+<script type="math/tex; mode=display">
+\sigma_H=Z_EZ_HZ_\epsilon\sqrt{\frac{F_{t1}}{bd_1}\frac{u\pm1}{u}}</script><ul>
+<li>$\sigma_H$ <strong>齿面接触疲劳应力</strong></li>
+<li>$Z_E,Z_H,Z_\epsilon$ 弹性系数、节点区域系数、重合度系数（没错，又叫这个名字）</li>
+<li>$u={z_2}/{z_1}$ <strong>其中1代表小齿轮，而非主动轮</strong></li>
+<li>外啮合取为正，内啮合取负值</li>
+<li>$b,d_1(mm)$ 轮齿齿宽，小齿轮直径</li>
+</ul>
+<hr>
+<p><code>带传动设计</code></p>
+<script type="math/tex; mode=display">
+L=2a\cos\beta+(\pi-2\beta)\frac{d_1}{2}+(\pi+2\beta)\frac{d_2}{2}\approx2a+\frac{\pi}{2}(d_1+d_2)+\frac{(d_2-d_1)^2}{4a}</script><script type="math/tex; mode=display">
+\alpha_1=\pi-2\beta\approx\pi-\frac{d_2-d_1}{a}</script><ul>
+<li>$L$ <strong>带轮长度</strong></li>
+<li>$d_1,d_2,a$ 小带轮直径、大袋轮直径、中心距</li>
+</ul>
+<blockquote>
+<p>它用了一个代换式 $\beta\approx\sin\beta= (d_2-d_1)/2a$</p>
+<p>这个看起来很难背，其实很容易忘，话说这玩意会考？emmmmmm</p>
+</blockquote>
+<hr>
+<p><code>带传动设计</code></p>
+<script type="math/tex; mode=display">
+\frac{F_1}{F_2}=e^{f_v\alpha}</script><ul>
+<li>$F_1,F_2,f_v,\alpha$ 紧边拉力，松边拉力，当量摩擦系数，包角</li>
+</ul>
+<blockquote>
+<p>著名的 <strong>欧拉公式</strong></p>
+</blockquote>
+<hr>
+<p><code>螺纹连接</code></p>
+<script type="math/tex; mode=display">
+F^{'}=\frac{K_fF_R}{fm}</script><ul>
+<li>$F^{‘}$ <strong>预紧力</strong></li>
+<li><strong>适用于轴向不受工作载荷的紧螺栓连接</strong></li>
+<li>$K_f,F_R,f,m$ 可靠性系数，横向工作载荷，摩擦系数，<strong>结合面数量</strong></li>
+</ul>
+<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20200823214528.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<blockquote>
+<p>波波说要知道这个式子的物理意义。</p>
+<p>这个式子是为了<strong>防止被连接件之间发生相对滑动，结合面之间的摩擦必须大于横向载荷</strong>得来的。</p>
+<p>当收到<strong>轴向载荷</strong>时，上式的 <strong>F‘</strong> 应该为 <strong>F’’</strong></p>
+</blockquote>
+<hr>
+<p><code>螺纹连接</code></p>
+<script type="math/tex; mode=display">
+F_0=F^{''}+F=F^{'}+\frac{C_1}{C_1+C_2}F</script><ul>
+<li>$F_0,F,F^{‘},F^{‘’}$ 总拉力、轴向工作载荷、预紧力、剩余预紧力</li>
+<li><strong>适用于轴向受工作载荷的紧螺纹连接</strong></li>
+<li>详细解释见下图，其中$C_1=\tan\theta_1,C_2=\tan\theta_2$</li>
+</ul>
+<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20200823214547.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<hr>
+<p><code>螺纹连接</code></p>
+<script type="math/tex; mode=display">
+\sigma_a=\frac{\frac{1}{2}\frac{C_1}{C_1+C_2}F}{1{\pi d_1^2}/4}=\frac{C_1}{C_1+C_2}\frac{2F}{\pi d_1^2}\leq[\sigma_a]</script><ul>
+<li>$\sigma_a$ <strong>受轴向变载荷螺栓的应力幅</strong></li>
+<li>相关参数在前面</li>
+<li>$\frac{C_1}{C_1+C_2}$ 是<strong>螺栓的相对刚度</strong>，为了提高螺栓的承载能力，应该使这个值尽可能<strong>小</strong></li>
+<li>$\frac{C_2}{C_1+C_2}$ 是<strong>被连接件的相对刚度</strong>，为了提高螺栓的承载能力，应该使这个值尽可能<strong>大</strong></li>
+</ul>
+<hr>
+<p><code>螺纹连接</code></p>
+<script type="math/tex; mode=display">
+\sigma_{ca}=1.3\sigma=\frac{1.3F^{'}}{\pi d_1^2/4}\leq[\sigma]</script><ul>
+<li>无论受不受轴向载荷，对受拉轴承都适用</li>
+<li>$\sigma_{ca}$ 为复合拉应力</li>
+<li>$d_1(mm)$ 为螺纹小径</li>
+</ul>
+<blockquote>
+<p>$1.3$：在用 <strong>第四强度理论</strong> 对 大量螺栓 进行 <strong>统计分析</strong> 时发现，其复合拉应力的计算只需要将拉伸应力 $\sigma$ 扩大30%来考虑扭矩的影响（就是说，切应力懒得算了，直接把正应力扩大30%，得到的效果和算切应力是一样的）</p>
+<p>波波让我们背的是这个：$d_1\geq\sqrt{\frac{4\times1.3F^{‘}}{\pi[\sigma]}}$ 这个和上面那个是一样的</p>
+</blockquote>
+<hr>
+<p><code>轴的设计</code></p>
+<script type="math/tex; mode=display">
+d\geq\sqrt[3]{\frac{9.55\times10^6}{0.2[\tau_T]}}\sqrt[3]{\frac{P}{n}}=C\sqrt[3]{\frac{P}{n}}</script><ul>
+<li>$[\tau_T]$(MPa) 许用扭转应力</li>
+<li>$P(kW),n(r/\min)$ 轴所传递的功率，轴的转速</li>
+</ul>
+<blockquote>
+<p>波波说注意是 <strong>三次根号</strong> ，很多人搞错了</p>
+</blockquote>
+<hr>
+<p><code>滑动轴承设计</code></p>
+<script type="math/tex; mode=display">
+p=\frac{F}{Bd}\leq[p]\\
+v=\frac{n\pi d}{60\times1000}\leq[v]\\
+pv=\frac{F}{Bd}\frac{n\pi d}{60\times1000}\leq[pv]</script><ul>
+<li>上式为<strong>径向滑动轴承的设计计算</strong></li>
+<li>$F(N),B(mm),d(mm),n(r/\min),p(MPa),v(m/s)$ 径向载荷，工作宽度、轴颈直径、转速、轴承平均压强，滑动速度</li>
+</ul>
+<blockquote>
+<p>验证 $pv$ 是为了限制摩擦功耗与温升</p>
+</blockquote>
+<hr>
+<p><code>滑动轴承设计</code></p>
+<script type="math/tex; mode=display">
+\frac{\partial p}{\partial x}=6\eta v\frac{h-h_0}{h^3}</script><ul>
+<li>计算流体动压润滑轴承的基本方程</li>
+<li>$\eta$ 流体粘度</li>
+<li>$v$ 流体速度</li>
+<li>$h$ 任意处油膜厚度</li>
+<li>$h_0$ 当 $p=p_\max$ 时的油膜厚度</li>
+</ul>
+<blockquote>
+<p>这。。。这玩意会考？×2</p>
+</blockquote>
+<hr>
+<p><code>滑动轴承设计</code></p>
+<script type="math/tex; mode=display">
+F=\frac{2\eta vB}{\psi^2}C_p</script><ul>
+<li>$F$ <strong>液体摩擦径向滑动轴承所能承受的径向载荷</strong></li>
+<li>$C_p$ 承载量系数，与长径比 B/d 有关</li>
+<li>$\psi=(R-r)/r$ 相对间隙。相对间隙大，轴的承载能力小。设计时根据载荷和速度选取（$v\uparrow,F\downarrow\Rightarrow\psi\uparrow$）</li>
+<li>$B$ 工作宽度</li>
+</ul>
+<hr>
+<p><code>滚动轴承及其装置设计</code></p>
+<script type="math/tex; mode=display">
+P=f_P(XF_R+YF_A)</script><ul>
+<li>$P$ <strong>滚动轴承当量动载荷</strong></li>
+<li>$X,Y$ 径向动载荷系数，轴向动载荷系数</li>
+<li>$f_P$ 冲击载荷系数</li>
+</ul>
+<hr>
+<p><code>滚动轴承及其装置设计</code></p>
+<script type="math/tex; mode=display">
+L_h=\frac{10^6}{60n}(\frac{Cf_t}{P})^\varepsilon</script><ul>
+<li>$L_h(h)$ 轴承寿命</li>
+<li>$C$ 基本额定动载荷</li>
+<li>$f_t$ 温度系数</li>
+<li>$\varepsilon$ 寿命系数，球轴承 $\varepsilon=3$ ，滚子轴承 $\varepsilon=10/3$</li>
+<li>$n(r/\min)$ 转速</li>
+<li>$P(N)$ 当量动载荷</li>
+</ul>
+<hr>
+<p>轴向力判断方法</p>
+<ol>
+<li>判明轴上全部轴向力（包括外载荷 $F_A$ 和内部轴向力 $F_S$），合力指向，确定 <code>压紧端</code> 和 <code>放松端</code></li>
+<li><code>压紧端</code> <strong>轴向力 = ∑所有轴向力</strong>（<strong>除自身内部轴向力外</strong>）</li>
+<li><code>放松端</code> <strong>轴向力 = 自身轴向力</strong></li>
+</ol>
+<ul>
+<li><p>内部轴向力</p>
+<ul>
+<li><p>方向：使内外圈脱离的方向，即由小口指向大口</p>
+</li>
+<li><p>大小：</p>
+</li>
+</ul>
+</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>轴承类型</th>
+<th>角接触球轴承C</th>
+<th>角接触球轴承AC</th>
+<th>角接触球轴承B</th>
+<th>圆锥滚子轴承</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>$F_S$</strong></td>
+<td>$0.5F_r$</td>
+<td>$0.7F_r$</td>
+<td>$1.1F_r$</td>
+<td>$F_r/(2Y)$</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr>
+<p>2018©Fu_Qingchen</p>
+<p>[参考资料]：冯雪梅,李波,韩少军.机械原理与机械设计.北京高等教育出版社.2014</p>
+<p>[图片来源]：冯雪梅,李波,韩少军.机械原理与机械设计.北京高等教育出版社.2014[拍摄]</p>
+<hr>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>主要参数</th>
+<th>选用参数</th>
+<th>主要破坏形式</th>
+<th>计算准则</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>软齿面齿轮</td>
+<td>m,z</td>
+<td>m,z</td>
+<td>齿面点蚀</td>
+<td>按齿面接触疲劳强度计算；按齿根弯曲疲劳强度校核</td>
+</tr>
+<tr>
+<td>硬齿面齿轮</td>
+<td>m,z</td>
+<td>m,z</td>
+<td>轮齿折断</td>
+<td>按齿根弯曲疲劳强度计算；按齿面接触疲劳强度校核</td>
+</tr>
+<tr>
+<td>蜗杆</td>
+<td>$m,\alpha,z,d,q,\gamma$</td>
+<td>m,d1,q</td>
+<td>胶合、点蚀、磨损</td>
+<td>只按齿面接触疲劳强度计算；常常需要计算效率、验算热平衡</td>
+</tr>
+<tr>
+<td><code>标准件</code>带</td>
+<td>$a,d,L,\alpha$</td>
+<td>P,n</td>
+<td>打滑、疲劳破坏</td>
+<td>保证带传动不打滑的前提下，充分发挥带的传动能力（算有效拉力极限值）</td>
+</tr>
+<tr>
+<td><code>标准件</code>链</td>
+<td>链节距p</td>
+<td>？</td>
+<td>铰链磨损、疲劳破坏</td>
+<td>高速按功率曲线计算；低速按静强度计算；</td>
+</tr>
+<tr>
+<td><code>标准件</code>键</td>
+<td>l,b,h</td>
+<td>轴径、轮毂长</td>
+<td>压溃、磨损</td>
+<td>强度校核</td>
+</tr>
+<tr>
+<td>螺纹</td>
+<td>比较多</td>
+<td>？</td>
+<td>断裂、压溃或剪断</td>
+<td>受拉螺栓为静力或疲劳拉力计算</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h1 id="机械设计基础"><a href="#机械设计基础" class="headerlink" title="机械设计基础"></a>机械设计基础</h1><p>机械设计研究内容：<strong>机械零件的工作原理、选用、设计和计算</strong>。</p>
+<p>本章<strong>是重点</strong>，本章的重点有：安全系数法求疲劳极限</p>
+<h2 id="机械零件的工作能力及失效"><a href="#机械零件的工作能力及失效" class="headerlink" title="机械零件的工作能力及失效"></a>机械零件的工作能力及失效</h2><h3 id="机械零件的工作能力"><a href="#机械零件的工作能力" class="headerlink" title="机械零件的工作能力"></a>机械零件的工作能力</h3><p>在一定的运动、载荷和环境情况下，在预定的使用期限内，不发生失效的安全工作限度</p>
+<p>表现在强度、刚度、耐磨性、振动稳定性等方面</p>
+<h3 id="机械零件的失效"><a href="#机械零件的失效" class="headerlink" title="机械零件的失效"></a>机械零件的失效</h3><p>零件失去了工作能力</p>
+<ul>
+<li><strong>断裂</strong>：分为过载断裂（工作应力超过材料的强度极限）、疲劳断裂（工作一段时间之后，交变应力超过疲劳极限引起无征兆的断裂）</li>
+<li><strong>变形</strong>：分为塑性变形、过大的弹性变形<code>机床上加工零件的主轴就有这方面的要求</code></li>
+<li><strong>表面失效</strong>：压溃、过度磨损「表面的压应力过大，使表面变形」，表面疲劳损坏「表面接触应力过大」，胶合「工作温度 过高引起」、腐蚀</li>
+</ul>
+<h2 id="机械零件的计算准则"><a href="#机械零件的计算准则" class="headerlink" title="机械零件的计算准则"></a>机械零件的计算准则</h2><p>用于计算并确定零件的<strong>基本尺寸</strong>的主要依据</p>
+<h3 id="强度准则"><a href="#强度准则" class="headerlink" title="强度准则"></a>强度准则</h3><p>针对零件断裂、塑形变形或表面疲劳、损坏失效。基本上每个零件都涉及到。</p>
+<p>计算准则为：</p>
+<p>$\sigma\leq[\sigma]$，$\tau\leq[\tau]$，$\sigma_H\leq[\sigma_H]$（表面疲劳损坏）</p>
+<p>其中对于线接触的情况，接触应力可以由以下公式计算：</p>
+<script type="math/tex; mode=display">
+\sigma_H=\sqrt{\frac{F_n}{\pi L}\frac{(\frac{1}{\rho_1}\pm\frac{1}{\rho_2})}{(\frac{1-\mu_1^2}{E_1}+\frac{1-\mu_2^2}{E_2})}}</script><p>这个公式在 <strong>齿轮</strong> 部分会再次出现，这里就不解释了</p>
+<h3 id="刚度准则性"><a href="#刚度准则性" class="headerlink" title="刚度准则性"></a>刚度准则性</h3><p><code>非重点</code>针对大弹性变形</p>
+<p>计算准则为：</p>
+<p>$y\leq[y],\theta\leq[\theta],\phi\leq[\phi]$（分别为挠度、偏转角、扭转角）</p>
+<h3 id="耐磨性准则"><a href="#耐磨性准则" class="headerlink" title="耐磨性准则"></a>耐磨性准则</h3><p><code>非重点</code>针对过度磨损，验算式子为：$p\leq[p]$</p>
+<h3 id="振动和噪音准则"><a href="#振动和噪音准则" class="headerlink" title="振动和噪音准则"></a>振动和噪音准则</h3><p><code>非重点</code>针对高速机械的振动失稳（共振），防止共振条件为：$f_p\leq0.87f$ 或 $f_p\geq1.18f$（f为零件固有频率，fp为零件收振源作用引起的被迫振动频率）</p>
+<h3 id="可靠性准则"><a href="#可靠性准则" class="headerlink" title="可靠性准则"></a>可靠性准则</h3><h2 id="变应力及表达"><a href="#变应力及表达" class="headerlink" title="变应力及表达"></a>变应力及表达</h2><p>载荷和应力的类型是按照是否变化而分类的，因此，有两种。</p>
+<ul>
+<li>静载荷（大小与方向<strong>都</strong>不随时间变化的载荷）与变载荷（大小<strong>或</strong>方向随时间变化的载荷）</li>
+<li>静应力（大小与方向<strong>都</strong>不随时间变化的载荷<strong>或极其缓慢</strong>）与变应力（大小<strong>或</strong>方向随时间变化的量）</li>
+</ul>
+<p>机械零件一般都是变应力。。。</p>
+<p>为了描述变应力这里有一些参数</p>
+<h3 id="变应力参数"><a href="#变应力参数" class="headerlink" title="变应力参数"></a>变应力参数</h3><p>一般来说变应力是正弦变化的，因此我们可以把应力这样画出来：</p>
+<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20200823214606.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>可以发现有一些关键的数据：</p>
+<p>最大应力 $\sigma_{max}$、最小应力 $\sigma_{min}$</p>
+<p>平均应力$\sigma_{m}=\frac{\sigma_{max}+\sigma_{min}}{2}$、应力$\sigma_{a}=\frac{\sigma_{max}-\sigma_{min}}{2}$</p>
+<p>循环特征 $r = \frac{\sigma_{min}}{\sigma_{max}}$（易得，$-1\leq r\leq1$）</p>
+<p>然后呢有一些比较有名的特例，在后面也比较常见。</p>
+<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20200823214634.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="机械零件的疲劳极限"><a href="#机械零件的疲劳极限" class="headerlink" title="机械零件的疲劳极限"></a>机械零件的疲劳极限</h2><p><strong>【本章重点】</strong>满足强度要求是机械最基本的要求，然后强度又分为静应力强度和变应力强度，然后机械中最常见的又是变应力。。。</p>
+<h3 id="疲劳损坏机理"><a href="#疲劳损坏机理" class="headerlink" title="疲劳损坏机理"></a>疲劳损坏机理</h3><p>先来研究一下这个，看看疲劳极限有什么东西有关：</p>
+<p>变应力作用下的疲劳断裂有一下过程：零件表面应力超过极限值→微裂纹→扩展→裂纹</p>
+<p>根据以往的经验，疲劳极限除了与 <strong>材料</strong> 有关，还与 <strong>循环特征 r</strong>、<strong>应力循环次数 N</strong>、应力集中、绝对尺寸及表面状态有关。</p>
+<h3 id="疲劳极限"><a href="#疲劳极限" class="headerlink" title="疲劳极限"></a>疲劳极限</h3><p>知道了疲劳极限与什么有关之后就要开始求了。根据应力疲劳试验有以下图形：</p>
+<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20200823214713.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>对上图，一般取一个 <strong>规定</strong> 的 $N_0$，有一个对应的 $\sigma_r$，这个值就是材料的疲劳极限（也就是无限寿命疲劳极限）。</p>
+<p>研究无限寿命区的疲劳极限没有意义（都无限寿命了就没极限了），有限寿命区的疲劳极限由图形可以得到：</p>
+<script type="math/tex; mode=display">
+\sigma_{rN}=\sigma_r\sqrt[m]{N_0/N}</script><p>然而这个只能得到一种循环特征 r下的疲劳极限，而且应力疲劳试验做起来成本比较高。对每个 r 都做试验然后得到上面的式子显然不实际。<strong>极限应力图</strong> 解决了这个问题，工程上也常常用这个图来近似代替。</p>
+<h3 id="极限应力图"><a href="#极限应力图" class="headerlink" title="极限应力图"></a>极限应力图</h3><p>以 $\sigma_a$ 为纵坐标，$\sigma_m$ 为横坐标，即可做出任意材料的极限应力图。工程上一般先测出 <em>对称循环</em> 和 <em>脉动循环</em> 的疲劳极限为 $\sigma_{-1},\sigma_{0}$，此时可以在图上画出3个点（静力点 $(\sigma_s,0)$、对称循环 $(0,\sigma_{-1})$、脉动循环 $(\sigma_0/2,\sigma_0/2)$）。根据这三个点，按照下图，即可画出由两条直线构成的曲线。这个曲线叫做 <strong>简化极限应力曲线</strong></p>
+<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20200823214733.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>这个曲线不但可以使用很少的已知数据 $(\sigma_{-1},\sigma_0,\sigma_s)$ 画出，而且能够满足设计的需要。</p>
+<p>其中：</p>
+<p>AD段方程为：$\sigma_a^{‘} = \sigma_{-1}+\sigma_m^{‘}\times\frac{\frac{\sigma_0}{2}-\sigma_{-1}}{\frac{\sigma_0}{2}}\Rightarrow\sigma_{-1}=\sigma_a^{‘}+\sigma_m^{‘}\times\psi_\sigma$</p>
+<p>CD段方程为：$\sigma_s=\sigma_a^{‘}+\sigma_m^{‘}$</p>
+<p>$r_D=\frac{\sigma_{-1}(\sigma_s-\sigma_0)}{\sigma_s(\sigma_0-\sigma_{-1})}$</p>
+<p>其中，$\psi_\sigma=\frac{2\sigma_{-1}-\sigma_0}{\sigma_0}$ 为材料特性系数（课本）或等效系数（PPT）</p>
+<p><strong>对于工作应力为$(\sigma_a,\sigma_m)$的一点来说：</strong></p>
+<p>其应力循环特征 $r=\frac{\sigma_{\min}}{\sigma_{\max}}=\frac{\sigma_m-\sigma_a}{\sigma_m+\sigma_a}=\frac{1-\frac{\sigma_a}{\sigma_m}}{1+\frac{\sigma_a}{\sigma_m}}=\frac{1-\tan\alpha}{1+\tan\alpha}$</p>
+<p>对应的疲劳极限 $\sigma_{\max}^{‘}=\sigma_m^{‘}+\sigma_a^{‘}$，与上方AD或CD段联立方程即可解出疲劳极限。</p>
+<p>不过，以上内容并没有讨论<strong>应力集中、绝对尺寸及表面状态</strong> 对疲劳极限的影响。由于以上问题比较复杂，因此在工程中，使用 $(K_\sigma)_ D$ 来代替这些因素的影响。这样的话极限应力图就有了一些变化，就变成了曲线 A’B’D’C’</p>
+<p>A’B’、C’D’段，需要将纵坐标  $\sigma_{-1},\sigma_0$ 替换为 $\frac{\sigma_{-1}}{(K_\sigma)_ D},\frac{\sigma_0}{(K_\sigma)_ D}$</p>
+<p>此时：</p>
+<p>AD段方程为：$\sigma_{-1}=(K_\sigma)_ D\sigma_a^{‘}+\psi_\sigma\sigma_m^{‘}$</p>
+<p>CD段方程为：$\sigma_s=\sigma_a^{‘}+\sigma_m^{‘}$</p>
+<p>然后上面还没有讨论切应力。切应力和正应力一样，只是需要<strong>将上面式中的 $\sigma$ 替换成 $\tau$ </strong></p>
+<p>上面求出了极限应力的值，然后通常还要求 <strong>安全系数</strong></p>
+<p>这个比较麻烦，然后我也忘记当时是怎么讲的了，直接给出结论：</p>
+<p>在 <strong>单向应力</strong> 作用下</p>
+<script type="math/tex; mode=display">
+S_{\sigma}=\frac{\sigma_r}{\sigma}=\frac{\sigma_\max^{'}}{\sigma_\max}=\frac{\sigma_s}{\sigma_a+\sigma_m},D^{'}C^{'}</script><script type="math/tex; mode=display">
+S_{\sigma}=\frac{\sigma_r}{\sigma}=\frac{\sigma_\max^{'}}{\sigma_\max}=\frac{\sigma_{-1}}{(K_{\sigma})_ D\sigma_a+\psi_{\sigma}\sigma_m},A^{'}D^{'}</script><p>在 <strong>复合应力</strong> 作用下</p>
+<script type="math/tex; mode=display">
+S=\frac{S_{\sigma}S_\tau}{\sqrt{S_\sigma^2+S_\tau^2}}</script><h2 id="机械中的摩擦、磨损和润滑"><a href="#机械中的摩擦、磨损和润滑" class="headerlink" title="机械中的摩擦、磨损和润滑"></a>机械中的摩擦、磨损和润滑</h2><p>这一部分内容是抄的MOOC上面的</p>
+<h3 id="摩擦"><a href="#摩擦" class="headerlink" title="摩擦"></a>摩擦</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">类型</th>
+<th style="text-align:center">解释</th>
+<th style="text-align:center">摩擦系数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">干摩擦</td>
+<td style="text-align:center">表面间无任何润滑剂或保护膜的纯金属接触时的摩擦</td>
+<td style="text-align:center">大于0.1</td>
+</tr>
+<tr>
+<td style="text-align:center">边界摩擦</td>
+<td style="text-align:center">表面间被极薄的润滑膜所隔开，且摩擦性质与润滑剂的粘度无关而取决于两表面的特性和润滑油油性的摩擦</td>
+<td style="text-align:center">0.01-0.1</td>
+</tr>
+<tr>
+<td style="text-align:center">流体摩擦</td>
+<td style="text-align:center">表面间的润滑膜把摩擦副完全隔开，摩擦力的大小取决于流体分子内部摩擦力的摩擦</td>
+<td style="text-align:center">0.001-0.008</td>
+</tr>
+<tr>
+<td style="text-align:center">混合摩擦</td>
+<td style="text-align:center">摩擦副处于干摩擦、边界摩擦和流体摩擦混合状态时的摩擦</td>
+<td style="text-align:center">-</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="磨损"><a href="#磨损" class="headerlink" title="磨损"></a>磨损</h3><p>由于表面的相对运动而使物体工作表面的物质不断损失的现象。</p>
+<p>零件的磨损过程大体可分为三个阶段：<strong>磨合磨损阶段、稳定磨损阶段及剧烈磨损阶段</strong></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>表面疲劳磨损</td>
+<td>摩擦表面受循环接触应力作用到达一定程度时，就会在零件工作表面形成疲劳裂纹，随着裂纹的扩展与相互连接，会造成许多微粒从零件表面上脱落下来，致使表面上出现许多浅坑，这种磨损过程即为疲劳磨损；</td>
+</tr>
+<tr>
+<td>粘着磨损</td>
+<td>摩擦表面的微凸体在相互作用的各点发生粘着作用，使材料由一表面转移到另一表面的磨损</td>
+</tr>
+<tr>
+<td>磨粒磨损</td>
+<td>摩擦表面间的游离硬颗粒或硬的微凸体峰间在较软的材料表面上犁刨出很多沟纹的微切削过程</td>
+</tr>
+<tr>
+<td>腐蚀磨损</td>
+<td>在摩擦过程中金属与周围介质发生化学反应而引起的磨损。</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="润滑"><a href="#润滑" class="headerlink" title="润滑"></a>润滑</h3><p>润滑的作用有：<strong>减少或防止磨损、降低温升、防锈</strong>、降低摩擦、缓冲和吸振</p>
+<p><strong>润滑的原理会在后面介绍</strong></p>
+<h1 id="齿轮传动设计"><a href="#齿轮传动设计" class="headerlink" title="齿轮传动设计"></a>齿轮传动设计</h1><p>齿轮主参数：<strong>m、z</strong></p>
+<p>本章的重点为强度计算以及载荷系数</p>
+<h2 id="齿轮的特点与分类"><a href="#齿轮的特点与分类" class="headerlink" title="齿轮的特点与分类"></a>齿轮的特点与分类</h2><h3 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h3><p><strong>优点</strong>：瞬时传动比恒定、传动效率高、工作使用效率高、结构紧凑、适用范围大</p>
+<p><strong>缺点</strong>：成本高、精度低时噪音大，不易用于间距过大的转动</p>
+<h3 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h3><ul>
+<li>按照齿轮的工作条件：闭式、开式、半开式</li>
+<li>按照齿面硬度分：软齿面（HB ≤ 350）、硬齿面（HB &gt; 350）</li>
+</ul>
+<h2 id="齿轮的主要失效形式和计算准则"><a href="#齿轮的主要失效形式和计算准则" class="headerlink" title="齿轮的主要失效形式和计算准则"></a>齿轮的主要失效形式和计算准则</h2><h3 id="齿轮的主要失效形式"><a href="#齿轮的主要失效形式" class="headerlink" title="齿轮的主要失效形式"></a>齿轮的主要失效形式</h3><h4 id="齿轮的折断"><a href="#齿轮的折断" class="headerlink" title="齿轮的折断"></a>齿轮的折断</h4><p>闭式齿轮当齿轮的齿面比较硬的时候容易发生</p>
+<ul>
+<li>疲劳折断：齿根应力集中、交变载荷反复作用、疲劳裂纹拓展</li>
+<li>脆性折断：齿轮脆性材料、冲击、过载</li>
+</ul>
+<p><strong>防止措施</strong>：增大齿根厚度、加工精度、选择合理材料、材料热处理、增大心部韧性</p>
+<blockquote>
+<p>疲劳断裂往往从齿根受拉处开始发生</p>
+</blockquote>
+<h4 id="齿面的疲劳点蚀"><a href="#齿面的疲劳点蚀" class="headerlink" title="齿面的疲劳点蚀"></a>齿面的疲劳点蚀</h4><p>闭式齿轮传动的主要失效形式，软齿面上容易发生。</p>
+<ul>
+<li>点蚀原因：接触应力的反复作用</li>
+<li>后果：渐开线被破坏，产生噪音，甚至不能工作</li>
+</ul>
+<p><strong>防止措施</strong>：<strong>增大齿面硬度</strong>、降低粗糙度、合理选择润滑油</p>
+<blockquote>
+<p>点蚀主要出现在节线附近的齿根表面上</p>
+</blockquote>
+<h4 id="齿面磨损"><a href="#齿面磨损" class="headerlink" title="齿面磨损"></a>齿面磨损</h4><p>开式齿轮传动主要失效形式</p>
+<ul>
+<li>原因：齿面有磨料存在</li>
+<li>后果：齿面破坏、引起冲击振动</li>
+</ul>
+<p><strong>防止措施</strong>：改善润滑、<strong>提高齿面硬度</strong>、改用闭式齿轮传动</p>
+<h4 id="齿面胶合"><a href="#齿面胶合" class="headerlink" title="齿面胶合"></a>齿面胶合</h4><p>胶合现象是指两表面尖峰接触后粘接，然后再被撕开。 <strong>高速重载</strong> 齿轮容易发生</p>
+<ul>
+<li>原因：齿面软、相对滑动速度高、温度高、润滑失效</li>
+<li>后果：与上面类似</li>
+</ul>
+<p><strong>防止措施</strong>：改善润滑条件、<strong>提高齿面硬度</strong>、降低齿面粗糙度</p>
+<h4 id="塑性变形"><a href="#塑性变形" class="headerlink" title="塑性变形"></a>塑性变形</h4><p>有两种：齿体塑性变形（歪了）、齿面塑性变形（齿面材料沿摩擦力反向流动）</p>
+<ul>
+<li>原因：齿面软、润滑失效</li>
+</ul>
+<p><strong>防止措施</strong>：<strong>提高齿面硬度</strong>、提高润滑粘度</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:left">类型</th>
+<th style="text-align:left">原因</th>
+<th style="text-align:left">防止措施</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">轮齿的折断</td>
+<td style="text-align:left">疲劳折断：齿根应力集中、交变载荷反复作用、疲劳裂纹拓展  脆性折断：齿轮脆性材料、冲击、过载</td>
+<td style="text-align:left">增大齿根厚度、加工精度、选择合理材料、材料热处理、增大心部韧性</td>
+</tr>
+<tr>
+<td style="text-align:left">齿面点蚀</td>
+<td style="text-align:left">接触应力的反复作用</td>
+<td style="text-align:left"><strong>增大齿面硬度</strong>、降低粗糙度、合理选择润滑油</td>
+</tr>
+<tr>
+<td style="text-align:left">齿面磨损</td>
+<td style="text-align:left">齿面有磨料存在</td>
+<td style="text-align:left">改善润滑、<strong>提高齿面硬度</strong>、改用闭式齿轮传动</td>
+</tr>
+<tr>
+<td style="text-align:left">齿面胶合</td>
+<td style="text-align:left">齿面软、相对滑动速度高、温度高、润滑失效</td>
+<td style="text-align:left">改善润滑条件、<strong>提高齿面硬度</strong>、降低齿面粗糙度</td>
+</tr>
+<tr>
+<td style="text-align:left">塑性变形</td>
+<td style="text-align:left">齿面软、润滑失效</td>
+<td style="text-align:left"><strong>提高齿面硬度</strong>、提高润滑粘度</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="齿轮传动设计准则"><a href="#齿轮传动设计准则" class="headerlink" title="齿轮传动设计准则"></a>齿轮传动设计准则</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">齿轮类型</th>
+<th style="text-align:center">主要失效形式</th>
+<th style="text-align:center">设计准则</th>
+<th style="text-align:center">校核准则</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">闭式软齿面</td>
+<td style="text-align:center">齿面点蚀</td>
+<td style="text-align:center">齿面接触疲劳强度</td>
+<td style="text-align:center">齿根弯曲疲劳强度</td>
+</tr>
+<tr>
+<td style="text-align:center">闭式硬齿面</td>
+<td style="text-align:center">轮齿折断</td>
+<td style="text-align:center">齿根弯曲疲劳强度</td>
+<td style="text-align:center">齿面接触疲劳强度</td>
+</tr>
+<tr>
+<td style="text-align:center">开式齿轮</td>
+<td style="text-align:center">齿面磨损</td>
+<td style="text-align:center">多按齿面弯曲疲劳强度</td>
+<td style="text-align:center">？</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="齿轮材料与热处理"><a href="#齿轮材料与热处理" class="headerlink" title="齿轮材料与热处理"></a>齿轮材料与热处理</h2><h3 id="要求"><a href="#要求" class="headerlink" title="要求"></a>要求</h3><p>内软外硬、良好的机械加工和热处理、价格低</p>
+<h3 id="常用材料"><a href="#常用材料" class="headerlink" title="常用材料"></a>常用材料</h3><p>锻钢（最常用）、铸钢（比较大的齿轮）、铸铁（速度低，功率不大的齿轮）、有色金属（常用于化工、医疗方面）</p>
+<h2 id="齿轮传动的计算载荷"><a href="#齿轮传动的计算载荷" class="headerlink" title="齿轮传动的计算载荷"></a>齿轮传动的计算载荷</h2><p>计算载荷：名义载荷 × 载荷系数</p>
+<p>载荷系数： $K = K_AK_vK_\beta K_\alpha$</p>
+<h3 id="使用系数-K-A"><a href="#使用系数-K-A" class="headerlink" title="使用系数 $K_A$"></a>使用系数 $K_A$</h3><p>考虑到 <strong>外部因素</strong> （冲击振动）引起的附加动载荷影响的系数</p>
+<p>与 <strong>原动机与工作机的工作状态</strong> 有关</p>
+<h3 id="动载系数-K-v"><a href="#动载系数-K-v" class="headerlink" title="动载系数 $K_v$"></a>动载系数 $K_v$</h3><p>考虑到 <strong>齿轮本身的制造精度、运转速度</strong> 引起的附加动载荷影响的系数（齿轮齿距不相等→齿轮啮合时齿面有冲击载荷）</p>
+<p>与 <strong>齿轮速度、齿形误差、轮齿啮合刚度</strong> 有关（精度↑,速度↓ → $K_v$↓；齿轮心部刚度↓ → 变形↑ → 间隙↓ → 载荷分布均匀）</p>
+<p>减少影响：提高精度、齿廓修形</p>
+<h3 id="齿向载荷分布系数-K-beta"><a href="#齿向载荷分布系数-K-beta" class="headerlink" title="齿向载荷分布系数 $K_\beta$"></a>齿向载荷分布系数 $K_\beta$</h3><p>考虑到<strong>轴安装的过程中轴的误差（轴装歪了），以及变形引起的载荷分布不均匀现象</strong>的影响系数</p>
+<p><strong>当齿宽较小、齿轮轴刚度较大，齿面较软，齿轮对称布置时，$K_\beta$ 较小</strong>（齿面越软，接触越多）</p>
+<h3 id="齿间载荷分布系数-K-alpha"><a href="#齿间载荷分布系数-K-alpha" class="headerlink" title="齿间载荷分布系数 $K_\alpha$"></a>齿间载荷分布系数 $K_\alpha$</h3><p>考虑到 <strong>单齿啮合和多齿啮合载荷分布不均匀</strong> 对的影响的系数</p>
+<p>影响其因素有：重合度、齿轮刚度（齿面硬，数值大）、齿面精度</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">名称</th>
+<th style="text-align:center">引起原因</th>
+<th style="text-align:center">影响因素</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">使用系数 $K_a$</td>
+<td style="text-align:center">外部因素（如冲击、振动）</td>
+<td style="text-align:center">原动机和工作机的工作状态</td>
+</tr>
+<tr>
+<td style="text-align:center">动载系数 $K_v$</td>
+<td style="text-align:center">齿轮本身的制造误差、运转速度使啮合时齿间产生冲击造成附加动载</td>
+<td style="text-align:center">制造精度、运转速度、齿轮啮合刚度（越大越不均匀）</td>
+</tr>
+<tr>
+<td style="text-align:center">齿向载荷分布系数 $K_\beta$</td>
+<td style="text-align:center">由于轴的安装误差和轴、轴承的变形（轴歪了）等引起的载荷分布不均匀</td>
+<td style="text-align:center">轴的刚度、齿面硬度、齿宽（越大越不均匀）</td>
+</tr>
+<tr>
+<td style="text-align:center">齿间载荷分布系数 $K_\alpha$</td>
+<td style="text-align:center">单齿啮合和多齿啮合引起的载荷分布不均匀</td>
+<td style="text-align:center">重合度、齿轮精度、齿面硬度</td>
+</tr>
+</tbody>
+</table>
+</div>
+<blockquote>
+<p><strong>斜齿轮传动十分平稳，因此 K 比圆柱齿轮小；锥齿轮设计误差和制造误差大，因此 K 比圆柱齿轮大</strong></p>
+</blockquote>
+<h2 id="齿轮的结构设计"><a href="#齿轮的结构设计" class="headerlink" title="齿轮的结构设计"></a>齿轮的结构设计</h2><p>结构设计要考虑齿轮的几何尺寸、毛坯材料、加工工艺、使用等因素。通常是先按照齿轮的直径大小，选择合适的结构形式然后再根据经验数据完成结构设计。常用的结构形式有齿轮轴、实心式齿轮、腹板式齿轮、轮辐式齿轮、组装齿卷式结构等等。</p>
+<p><strong>注：选择的范围并不是特别的严格</strong></p>
+<h3 id="齿轮轴"><a href="#齿轮轴" class="headerlink" title="齿轮轴"></a>齿轮轴</h3><p>齿轮和轴做成一体的轴。</p>
+<p>当圆柱齿轮齿根圆到键槽底面的径向距离 $e\leq2.5 m(m_n)$，要制作成齿轮轴。</p>
+<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20200823214828.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>制作成这样的原因是很难做出来，即使制作出来轮毂的强度也不够。</p>
+<h3 id="实心式齿轮"><a href="#实心式齿轮" class="headerlink" title="实心式齿轮"></a>实心式齿轮</h3><p>最基本最简单的齿轮。</p>
+<p>当 $d_a\leq200mm$ 且 $e\geq 2.5m(m_n)$ 时，做成实心式齿轮。</p>
+<h3 id="腹板式齿轮"><a href="#腹板式齿轮" class="headerlink" title="腹板式齿轮"></a>腹板式齿轮</h3><p>当 $200mm\leq d_a \leq 500mm$ 时，通常采用腹板式齿轮。</p>
+<p>目的是减少质量、节约材料。</p>
+<h3 id="轮辐式齿轮"><a href="#轮辐式齿轮" class="headerlink" title="轮辐式齿轮"></a>轮辐式齿轮</h3><p>$d_a=400\sim1000mm$ 时，采用轮辐式铸造结构。</p>
+<p>目的还是减少质量、节约材料。</p>
+<h3 id="镶套式齿轮"><a href="#镶套式齿轮" class="headerlink" title="镶套式齿轮"></a>镶套式齿轮</h3><p>当齿轮要使用比较好的材料时，可以将齿圈用好材料；齿轮本体用差的材料两者镶套起来的叫做嵌套式齿轮。</p>
+<p>好处是：节约材料，而且当齿轮磨损之后也只用更换齿圈。</p>
+<h3 id="焊接式齿轮"><a href="#焊接式齿轮" class="headerlink" title="焊接式齿轮"></a>焊接式齿轮</h3><p>用钢板焊接出来的齿轮。</p>
+<p>适用于单件生产、尺寸过大又不利于铸造的齿轮</p>
+<p>缺点是有焊接内应力</p>
+<h2 id="受力分析"><a href="#受力分析" class="headerlink" title="受力分析"></a>受力分析</h2><h3 id="直齿圆柱齿轮"><a href="#直齿圆柱齿轮" class="headerlink" title="直齿圆柱齿轮"></a>直齿圆柱齿轮</h3><p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20200823214846.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>计算公式</th>
+<th>方向</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>圆周力 $F_t$ (tangential)</td>
+<td>$F_t=2T_1/d_1$</td>
+<td>主反从同</td>
+</tr>
+<tr>
+<td>径向力 $F_r$ (radial)</td>
+<td>$Fr=F_t\tan\alpha$</td>
+<td>指向圆心</td>
+</tr>
+<tr>
+<td>法向力 $F_n$ (normal)</td>
+<td>$F_n=F_t/\cos\alpha$</td>
+<td>前两个矢量和成</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>（其中T1=9548·P/n为小齿轮扭矩；d1为小齿轮节圆直径，SI）</p>
+<h3 id="斜齿圆柱齿轮"><a href="#斜齿圆柱齿轮" class="headerlink" title="斜齿圆柱齿轮"></a>斜齿圆柱齿轮</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>计算公式</th>
+<th>方向</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>圆周力 $F_t$</td>
+<td>$F_t=2T_1/d_1$</td>
+<td>主反从同</td>
+</tr>
+<tr>
+<td>径向力 $F_r$</td>
+<td>$F_r=F_t\tan\alpha_n/\cos\beta$</td>
+<td>指向圆心</td>
+</tr>
+<tr>
+<td>法向力 $F_n$</td>
+<td>$F_n=F_t/(\cos\alpha_n\cos\beta)$</td>
+<td>合成</td>
+</tr>
+<tr>
+<td>轴向力 $F_a$</td>
+<td>$F_a=F_t\tan\beta$</td>
+<td>主动轮右手定则（四指为旋转方向，大拇指为受力方向）</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="齿轮齿面接触疲劳强度"><a href="#齿轮齿面接触疲劳强度" class="headerlink" title="齿轮齿面接触疲劳强度"></a>齿轮齿面接触疲劳强度</h2><h3 id="直齿圆柱齿轮-1"><a href="#直齿圆柱齿轮-1" class="headerlink" title="直齿圆柱齿轮"></a>直齿圆柱齿轮</h3><p>$\propto$ 接触应力、齿轮材料许用接触应力</p>
+<p>齿轮轮齿节线接触为体接触，此时运用 <strong>赫兹公式</strong></p>
+<script type="math/tex; mode=display">
+\sigma _ H=\sqrt{\frac{F_n}{\pi L}\frac{(\frac{1}{\rho_1}\pm\frac{1}{\rho_2})}{(\frac{1-\mu_1^2}{E_1}+\frac{1-\mu_2^2}{E_2})}}=Z_E\sqrt{\frac{F_n}{L}·\frac{1}{\rho_\Sigma}}(MPa)</script><ul>
+<li><p>$F_n(N)$ ：正压力</p>
+<ul>
+<li>计算载荷为$F_{nc}=KF_n=\frac{KF_t}{\cos\alpha}$</li>
+</ul>
+</li>
+<li><p>$L(mm)$ ：接触线长度$L=b_r=\frac{b}{Z_\varepsilon^2}$</p>
+<p>其中$b_r$为有效齿宽，$Z_\varepsilon$为<strong>直齿轮重合度系数</strong></p>
+</li>
+<li><p>$\rho_\Sigma(mm)$ ：综合曲率半径$\frac{1}{\rho_\Sigma}=\frac{1}{\rho_1}\pm\frac{1}{\rho_2}$</p>
+<p>其中 $\rho=\frac{d}{2}\sin\alpha$ （就是基圆半径）</p>
+<p>令$\frac{d_2}{d_1}=\frac{Z_2}{Z_1}=u$，则$\frac{1}{\rho_\Sigma}=\frac{2}{d_1\cos\alpha\tan\alpha^{‘} }\frac{u\pm1}{u}$</p>
+<p>其中，令$Z_H=\sqrt {\frac{2}{\cos^2\alpha\tan\alpha^{‘} } }$，记为<strong>节点区域系数 </strong></p>
+</li>
+<li><p>$(\pm)$ ：外接触取正号，内接触取负号</p>
+</li>
+<li><p>$Z_E(\sqrt{MPa})$ ：<strong>材料弹性系数</strong>$Z_E=\sqrt{\frac{1}{\pi(\frac{1-\mu_1^2}{E_1}+\frac{1-\mu_2^2}{E_2})} }$</p>
+<p>其中 E 为弹性模量，μ 为泊松比</p>
+</li>
+</ul>
+<p>经过整理，可得<strong>齿面接触疲劳强度的校核公式</strong></p>
+<script type="math/tex; mode=display">
+\sigma_H=Z_E Z_H Z_\varepsilon\sqrt{\frac{KF_t}{bd_1}·\frac{u\pm1}{u}}\leq[\sigma]_ H</script><div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">名称</th>
+<th style="text-align:center">计算式</th>
+<th style="text-align:center">影响因素</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">材料弹性系数 $Z_E$</td>
+<td style="text-align:center">$Z_E=\sqrt{1/[{\pi(\frac{1-\mu_1^2}{E_1}+\frac{1-\mu_2^2}{E_2})}]}$</td>
+<td style="text-align:center">弹性模量、柏松比</td>
+</tr>
+<tr>
+<td style="text-align:center">节点区域系数 $Z_H$</td>
+<td style="text-align:center">$Z_H=\sqrt{4/\sin{2\alpha}}$</td>
+<td style="text-align:center">节点处齿廓曲率</td>
+</tr>
+<tr>
+<td style="text-align:center">直齿轮重合度系数 $Z_\varepsilon$</td>
+<td style="text-align:center">$Z_\varepsilon=\sqrt{(4-\varepsilon_a)/3}$</td>
+<td style="text-align:center">重合度</td>
+</tr>
+<tr>
+<td style="text-align:center">齿宽系数 $\psi_d$</td>
+<td style="text-align:center">$\psi_d=b/d_1$</td>
+<td style="text-align:center">-</td>
+</tr>
+</tbody>
+</table>
+</div>
+<blockquote>
+<p>大齿轮与小齿轮应力相同，但许用应力不一定相同。</p>
+</blockquote>
+<p>式中：u 是 齿数比 $u=z_2/z_1$，u &gt; 1（1为小齿轮，2为大齿轮）</p>
+<h3 id="斜齿圆柱齿轮-1"><a href="#斜齿圆柱齿轮-1" class="headerlink" title="斜齿圆柱齿轮"></a>斜齿圆柱齿轮</h3><p>斜齿轮和直齿轮差不多，就是多了一个系数。</p>
+<script type="math/tex; mode=display">
+\sigma_H=Z_E Z_H Z_\varepsilon Z_\beta\sqrt{\frac{KF_t}{bd_1}·\frac{u\pm1}{u}}\leq[\sigma]_ H</script><p>注：查表时使用 <strong>当量齿数</strong></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">名称</th>
+<th style="text-align:center">计算式</th>
+<th style="text-align:center">影响因素</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">螺旋角系数 $Y_\beta$</td>
+<td style="text-align:center">$Z_\beta=\sqrt{\cos\beta}$</td>
+<td style="text-align:center">螺旋角</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="齿轮齿根弯曲强度"><a href="#齿轮齿根弯曲强度" class="headerlink" title="齿轮齿根弯曲强度"></a>齿轮齿根弯曲强度</h2><h3 id="直齿圆柱齿轮-2"><a href="#直齿圆柱齿轮-2" class="headerlink" title="直齿圆柱齿轮"></a>直齿圆柱齿轮</h3><p>计算齿根弯曲强度时将齿根当做悬臂梁，计算得出。</p>
+<p>首先是判断危险界面</p>
+<h4 id="30°切线法"><a href="#30°切线法" class="headerlink" title="30°切线法"></a>30°切线法</h4><p>作与轮齿轴线成30°角的直线与<strong>齿轮圆角过渡曲线</strong>相切，过两切点并垂直于轴线的面就是危险截面</p>
+<h4 id="计算公式"><a href="#计算公式" class="headerlink" title="计算公式"></a>计算公式</h4><script type="math/tex; mode=display">
+\sigma_{F1}=\frac{M}{W}=\frac{F_n\cos\alpha_Fh_F}{bs_F^2/6}=\frac{KF_t}{bm}Y_{F1}Y_{S1}Y_{\varepsilon}</script><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>齿形系数 $Y_F$</td>
+<td>考虑到轮齿几何形状对齿根弯曲应力的影响。<strong>决定于齿数，与模数无关。</strong></td>
+</tr>
+<tr>
+<td>应力修正系数 $Y_S$</td>
+<td>考虑到齿轮过渡圆角处应力集中和剪切应力及压应力对齿根应力影响</td>
+</tr>
+<tr>
+<td>重合度系数 $Y_\varepsilon$</td>
+<td>顾名思义</td>
+</tr>
+</tbody>
+</table>
+</div>
+<blockquote>
+<p>注：大齿轮与小齿轮是不同的</p>
+</blockquote>
+<h3 id="斜齿圆柱齿轮-2"><a href="#斜齿圆柱齿轮-2" class="headerlink" title="斜齿圆柱齿轮"></a>斜齿圆柱齿轮</h3><p>按照发面当量圆柱齿轮计算。然后也是多了一个系数</p>
+<script type="math/tex; mode=display">
+\sigma_{F1}==\frac{KF_t}{bm_n}Y_{F1}Y_{S1}Y_{\varepsilon}Y_\beta</script><p>然后注意：模数为<strong>法向模数</strong>，查表采用 <strong>当量齿数</strong></p>
+<h2 id="锥齿轮相关"><a href="#锥齿轮相关" class="headerlink" title="锥齿轮相关"></a>锥齿轮相关</h2><p><strong>标准参数在大端</strong>，<strong>不考虑与重合度相关的因素</strong>（$K_\varepsilon,Z_\varepsilon,Y_\varepsilon$），按当量齿数 $z_v=z/\cos\delta_1$ 查表。</p>
+<h3 id="受力分析-1"><a href="#受力分析-1" class="headerlink" title="受力分析"></a>受力分析</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>相关公式</th>
+<th>方向</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>圆周力 $F_t$</td>
+<td>$F_{t1}=-F_{t2}$</td>
+<td>主反从同</td>
+</tr>
+<tr>
+<td>径向力 $F_r$</td>
+<td>$F_{r1}=-F_{a2}$</td>
+<td>指向圆心</td>
+</tr>
+<tr>
+<td>轴向力 $F_a$</td>
+<td>$F_{a1}=-F_{r2}$</td>
+<td>指向大端</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="载荷系数"><a href="#载荷系数" class="headerlink" title="载荷系数"></a>载荷系数</h3><p>$K=K_AK_vK_\beta$</p>
+<h3 id="齿面接触疲劳强度"><a href="#齿面接触疲劳强度" class="headerlink" title="齿面接触疲劳强度"></a>齿面接触疲劳强度</h3><script type="math/tex; mode=display">
+\sigma_H=Z_E Z_H Z_K\sqrt{\frac{KF_t}{bd_{v1}}·\frac{u_{v}\pm1}{u_{v}}}\leq[\sigma]_ H</script><p>其中 Zk 为锥齿轮增加的一个系数</p>
+<h2 id="齿轮传动的润滑"><a href="#齿轮传动的润滑" class="headerlink" title="齿轮传动的润滑"></a>齿轮传动的润滑</h2><p>润滑可以起到减小啮合处的 <strong>摩擦发热、减少磨损、降低噪音</strong> 的作用</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>传动方式</th>
+<th>速度</th>
+<th>润滑方式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>开式及半开式齿轮</td>
+<td>低</td>
+<td>人工定期润滑或润脂</td>
+</tr>
+<tr>
+<td>闭式齿轮</td>
+<td>&lt;10m/s</td>
+<td>浸油润滑</td>
+</tr>
+<tr>
+<td>闭式齿轮</td>
+<td>≥10m/s</td>
+<td>喷油润滑</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="齿轮传动主要参数"><a href="#齿轮传动主要参数" class="headerlink" title="齿轮传动主要参数"></a>齿轮传动主要参数</h2><ul>
+<li><p>模数：主要影响 齿根弯曲强度，可以按照齿根弯曲疲劳强度计算</p>
+</li>
+<li><p>齿数：齿数多，传动平稳。需要为质数</p>
+<blockquote>
+<p>如果不互质，相互啮合的齿总是确定的，这样的话磨损位置相同，会加速磨损</p>
+</blockquote>
+</li>
+</ul>
+<h1 id="蜗杆传动"><a href="#蜗杆传动" class="headerlink" title="蜗杆传动"></a>蜗杆传动</h1><ul>
+<li>大题预定</li>
+<li>标准件，选择型号即可</li>
+</ul>
+<h2 id="蜗杆传动的特点"><a href="#蜗杆传动的特点" class="headerlink" title="蜗杆传动的特点"></a>蜗杆传动的特点</h2><p>蜗杆最重要的一个特性就是 <strong>传动效率低</strong>。因此有自锁性等优点，也会有摩擦发热的现象（因此后面有热平衡计算）</p>
+<blockquote>
+<p>蜗杆与蜗轮在节点处速度方向相互垂直。节点处速度 $v_s=\sqrt{v_1^2+v_2^2}$ 比较大。因此传动<strong>相对滑动大</strong>，效率低，传动磨损也比较大。</p>
+<p>由于蜗轮蜗杆的自锁性，因此只能蜗杆带动蜗轮</p>
+</blockquote>
+<h2 id="蜗杆传动的失效形式、设计准则、材料"><a href="#蜗杆传动的失效形式、设计准则、材料" class="headerlink" title="蜗杆传动的失效形式、设计准则、材料"></a>蜗杆传动的失效形式、设计准则、材料</h2><ul>
+<li><p>失效形式：（与齿轮类似）齿面胶合、齿面点蚀、<strong>齿面磨损</strong>，而且通常发生在<strong>蜗轮</strong>上</p>
+</li>
+<li><p>设计准则</p>
+</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>类别</th>
+<th>失效形式</th>
+<th>设计准则</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>闭式</td>
+<td>磨损</td>
+<td>按<strong>齿面接触疲劳强度</strong>计算，<strong>齿根弯曲疲劳强度</strong> 校核</td>
+</tr>
+<tr>
+<td>开式</td>
+<td>磨损</td>
+<td>以保证齿根弯曲疲劳强度为设计准则</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul>
+<li><p>常用的材料</p>
+<p>不仅要求强度和刚度，还要求一定的耐磨性、减摩性和跑和性</p>
+<ul>
+<li>蜗杆常用碳素钢或合金钢</li>
+<li>蜗轮铸铁、铸造青铜等等</li>
+</ul>
+</li>
+</ul>
+<h2 id="蜗杆的效率、润滑、热平衡计算"><a href="#蜗杆的效率、润滑、热平衡计算" class="headerlink" title="蜗杆的效率、润滑、热平衡计算"></a>蜗杆的效率、润滑、热平衡计算</h2><h3 id="效率"><a href="#效率" class="headerlink" title="效率"></a>效率</h3><script type="math/tex; mode=display">
+\eta=\eta_1\eta_2\eta_3=(0.95-0.96)\frac{\tan\gamma}{\tan(\gamma+\rho_v)}</script><ul>
+<li><p>$\eta_1$：<strong>啮合效率</strong>（与蜗轮头数有关。当 $z_1 = 1$ 时，$\eta_1=0.7$）</p>
+</li>
+<li><p>$\eta_2,\eta_3$：<strong>轴承效率、搅油效率</strong></p>
+</li>
+<li><p>$\gamma$：导程角，与斜齿轮的螺旋角比较类似</p>
+<script type="math/tex; mode=display">
+\tan\gamma=\frac{z_1}{q}</script><ul>
+<li>$z_1$：蜗杆头数</li>
+<li>$q$：蜗杆直径系数 $q=d_1/m$（使刀具标准化）</li>
+</ul>
+</li>
+<li><p>$\rho_v$：当量摩擦角</p>
+<script type="math/tex; mode=display">
+\tan\rho_v=f_v</script></li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>$z_1$</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$\eta$</td>
+<td>0.7</td>
+<td>0.8</td>
+<td>0.85</td>
+<td>0.9</td>
+</tr>
+</tbody>
+</table>
+</div>
+<blockquote>
+<p>头数$z_1$ 越大，加工越困难</p>
+<p>自锁条件：$\gamma\leq\rho_v$</p>
+</blockquote>
+<h3 id="相对滑动速度"><a href="#相对滑动速度" class="headerlink" title="相对滑动速度"></a>相对滑动速度</h3><script type="math/tex; mode=display">
+v_s=\frac{v_1}{\cos\gamma}=\frac{\pi d_1n_1}{60\times1000\cos\gamma}</script><h3 id="润滑-1"><a href="#润滑-1" class="headerlink" title="润滑"></a>润滑</h3><p>目的：防止 <strong>胶合</strong>（有时还会加添加剂）和 <strong>磨损</strong></p>
+<p>开式：定期涂润滑脂</p>
+<p>闭式：浸油（深度为一个齿高）或喷油润滑（对准蜗杆啮入端）</p>
+<h3 id="热平衡计算"><a href="#热平衡计算" class="headerlink" title="热平衡计算"></a>热平衡计算</h3><p>由于蜗杆效率低，因此工作时会产生大量的热。然而温度过高会使润滑失效，导致齿面胶合。因此需要进行热平衡计算，来保证油温在一定范围    内</p>
+<ul>
+<li><p>单位时间的发热量为(W)</p>
+<script type="math/tex; mode=display">
+Q_1=1000P_1(1-\eta)</script></li>
+<li><p>单位时间的散热量为(W)</p>
+<script type="math/tex; mode=display">
+Q_2=\alpha_sA(t-t_0)</script></li>
+<li><p>热平衡时的油温为</p>
+<script type="math/tex; mode=display">
+t=t_0+\frac{1000P_1(1-\eta)}{\alpha_sA}</script><p>一般会使 t 在80℃以下</p>
+</li>
+</ul>
+<h4 id="改善散热常见的措施"><a href="#改善散热常见的措施" class="headerlink" title="改善散热常见的措施"></a>改善散热常见的措施</h4><ul>
+<li>合理设计箱体结构，焊上散热片，增大散热面积</li>
+<li>在蜗轮轴上装风扇</li>
+<li>在箱体油池内设置蛇形冷却水管</li>
+<li>采用压力喷油循环润滑（最吼的冷却效果、润滑效果）<ul>
+<li>上置式：润滑效果不好，但油不易洒出来</li>
+<li>下置式：润滑效果好，但油容易洒出来</li>
+</ul>
+</li>
+</ul>
+<h2 id="蜗杆的受力分析"><a href="#蜗杆的受力分析" class="headerlink" title="蜗杆的受力分析"></a>蜗杆的受力分析</h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>计算公式</th>
+<th>方向</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>圆周力 $F_t$</td>
+<td>$F_{t1}=-F_{a2}=2T_1/d_1$</td>
+<td>主反</td>
+</tr>
+<tr>
+<td>轴向力 $F_a$</td>
+<td>$F_{a1}=-F_{t2}=F_{t1}/(\cos\alpha_n\cos\gamma)$</td>
+<td>左右手定则</td>
+</tr>
+<tr>
+<td>径向力 $F_r$</td>
+<td>$F_{r1}=-F_{r2}=F_{t1}\tan\alpha$</td>
+<td>向心</td>
+</tr>
+</tbody>
+</table>
+</div>
+<blockquote>
+<p>左旋蜗杆使用左手法则，手握蜗杆，四指指向蜗杆旋转方向，则大拇指的方向即为蜗轮在蜗杆与蜗轮啮合点的旋转方向</p>
+<p>涡轮蜗杆的转动方向的判定方法： 主动蜗杆为右旋用右手四个手指顺着蜗杆的转向握住蜗杆，大拇指的指向与蜗轮的节点速度方向相反，来判定蜗轮的转向。</p>
+</blockquote>
+<h3 id="计算载荷"><a href="#计算载荷" class="headerlink" title="计算载荷"></a>计算载荷</h3><p>$K=K_AK_vK_\beta$</p>
+<p>其中 $K_v,K_\beta$ 可以忽略</p>
+<h1 id="带传动"><a href="#带传动" class="headerlink" title="带传动"></a>带传动</h1><p>适用于中高速，常常接在原动机后面避免 <strong>超载</strong></p>
+<p>已标准化，只需要选择型号</p>
+<h2 id="带的结构与型号"><a href="#带的结构与型号" class="headerlink" title="带的结构与型号"></a>带的结构与型号</h2><ul>
+<li>平带</li>
+<li>V 带（摩擦力比平带大，传动能力强些）</li>
+</ul>
+<h3 id="V-带结构"><a href="#V-带结构" class="headerlink" title="V 带结构"></a>V 带结构</h3><p><strong>抗拉层、顶胶层、底胶层、包布层</strong> 构成。根据抗拉层结构的不同，还分为帘布结构和线绳结构</p>
+<p>由于带的主要成分是橡胶，因此不适合于高温、有化学腐蚀的场合</p>
+<h3 id="普通-V-带的型号"><a href="#普通-V-带的型号" class="headerlink" title="普通 V 带的型号"></a>普通 V 带的型号</h3><p>有 Y、Z、A、B、C、D、E 七种型号，他们的横截面积逐渐增大</p>
+<p>中性层：当带垂直于底边弯曲时，长度保持不变的那一层。其宽度为节宽</p>
+<h2 id="V-带的受力分析"><a href="#V-带的受力分析" class="headerlink" title="V 带的受力分析"></a>V 带的受力分析</h2><p>令带轮的初始拉力为 $F_0$，紧边拉力为 $F_1$，松边拉力为 $F_2$，有效拉力为 $F$ 有：</p>
+<script type="math/tex; mode=display">
+2F_0=F_1+F_2</script><script type="math/tex; mode=display">
+F_f=F=F_1-F_2</script><p>根据欧拉公式，当处于临界状态时，有：</p>
+<script type="math/tex; mode=display">
+\frac{F_1}{F_2}=e^{f\alpha_1}</script><p>此时的有效拉力为：（可以由上面式子推出）</p>
+<script type="math/tex; mode=display">
+F_{max}=2F_0\frac{1{e^{f\alpha_1}-1}}{1{e^{f\alpha_1}+1}}</script><blockquote>
+<p>紧边为 进入主动轮的 那一边</p>
+<p>上式中，f 应该带当量摩擦系数，对于V带，$f_v=\frac{f}{\sin{\frac{\varphi_0}{2}}}$</p>
+<p>增大有效拉力的方法有：增加$F_0,\alpha_1,f$</p>
+</blockquote>
+<h2 id="V-带的应力分析"><a href="#V-带的应力分析" class="headerlink" title="V 带的应力分析"></a>V 带的应力分析</h2><h3 id="拉应力"><a href="#拉应力" class="headerlink" title="拉应力"></a>拉应力</h3><p>紧边拉应力：</p>
+<script type="math/tex; mode=display">
+\sigma_1=\frac{F_1}{A}</script><p>送边拉应力：</p>
+<script type="math/tex; mode=display">
+\sigma_2=\frac{F_2}{A}</script><h3 id="由离心力产生的应力"><a href="#由离心力产生的应力" class="headerlink" title="由离心力产生的应力"></a>由离心力产生的应力</h3><script type="math/tex; mode=display">
+\sigma_c=\frac{F_c}{A}=\frac{qv^2}{A}</script><blockquote>
+<p>各点处都有，且相等</p>
+<p>这里只考虑的拉应力，原因是，其他的也拉应力，若此处考虑压应力，与其他的是相互抵消的关系</p>
+</blockquote>
+<h3 id="带弯曲产生的应力"><a href="#带弯曲产生的应力" class="headerlink" title="带弯曲产生的应力"></a>带弯曲产生的应力</h3><script type="math/tex; mode=display">
+\sigma_b=\frac{2E_by_0}{d_p}</script><ul>
+<li>$E_b$：带的当量弯曲弹性模量</li>
+<li>$y_0$：带最外层到中性层距离</li>
+<li>$d_p$：带轮节圆直径</li>
+</ul>
+<h3 id="带的应力分布"><a href="#带的应力分布" class="headerlink" title="带的应力分布"></a>带的应力分布</h3><p>注：<strong>最大应力产生在紧边进入小带轮处</strong></p>
+<script type="math/tex; mode=display">
+\sigma_{max}=\sigma_1+\sigma_{b1}+\sigma_c</script><h2 id="带的弹性滑动"><a href="#带的弹性滑动" class="headerlink" title="带的弹性滑动"></a>带的弹性滑动</h2><p>由于带的弹性变形而引起的带与带轮之间的相对滑动现象（不可避免的本身属性）</p>
+<h3 id="后果"><a href="#后果" class="headerlink" title="后果"></a>后果</h3><ul>
+<li>使从动轮的圆周速度总是落后于主动轮的圆周速度</li>
+<li>传动比不是常数</li>
+<li>损失能量、降低效率、使带的温度升高，引起磨损</li>
+</ul>
+<h3 id="打滑"><a href="#打滑" class="headerlink" title="打滑"></a>打滑</h3><ul>
+<li>造成带的严重磨损并使带处于不稳定状态</li>
+<li>打滑总是发生在小带轮处</li>
+<li>打滑可以避免超载</li>
+</ul>
+<h2 id="带的失效形式与设计准则"><a href="#带的失效形式与设计准则" class="headerlink" title="带的失效形式与设计准则"></a>带的失效形式与设计准则</h2><ul>
+<li>失效形式：<strong>打滑和疲劳破坏</strong></li>
+<li>设计准则：$\sigma_{\max}=\sigma_1+\sigma_{b1}+\sigma_{c}\leq[\sigma]$</li>
+</ul>
+<p>当 $\sigma_{\max}=[\sigma]$ 时，带发挥出最大的效能</p>
+<p>此时，有</p>
+<script type="math/tex; mode=display">
+[P_0]=\frac{Fv}{1000}=\sigma_1(1-\frac{1}{e^{f_v\alpha_1}})\frac{Av}{1000}\\
+=([\sigma]-\sigma_{b1}-\sigma_c)(1-\frac{1}{e^{f_v\alpha_1}})\frac{Av}{1000}</script><h2 id="带的张紧"><a href="#带的张紧" class="headerlink" title="带的张紧"></a>带的张紧</h2><ul>
+<li>定期张紧装置（定期改变中心距）</li>
+<li>自动张紧装置（靠重力使带张紧）</li>
+<li>用带轮张紧（加一个带轮）</li>
+</ul>
+<h1 id="链传动"><a href="#链传动" class="headerlink" title="链传动"></a>链传动</h1><p>已标准化</p>
+<h2 id="套筒滚子链结构"><a href="#套筒滚子链结构" class="headerlink" title="套筒滚子链结构"></a>套筒滚子链结构</h2><p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20200823214932.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>1：内链板        2：外链板        3：销轴        4：套筒        5：滚子</p>
+<p>其中，1、4为过盈配合；2、3为过盈配合；4、5为间隙配合；3、4为间隙配合</p>
+<p>销轴于销轴之间的距离称为 <strong>链节距</strong> ，是链传动的主要参数</p>
+<p>为了使链条形成环形，正好是内链板与外链板之间相连接，因此链节数最好设置成 <strong>双数</strong></p>
+<p>当链节数为单数时，会使用 <strong>过渡链节</strong> 来进行连接，不过强度不高，因此设计时应该尽量避免这个</p>
+<h2 id="链传动的不均匀性"><a href="#链传动的不均匀性" class="headerlink" title="链传动的不均匀性"></a>链传动的不均匀性</h2><p>链传动，链条会在链轮上形成一个多边形，多边形的边长就是链节距的大小。</p>
+<p>因为形成了这种多边形，因此，其瞬时速度和瞬时传动比都是变化的，这个叫做链传动的<strong>多边形效应</strong></p>
+<p>链的平均速度</p>
+<script type="math/tex; mode=display">
+v=\frac{z_1n_1p}{60\times1000}=\frac{z_2n_2p}{60\times1000}</script><p>链的瞬时传动比</p>
+<script type="math/tex; mode=display">
+i=\frac{\omega_1}{\omega_2}=\frac{R_2\cos\gamma}{R_1\cos\beta}</script><p><strong>当 Z1 = Z2 时，紧边链长 = 链节距的整数倍</strong> 时，<strong>传动比 = 1</strong>，为常数</p>
+<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><ul>
+<li>瞬时传动比不恒定</li>
+<li>有冲击振动</li>
+<li>有噪音</li>
+<li>有上下分速度，有上下抖动</li>
+<li>容易跳齿，容易脱链</li>
+</ul>
+<h1 id="轴毂连接设计"><a href="#轴毂连接设计" class="headerlink" title="轴毂连接设计"></a>轴毂连接设计</h1><p>轮毂链接最常用的其实是 <strong>键连接</strong></p>
+<p>主要参数为：键宽、键高</p>
+<h2 id="键的主要类型"><a href="#键的主要类型" class="headerlink" title="键的主要类型"></a>键的主要类型</h2><p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20200823214949.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="键的选择"><a href="#键的选择" class="headerlink" title="键的选择"></a>键的选择</h2><ul>
+<li>键宽与键高：由轴的直径按照标准确定</li>
+<li>键长：需要符合长度系列，等于或略小于轮毂长</li>
+</ul>
+<h2 id="键的强度计算"><a href="#键的强度计算" class="headerlink" title="键的强度计算"></a>键的强度计算</h2><script type="math/tex; mode=display">
+\sigma_P=\frac{2T}{dlk}\leq[\sigma_P]</script><ul>
+<li>l：键长（不含圆头）</li>
+<li>k：键与轮毂<strong>接触高度</strong></li>
+<li>d：轴径</li>
+</ul>
+<h2 id="花键"><a href="#花键" class="headerlink" title="花键"></a>花键</h2><h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><ul>
+<li>键槽浅，对轴的和毂的削弱小</li>
+<li>载荷可以由多个齿承担，传递转矩能力强</li>
+<li>对称分布，受力均匀，对中性好，旋转精度高</li>
+</ul>
+<h3 id="缺点-1"><a href="#缺点-1" class="headerlink" title="缺点"></a>缺点</h3><ul>
+<li>成本高</li>
+<li>需要特殊的加工才能保证精度</li>
+</ul>
+<h1 id="螺纹连接"><a href="#螺纹连接" class="headerlink" title="螺纹连接"></a>螺纹连接</h1><p>特点是结构简单、拆装方便，连接可靠性强，适用范围广</p>
+<h2 id="螺纹的主要参数"><a href="#螺纹的主要参数" class="headerlink" title="螺纹的主要参数"></a>螺纹的主要参数</h2><ul>
+<li>大径D：螺纹的公称直径</li>
+<li>小径D1：危险界面的计算直径</li>
+<li>中径D2：齿厚与齿间处相等处直径，<strong>确定几何参数</strong></li>
+<li>线速n：螺旋线的数量</li>
+<li>螺距P：相邻两牙在中径线上的轴向距离</li>
+<li>升角$\psi$：$\tan\psi=nP/(\pi d_2)$ 中径圆柱上螺旋展开时的角</li>
+<li>牙形角$\alpha$</li>
+<li>导程S：同一条螺旋线相邻两牙之间的距离</li>
+</ul>
+<h2 id="螺纹的分类"><a href="#螺纹的分类" class="headerlink" title="螺纹的分类"></a>螺纹的分类</h2><p>要求：<strong>足够的强度与良好性</strong></p>
+<p>当然各个螺纹也有自己的要求，比如说：链接螺纹（自锁性）、管螺纹（密封性）、转动螺纹（效率高）、调整螺纹（精度高）等等</p>
+<h3 id="普通螺纹"><a href="#普通螺纹" class="headerlink" title="普通螺纹"></a>普通螺纹</h3><p>又叫做三角螺纹，牙形角 $\alpha=2\beta=60°$</p>
+<p>牙形角大，当量摩擦系数大，自锁性好</p>
+<p>根据螺距的大小，又分为粗牙螺纹和细牙螺纹</p>
+<p>细牙螺纹螺距小，自锁性好，常用于承受冲击，振动，变载荷的地方</p>
+<p>缺点：牙小，磨损大，易脱扣</p>
+<blockquote>
+<p>主要用于 <strong>连接</strong></p>
+</blockquote>
+<h3 id="矩形螺纹"><a href="#矩形螺纹" class="headerlink" title="矩形螺纹"></a>矩形螺纹</h3><p>$\alpha=\beta=0$ 传动效率高，但是加工困难，常被梯形螺纹代替</p>
+<blockquote>
+<p>主要用于 <strong>传动</strong></p>
+</blockquote>
+<h3 id="梯形螺纹"><a href="#梯形螺纹" class="headerlink" title="梯形螺纹"></a>梯形螺纹</h3><p>$\alpha=2\beta=30°$ 牙根强度高，易于对中，易于制造，部分螺母可以消除间隙</p>
+<blockquote>
+<p>主要用于 <strong>传动</strong></p>
+</blockquote>
+<h3 id="锯齿形螺纹"><a href="#锯齿形螺纹" class="headerlink" title="锯齿形螺纹"></a>锯齿形螺纹</h3><p>单向，效率高，牙根强度高</p>
+<blockquote>
+<p>主要用于 <strong>传动</strong></p>
+</blockquote>
+<h2 id="螺纹连接的基本类型"><a href="#螺纹连接的基本类型" class="headerlink" title="螺纹连接的基本类型"></a>螺纹连接的基本类型</h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>适用范围</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>螺栓连接</td>
+<td>连接件不太厚且有足够空间</td>
+</tr>
+<tr>
+<td>螺钉连接</td>
+<td>不经常拆卸的场合</td>
+</tr>
+<tr>
+<td>双头螺柱</td>
+<td>经常拆装或用螺钉无法安装</td>
+</tr>
+<tr>
+<td>紧定螺钉</td>
+<td>用于传递不大的力及扭矩，在轴上用的比较多</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="螺纹连接的预紧"><a href="#螺纹连接的预紧" class="headerlink" title="螺纹连接的预紧"></a>螺纹连接的预紧</h2><p>预紧的目的是：<strong>增强连接的刚性，紧密型和防松能力</strong></p>
+<p>当然后面会有预紧力的计算</p>
+<h2 id="螺纹连接的防松"><a href="#螺纹连接的防松" class="headerlink" title="螺纹连接的防松"></a>螺纹连接的防松</h2><p>在静载荷作用下，螺栓连接一般能够满足自锁条件。不过当遇到 <strong>冲击振动或变载荷</strong> 时，或当<strong>温度变化很大</strong>时，摩擦副之间的摩擦力减小，可能就达不到自锁条件了，这时就会发生自动脱松现象</p>
+<p>螺纹放松的办法有：摩擦放松、机械放松以及破坏性永久放松</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>类别</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>对顶螺母（双螺母）</td>
+<td>摩擦力放松</td>
+<td>两个螺母对顶产生内力，增大摩擦，结构简单，但是不可靠</td>
+</tr>
+<tr>
+<td>弹簧垫片</td>
+<td>摩擦力放松</td>
+<td>反弹力使螺纹将保持压紧力</td>
+</tr>
+<tr>
+<td>锁紧螺母</td>
+<td>摩擦力放松</td>
+<td>螺纹旋入处镶嵌纤维或者尼龙</td>
+</tr>
+<tr>
+<td>开口销或六角开槽螺母</td>
+<td>机械放松</td>
+<td>-</td>
+</tr>
+<tr>
+<td>止动垫圈</td>
+<td>机械放松</td>
+<td>-</td>
+</tr>
+<tr>
+<td>串联钢丝</td>
+<td>机械放松</td>
+<td>串联钢丝方向与螺钉拧紧的方向相同</td>
+</tr>
+<tr>
+<td>焊接、冲点、涂胶</td>
+<td>永久放松</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="单个螺栓强度计算"><a href="#单个螺栓强度计算" class="headerlink" title="单个螺栓强度计算"></a>单个螺栓强度计算</h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>类别</th>
+<th>失效形式</th>
+<th>计算准则</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>受拉螺栓</td>
+<td>断裂</td>
+<td>静力/疲劳 拉伸强度</td>
+</tr>
+<tr>
+<td>受剪螺栓</td>
+<td>压溃或剪断</td>
+<td>挤压强度和剪切强度</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>下面只考虑受拉螺栓</p>
+<h3 id="只受到预紧力的紧螺纹连接"><a href="#只受到预紧力的紧螺纹连接" class="headerlink" title="只受到预紧力的紧螺纹连接"></a>只受到预紧力的紧螺纹连接</h3><p>这种连接是靠结合面处的摩擦来传递横向载荷，为了避免相对滑移，因此必须有：</p>
+<script type="math/tex; mode=display">
+F^{'}\geq\frac{K_fF_R}{fm}</script><p>当然这个还受到应力的限制，因此有：</p>
+<script type="math/tex; mode=display">
+\sigma_{ca}=1.3\sigma=\frac{1.3F^{'}}{\pi d_1^2/4}\leq[\sigma]</script><blockquote>
+<p>其中，螺纹连接不仅受预紧力拉力的作用，还有横向载荷扭矩的作用，因此需要考虑这个。根据第四强度理论对大量螺栓进行统计分析可以得到：复合应力的计算只需要将拉伸应力增大30%即可</p>
+</blockquote>
+<p>这种螺纹在冲击、振动和交变应力作用下会非常不可靠，而且所需直径一般比较大。但是由于结构简单，装配方便，一直在使用。为避免上述缺点，可以使用各种减压键来承受横向载荷。</p>
+<h3 id="受预紧力和轴向工作载荷的紧螺纹连接"><a href="#受预紧力和轴向工作载荷的紧螺纹连接" class="headerlink" title="受预紧力和轴向工作载荷的紧螺纹连接"></a>受预紧力和轴向工作载荷的紧螺纹连接</h3><p>分三步走：力的计算、静载荷下强度计算、变载荷下强度计算</p>
+<h4 id="受力分析-2"><a href="#受力分析-2" class="headerlink" title="受力分析"></a>受力分析</h4><p>由于被连接件的弹性形变的恢复，最后螺栓收到的总拉力 F0≠F’+F，而是：</p>
+<script type="math/tex; mode=display">
+F_0=F^{"}+F</script><p>然后经过公式的换算有：</p>
+<script type="math/tex; mode=display">
+F_0=F^{"}+F=F^{'}+\frac{C_1}{C_1+C_2}F</script><p>为了防止出现间隙，应该保证：</p>
+<script type="math/tex; mode=display">
+F^{"}\geq0</script><p>$C_1/(C_1+C_2)$ 为螺栓的相对刚度，<strong>为了提高螺栓的承载能力，应该使这个值尽量小</strong></p>
+<h4 id="静载荷下强度计算"><a href="#静载荷下强度计算" class="headerlink" title="静载荷下强度计算"></a>静载荷下强度计算</h4><script type="math/tex; mode=display">
+\sigma_{ca}=1.3\sigma=\frac{1.3F_0}{\pi d_1^2/4}\leq[\sigma]</script><h4 id="变载荷下强度计算"><a href="#变载荷下强度计算" class="headerlink" title="变载荷下强度计算"></a>变载荷下强度计算</h4><script type="math/tex; mode=display">
+\sigma_{a}=\frac{0.5C_1/(C_1+C_2)F}{\pi d_1^2/4}\leq[\sigma_a]</script><h2 id="螺栓组连接的设计"><a href="#螺栓组连接的设计" class="headerlink" title="螺栓组连接的设计"></a>螺栓组连接的设计</h2><h3 id="结构设计"><a href="#结构设计" class="headerlink" title="结构设计"></a>结构设计</h3><ul>
+<li>连接结合面几何形状常设计成轴对称</li>
+<li>螺栓布置应该受力合理</li>
+<li>应该预留一定的扳手空间</li>
+<li>分布在同一圆上的螺栓数目，应该取4,6,8等偶数，方便划线和分度</li>
+<li>避免螺栓受到偏载（加凸台/沉头座）</li>
+</ul>
+<h3 id="受力分析-3"><a href="#受力分析-3" class="headerlink" title="受力分析"></a>受力分析</h3><ul>
+<li><p>收到轴向载荷的螺栓组连接</p>
+<script type="math/tex; mode=display">
+F=F_Q/z</script><ul>
+<li>z：螺栓数量</li>
+</ul>
+</li>
+<li><p>收到横向载荷的螺栓组连接</p>
+<script type="math/tex; mode=display">
+F^{'}\geq\frac{F_RK_f}{fmz}</script></li>
+<li><p>受到扭转力矩 <em>T</em> 的螺栓组连接</p>
+<script type="math/tex; mode=display">
+fF^{'}r_1+fF^{'}r_2+...+fF^{'}r_z=K_fT</script><p>化简得</p>
+<script type="math/tex; mode=display">
+F^{'}=\frac{K_fT}{f(r_1+r_2+...+r_z)}</script></li>
+<li><p>受到翻转力矩的螺栓组连接</p>
+<p>需要验证三个式子：<strong>最大工作压力、不压溃、不出现间隙</strong></p>
+<p>工作压力：</p>
+<script type="math/tex; mode=display">
+F_\max=\frac{ML_\max}{L_1^2+L_2^2+...+L^2_z}</script><ul>
+<li>$L_\max$ <strong>受力最大的螺栓</strong> 到翻转轴的距离</li>
+<li>$F_\max$ 受力最大螺栓受到的工作载荷</li>
+<li>$M$ 翻转扭矩</li>
+</ul>
+<p>不压溃：</p>
+<script type="math/tex; mode=display">
+\sigma_{p\max}\approx \frac{zF^{'}}{A}+\frac{M}{W}\leq[\sigma_p]</script><p>不出现间隙：</p>
+<script type="math/tex; mode=display">
+\sigma_{p\min}\approx\frac{zF^{'}}{A}-\frac{W}{M}\geq0</script></li>
+</ul>
+<h1 id="轴的设计"><a href="#轴的设计" class="headerlink" title="轴的设计"></a>轴的设计</h1><h2 id="轴的类型与型号"><a href="#轴的类型与型号" class="headerlink" title="轴的类型与型号"></a>轴的类型与型号</h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>说明</th>
+<th>举例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>转轴</td>
+<td>承受扭矩和弯矩的轴</td>
+<td>转速箱里面连着斜齿轮的轴</td>
+</tr>
+<tr>
+<td>心轴</td>
+<td>只承受弯矩的轴</td>
+<td>起重机吊钩的轴</td>
+</tr>
+<tr>
+<td>传动轴</td>
+<td>只承受扭矩的轴</td>
+<td>转速箱那个原动机引出的轴</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>一般轴用的材料有两大类：碳素钢、合金钢</p>
+<p>碳素钢 45钢 用的最多。碳素钢价格低廉、对应力集中敏感性小</p>
+<p>合金钢的力学性能和淬火性能比碳素钢要好，但对应力比较敏感，而且价格高</p>
+<blockquote>
+<p>合金钢与碳素钢在常温下 <strong>弹性模量</strong> 差不多，因此，用合金钢并<strong>不能有效提高材料刚性</strong></p>
+</blockquote>
+<h2 id="轴的设计过程"><a href="#轴的设计过程" class="headerlink" title="轴的设计过程"></a>轴的设计过程</h2><h3 id="应力特点"><a href="#应力特点" class="headerlink" title="应力特点"></a>应力特点</h3><ul>
+<li>弯曲应力：对称循环应力</li>
+<li>扭转剪切应力：同转矩</li>
+</ul>
+<h3 id="设计准则"><a href="#设计准则" class="headerlink" title="设计准则"></a>设计准则</h3><p>主要失效形式为：<strong>疲劳断裂</strong></p>
+<p>设计时一般进行 <strong>疲劳强度计算</strong></p>
+<p>对有刚度要求的轴（车床主轴）要进行 <strong>刚度计算</strong> ，瞬时过载很大，则需要 <strong>按照最大载荷计算静强度</strong> ，对高速轴还要进行 <strong>稳定振动分析</strong></p>
+<h3 id="设计过程"><a href="#设计过程" class="headerlink" title="设计过程"></a>设计过程</h3><figure class="highlight plaintext"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs flow">st=&gt;start: 已知条件<br>op1=&gt;operation: 选择轴的材料<br>op2=&gt;operation: 初算轴径<br>op3=&gt;operation: 结构设计<br>op4=&gt;operation: 计算弯矩、扭矩<br>op5=&gt;condition: 校核计算<br>e=&gt;end: 完善设计<br><br>st-&gt;op1-&gt;op2-&gt;op3-&gt;op4-&gt;op5<br>op5(yes)-&gt;e<br>op5(no)-&gt;op3<br><br></code></pre></div></td></tr></table></figure>
+<h2 id="轴径的初步估计"><a href="#轴径的初步估计" class="headerlink" title="轴径的初步估计"></a>轴径的初步估计</h2><p>按 <strong>扭转强度</strong> 估算：</p>
+<script type="math/tex; mode=display">
+\tau_T=\frac{T}{W_T}=\frac{9.55\times10^6P/n}{0.2d^3}\leq[\tau_T]</script><p>化简得：</p>
+<script type="math/tex; mode=display">
+d\geq\sqrt[3]{\frac{9.55\times10^6}{0.2[\tau_T]}}\sqrt[3]{\frac{P}{n}}=C\sqrt[3]{\frac{P}{n}}</script><h2 id="轴的结构设计"><a href="#轴的结构设计" class="headerlink" title="轴的结构设计"></a>轴的结构设计</h2><h3 id="制造安装要求"><a href="#制造安装要求" class="headerlink" title="制造安装要求"></a>制造安装要求</h3><p>便于拆卸、便于安装、便于制造</p>
+<ul>
+<li>做成阶梯轴</li>
+<li>应有倒角（方便安装零件）</li>
+<li>需要磨削的部分应有砂轮越程槽</li>
+<li>键应靠近装零件的端部（安装观察方便）</li>
+<li>键的应该位于同一轴线上（良好的工艺性）</li>
+<li>齿轮宽度应该大于轴径的长度（使齿轮压紧）</li>
+</ul>
+<h3 id="固定要求"><a href="#固定要求" class="headerlink" title="固定要求"></a>固定要求</h3><ul>
+<li><p>轴向定位</p>
+<p>轴肩连接、套筒固定（不宜太长）、双螺母固定、轴端挡圈（端部）、弹性挡圈、紧定螺钉（传递离校）</p>
+</li>
+<li><p>周向固定</p>
+<p>键</p>
+</li>
+</ul>
+<h3 id="受力、应力要求"><a href="#受力、应力要求" class="headerlink" title="受力、应力要求"></a>受力、应力要求</h3><ul>
+<li>合理布置轴上传动零件位置</li>
+<li>合理设置轴上零件的结构（减小弯矩、改善配合）</li>
+<li>减少应力集中</li>
+<li>提高表面质量<blockquote>
+<ul>
+<li>定位轴与端盖之间的轴向距离不能太小</li>
+<li>轴承外圈应该与壳体之间有5-8mm间隙</li>
+<li>脂润滑必须有密封装置</li>
+</ul>
+<h2 id="轴的强度计算"><a href="#轴的强度计算" class="headerlink" title="轴的强度计算"></a>轴的强度计算</h2></blockquote>
+</li>
+</ul>
+<h3 id="应力校核法"><a href="#应力校核法" class="headerlink" title="应力校核法"></a>应力校核法</h3><script type="math/tex; mode=display">
+\sigma_c=\sqrt{\frac{M^2+(\alpha T)^2}{W}}\leq[\sigma_{-1}]</script><ul>
+<li>$\alpha$ 应力修正系数。</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>转矩不变</th>
+<th>脉动循环</th>
+<th>对称循环</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0.3</td>
+<td>0.6</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="安全系数法"><a href="#安全系数法" class="headerlink" title="安全系数法"></a>安全系数法</h3><h4 id="疲劳强度"><a href="#疲劳强度" class="headerlink" title="疲劳强度"></a>疲劳强度</h4><script type="math/tex; mode=display">
+S_c=\frac{S_\sigma S_\tau}{\sqrt{S_\sigma^2+S_\tau^2}}\geq[S]</script><script type="math/tex; mode=display">
+S_\sigma=\frac{\sigma_{-1}}{\frac{K_\sigma}{\beta\varepsilon_\sigma}\sigma_a+\psi_\sigma\sigma_m}</script><ul>
+<li>$K_\sigma$ 有效应力集中系数</li>
+<li>$\beta$  表面质量系数</li>
+<li>$\varepsilon$  绝对尺寸</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>工作状态</th>
+<th>应力类型</th>
+<th>应力幅</th>
+<th>平均应力</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>弯曲应力</code>一般情况</td>
+<td>对称循环</td>
+<td>$\sigma_a=M/W$</td>
+<td>$\sigma_m=0$</td>
+</tr>
+<tr>
+<td><code>弯曲应力</code>轴不转或载荷和轴一起转</td>
+<td>脉动循环</td>
+<td>$\sigma_a=M/(2W)$</td>
+<td>$\sigma_m=M/(2W)$</td>
+</tr>
+<tr>
+<td><code>扭转应力</code>一般情况</td>
+<td>脉动循环</td>
+<td>$\tau_a=T/(2W_T)$</td>
+<td>$\tau_m=T/(2W_T)$</td>
+</tr>
+<tr>
+<td><code>扭转应力</code> 轴频繁正反转</td>
+<td>对称循环</td>
+<td>$\tau_a=T/W_T$</td>
+<td>$\tau_m=0$</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>其中：$W_T=2W$</p>
+<h4 id="静强度"><a href="#静强度" class="headerlink" title="静强度"></a>静强度</h4><script type="math/tex; mode=display">
+S=\frac{S_{0\sigma} S_{0\tau}}{\sqrt{S_{0\sigma}^2+S_{0\tau}^2}}\geq[S_0]\\
+S_{0\sigma}=\frac{\sigma_{S}}{\sigma_\max},S_{0\tau}=\frac{\tau_S}{\tau_\max}</script><h1 id="联轴器与离合器"><a href="#联轴器与离合器" class="headerlink" title="联轴器与离合器"></a>联轴器与离合器</h1><p>联轴器和离合器都是用来连接轴与轴的，用来传递运动和扭矩</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>作用</th>
+<th>特点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>联轴器</td>
+<td>主要用于轴与轴的连接，以传递运动和扭矩</td>
+<td>停机才能连接或分离</td>
+</tr>
+<tr>
+<td>离合器</td>
+<td>在及其工作中可以随时使两轴分离或结合</td>
+<td>①可以随时控制启动、停车②可以控制变速和换挡③过载安全保护</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="计算扭矩"><a href="#计算扭矩" class="headerlink" title="计算扭矩"></a>计算扭矩</h2><script type="math/tex; mode=display">
+KT\leq[T_n]</script><ul>
+<li><em>K</em> 为工作系数</li>
+</ul>
+<h1 id="滑动轴承"><a href="#滑动轴承" class="headerlink" title="滑动轴承"></a>滑动轴承</h1><p>失效形式主要是：<strong>轴瓦的胶合和磨损</strong></p>
+<p>按滑动轴承受载荷的方向，可以将滑动轴承分为：<strong>径向轴承、止推轴承</strong></p>
+<h2 id="滑动轴承的结构形式"><a href="#滑动轴承的结构形式" class="headerlink" title="滑动轴承的结构形式"></a>滑动轴承的结构形式</h2><h3 id="径向轴承"><a href="#径向轴承" class="headerlink" title="径向轴承"></a>径向轴承</h3><ul>
+<li><p>整体式轴承</p>
+<p>结构简单、磨损后间隙过大、轴径只能从端部安装、拆卸</p>
+<p>适用于小型轴</p>
+</li>
+<li><p>剖分式轴承</p>
+<p>适用范围十分广泛、可以通过增加垫片调整间隙</p>
+<p>剖分面的位置垂直于载荷，可以防止剪切</p>
+<p>剖分式轴瓦下轴瓦承载，上轴瓦不承载，因此有沟开在上轴瓦非承载区</p>
+</li>
+</ul>
+<h3 id="推力滑动轴承"><a href="#推力滑动轴承" class="headerlink" title="推力滑动轴承"></a>推力滑动轴承</h3><p>只能承受轴向载荷</p>
+<h2 id="轴瓦的材料与结构"><a href="#轴瓦的材料与结构" class="headerlink" title="轴瓦的材料与结构"></a>轴瓦的材料与结构</h2><h3 id="要求-1"><a href="#要求-1" class="headerlink" title="要求"></a>要求</h3><ul>
+<li>良好的强度</li>
+<li>良好的塑形、减磨性、耐磨性、耐腐蚀性</li>
+<li>抗胶合能力强</li>
+<li>良好的导热性</li>
+<li>易于跑合、制造</li>
+</ul>
+<h3 id="常用材料-1"><a href="#常用材料-1" class="headerlink" title="常用材料"></a>常用材料</h3><p>主要有三大类：金属材料、粉末冶金材料、金属材料</p>
+<h4 id="轴承合金"><a href="#轴承合金" class="headerlink" title="轴承合金"></a>轴承合金</h4><p>又叫做巴氏合金，是轴承最好的材料</p>
+<ul>
+<li>锡基轴承合金</li>
+<li>铅基轴承合金</li>
+</ul>
+<p>优点：有良好抗<strong>胶合能力</strong>、的耐磨性、跑和性、塑形等</p>
+<p>缺点：强度不高、价格昂贵</p>
+<h4 id="青铜"><a href="#青铜" class="headerlink" title="青铜"></a>青铜</h4><p>抗胶合能力强，仅次于轴承合金，强度较高</p>
+<h4 id="粉末冶金"><a href="#粉末冶金" class="headerlink" title="粉末冶金"></a>粉末冶金</h4><p>可以制作称为含油轴承</p>
+<p>有成本低、耐磨性好、强度高的优点</p>
+<h3 id="轴承结构"><a href="#轴承结构" class="headerlink" title="轴承结构"></a>轴承结构</h3><ul>
+<li>有沟应该开在非承载区</li>
+<li>油沟长度小于轴承长度</li>
+</ul>
+<h2 id="非液体润滑轴承的计算"><a href="#非液体润滑轴承的计算" class="headerlink" title="非液体润滑轴承的计算"></a>非液体润滑轴承的计算</h2><p>主要失效形式：<strong>胶合、磨损</strong></p>
+<p>对于这两种失效形式，目前还没有完善的设计计算方法。一般从限制轴承压强 <em>p</em> 和限制轴承压强与圆周速度的乘积 <em>pv</em> 进行计算，对于压强小的轴承，还应该验算其速度</p>
+<p>在设计是一般知道 <strong>载荷、轴径、转速</strong></p>
+<ul>
+<li><p>验算轴承平均压强</p>
+<p>保证<strong>润滑油不被过大的压力挤出、避免轴瓦的过度磨损</strong></p>
+<script type="math/tex; mode=display">
+p=\frac{F}{Bd}\leq[p]</script><ul>
+<li>B：轴承的工作宽度</li>
+<li>d：轴颈直径</li>
+</ul>
+</li>
+<li><p>验算轴承的 <em>pv</em> 值</p>
+<p><strong>限制功耗、避免温升</strong></p>
+<script type="math/tex; mode=display">
+pv=\frac{F}{Bd}\frac{n\pi d}{60\times1000}\leq[pv]</script></li>
+<li><p>限制轴承速度</p>
+<script type="math/tex; mode=display">
+v=\frac{n\pi d}{60\times1000}\leq[v]</script></li>
+</ul>
+<h2 id="滑动轴承的润滑"><a href="#滑动轴承的润滑" class="headerlink" title="滑动轴承的润滑"></a>滑动轴承的润滑</h2><h3 id="液体摩擦轴承"><a href="#液体摩擦轴承" class="headerlink" title="液体摩擦轴承"></a>液体摩擦轴承</h3><ul>
+<li>重载、有冲击：高粘度</li>
+<li>高速、轻载：低粘度</li>
+</ul>
+<h3 id="非液体摩擦轴承"><a href="#非液体摩擦轴承" class="headerlink" title="非液体摩擦轴承"></a>非液体摩擦轴承</h3><script type="math/tex; mode=display">
+K=\sqrt{pv^3}</script><p>当 <strong>K≤2</strong> 时，脂润滑；当 <strong>K&gt;2</strong> ，油润滑</p>
+<h2 id="动压滑动轴承的热平衡计算"><a href="#动压滑动轴承的热平衡计算" class="headerlink" title="动压滑动轴承的热平衡计算"></a>动压滑动轴承的热平衡计算</h2><script type="math/tex; mode=display">
+\Delta t=t_2-t_1=\frac{fFv}{q\rho c+\alpha_s\pi dB}\\
+t_m=t_1+\frac{\Delta t}{2}</script><h2 id="液体动压润滑轴承"><a href="#液体动压润滑轴承" class="headerlink" title="液体动压润滑轴承"></a>液体动压润滑轴承</h2><h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><h4 id="假设"><a href="#假设" class="headerlink" title="假设"></a>假设</h4><ol>
+<li>两板间流体做层流运动</li>
+<li>两板间流体为牛顿流体，其粘度只与温度有关，忽略压力对其影响</li>
+<li>与两板接触的流体层与板间无相对滑动</li>
+<li>流体重力、惯性不考虑</li>
+<li>由于间隙很小，压力沿纵向大小不变</li>
+<li>平板无限长</li>
+</ol>
+<h4 id="公式"><a href="#公式" class="headerlink" title="公式"></a>公式</h4><script type="math/tex; mode=display">
+\frac{\partial p}{\partial x}=6\eta v\frac{h-h_0}{h^3}</script><ul>
+<li>$\eta$ 流体粘度</li>
+<li>$v$ 流体速度</li>
+<li>$h$ 任意处油膜厚度</li>
+<li>$h_0$ 当 $p=p_\max$ 时的油膜厚度</li>
+</ul>
+<h4 id="液体动压形成条件"><a href="#液体动压形成条件" class="headerlink" title="液体动压形成条件"></a>液体动压形成条件</h4><ul>
+<li>流体有<strong>足够的速度</strong></li>
+<li>流体有<strong>足够的粘度</strong></li>
+<li>流体必须经过<strong>收敛间隙</strong>，而且收敛间隙越大，油膜的压力越大</li>
+</ul>
+<h3 id="液体动压轴承工程条件"><a href="#液体动压轴承工程条件" class="headerlink" title="液体动压轴承工程条件"></a>液体动压轴承工程条件</h3><h4 id="承载能力"><a href="#承载能力" class="headerlink" title="承载能力"></a>承载能力</h4><script type="math/tex; mode=display">
+F=\frac{2\eta vB}{\psi^2}C_p</script><ul>
+<li>$C_p$ 承载量系数，与长径比 <em>B/d</em> 有关</li>
+<li>$\psi=(R-r)/r$ 相对间隙。相对间隙大，轴的承载能力小。设计时根据载荷和速度选取（$v\uparrow,F\downarrow\Rightarrow\psi\uparrow$）</li>
+<li>$B$ 工作宽度</li>
+</ul>
+<h4 id="最小油膜厚度"><a href="#最小油膜厚度" class="headerlink" title="最小油膜厚度"></a>最小油膜厚度</h4><script type="math/tex; mode=display">
+h_\min=(R-r)-e>Rz_1+Rz_2</script><p>为了保证获得完全的液体摩擦，必须保证：轴承的最小油膜厚度大于轴颈和轴的表面粗糙度之和</p>
+<h4 id="油膜温度"><a href="#油膜温度" class="headerlink" title="油膜温度"></a>油膜温度</h4><p>根据上面热平衡计算式求</p>
+<h1 id="滚动轴承"><a href="#滚动轴承" class="headerlink" title="滚动轴承"></a>滚动轴承</h1><p>主要失效形式为疲劳点蚀</p>
+<p>重点在于滚动轴承的规格、类型、失效形式</p>
+<h2 id="滚动轴承的构造和特点"><a href="#滚动轴承的构造和特点" class="headerlink" title="滚动轴承的构造和特点"></a>滚动轴承的构造和特点</h2><p>由外圈、内圈、滚动体、保持架组成</p>
+<blockquote>
+<p>保持架将滚动体均匀的分布在内外圈之间，一般都需要</p>
+</blockquote>
+<p>特点：</p>
+<ul>
+<li>摩擦系数小、传动效率高</li>
+<li>起动力矩小，启动灵活</li>
+<li>润滑简单，耗油量小</li>
+<li>标准件，易于更换</li>
+<li>抗冲击能力差，很难做成剖分式</li>
+<li>径向尺寸比滑动轴承大</li>
+</ul>
+<h2 id="滚动轴承的类型"><a href="#滚动轴承的类型" class="headerlink" title="滚动轴承的类型"></a>滚动轴承的类型</h2><p>轴承公称接触角 $\alpha$ ：滚动体与套圈接触处的法线 与 轴承径向平面 之间的夹角</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>公称接触角</th>
+<th>举例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>径向接触轴承</td>
+<td>$\alpha=0$</td>
+<td>深沟球轴承、圆柱滚子轴承</td>
+</tr>
+<tr>
+<td>向心角接触轴承</td>
+<td>$0&lt;\alpha\leq\pi/4$</td>
+<td>角接触球轴承</td>
+</tr>
+<tr>
+<td>推力角接触轴承</td>
+<td>$\pi/4&lt;\alpha&lt;\pi/2$</td>
+<td>推力角接触球轴承</td>
+</tr>
+<tr>
+<td>轴向接触轴承</td>
+<td>$\alpha=\pi/2$</td>
+<td>推力球轴承</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>常用滚动轴承的特性如图：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>轴承名称及类型代号</th>
+<th>转速</th>
+<th>主要特性及应用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>调心球轴承 1</td>
+<td>中</td>
+<td>主要从承受径向载荷，可同时承受双向轴向载荷；外圈滚道为球面，具有自动调心功能；适用于多支点轴、弯曲刚度小的轴</td>
+</tr>
+<tr>
+<td>调心滚子轴承 2</td>
+<td>低</td>
+<td>径向承载能力比调心球轴承大，其余特点与上面相似</td>
+</tr>
+<tr>
+<td>推力调心滚子轴承 2</td>
+<td>低</td>
+<td>可以承受很大的径向载荷和一定的轴向载荷，能够自动调心</td>
+</tr>
+<tr>
+<td><strong>圆锥滚子轴承 3</strong></td>
+<td>中</td>
+<td>只能承受单方向轴向力、内外圈可以分离，轴承游隙可以在安装时调整</td>
+</tr>
+<tr>
+<td>推力球轴承 5</td>
+<td>低</td>
+<td>套圈和滚动体可分离</td>
+</tr>
+<tr>
+<td><strong>深沟球轴承 6</strong></td>
+<td>高</td>
+<td>主要承受径向力、可以承受极少量轴向力，极限转速高，价格便宜</td>
+</tr>
+<tr>
+<td><strong>角接触球轴承 7</strong></td>
+<td>较高</td>
+<td>可取$\alpha=15,25,40$，公称接触角越大，轴向承载能力越大</td>
+</tr>
+<tr>
+<td>圆柱滚子轴承 N</td>
+<td>较高</td>
+<td>只能承受径向载荷</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>选择：</p>
+<ul>
+<li>载荷大，有冲击 =&gt; 滚子轴承</li>
+<li>转速高 =&gt; 球轴承</li>
+<li>便宜 =&gt; 球轴承</li>
+</ul>
+<h2 id="滚动轴承的代号"><a href="#滚动轴承的代号" class="headerlink" title="滚动轴承的代号"></a>滚动轴承的代号</h2><p>滚动轴承由 <code>前置代号</code>、<code>基本代号</code>、<code>后置代号</code> 组成</p>
+<h3 id="基本代号"><a href="#基本代号" class="headerlink" title="基本代号"></a>基本代号</h3><p>由 <code>类型代号</code>、<code>尺寸系列代号</code>、<code>内径代号</code> 组成</p>
+<ul>
+<li><p><code>类型代号</code> 见上表格</p>
+</li>
+<li><p><code>尺寸系列代号</code></p>
+<p>由 轴承的宽(高)系列代号（本质上是承载能力的不同） 和 直径代号组合而成。</p>
+</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>说明</th>
+<th>窄 0</th>
+<th>正常 1</th>
+<th>宽 2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>轻 2</strong></td>
+<td>02</td>
+<td>12</td>
+<td>22</td>
+</tr>
+<tr>
+<td><strong>中 3</strong></td>
+<td>03</td>
+<td>13</td>
+<td>23</td>
+</tr>
+<tr>
+<td><strong>重 4</strong></td>
+<td>04</td>
+<td>14</td>
+<td>24</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul>
+<li><p><code>内径代号</code></p>
+<p>一般是用 <strong>直径/5</strong> 来表示，下面是一些特殊情况</p>
+</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>00</th>
+<th>01</th>
+<th>02</th>
+<th>03</th>
+<th>用”/“隔开</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>10mm</td>
+<td>12mm</td>
+<td>15mm</td>
+<td>17mm</td>
+<td>本身</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="后置代号"><a href="#后置代号" class="headerlink" title="后置代号"></a>后置代号</h3><ul>
+<li><code>内部结构代号</code></li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>C</th>
+<th>AC</th>
+<th>B</th>
+<th>E</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>角接触球轴承 $\alpha=15$</td>
+<td>角接触球轴承 $\alpha=25$</td>
+<td>角接触球轴承 $\alpha=40$ ；圆锥滚子轴承接触角加大</td>
+<td>加强型</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul>
+<li><p><code>公差等级代号</code></p>
+<p>含有 <strong>P</strong> 的，常见的有 <strong>/P6、/P5、/P4、/P2</strong></p>
+</li>
+<li><p><code>轴承装配代号</code></p>
+<p>常见的有 <strong>/DB、/DF、/DT</strong></p>
+</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>/DB</th>
+<th>/DF</th>
+<th>/DT</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>背对背（小口对小口）</td>
+<td>面对面（大口对大口）</td>
+<td>串联安装</td>
+</tr>
+</tbody>
+</table>
+</div>
+<blockquote>
+<p>例如：<strong>7210 C/P5/DF</strong> 表示这是一个角接触球轴承，基本尺寸代号为（02）属于窄轻系列，内径为50mm，该轴承公称接触角 $\alpha=15$ ，公差等级5级，属于面对面安装</p>
+</blockquote>
+<h2 id="失效形式"><a href="#失效形式" class="headerlink" title="失效形式"></a>失效形式</h2><p>受到交变载荷（由于轴承的弹性变形引起的）</p>
+<ul>
+<li><strong>疲劳点蚀</strong>，最主要的失效形式</li>
+<li>塑形变形</li>
+<li>磨损</li>
+<li>胶合</li>
+</ul>
+<h2 id="计算准则"><a href="#计算准则" class="headerlink" title="计算准则"></a>计算准则</h2><p>计算准则主要是进行寿命计算，对低速轴承还可以进行 静强度计算，对高速轴承还可以验算 极限转速</p>
+<h3 id="寿命计算"><a href="#寿命计算" class="headerlink" title="寿命计算"></a>寿命计算</h3><blockquote>
+<p>寿命计算的本质还是强度计算</p>
+</blockquote>
+<ul>
+<li><p>基本额定寿命</p>
+<p>一批相同轴承，在相同条件下运转，90%轴承在疲劳点蚀前转过的转速</p>
+</li>
+<li><p>基本额定动载荷</p>
+<p>轴承温度在100℃以下，基本额定寿命为10^6转时，轴承所能承受的最大载荷</p>
+<blockquote>
+<p>方向：向心轴承 =&gt; 径向力；推力轴承 =&gt; 轴向力；角接触 =&gt; 径向分力</p>
+</blockquote>
+</li>
+</ul>
+<p>由实验可以推导出：</p>
+<p>$P^\varepsilon L=$ 常数</p>
+<ul>
+<li>$P$：当量动载荷</li>
+<li>$\varepsilon$ ：寿命系数，球轴承 $\varepsilon=3$，滚子轴承 $\varepsilon=10/3$</li>
+<li>$L$：寿命（以次数为单位）</li>
+</ul>
+<p>引入基本额定动载荷，可以得到</p>
+<script type="math/tex; mode=display">
+P^\varepsilon L=C^\varepsilon\times10^6</script><p>化简得寿命</p>
+<script type="math/tex; mode=display">
+L=(\frac{C}{P})^\varepsilon\times10^6</script><p>将次数转化为时间，并引入温度系数，对 C 值进行修正，得</p>
+<script type="math/tex; mode=display">
+L_h=(\frac{Cf_t}{P})^\varepsilon\times\frac{10^6}{60n}</script><ul>
+<li>$L_h(h)$ 轴承寿命</li>
+<li>$C$ 基本额定动载荷</li>
+<li>$f_t$ 温度系数（温度越高，温度系数越低）</li>
+<li>$\varepsilon$ 寿命系数，球轴承 $\varepsilon=3$ ，滚子轴承 $\varepsilon=10/3$</li>
+<li>$n(r/\min)$ 转速</li>
+<li>$P(N)$ 当量动载荷</li>
+</ul>
+<p>下面讨论 $P$ 的计算</p>
+<script type="math/tex; mode=display">
+P=f_p(XF_R+YF_A)</script><ul>
+<li>$X,Y$ 径向动载荷系数，轴向动载荷系数</li>
+<li>$f_P$ 冲击载荷系数</li>
+</ul>
+<h3 id="角接触轴承轴向力的判断"><a href="#角接触轴承轴向力的判断" class="headerlink" title="角接触轴承轴向力的判断"></a>角接触轴承轴向力的判断</h3><p>由<code>内部派生轴向力</code>与<code>外部轴向力</code>综合影响的叠加</p>
+<p>内部轴向力：</p>
+<ul>
+<li><p>方向</p>
+<p>使内外圈脱离的方向，即由小口指向大口</p>
+</li>
+<li><p>大小</p>
+</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">轴承类型</th>
+<th style="text-align:center">角接触球轴承C</th>
+<th style="text-align:center">角接触球轴承AC</th>
+<th style="text-align:center">角接触球轴承B</th>
+<th style="text-align:center">圆锥滚子轴承</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><strong>$F_S$</strong></td>
+<td style="text-align:center">$0.5F_r$</td>
+<td style="text-align:center">$0.7F_r$</td>
+<td style="text-align:center">$1.1F_r$</td>
+<td style="text-align:center">$F_r/(2Y)$</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>轴向力判断方法</p>
+<ol>
+<li>判明轴上全部轴向力（包括外载荷 $F_A$ 和内部轴向力 $F_S$），合力指向，确定 <code>压紧端</code> 和 <code>放松端</code></li>
+<li><code>压紧端</code> <strong>轴向力 = ∑所有轴向力</strong>（<strong>除自身内部轴向力外</strong>）</li>
+<li><code>放松端</code> <strong>轴向力 = 自身轴向力</strong></li>
+</ol>
+<blockquote>
+<p>注意圆锥滚子轴承和角接触球轴承都只能承受单向载荷</p>
+</blockquote>
+<h3 id="静载荷计算"><a href="#静载荷计算" class="headerlink" title="静载荷计算"></a>静载荷计算</h3><blockquote>
+<p>非重点</p>
+</blockquote>
+<script type="math/tex; mode=display">
+C_0\geq P_0S_0</script><ul>
+<li>$S_0$ ：静载荷安全系数</li>
+</ul>
+<p>对于向心轴承，有</p>
+<script type="math/tex; mode=display">
+P_{0r}=X_0F_R+Y_0F_A\\
+P_{0r}=F_R</script><p>取最大值</p>
+<p>对于推力轴承</p>
+<script type="math/tex; mode=display">
+P_{0a}=F_A</script><p>对于推力角接触球轴承</p>
+<script type="math/tex; mode=display">
+P_{0a}=2.3F_R\tan\alpha+F_A</script><h3 id="极限转速"><a href="#极限转速" class="headerlink" title="极限转速"></a>极限转速</h3><blockquote>
+<p>非重点</p>
+</blockquote>
+<script type="math/tex; mode=display">
+n_\max\leq f_1f_2n_\lim</script><ul>
+<li>$f_1$ 载荷系数</li>
+<li>$f_2$ 载荷分布系数</li>
+<li>$n_\lim$ 在一定载荷和润滑条件下所允许的最大转速</li>
+</ul>
+<h2 id="滚动轴承的轴向固定"><a href="#滚动轴承的轴向固定" class="headerlink" title="滚动轴承的轴向固定"></a>滚动轴承的轴向固定</h2><p>目的</p>
+<ul>
+<li>控制轴相对于基座的轴向移动，抵抗轴向力</li>
+<li>保证发热变形时有伸缩的可能</li>
+</ul>
+<h3 id="两端固定支撑"><a href="#两端固定支撑" class="headerlink" title="两端固定支撑"></a>两端固定支撑</h3><p>适用于<strong>普通工作温度</strong>下跨距小于 $l\leq300—500$ 的 <strong>短轴</strong></p>
+<p>此时，轴承盖与轴承之间，故意留了一个很小的间隙 $c=0.2-0.4mm$</p>
+<p>轴的轴向力通过轴肩传递给轴承，轴承传递给端盖，最后端盖通过连接螺钉传递给机座</p>
+<h3 id="一端固定一端游动"><a href="#一端固定一端游动" class="headerlink" title="一端固定一端游动"></a>一端固定一端游动</h3><p>适用于 <strong>轴较长或工作温度较高</strong> 的轴</p>
+<p>固定端内圈固定在轴上，外圈固定在基座上，形成固定</p>
+<p>移动端若为深沟球轴承，外圈与端盖间留有一定间隙，以此游动</p>
+<p>移动端若为圆柱滚子轴承，可以进行双向固定，考滚子与套筒间的相对运动来游动</p>
+<h3 id="两端游动支撑"><a href="#两端游动支撑" class="headerlink" title="两端游动支撑"></a>两端游动支撑</h3><p>利用人字齿轮确定位置。在使用人字齿轮时，大齿轮被定死，小齿轮由于人字齿轮存在误差，必须要左右移动，此时就需要两端游动</p>
+<blockquote>
+<p>人字齿轮，小齿轮两端游动，大齿轮两端固定</p>
+</blockquote>
+<h3 id="滚动轴承部件的调整与拆装"><a href="#滚动轴承部件的调整与拆装" class="headerlink" title="滚动轴承部件的调整与拆装"></a>滚动轴承部件的调整与拆装</h3><ul>
+<li>轴承游隙的调整<ul>
+<li>加减垫片</li>
+<li>调整螺钉</li>
+</ul>
+</li>
+<li>传动件位置的调整（还是垫片）</li>
+</ul>
+<blockquote>
+<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20200823215017.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>其中 垫片1 是为了调整锥齿轮位置；垫片2 是为了调整轴承游隙。画图时要注意</p>
+</blockquote>
+<ul>
+<li><p>轴承预紧</p>
+<p>预先施加外力，消除游隙，<strong>提高刚度、旋转精度</strong>。</p>
+</li>
+<li><p>轴承的配合</p>
+<ul>
+<li>标注：轴与内圈配合：只标轴；外圈与孔配合：只标孔</li>
+<li>紧配合用于转速高、承载大、温度高的情况；松配合用于经常拆卸外圈静止的情况</li>
+</ul>
+</li>
+<li><p>轴承的装拆</p>
+<ul>
+<li>加热</li>
+<li>利用拆装工具</li>
+</ul>
+</li>
+<li><p>滚动轴承的润滑</p>
+<ul>
+<li><p>$dn&lt;(1.5-2)\times10^5$ 脂润滑</p>
+</li>
+<li><p>$dn&gt;(1.5-2)\times10^5$ 油润滑</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="课本例题"><a href="#课本例题" class="headerlink" title="课本例题"></a>课本例题</h2><p>如图为斜齿轮、轴、轴承、联轴器组合图。斜齿轮用油润滑，轴承用脂润滑，试改正错误。</p>
+<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20200823215033.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>错误详情</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>端盖与机架之间应该有调整垫片，同时要有螺栓进行定位</td>
+</tr>
+<tr>
+<td>2</td>
+<td>轴肩高度超过轴承内圈，无法拆卸</td>
+</tr>
+<tr>
+<td>3</td>
+<td>轴肩高度过低，无法装配；应使用套筒进行轴向定位，此时轴肩宽度应该略小于齿轮宽度</td>
+</tr>
+<tr>
+<td>4</td>
+<td>键槽不在同一母线上，不方便加工</td>
+</tr>
+<tr>
+<td>5</td>
+<td>此处需要挡油板</td>
+</tr>
+<tr>
+<td>6</td>
+<td>轴承装配距离过长，应该设计成阶梯轴</td>
+</tr>
+<tr>
+<td>7</td>
+<td>此处应该考虑密封，同时，转动体与非转动体之间要有间隙</td>
+</tr>
+<tr>
+<td>8</td>
+<td>键槽过宽</td>
+</tr>
+<tr>
+<td>9</td>
+<td>轮毂宽度应该大于对应轴的宽度</td>
+</tr>
+<tr>
+<td>10</td>
+<td>转动体非转动体之间不能互相定位</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20200823215048.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20200823215101.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<hr>
+<p>Learning By Sharing，2018©Fu_Qingchen，Markdown，LaTeX</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E6%9C%BA%E6%A2%B0%E7%9B%B8%E5%85%B3/">机械相关</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%9C%BA%E6%A2%B0%E8%AE%BE%E8%AE%A1/">机械设计</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%9C%BA%E6%A2%B0/">机械</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2018/06/16/WHUT/MetalTechnology/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">金属工艺学笔记</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2018/03/31/WHUT/AndroidOpenDoor/">
+                        <span class="hidden-mobile">Android入门之旅</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"DNr2pgYBNbnn4YMKmdstH2Sw-gzGzoHsz","appKey":"6RRAdTwPs2Y3Tk5iKNo2qo1D","placeholder":"说点什么","path":"window.location.pathname","avatar":"retro","meta":["nick","mail"],"pageSize":10,"lang":"zh-CN","highlight":true,"recordIP":false,"serverURLs":"https://dnr2pgyb.lc-cn-n1-shared.com","emojiCDN":null,"emojiMaps":null,"enableQQ":false,"requiredFields":[],"appid":"DNr2pgYBNbnn4YMKmdstH2Sw-gzGzoHsz","appkey":"6RRAdTwPs2Y3Tk5iKNo2qo1D"},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

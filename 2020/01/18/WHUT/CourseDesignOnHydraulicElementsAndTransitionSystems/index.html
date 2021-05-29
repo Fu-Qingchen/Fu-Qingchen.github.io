@@ -1,0 +1,724 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.ico">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="放在这留作纪念，首次电子化了的课程设计，然后为了放抄袭故意设置了一些明显错误。">
+  <meta name="author" content="Fu Qingchen">
+  <meta name="keywords" content="MSE, CS">
+  
+  <title>课程设计：65t-55m岸桥挂舱保护液压缸设计 | Fu&#39;s Web</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/vs2015.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.11","typing":{"enable":false,"typeSpeed":30,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null},"tajs":null},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 50vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Fu's Web</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('https://gitee.com/fuqingchen/picture-lib/raw/master/img/Test_Tree.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="课程设计：65t-55m岸桥挂舱保护液压缸设计">
+              
+                课程设计：65t-55m岸桥挂舱保护液压缸设计
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-01-18 22:07" pubdate>
+        2020年1月18日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      4.5k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      56
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">课程设计：65t-55m岸桥挂舱保护液压缸设计</h1>
+            
+            <div class="markdown-body">
+              <p>放在这留作纪念，首次电子化了的课程设计，然后为了放抄袭故意设置了一些<strong>明显错误</strong>。</p>
+<span id="more"></span>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> math<br></code></pre></div></td></tr></table></figure>
+<h1 id="要求完成的主要任务"><a href="#要求完成的主要任务" class="headerlink" title="要求完成的主要任务"></a>要求完成的主要任务</h1><ol>
+<li>所设计的挂舱保护液压缸为双作用单杆活塞缸，采用中间耳轴联接；能在海洋环境条件下可靠工作；具有回程速度快、内泄漏量极小、无外泄漏以及使用寿命长等特点；</li>
+<li>完成所设计挂舱保护液压缸的设计计算；</li>
+<li>完成所设计挂舱保护液压缸的结构设计，并绘制该挂舱保护液压缸的装配图；</li>
+<li>撰写挂舱保护液压缸设计计算说明书。</li>
+</ol>
+<h1 id="液压缸设计方案的分析与拟定"><a href="#液压缸设计方案的分析与拟定" class="headerlink" title="液压缸设计方案的分析与拟定"></a>液压缸设计方案的分析与拟定</h1><h2 id="挂舱保护原理"><a href="#挂舱保护原理" class="headerlink" title="挂舱保护原理"></a>挂舱保护原理</h2><p>岸桥（岸边集装箱起重机）是现代港口集装箱装卸的关键设备，其作业效率反映了码头的装卸能力，其安全性能则是整条作业线连续运行指标及过程控制管理水准的体现。岸桥在工作过程中发生的事故主要有吊具与滑道或集装箱与滑道间出现钩挂，以及集装箱与下层集装箱之间的锁销未打开，从而出现所谓的挂舱现象。</p>
+<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/图 1 挂舱保护系统.png" srcset="/img/loading.gif" lazyload alt="图 1 挂舱保护系统"></p>
+<p>液压挂舱保护系统是目前主流的挂舱保护系统。它利用岸桥尾部的 4 个液压油缸来实现挂舱保护功能，其位置可以参考图 1 中液压油缸 1~4。岸桥正常工作时，液压缸活塞杆伸出一定距离，并锁定保持在该位置上，此阶段液压缸起支撑作用。此系统通过压力继电器来检测液压系统压力。当压力继电器检测到系统压力达到挂舱设定压力时，就会发出挂舱信号给 PLC，PLC 会令驱动断电或增加反力矩。反力矩是否施加取决于具体控制系统情况。同时，制动器闭合，使电机、卷筒快速停止。在压力继电器发信号的同时，液压系统溢流阀在钢丝绳力作用下溢流，液压油缸在钢丝绳力作用下快速回缩，抵消在此过程中吊具的起升位移，阻止钢丝绳力进一步增大，达到保护岸桥的目的。</p>
+<h2 id="挂舱保护液压缸的特性分析"><a href="#挂舱保护液压缸的特性分析" class="headerlink" title="挂舱保护液压缸的特性分析"></a>挂舱保护液压缸的特性分析</h2><p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/图 2 挂舱保护液压缸的布置.png" srcset="/img/loading.gif" lazyload alt="图 2 挂舱保护液压缸的布置"></p>
+<p>通过挂舱保护的工作原理和液压缸的布置方式可知，所设计的挂舱保护液压缸为双作用单杆活塞缸，采用中间耳轴联接，杆端采用带关节轴承的耳环连接；能够在海洋环境下可靠工作；具有回程快、内泄漏量极少、无外泄漏以及使用寿命长等特点。</p>
+<h2 id="液压缸的设计要求"><a href="#液压缸的设计要求" class="headerlink" title="液压缸的设计要求"></a>液压缸的设计要求</h2><p>根据设计任务书，主要技术指标为：</p>
+<ol>
+<li>挂舱保护液压缸额定压力：$p_1 = 31.5$MPa； </li>
+<li>挂舱保护液压缸最大推力：$F_1 = 275$kN, 挂舱时的回程力 $F_2 = 600$kN</li>
+<li>工作行程 $l = 1000$mm；</li>
+<li>挂舱时液压缸回程速度：$v_2 = 0.8$m/s 。</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python">p_1 =   <span class="hljs-number">20000000</span><span class="hljs-comment">#@param &#123;type: &quot;number&quot;&#125; 计算时按照20MPa计算</span><br>F_1 =   <span class="hljs-number">275000</span><span class="hljs-comment">#@param &#123;type: &quot;number&quot;&#125;</span><br>F_2 =   <span class="hljs-number">600000</span><span class="hljs-comment">#@param &#123;type: &quot;number&quot;&#125;</span><br>l =   <span class="hljs-number">1</span><span class="hljs-comment">#@param &#123;type: &quot;number&quot;&#125;</span><br>v_2 =   <span class="hljs-number">0.8</span><span class="hljs-comment">#@param &#123;type: &quot;number&quot;&#125;</span><br></code></pre></div></td></tr></table></figure>
+<h2 id="液压缸材料的选取"><a href="#液压缸材料的选取" class="headerlink" title="液压缸材料的选取"></a>液压缸材料的选取</h2><p>根据《机械设计手册》和设计要求并参考同类型设计案例，缸体材料选择 20 号无缝钢管，缸盖、活塞选择 45 号钢，活塞杆选择 304 不锈钢。</p>
+<h1 id="液压缸主要技术参数的计算及校核"><a href="#液压缸主要技术参数的计算及校核" class="headerlink" title="液压缸主要技术参数的计算及校核"></a>液压缸主要技术参数的计算及校核</h1><p>液压缸的性能参数主要有缸筒内径 $D$、活塞杆外径 $𝑑$、活塞行程 $S$、缸筒长度 $𝐿_1$和最小导向长度 $H$。</p>
+<h2 id="缸筒的内径-D"><a href="#缸筒的内径-D" class="headerlink" title="缸筒的内径 $D$"></a>缸筒的内径 $D$</h2><p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/图 3 双作用液压液压缸筒图.png" srcset="/img/loading.gif" lazyload alt="图 3 双作用液压液压缸筒图"></p>
+<p>缸筒内径即活塞外径，是液压缸的主要参数，根据液压缸推力要求计算缸筒内径。为得到所要求的推力 $F$ ，应使</p>
+<script type="math/tex; mode=display">
+pA\eta_{\text{cm}} = F</script><p>式中</p>
+<ul>
+<li>p——作用在活塞上的有效压力（Pa），p 应比液压缸额定压力小，取 p = 20MPa；</li>
+<li>A——液压缸的有效工作面积 （$\text{m}^2$），$A = \pi D^2/4$；</li>
+<li>$\eta_{\text{cm}}$——液压缸的机械效率，取 $\eta_{\text{cm}} = 0.95$； </li>
+<li>F——液压缸推力（N）, F = 300kN。</li>
+</ul>
+<p>计算得缸筒内径 D为</p>
+<script type="math/tex; mode=display">
+D = \sqrt{\frac{4F_{1}}{\text{π}p\eta_{\text{cm}}}} = 141.8\text{mm}</script><figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python">eta_cm = <span class="hljs-number">0.95</span><br>D = math.sqrt((<span class="hljs-number">4</span>*F_1)/(math.pi*p_1*eta_cm))<br><span class="hljs-built_in">print</span>(D)<br></code></pre></div></td></tr></table></figure>
+<div class="hljs code-wrapper"><pre><code>0.13575149021226632
+</code></pre></div><p>根据 GB/T 2348-1993， 将缸筒内径圆整为标准值为</p>
+<script type="math/tex; mode=display">
+D = 160\text{mm}</script><figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python">D = <span class="hljs-number">0.160</span><br></code></pre></div></td></tr></table></figure>
+<h2 id="活塞杆直径-d"><a href="#活塞杆直径-d" class="headerlink" title="活塞杆直径 $d$"></a>活塞杆直径 $d$</h2><p>设计要求不涉及到速度比，因此按照活塞杆受力状况来确定。由于活塞杆长度没有确定，为了安全起见，同时校核强度条件和弯曲稳定性条件。</p>
+<p>(1) 活塞杆直径的确定</p>
+<p>液压缸工作时受压力，工作压力大于7MPa，活塞杆直径 d = 0.7D = 112mm，圆整为标准值得</p>
+<script type="math/tex; mode=display">
+d = 110\text{mm}</script><figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python">d = <span class="hljs-number">0.110</span><br></code></pre></div></td></tr></table></figure>
+<p>(2) 按强度条件校核</p>
+<p>按照强度条件校核活塞杆的直径 d，即</p>
+<script type="math/tex; mode=display">
+d \geq \sqrt{\frac{4Fn_{\text{s}}}{\pi\sigma_{\text{s}}}} = 86\text{mm}</script><p>式中</p>
+<ul>
+<li>F——活塞杆最大推力，F = 600kN；</li>
+<li>$\sigma_\text{s}$——缸筒材料的屈服极限，取$\sigma_\text{s} = 355$MPa；</li>
+<li>$n_\text{s}$——缸简屈服安全系数，取 $n_\text{s} = 2$。</li>
+</ul>
+<p>所选活塞杆直径符合强度要求。</p>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python">sigma_s_45 = <span class="hljs-number">205</span>*<span class="hljs-number">10</span>**<span class="hljs-number">6</span><br><span class="hljs-built_in">print</span>(math.sqrt(<span class="hljs-number">4</span>*F_2*n_s/(math.pi*sigma_s_45)))<br></code></pre></div></td></tr></table></figure>
+<div class="hljs code-wrapper"><pre><code>0.08633139365350852
+1743414.4123473573
+</code></pre></div><p>(3) 按弯曲稳定性校核</p>
+<p>根据经验，取活塞杆全部伸出后，活塞杆外端到液压缸支撑点之间的距离$($即活塞杆计算长度$)$ <em>l</em> = 2200mm。</p>
+<p>按材料力学理论，当一受压直杆的轴向载荷<em>F</em>超过临界受压载荷$F_{K}$时，即可能失去原有直线状态的平衡，称为失稳。对液压缸，其稳定条件为</p>
+<script type="math/tex; mode=display">
+F \leq \frac{F_{K}}{n_{K}}</script><p>式中</p>
+<ul>
+<li><em>F</em>——活塞杆最大推力，<em>F</em> = 600kN；</li>
+<li>$F_{K}$——液压缸的临界受压载荷；</li>
+<li>$n_{K}$——稳定安全系数，取$n_{K} =$ 2。</li>
+</ul>
+<p>挂舱保护液压缸不受偏心载荷的情况，细长比$\ l/K &gt; m\sqrt{n}$，用戈登·兰金公式计算临界载荷$F_{K}$</p>
+<script type="math/tex; mode=display">
+F_{K} = \frac{fA}{1 + \frac{a}{n}{(\frac{l}{K})}^{2}} = 1743\text{kN}</script><p>式中 </p>
+<ul>
+<li><em>K</em>——活塞杆横截面回转半径，$K = d/$4</li>
+<li>$m$——柔性系数，活塞杆为304不锈钢，取$\ m =$ 90；</li>
+<li>$n$——端点安装系数，安装方式为两端铰接，取$\ n =$ 1；</li>
+<li>$f$——材料强度实验值，活塞杆为304不锈钢，取$\ f$ = 340MPa；</li>
+<li>$A$——活塞杆横截面面积；</li>
+<li>$a$——实验常量，取 $a =$ 1/7500。</li>
+</ul>
+<p>根据稳定条件，活塞杆直径符合稳定性要求。</p>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-built_in">print</span>(<span class="hljs-number">340</span>*<span class="hljs-number">10</span>**<span class="hljs-number">6</span>*math.pi*d**<span class="hljs-number">2</span>/<span class="hljs-number">4</span>/(<span class="hljs-number">1</span>+<span class="hljs-number">80</span>**<span class="hljs-number">2</span>/<span class="hljs-number">7500</span>))<br></code></pre></div></td></tr></table></figure>
+<h2 id="最小导向长度-H"><a href="#最小导向长度-H" class="headerlink" title="最小导向长度 $H$"></a>最小导向长度 $H$</h2><p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/图 4 液压缸最小导向长度.png" srcset="/img/loading.gif" lazyload alt="图 4 液压缸最小导向长度"></p>
+<p>当活塞杆全部外伸时，从活塞支承面中点到导向套滑动面中点的距离称为最小导向长度。导向长度过小，将使液压缸的初始挠度（由间隙引起的挠度）增大，影响液压缸的稳定性。由《机械设计手册》，最小导向长度 $H$ 应满足</p>
+<script type="math/tex; mode=display">
+H \geq \frac{L}{20} + \frac{D}{2} = 130\text{mm}</script><p>式中 </p>
+<ul>
+<li><em>L</em>——液压缸最大行程，<em>L</em> = 1000mm；</li>
+<li><em>D</em>——缸筒内径, <em>D</em> = 160mm。</li>
+</ul>
+<p>取 $H = 130\text{mm}$ 。</p>
+<p>活塞宽度 $B = (0.6 \sim 1.0)D$，取 $B = 100$mm。由于 $D &gt; 80$mm，导向套滑动面长度 $A = (0.6 \sim 1.0)d$，取 $d = 80$mm。轴套长度 $C = H - \frac{1}{2}(A + B) = 40$mm。</p>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python">H = l/<span class="hljs-number">20</span> + D/<span class="hljs-number">2</span><br><span class="hljs-built_in">print</span>(H)<br></code></pre></div></td></tr></table></figure>
+<div class="hljs code-wrapper"><pre><code>0.13
+</code></pre></div><h2 id="缸筒长度-L"><a href="#缸筒长度-L" class="headerlink" title="缸筒长度 ${L}_$"></a>缸筒长度 ${L}_1$</h2><p>缸筒长度由最大行程长度加上各种结构需求来确定，即</p>
+<script type="math/tex; mode=display">
+L_{1} = S + B + H + M + C = 1135\text{mm}</script><p>式中 </p>
+<ul>
+<li>$S$——活塞杆的最大工作行程；</li>
+<li>$B$——活塞宽度；</li>
+<li>$H$——活塞杆导向长度；</li>
+<li>$M$——活塞杆密封长度；</li>
+<li>$C$——其他长度。</li>
+</ul>
+<h1 id="液压缸主要结构技术参数的计算及校核"><a href="#液压缸主要结构技术参数的计算及校核" class="headerlink" title="液压缸主要结构技术参数的计算及校核"></a>液压缸主要结构技术参数的计算及校核</h1><h2 id="缸筒壁厚-delta"><a href="#缸筒壁厚-delta" class="headerlink" title="缸筒壁厚 $\delta$"></a>缸筒壁厚 $\delta$</h2><p>根据力士乐、洪格尔等公司液压缸壁厚数据，选择壁厚 $\delta = 25\text{mm}$。</p>
+<p>$\delta/D = 0.16 \leq 0.25$, 按第一强度理论，按薄壁圆筒的中径公式校核</p>
+<script type="math/tex; mode=display">
+\delta \leq \frac{p_{\max}D}{2\lbrack\sigma\rbrack} = 19.5\text{mm}</script><p>式中 </p>
+<ul>
+<li>$p_{\max}$——液压缸瞬间能承受的最高压力，$p_{\max} = 1.5p_{n} = 30\text{MPa}$；</li>
+<li>$\delta$——缸筒壁厚；</li>
+<li>$D$——缸筒内径；</li>
+<li>$[\sigma]$——缸筒材料的许用应力，缸筒材料为20钢，$[\sigma] = \sigma_s/n_s = 122.5MPa$，$\sigma_s$ 为缸筒材料的屈服极限，取$\sigma_s = 245MPa$，$n_s$ 为缸简屈服安全系数，取 $n_s = 2$。</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python">delta = <span class="hljs-number">0.025</span><br><span class="hljs-built_in">print</span>(delta/D)<br>p_max = <span class="hljs-number">1.5</span>*p_1<br><span class="hljs-built_in">print</span>(p_max)<br>sigma_s_20 = <span class="hljs-number">245</span>*<span class="hljs-number">10</span>**<span class="hljs-number">6</span><br>n_s = <span class="hljs-number">2</span><br>sigma_20 = sigma_s_20/n_s<br><span class="hljs-built_in">print</span>(sigma_20)<br><span class="hljs-built_in">print</span>(p_max*D/<span class="hljs-number">2</span>/sigma_20)<br></code></pre></div></td></tr></table></figure>
+<div class="hljs code-wrapper"><pre><code>0.15625
+30000000.0
+122500000.0
+0.019591836734693877
+</code></pre></div><p>强度符合要求。</p>
+<h2 id="油口尺寸"><a href="#油口尺寸" class="headerlink" title="油口尺寸"></a>油口尺寸</h2><p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/图 5 油口直径.png" srcset="/img/loading.gif" lazyload alt="图 5 油口直径"></p>
+<p>油管的有效通油直径，应保证油液流速在4.5m/s以下，这样可以减少压力损失，提高效率，减轻振动和噪声。</p>
+<h3 id="回程流量的计算"><a href="#回程流量的计算" class="headerlink" title="回程流量的计算"></a>回程流量的计算</h3><p>液压缸无杆腔的回程流量 $q_1$ 为</p>
+<script type="math/tex; mode=display">
+q_{1} = \frac{\pi D^{2}v_{2}}{4\eta_{\text{cV}}} = 0.016\text{m}^{3}/\text{s}</script><figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python">eta_cV = <span class="hljs-number">1</span><br>q_1 = (math.pi*D**<span class="hljs-number">2</span>*v_2)/(<span class="hljs-number">4</span>*eta_cV)<br><span class="hljs-built_in">print</span>(q_1)<br></code></pre></div></td></tr></table></figure>
+<div class="hljs code-wrapper"><pre><code>0.016084954386379743
+</code></pre></div><p>有杆腔回程流量 $q_2$ 为</p>
+<script type="math/tex; mode=display">
+q_{2} = \frac{\pi(D^{2} - d^{2})v_{2}}{4\eta_{\text{cV}}} = 0.008\text{m}^{3}/\text{s}</script><p>式中：</p>
+<ul>
+<li>D——活塞直径，D = 160mm；</li>
+<li>d——活塞杆直径，d = 110mm</li>
+<li>$v_2$——回程速度, $v_2 = 0.8$m/s；</li>
+<li>$\eta_{\text{cV}}$——液压缸容积效率，泄漏量小，取 $\eta_{\text{cV}} = 1$。</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python">q_2 = (math.pi*(D**<span class="hljs-number">2</span>-d**<span class="hljs-number">2</span>)*v_2)/(<span class="hljs-number">4</span>*eta_cV)<br><span class="hljs-built_in">print</span>(q_2)<br></code></pre></div></td></tr></table></figure>
+<div class="hljs code-wrapper"><pre><code>0.008482300164692444
+</code></pre></div><h3 id="油口直径的计算"><a href="#油口直径的计算" class="headerlink" title="油口直径的计算"></a>油口直径的计算</h3><p>油口的通流面积，应保证油液流速 $v’$ 在4.5m/s以下，</p>
+<p>对无杆腔，油口直径为</p>
+<script type="math/tex; mode=display">
+d' \geq \sqrt{\frac{v_2}{v'}}D = 67\text{mm}</script><p>圆整为 </p>
+<script type="math/tex; mode=display">
+d' = 70\text{mm}</script><p>对有杆腔，油口直径为</p>
+<script type="math/tex; mode=display">
+d'' \geq \sqrt{\frac{v_2}{v'}(D^2 - d^2)} = 49\text{mm}</script><p>式中:</p>
+<ul>
+<li>$d’$——无杆腔油口直径；</li>
+<li>$d’’$——有杆腔油口直径；</li>
+<li>$v’$——油液速度，$v’ = 4.5$m/s；</li>
+<li>$v_2$——回程速度, $v_2 = 0.8$m/s；</li>
+<li>D——活塞直径，D = 160mm；</li>
+<li>d——活塞杆直径，d = 110mm。</li>
+</ul>
+<p>圆整为 </p>
+<script type="math/tex; mode=display">
+d'' = 50\text{mm}</script><figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python">v_pie = <span class="hljs-number">4.5</span><br>d_pie = math.sqrt(v_2/v_pie)*D<br><span class="hljs-built_in">print</span>(d_pie)<br>d_piepie = math.sqrt(v_2/v_pie*(D**<span class="hljs-number">2</span> - d**<span class="hljs-number">2</span>))<br><span class="hljs-built_in">print</span>(d_piepie)<br>d_pie = <span class="hljs-number">0.070</span><br>d_piepie = <span class="hljs-number">0.050</span><br></code></pre></div></td></tr></table></figure>
+<div class="hljs code-wrapper"><pre><code>0.06746192341692543
+0.048989794855663564
+</code></pre></div><p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/图 6 油口安装尺寸.png" srcset="/img/loading.gif" lazyload alt="图 6 油口安装尺寸"></p>
+<h1 id="液压缸的结构设计"><a href="#液压缸的结构设计" class="headerlink" title="液压缸的结构设计"></a>液压缸的结构设计</h1><p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/图 7 液压缸结构.png" srcset="/img/loading.gif" lazyload alt="图 7 液压缸结构"></p>
+<p>如图7所示，本设计采用中间耳轴的安装方式，耳轴与缸筒焊接。活塞杆端部用螺纹与连接耳轴，耳轴通过关节轴承连接其他机械部件。活塞杆与活塞处采用螺纹连接。缸筒与缸盖、缸筒与缸底采用整体螺钉连接方式。</p>
+<h1 id="液压缸主要零部件的计算与选择"><a href="#液压缸主要零部件的计算与选择" class="headerlink" title="液压缸主要零部件的计算与选择"></a>液压缸主要零部件的计算与选择</h1><h2 id="液压缸的连接计算"><a href="#液压缸的连接计算" class="headerlink" title="液压缸的连接计算"></a>液压缸的连接计算</h2><h3 id="活塞杆连接螺纹的计算"><a href="#活塞杆连接螺纹的计算" class="headerlink" title="活塞杆连接螺纹的计算"></a>活塞杆连接螺纹的计算</h3><p>(1) 螺纹外径的计算</p>
+<p>假设可忽略螺顶与螺底的尺寸差别，则可用下式概略计算</p>
+<script type="math/tex; mode=display">
+d_0 = 1.38\sqrt{\frac P{[\sigma]}} = 54\text{mm}</script><p>式中：</p>
+<ul>
+<li>P——活塞拉力，P = 300kN；</li>
+<li>$[\sigma]$——缸筒材料的许用应力</li>
+</ul>
+<p>根据液压缸活塞杆螺纹尺寸系列，并为了安全适当扩大螺纹直径，选用 $\text{M}90 \times 3$ 螺纹。</p>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python">d_0_huosaigan = <span class="hljs-number">1.38</span>*math.sqrt(F_1/(sigma_s_45/n_s))<br><span class="hljs-built_in">print</span>(d_0_huosaigan)<br>d_0_huosaigan = <span class="hljs-number">0.090</span><br></code></pre></div></td></tr></table></figure>
+<div class="hljs code-wrapper"><pre><code>0.07147982829902809
+</code></pre></div><p>(2) 螺纹强度计算</p>
+<p>活塞杆与活塞连接螺纹的强度按第四强度理论校核</p>
+<script type="math/tex; mode=display">
+\sigma_L = \frac{1.25P}{\frac\pi4d_1^2} = 58\text{MPa}\\
+\tau = \frac{20Pd_0K}{\pi d_1^3} = 17\text{MPa}\\
+\sigma_A = \sqrt{\sigma_L^2+3\tau^2} = 65\text{MPa} < [\sigma] = 177.5\text{MPa}</script><p>式中：</p>
+<ul>
+<li>$\sigma_L$——拉应力；</li>
+<li>$\tau$——剪切应力；</li>
+<li>$\sigma_A$——合成应力；</li>
+<li>$d_0$——螺纹外径，取$d_0 = 56mm$；</li>
+<li>$d_1$——螺纹底径，查标准得$d_1 = 53.9mm$；</li>
+<li>$K$——螺纹连接摩擦因数，取$K = 0.07$。</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python">d_1_huosaigan = <span class="hljs-number">0.0867</span><br>K_huosaigan = <span class="hljs-number">0.07</span><br>sigma_l_huosaigan = <span class="hljs-number">1.25</span>*F_1/(math.pi/<span class="hljs-number">4</span>*d_1_huosaigan**<span class="hljs-number">2</span>)<br>tau_huosaigan = <span class="hljs-number">20</span>*F_1*d_0_huosaigan*K_huosaigan/(math.pi*d_1_huosaigan**<span class="hljs-number">3</span>)<br>sigma_a_huosaigan = math.sqrt(sigma_l_huosaigan**<span class="hljs-number">2</span> + <span class="hljs-number">3</span>*tau_huosaigan**<span class="hljs-number">2</span>)<br><span class="hljs-built_in">print</span>(sigma_l_huosaigan, tau_huosaigan, sigma_a_huosaigan)<br></code></pre></div></td></tr></table></figure>
+<div class="hljs code-wrapper"><pre><code>58225688.217163235 16923729.447203156 65187948.45344264
+</code></pre></div><p>螺纹强度符合要求。</p>
+<h3 id="中间耳轴焊接强度计算"><a href="#中间耳轴焊接强度计算" class="headerlink" title="中间耳轴焊接强度计算"></a>中间耳轴焊接强度计算</h3><p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/图 8 耳轴焊缝.png" srcset="/img/loading.gif" lazyload alt="图 8 耳轴焊缝"></p>
+<p>采用角焊接，强度计算公式为</p>
+<script type="math/tex; mode=display">
+\sigma = \frac{0.707P}{\pi D_{1}h\varphi} = 32.7\text{MPa} < \lbrack\sigma\rbrack</script><p>式中 </p>
+<ul>
+<li><em>P</em>——液压杆推力</li>
+<li>$D_1$——缸筒外径，$D_1 = D + 2\delta = 210$mm；</li>
+<li>$h$——焊缝有效宽度，取 $h = 15\text{mm}$，$D_{2} = D_{1} - 2h = 180\text{mm}$</li>
+<li>$\varphi$——焊缝强度系数，取$\varphi = 0.8$</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python">varphi_gangdihan = <span class="hljs-number">0.8</span><br>D_1_gangdihan = D + delta*<span class="hljs-number">2</span><br>D_2_gangdihan = D_1_gangdihan - <span class="hljs-number">0.015</span>*<span class="hljs-number">2</span><br><span class="hljs-built_in">print</span>(<span class="hljs-number">4</span>*F_1/(math.pi*(D_1_gangdihan**<span class="hljs-number">2</span> - D_2_gangdihan**<span class="hljs-number">2</span>)*varphi_gangdihan))<br></code></pre></div></td></tr></table></figure>
+<div class="hljs code-wrapper"><pre><code>37408213.11988992
+</code></pre></div><h3 id="法兰连接螺栓强度计算"><a href="#法兰连接螺栓强度计算" class="headerlink" title="法兰连接螺栓强度计算"></a>法兰连接螺栓强度计算</h3><p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/图 9 法兰连接.png" srcset="/img/loading.gif" lazyload alt="图9 法兰连接"></p>
+<p>初选法兰选用 $\text{M}30 \times 2$ 螺栓，螺孔数为12。</p>
+<p>螺纹的拉应力</p>
+<script type="math/tex; mode=display">
+\sigma = \frac{\frac{\pi}{4}d_{1}^{2}Z} = 58\text{MPa}</script><p>螺纹的剪应力</p>
+<script type="math/tex; mode=display">
+\tau = \frac{K_{1}{KP}d_{1}}{0.2d_{1}^{3}Z} = 30\text{MPa}</script><p>合成应力</p>
+<script type="math/tex; mode=display">
+\sigma_{A} = \sqrt{\sigma^{2} + 3\tau^{2}} = 77\text{MPa} < \lbrack\sigma_{s}\rbrack</script><p>式中 </p>
+<ul>
+<li>$K$——拧紧螺纹系数，挂舱保护液压缸工作时收到静载荷，$K = 1.5$；</li>
+<li>$K_{1}$——螺纹内摩擦因数，取$K_{1} = 1.5$；</li>
+<li>$P$——液压缸最大推力；</li>
+<li>$d_{1}$——螺纹底径，普通螺纹$d_{1} = d_{0} - 1.224S$；</li>
+<li>$Z$——螺栓数目。</li>
+</ul>
+<p>所选螺栓符合强度要求。</p>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python">K_falan = <span class="hljs-number">1.5</span><br>K_1_falan = <span class="hljs-number">0.12</span><br>d_0_falan = <span class="hljs-number">0.030</span><br>S_falan = <span class="hljs-number">0.002</span><br>Z_falan = <span class="hljs-number">12</span><br>d_1_falan = d_0_falan - <span class="hljs-number">1.224</span>*S_falan<br>sigma_falan = K_falan*F_1/(math.pi/<span class="hljs-number">4</span>*(d_1_falan**<span class="hljs-number">2</span>-D**<span class="hljs-number">2</span>)<br>tau_falan = K_1_falan*K_falan*F_1*d_0_falan/(<span class="hljs-number">0.2</span>*(d_1_falan**<span class="hljs-number">3</span>-D**<span class="hljs-number">3</span>))<br>sigma_H_falan = math.sqrt(sigma_falan**<span class="hljs-number">2</span> + <span class="hljs-number">3</span>*tau_falan**<span class="hljs-number">2</span>)<br><span class="hljs-built_in">print</span>(sigma_falan, tau_falan, sigma_H_falan)<br></code></pre></div></td></tr></table></figure>
+<div class="hljs code-wrapper"><pre><code>57656273.06676087 29583927.030689728 77135413.6543029
+</code></pre></div><h3 id="缸筒螺纹连接强度计算"><a href="#缸筒螺纹连接强度计算" class="headerlink" title="缸筒螺纹连接强度计算"></a>缸筒螺纹连接强度计算</h3><p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/图 10 缸筒螺纹连接计算简图.png" srcset="/img/loading.gif" lazyload alt="图 10 缸筒螺纹连接计算简图"></p>
+<p>螺纹的拉应力</p>
+<script type="math/tex; mode=display">
+\sigma = \frac{\text{KP}}{\frac{\pi}{4}(d_{1}^{2} - D^{2})} = 58\text{MPa}</script><p>螺纹的剪应力</p>
+<script type="math/tex; mode=display">
+\tau = \frac{K_{1}\text{KP}d_{1}}{0.2(d_{1}^{3} - D^{3})} = 30\text{MPa}</script><p>合成应力</p>
+<script type="math/tex; mode=display">
+\sigma_{A} = \sqrt{\sigma^{2} + 3\tau^{2}} = 77\text{MPa} < \lbrack\sigma_{s}\rbrack</script><p>式中 </p>
+<ul>
+<li>$K$——拧紧螺纹系数，挂舱保护液压缸工作时收到静载荷，$K = 1.5$；</li>
+<li>$K_{1}$——螺纹内摩擦因数，取$K_{1} = 1.5$；</li>
+<li>$P$——液压缸最大推力；</li>
+<li>$d_{1}$——螺纹底径，普通螺纹$d_{1} = d_{0} - 1.224S$；</li>
+<li>$Z$——螺栓数目；</li>
+<li>$D$——缸筒内径。</li>
+</ul>
+<p>缸筒螺纹连接符合强度要求。</p>
+<h3 id="耳轴强度计算"><a href="#耳轴强度计算" class="headerlink" title="耳轴强度计算"></a>耳轴强度计算</h3><p>剪切应力</p>
+<script type="math/tex; mode=display">
+\tau = \frac{pD^2}{2d_0^2} = 40\text{MPa}\leq[\tau]</script><ul>
+<li>p——液压力，p = 20MPa；</li>
+<li>D——液压缸直径，D = 160mm；</li>
+<li>$d_0$——铰轴直径，由《机械设计手册》，查表得铰轴直径 $d_0 = 80$mm；</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python">d_0_erzhou = <span class="hljs-number">0.080</span><br>tau_erzhou = p_1*D**<span class="hljs-number">2</span>/(<span class="hljs-number">2</span>*d_0_erzhou**<span class="hljs-number">2</span>)<br><span class="hljs-built_in">print</span>(tau_erzhou)<br></code></pre></div></td></tr></table></figure>
+<div class="hljs code-wrapper"><pre><code>40000000.0
+</code></pre></div><h2 id="活塞杆的导向、密封和防尘"><a href="#活塞杆的导向、密封和防尘" class="headerlink" title="活塞杆的导向、密封和防尘"></a>活塞杆的导向、密封和防尘</h2><p>活塞杆导向套装在液压缸的有杆侧端盖内，用以对活塞杆进行导向，内装有密封装置以保证缸筒有杆腔的密封。外侧装有防尘圈，以防止活塞杆在后退时把杂质、灰尘和水分带到密封装置处，损坏密封装置。导向套采用耐磨材料，其内圈装设导向环，用作活塞杆的导向。同时，活塞与活塞杆之间也需要加装密封装置，用于保证液压缸工作的可靠性。</p>
+<p>活塞、活塞杆处如图11所示：</p>
+<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/图 11 活塞、活塞杆处的导向和密封.png" srcset="/img/loading.gif" lazyload alt="图11 活塞、活塞杆处的导向和密封"></p>
+<p>1——活塞 2——活塞支撑 3——导向带 4——格来圈 5、7——“O”型圈 6——孔用圈</p>
+<p>缸盖处如图12所示：</p>
+<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/图 12 缸盖处的导向、密封和防尘.png" srcset="/img/loading.gif" lazyload alt="图 12 缸盖处的导向、密封和防尘"></p>
+<p>1—防尘圈 2—导向带 3—轴用圈 4—斯特封</p>
+<h3 id="活塞杆导向的选择"><a href="#活塞杆导向的选择" class="headerlink" title="活塞杆导向的选择"></a>活塞杆导向的选择</h3><p>导向套对活塞起导向和支撑作用，挂舱保护液压缸要求有较快的回程速度，因此需要设置导向套。由于活塞杆要在导向套中滑动，因此采用H8/h7配合。根据设计案例，选择德国进口SFK导向带。</p>
+<h3 id="活塞杆密封的选择"><a href="#活塞杆密封的选择" class="headerlink" title="活塞杆密封的选择"></a>活塞杆密封的选择</h3><p>活塞装置主要用来防止液压油的泄漏，挂舱保护液压缸要求内泄漏量极少并且无外泄漏。密封装置除了具有良好的密封性能外，还需要随压力的增加能自动提高密封性，摩擦阻力小，耐油，抗腐蚀，耐磨，寿命长，制造简单，拆装方便。油缸主要采用密封圈密封，此处选用格来圈、”O”型圈和特斯封进行密封。</p>
+<h3 id="活塞杆防尘装置的选择"><a href="#活塞杆防尘装置的选择" class="headerlink" title="活塞杆防尘装置的选择"></a>活塞杆防尘装置的选择</h3><p>挂舱保护液压缸放置在港口环境，需要在海洋环境下可靠工作，因此需要设置防尘防水装置。耳环与缸盖间的活塞杆使用防尘罩，并且在缸盖处设置防尘圈。</p>
+<h2 id="耳环的选择"><a href="#耳环的选择" class="headerlink" title="耳环的选择"></a>耳环的选择</h2><p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/图 13 耳环.png" srcset="/img/loading.gif" lazyload alt="图 13 耳环"></p>
+<p>挂舱保护液压缸耳环用于连接活塞杆与其他机械结构。</p>
+<p>根据电商平台提供的技术资料，选择GIHR—-110DO型号的耳环，结构如图13所示。</p>
+<h2 id="缓冲装置的选择"><a href="#缓冲装置的选择" class="headerlink" title="缓冲装置的选择"></a>缓冲装置的选择</h2><p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/图 14 缓冲装置.png" srcset="/img/loading.gif" lazyload alt="图14 缓冲装置"></p>
+<p>挂舱保护液压缸质量较大，回程速度较快时，由于惯性力较大，因此具有很大的动量。 在这种情况下，当活塞运动到缸筒的终端时，会与端盖发生机械碰撞，产生很大的冲击和噪声，严重影响控制精度，甚至会引起事故。所以，挂舱保护液压缸应配有缓冲装置。缓冲装置的工作原理是：利用活塞或缸简在其运动至行程终端时，在活塞和缸盖之间封住一部分油液，强迫它从小孔或缝隙中挤出，以产生很大的阻力，使工作部件受到制动而逐渐减慢运动速度，达到避免活塞和缸盖相互撞击的目的。</p>
+<p>本设计选用固定间隙缓冲装置。如图14所示，当活塞移近缸盖时，活塞上的凸台进入缸盖的凹腔，迫使封闭在回油腔中的油液从凸台和凹腔之间的环状间隙中挤压出去，使回油腔中压力升高而形成缓冲压力，从而使活塞减慢移动速度。</p>
+<h1 id="设计图纸"><a href="#设计图纸" class="headerlink" title="设计图纸"></a>设计图纸</h1><p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/图 0 工程图纸.png" srcset="/img/loading.gif" lazyload alt="设计图纸"></p>
+<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p>[1]李壮云. 液压元件与系统[M]. 第3版. 北京: 机械工业出版社, 2011.6</p>
+<p>[2]秦大同, 谢里阳. 现代机械设计手册[M]. 第4卷. 化学工业出版社 ,2011</p>
+<p>[3]张利平. 液压气动设计手册[M]. 北京: 机械工业出版社, 1997.6</p>
+<p>[4]王宝海, 富茂华. 岸桥挂舱保护系统[J]. 港口装卸, 2018(2): 28-30.</p>
+<p>[5]张燕敏, 王健. 岸边集装箱起重机挂舱保护装置的设计[J]. 起重运输机械, 2012(7).</p>
+<p>[6]丁立基. 岸边桥式起重机防挂舱系统[J]. 起重运输机械, 2017(7):31-32.</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E6%B6%B2%E5%8E%8B%E7%9B%B8%E5%85%B3/">液压相关</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E8%AF%BE%E7%A8%8B%E8%AE%BE%E8%AE%A1/">课程设计</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/04/09/WHUT/ReviewTheoreticalMechanics/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">理论力学回顾</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2020/01/18/WHUT/CourseDesignOnMechanicalAndElectronicTransmissionAndControl/">
+                        <span class="hidden-mobile">课程设计：MQ4035门座起重机变幅机构变频调速电气控制线路设计</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"DNr2pgYBNbnn4YMKmdstH2Sw-gzGzoHsz","appKey":"6RRAdTwPs2Y3Tk5iKNo2qo1D","placeholder":"说点什么","path":"window.location.pathname","avatar":"retro","meta":["nick","mail"],"pageSize":10,"lang":"zh-CN","highlight":true,"recordIP":false,"serverURLs":"https://dnr2pgyb.lc-cn-n1-shared.com","emojiCDN":null,"emojiMaps":null,"enableQQ":false,"requiredFields":[],"appid":"DNr2pgYBNbnn4YMKmdstH2Sw-gzGzoHsz","appkey":"6RRAdTwPs2Y3Tk5iKNo2qo1D"},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

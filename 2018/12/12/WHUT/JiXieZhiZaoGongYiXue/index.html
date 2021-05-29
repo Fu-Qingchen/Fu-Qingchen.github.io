@@ -1,0 +1,629 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.ico">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="这玩意很重要，尤其是工步那块，一些移动机器人的操作和算法需要这一块的知识。">
+  <meta name="author" content="Fu Qingchen">
+  <meta name="keywords" content="MSE, CS">
+  
+  <title>机械制造工艺学笔记 | Fu&#39;s Web</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/vs2015.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.11","typing":{"enable":false,"typeSpeed":30,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null},"tajs":null},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 50vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Fu's Web</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('https://gitee.com/fuqingchen/picture-lib/raw/master/img/Test_Tree.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="机械制造工艺学笔记">
+              
+                机械制造工艺学笔记
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2018-12-12 16:06" pubdate>
+        2018年12月12日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.9k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      19
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">机械制造工艺学笔记</h1>
+            
+            <div class="markdown-body">
+              <p>这玩意很重要，尤其是工步那块，一些移动机器人的操作和算法需要这一块的知识。</p>
+<span id="more"></span>
+<h1 id="加工表面几何形状误差包括哪些"><a href="#加工表面几何形状误差包括哪些" class="headerlink" title="加工表面几何形状误差包括哪些"></a>加工表面几何形状误差包括哪些</h1><ul>
+<li><p><strong>表面粗糙度</strong>：加工表面微观的几何形状误差</p>
+<p>主要由机械加工中切削刀具的运动轨迹，以及一些物理因素引起</p>
+</li>
+<li><p><strong>波纹度</strong>：介于微观的几何形状误差（表面粗糙度），以及宏观几何形状误差（形位误差）之间的几何形状误差</p>
+<p>主要由切削刀具的低频振动和位移造成的</p>
+</li>
+<li><p><strong>纹理方向</strong>：表面刀纹方向</p>
+<p>取决于采用的机械加工方法</p>
+</li>
+<li><p><strong>伤痕</strong>：加工表面个别位置出现的缺陷、气眼、裂纹等</p>
+</li>
+</ul>
+<blockquote>
+<p>来源：3D版课本P347</p>
+</blockquote>
+<h1 id="零件加工精度包括哪些"><a href="#零件加工精度包括哪些" class="headerlink" title="零件加工精度包括哪些"></a>零件加工精度包括哪些</h1><p>包括<strong>尺寸精度</strong>、<strong>位置精度</strong>、<strong>形状精度</strong>，分别由尺寸公差、位置公差、形状公差决定</p>
+<h1 id="工艺系统热源的来源及其影响"><a href="#工艺系统热源的来源及其影响" class="headerlink" title="工艺系统热源的来源及其影响"></a>工艺系统热源的来源及其影响</h1><ul>
+<li><strong>切削热</strong>：最主要的热源，影响工件的加工精度与表面质量</li>
+<li><strong>摩擦热</strong>：机床和液压系统中运动部件引起的，引起局部温升和变形，破坏了原有系统的几何精度，对加工精度有严重影响</li>
+<li><strong>外部热源</strong>：昼夜温差会影响工艺系统的热变形不同，从而影响加工精度；一些照明灯光等局部热源会引起机床各部分有不同的温升和变形</li>
+</ul>
+<blockquote>
+<p>来源：3D版课本P326</p>
+</blockquote>
+<h1 id="装配的基本组织形式和节拍分类"><a href="#装配的基本组织形式和节拍分类" class="headerlink" title="装配的基本组织形式和节拍分类"></a>装配的基本组织形式和节拍分类</h1><p>通常有两种基本组成形式：固定式装配、移动式装配</p>
+<ul>
+<li><p>固定式装配：产品固定，所需零部件向产品集中</p>
+<ul>
+<li>集中式装配</li>
+<li>分散式装配</li>
+<li>巡回式装配</li>
+</ul>
+</li>
+<li><p>移动式装配：流水线作业</p>
+</li>
+</ul>
+<p>装配节拍：生产的时间定额（完成每一个工序所需时间）</p>
+<ul>
+<li>强制节拍：对于固定装配：装配工人在每一个工作地所规定的装配时间定额；对于移动装配，装配工人各自在指定的时间完成各自的工作量</li>
+<li>自由节拍</li>
+</ul>
+<h1 id="金属切削过程如何抑制强迫振动"><a href="#金属切削过程如何抑制强迫振动" class="headerlink" title="金属切削过程如何抑制强迫振动"></a>金属切削过程如何抑制强迫振动</h1><ul>
+<li>抑制激增力的峰值</li>
+<li>隔离振源</li>
+<li>提高工艺系统刚度和阻尼</li>
+<li>减震装置</li>
+</ul>
+<h1 id="粗，精基准的选择原则"><a href="#粗，精基准的选择原则" class="headerlink" title="粗，精基准的选择原则"></a>粗，精基准的选择原则</h1><h2 id="粗基准"><a href="#粗基准" class="headerlink" title="粗基准"></a>粗基准</h2><ul>
+<li>选择重要面为粗基准</li>
+<li>选择不加工表面为粗基准</li>
+<li>选择加工余量较小的为粗基准</li>
+<li>选择较为光洁平整、无分型面，冒口、面积较大的表面为粗基准</li>
+<li>粗基准在同一自由度方向只能使用一次</li>
+</ul>
+<h2 id="精基准"><a href="#精基准" class="headerlink" title="精基准"></a>精基准</h2><ul>
+<li>基准重合原则：被加工面的设计基准与定位基准（精基准）重合</li>
+<li>基准同一原则：尽量选择大家都能用的基准</li>
+<li>自为基准原则：对加工精度要求高、余量小且均匀的表面，常用加工表面本身作为定位基准</li>
+<li>互为基准原则：对于两个面位置精度要求很高，同时自身尺寸形状精度要求高的表面，常采用“互为基准，反复加工”的方法</li>
+<li>所选基准保证工件夹装牢固可靠，操作方便</li>
+</ul>
+<h1 id="工件单件工序时间"><a href="#工件单件工序时间" class="headerlink" title="工件单件工序时间"></a>工件单件工序时间</h1><p>单件工序时间 $t_{单件}$：在一定生产条件下，生产一件产品或完成一道工序所需要的时间</p>
+<script type="math/tex; mode=display">
+t_{单件}=t_{基本}+t_{辅助}+t_{布置}+t_{休息}</script><ul>
+<li>$t_{基本}$：基本时间；$t_{辅助}$：辅助时间；$t_{布置}$：布置工作地时间；$t_{休息}$：休息和生理所需时间</li>
+</ul>
+<p>单件核算时间 $t_{单核}$：</p>
+<script type="math/tex; mode=display">
+t_{单核}=t_{单件}+\frac{t_{准备}}n</script><h1 id="加工和装配工艺规程的主要内容"><a href="#加工和装配工艺规程的主要内容" class="headerlink" title="加工和装配工艺规程的主要内容"></a>加工和装配工艺规程的主要内容</h1><ul>
+<li>加工工艺规程：各工序加工内容&amp;要求、所用机床&amp;工艺设备、工件的检验方法、切削用量&amp;工时定额</li>
+<li>装配工艺规程：产品及部件的装配顺序、采用的装配方法、装配的技术要求、装配所需的工具及设备、装配时间定额</li>
+</ul>
+<h1 id="粗糙度，表面硬度，残余应力与耐磨性，抗疲劳性，配合性，接触刚度对性能的影响"><a href="#粗糙度，表面硬度，残余应力与耐磨性，抗疲劳性，配合性，接触刚度对性能的影响" class="headerlink" title="粗糙度，表面硬度，残余应力与耐磨性，抗疲劳性，配合性，接触刚度对性能的影响"></a>粗糙度，表面硬度，残余应力与耐磨性，抗疲劳性，配合性，接触刚度对性能的影响</h1><div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:center">耐磨性</th>
+<th style="text-align:center">抗疲劳性</th>
+<th style="text-align:center">接触刚度</th>
+<th style="text-align:center">配合性</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">粗糙度</td>
+<td style="text-align:center">过大或过小的表面粗糙度值均会引起工作时的严重磨损</td>
+<td style="text-align:center">表面粗糙度越高，抗疲劳性越差</td>
+<td style="text-align:center">粗糙度越高，接触刚度越差</td>
+<td style="text-align:center">高的表面粗糙度值严重影响配合质量</td>
+</tr>
+<tr>
+<td style="text-align:center">表面硬度</td>
+<td style="text-align:center">适当提高表面硬度一般都能使耐磨性有所提高</td>
+<td style="text-align:center">适度提高表面硬度能提高抗疲劳性，过高的硬度反而降低抗疲劳性</td>
+<td style="text-align:center">适当提高表面硬度可提高接触刚度</td>
+<td style="text-align:center">-</td>
+</tr>
+<tr>
+<td style="text-align:center">残余应力</td>
+<td style="text-align:center">适度的残留压应力一般使结构紧密，有助于提高耐磨性</td>
+<td style="text-align:center">适度的残留压应力可提高抗疲劳性，残留拉应力使疲劳性降低</td>
+<td style="text-align:center">-</td>
+<td style="text-align:center">-</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h1 id="为什么要进行光整加工？常用光整加工的方法有哪些？各有什么特点？"><a href="#为什么要进行光整加工？常用光整加工的方法有哪些？各有什么特点？" class="headerlink" title="为什么要进行光整加工？常用光整加工的方法有哪些？各有什么特点？"></a>为什么要进行光整加工？常用光整加工的方法有哪些？各有什么特点？</h1><p>光整加工是精加工后，从工件表面上不切除或切除极薄金属层，用以提高加工表面尺寸和形状精度、降低表面粗糙值得加工方法。</p>
+<p>常用的光整加工方法主要有研磨、珩磨、超精加工和抛光等。</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">名称</th>
+<th style="text-align:center">特点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">研磨</td>
+<td style="text-align:center">设备比较简单，成本低，加工质量容易得到保证，研磨外圆可获得很高的公差等级、极小的表面粗糙度和较高的形状精度。但不能提高位置精度，生产率较低。</td>
+</tr>
+<tr>
+<td style="text-align:center">珩磨</td>
+<td style="text-align:center">能获得较高的尺寸精度和形状精度，但它不能提高孔的形状精度。不适于加工软而韧的非铁金属工件上的孔，也不能加工带键槽的孔和内花键等断续表面。</td>
+</tr>
+<tr>
+<td style="text-align:center">超精加工</td>
+<td style="text-align:center">设备简单，自动化程度高，操作简便，生产率高。可以减小工件的表面粗糙值，但不能提高尺寸精度和几何精度，工件精度需要前一工序来保证。</td>
+</tr>
+<tr>
+<td style="text-align:center">抛光</td>
+<td style="text-align:center">只能减小表面粗糙值，不能提高尺寸和几何精度，也不能保持抛光前的加工精度。</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h1 id="影响机床回转主轴运动的主要因素"><a href="#影响机床回转主轴运动的主要因素" class="headerlink" title="影响机床回转主轴运动的主要因素"></a>影响机床回转主轴运动的主要因素</h1><ul>
+<li>主轴误差</li>
+<li>轴承误差</li>
+<li>与轴承配合的零件误差</li>
+<li>主轴转速</li>
+<li>主轴系统的径向不等刚度和热变形</li>
+</ul>
+<h1 id="什么是误差复映？减少误差复映有哪些工艺措施？"><a href="#什么是误差复映？减少误差复映有哪些工艺措施？" class="headerlink" title="什么是误差复映？减少误差复映有哪些工艺措施？"></a>什么是误差复映？减少误差复映有哪些工艺措施？</h1><p><strong>误差复映</strong>：加工前的误差以类似的规律反映为加工后的误差</p>
+<p>减少措施：</p>
+<ul>
+<li>直接减少原始误差</li>
+<li>转移原始误差</li>
+<li>均分原始误差</li>
+<li>均化原始误差</li>
+<li>采用就地加工法</li>
+<li>控制误差因素</li>
+</ul>
+<h1 id="机械设备装配工艺应该考虑哪些内容"><a href="#机械设备装配工艺应该考虑哪些内容" class="headerlink" title="机械设备装配工艺应该考虑哪些内容"></a>机械设备装配工艺应该考虑哪些内容</h1><ul>
+<li>机器的总体结构应该能划分成几个独立的装配单元</li>
+<li>机器结构应具有正确的装配基准面</li>
+<li>尽量减少装配过程中的修配劳动量</li>
+<li>机器结构应该装配和拆卸方便</li>
+</ul>
+<h1 id="焊接工艺顺序"><a href="#焊接工艺顺序" class="headerlink" title="焊接工艺顺序"></a>焊接工艺顺序</h1><ol>
+<li>钢材预处理，喷丸除锈</li>
+<li>板材下料</li>
+<li>定位（划线，工装加固）</li>
+<li>施焊</li>
+<li>焊后热处理</li>
+<li>焊接质量检验</li>
+</ol>
+<hr>
+<p>Learning By Sharing，2018©Fu_Qingchen，Markdown，$\LaTeX$</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E6%9C%BA%E6%A2%B0%E7%9B%B8%E5%85%B3/">机械相关</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%9C%BA%E6%A2%B0%E5%88%B6%E9%80%A0%E5%B7%A5%E8%89%BA%E5%AD%A6/">机械制造工艺学</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2018/12/20/WHUT/MechanicalControlEngineering/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">控制工程基础笔记</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2018/12/12/WHUT/EngineeringFluidMechanics/">
+                        <span class="hidden-mobile">工程流体力学笔记</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"DNr2pgYBNbnn4YMKmdstH2Sw-gzGzoHsz","appKey":"6RRAdTwPs2Y3Tk5iKNo2qo1D","placeholder":"说点什么","path":"window.location.pathname","avatar":"retro","meta":["nick","mail"],"pageSize":10,"lang":"zh-CN","highlight":true,"recordIP":false,"serverURLs":"https://dnr2pgyb.lc-cn-n1-shared.com","emojiCDN":null,"emojiMaps":null,"enableQQ":false,"requiredFields":[],"appid":"DNr2pgYBNbnn4YMKmdstH2Sw-gzGzoHsz","appkey":"6RRAdTwPs2Y3Tk5iKNo2qo1D"},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

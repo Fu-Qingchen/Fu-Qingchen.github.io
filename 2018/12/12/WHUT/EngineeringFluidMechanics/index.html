@@ -1,0 +1,625 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.ico">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="据说很难，不过我感觉还好。巩固了下线性代数和材料力学的一些知识。其中的一些公式用来做动画很有意思。">
+  <meta name="author" content="Fu Qingchen">
+  <meta name="keywords" content="MSE, CS">
+  
+  <title>工程流体力学笔记 | Fu&#39;s Web</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/vs2015.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.11","typing":{"enable":false,"typeSpeed":30,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null},"tajs":null},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 50vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Fu's Web</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('https://gitee.com/fuqingchen/picture-lib/raw/master/img/Test_Tree.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="工程流体力学笔记">
+              
+                工程流体力学笔记
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2018-12-12 15:40" pubdate>
+        2018年12月12日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.9k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      25
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">工程流体力学笔记</h1>
+            
+            <div class="markdown-body">
+              <p>据说很难，不过我感觉还好。巩固了下线性代数和材料力学的一些知识。其中的一些公式用来做动画很有意思。</p>
+<span id="more"></span>
+<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20200822203524.png" srcset="/img/loading.gif" lazyload alt="思维导图"></p>
+<h1 id="流体基本概念"><a href="#流体基本概念" class="headerlink" title="流体基本概念"></a>流体基本概念</h1><h2 id="牛顿粘性定律"><a href="#牛顿粘性定律" class="headerlink" title="牛顿粘性定律"></a>牛顿粘性定律</h2><p>对牛顿流体：</p>
+<script type="math/tex; mode=display">
+F=\mu A\frac{du}{dy}\\
+\tau =\mu\frac{du}{dy}</script><p>其中：$\tau$ 为剪应力，$\mu$ 为粘度，$du/dy$ 为速度梯度</p>
+<blockquote>
+<p>工程中，粘度还会有其他表示形式，例如：</p>
+<ul>
+<li>运动粘度：$\nu=\mu/\rho$ ，常见单位 $mm^2/s$ (里斯)</li>
+<li>相对粘度：这个在测量粘性时会用到</li>
+</ul>
+</blockquote>
+<h2 id="流体可压缩性"><a href="#流体可压缩性" class="headerlink" title="流体可压缩性"></a>流体可压缩性</h2><p>一定温度 T 下，单位压强升高引起的体积变化率</p>
+<script type="math/tex; mode=display">
+\kappa=-\frac{\delta V/V}{\delta P},K=\frac 1\kappa</script><p>​    其中：$\kappa$ 为压缩系数，$K$ 为压缩模量。$K\uparrow$ ，可压缩性 $\downarrow$</p>
+<h1 id="流体静力学"><a href="#流体静力学" class="headerlink" title="流体静力学"></a>流体静力学</h1><h2 id="液体静压强"><a href="#液体静压强" class="headerlink" title="液体静压强"></a>液体静压强</h2><p>当流体处于静止或相对静止状态时，内法线表面力为压强。</p>
+<ul>
+<li><p>在静止的流体中，流体静压强的方向沿着作用面的内法线方向（无切向压强）</p>
+</li>
+<li><p>静止流体任意一点流体静压强大小与作用面在空间方位无关，是点坐标的可微函数（只与坐标有关）</p>
+<p>$p_x=p_y=p_z=p_n$</p>
+</li>
+</ul>
+<h2 id="欧拉流体静力平衡方程"><a href="#欧拉流体静力平衡方程" class="headerlink" title="欧拉流体静力平衡方程"></a>欧拉流体静力平衡方程</h2><p><strong>质量力</strong> 与 <strong>压力分布</strong> 的关系</p>
+<script type="math/tex; mode=display">
+\vec{f}=\frac1\rho \nabla p</script><p>​    其中：$\nabla =\frac{\partial}{\partial x}\vec i+\frac{\partial}{\partial y}\vec j+\frac{\partial}{\partial z}\vec k$</p>
+<ul>
+<li><p>物理意义：在静止流体内一点，单位质量力与流体静压力合力平衡</p>
+</li>
+<li><p>欧拉平衡方程对任意种类平衡流体适用</p>
+</li>
+<li><p>静力平衡全微分方程：$dp=\rho(f_xdx+f_ydy+f_zdz)$ </p>
+<p>也叫做压强差公式，表明静压强的增量取决于单位质量力和坐标增量</p>
+</li>
+<li><p>等压面：$dp=0\Rightarrow\vec f·dr=0$，等压面上，任意一点方向与质量力方向相同，即质量力与等压面垂直</p>
+</li>
+</ul>
+<h2 id="流体静力学基本方程"><a href="#流体静力学基本方程" class="headerlink" title="流体静力学基本方程"></a>流体静力学基本方程</h2><script type="math/tex; mode=display">
+z_1+\frac{p_1}{\rho g}=z_2+\frac{p_2}{\rho g}</script><ul>
+<li>适用于重力作用下的不可压缩流体</li>
+<li>在重力作用下的不可压缩流体，单位质量流体的总势能保持不变</li>
+</ul>
+<h2 id="有自由液面的静止液体压强公式"><a href="#有自由液面的静止液体压强公式" class="headerlink" title="有自由液面的静止液体压强公式"></a>有自由液面的静止液体压强公式</h2><script type="math/tex; mode=display">
+p=p_0+\rho gh</script><p>​    其中：$p_0$ 为自由液面压强，$\rho gh$ 为液体重力引起压强</p>
+<ul>
+<li>自由液面压强可沿流体各个方向等值传递</li>
+</ul>
+<h2 id="液体相对平衡"><a href="#液体相对平衡" class="headerlink" title="液体相对平衡"></a>液体相对平衡</h2><h3 id="容器匀加速运动"><a href="#容器匀加速运动" class="headerlink" title="容器匀加速运动"></a>容器匀加速运动</h3><p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20200822203614.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ul>
+<li>容器内任意一点压强： $p(y,z)=p_0-\rho g(ay+gz)$</li>
+<li>等压面：$ay+gz=0$</li>
+<li>A压强：$p_A=\rho gh$</li>
+</ul>
+<h3 id="容器匀加速运动-1"><a href="#容器匀加速运动-1" class="headerlink" title="容器匀加速运动"></a>容器匀加速运动</h3><p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20200822203643.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ul>
+<li>容器内任意一点压强： $p(y,z)=p_0+\rho g(\omega^2r^2/2g-z)$</li>
+<li>等压面：$z=\omega^2r^2/2g$</li>
+<li>A压强：$p_A=\rho gh$</li>
+</ul>
+<h2 id="液体对壁面作用力"><a href="#液体对壁面作用力" class="headerlink" title="液体对壁面作用力"></a>液体对壁面作用力</h2><h3 id="平面"><a href="#平面" class="headerlink" title="平面"></a>平面</h3><p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20200822203709.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<script type="math/tex; mode=display">
+F_P=\rho gh_CA</script><ul>
+<li>$h_C$：平面形心淹没高度；$A$：平面面积</li>
+<li>液体作用在平面上的力等于：以 平面为底、以平面形心淹没深度为高的柱体内液体体积</li>
+<li>方向：垂直于平面</li>
+<li>作用点：$y_D=y_C+I_{Cx}/{y_CA}$<ul>
+<li>利用力矩等效+平行移轴定理求解得到</li>
+<li>作用点又称为压力中心，总是作用在形心下方</li>
+</ul>
+</li>
+</ul>
+<h3 id="曲面"><a href="#曲面" class="headerlink" title="曲面"></a>曲面</h3><p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20200822203738.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<script type="math/tex; mode=display">
+F_{PH}=\rho gh_{Cx}A_x\\
+F_{PV}=\rho gV_P</script><ul>
+<li>$A_x$：曲面在水平方向上的投影面积；$V_P$：压力体体积</li>
+<li>静止液体在曲面总压力<ul>
+<li>水平分力 = 液体作用在曲面投影面积 $Ax$ 上压力，作用点为其压力中心</li>
+<li>竖直分力 = 曲面上压力体体积，作用线通过压力体的中心</li>
+</ul>
+</li>
+</ul>
+<h2 id="浮力"><a href="#浮力" class="headerlink" title="浮力"></a>浮力</h2><script type="math/tex; mode=display">
+F_P=\rho gV</script><p>​    其中：V为排开水的体积</p>
+<h1 id="流体运动学"><a href="#流体运动学" class="headerlink" title="流体运动学"></a>流体运动学</h1><h2 id="质点导数"><a href="#质点导数" class="headerlink" title="质点导数"></a>质点导数</h2><p>质点的导数对时间的变化量，物理量 $B(x,y,z,t)$ 的质点导数定义为</p>
+<script type="math/tex; mode=display">
+\frac{DB}{Dt}=\frac{\partial B}{\partial t}+\frac{\partial B}{\partial x}u+\frac{\partial B}{\partial y}v+\frac{\partial B}{\partial z}w</script><h2 id="迹线方程"><a href="#迹线方程" class="headerlink" title="迹线方程"></a>迹线方程</h2><script type="math/tex; mode=display">
+\frac{dx}{u(x,y,z,t)}=\frac{dy}{v(x,y,z,t)}=\frac{dz}{w(x,y,z,t)}=dt</script><h2 id="流线方程"><a href="#流线方程" class="headerlink" title="流线方程"></a>流线方程</h2><script type="math/tex; mode=display">
+\frac{dx}{u(x,y,z,t)}=\frac{dy}{v(x,y,z,t)}=\frac{dz}{w(x,y,z,t)}</script><h1 id="流体动力学"><a href="#流体动力学" class="headerlink" title="流体动力学"></a>流体动力学</h1><h2 id="雷诺输运方程"><a href="#雷诺输运方程" class="headerlink" title="雷诺输运方程"></a>雷诺输运方程</h2><p>控制体：在流场中人为选取的空间几何体系。</p>
+<blockquote>
+<p>在欧拉法中，系统的流量与控制体中的流量是不一样的，雷诺输运方程就是将系统与控制体联系起来的方程</p>
+</blockquote>
+<p>在流场中取控制体 $CV$，其表面为控制面 $CS$ ，对于物理量 $N$ ，有</p>
+<script type="math/tex; mode=display">
+\frac{dN_{sys}}{dt}=\frac{\partial N_{CV}}{\partial t}+\int_{CS} \eta\rho(\vec v·\vec n)dA=\frac{\partial}{\partial t}\int_{CV}\eta\rho dV+\int_{CS}\eta\rho(\vec v·\vec n)dA</script><p>​    其中：$\eta=N/m$</p>
+<h2 id="连续性方程"><a href="#连续性方程" class="headerlink" title="连续性方程"></a>连续性方程</h2><p>令 $N=m,\eta=1$ ，由 <strong>质量守恒定理</strong> </p>
+<script type="math/tex; mode=display">
+\frac{dm_{sys}}{dt}=\frac{\partial}{\partial t}\int_{CV}\rho dV+\int_{CS}\rho(\vec v·\vec n)dA=0</script><p>对定常流动，$dN/dt=0$</p>
+<script type="math/tex; mode=display">
+\frac {dm_{sys}}{dt}=\int_{CS}\rho(\vec v·\vec n)dA=0</script><p>对不可压缩流体</p>
+<script type="math/tex; mode=display">
+\int_{CS}(\vec v·\vec n)dA=0\Rightarrow\sum Q_{in}=\sum Q_{out}</script><h2 id="动量方程"><a href="#动量方程" class="headerlink" title="动量方程"></a>动量方程</h2><p>令 $N=m\vec v,\eta=\vec v$ ，由 <strong>动量定理</strong> </p>
+<script type="math/tex; mode=display">
+\frac{d(mv)_{sys}}{dt}=\frac{\partial}{\partial t}\int_{CV}\vec v\rho dV+\int_{CS}\vec v\rho(\vec v·\vec n)dA=\sum F</script><p>对定常流动，$dN/dt=0$</p>
+<script type="math/tex; mode=display">
+\frac {d(mv)_{sys}}{dt}=\int_{CS}\vec v\rho(\vec v·\vec n)dA=\sum F</script><p>对不可压缩流体</p>
+<script type="math/tex; mode=display">
+\int_{CS}\vec v(\vec v·\vec n)dA=\sum F\Rightarrow\sum\limits_{out}m\vec v-\sum\limits_{in}m\vec v=\sum F</script><h2 id="动量矩定理"><a href="#动量矩定理" class="headerlink" title="动量矩定理"></a>动量矩定理</h2><p>同理</p>
+<script type="math/tex; mode=display">
+\sum\limits_{out}\rho Q_{out}(\vec v·\vec r)-\sum\limits_{in}\rho Q_{in}(\vec v·\vec r)=\sum T</script><h1 id="量纲分析-amp-相似理论"><a href="#量纲分析-amp-相似理论" class="headerlink" title="量纲分析&amp;相似理论"></a>量纲分析&amp;相似理论</h1><h2 id="相似理论"><a href="#相似理论" class="headerlink" title="相似理论"></a>相似理论</h2><p>步骤：</p>
+<ol>
+<li>列举出所有相关的物理量，组成关系式</li>
+<li>选择包含不同基本量纲的物理量为基本量</li>
+<li>将导出量与基本量的幂式组成 $\Pi$ 表达式，用量纲次数求解每个 $\Pi$ 表达式的指数，组成 $\Pi$ 数</li>
+</ol>
+<blockquote>
+<p>例：泵的效率 $η$  是流体密度$\rho$、转速 $n$、特征直径 $D$ 、流量 $Q$、粘度 $μ$、特征长度 $l$ 和表面粗糙度 $ε$ 等物理量的函数。取 $\rho$，$n$，$D$为基本量，试用量纲分析法推导无量纲质量能头系数效率 $η$ 的 $\Pi$ 数方程式。</p>
+<p>解：</p>
+<ol>
+<li><p>列出物理量：$η=f(\rho,n,D,Q,\mu,l,\varepsilon)$</p>
+</li>
+<li><p>求 $η$ 的 $\Pi$ 数</p>
+<p>$\Pi_1=\rho^an^bD^cη\Rightarrow M^0L^0T^0=(ML^{-3})^a(T^{-1})^b(L)^c1\Rightarrow a=0,b=0,c=0\Rightarrow\Pi_1=\eta$ </p>
+</li>
+<li><p>求 $Q$ 的 $\Pi$ 数</p>
+<p>$\Pi_2=\rho^an^bD^cQ\Rightarrow M^0L^0T^0=(ML^{-3})^a(T^{-1})^b(L)^c(L^3T^{-1})\Rightarrow a=0,b=-1,c=-3\Rightarrow\Pi_2=Q/(nD^3)$</p>
+</li>
+<li><p>求 $\mu$ 的 $\Pi$ 数</p>
+<p>$\Pi_3=\rho^an^bD^cη\Rightarrow M^0L^0T^0=(ML^{-3})^a(T^{-1})^b(L)^c(ML^{-1}T^{-1})\Rightarrow a=-1,b=-1,c=-2\Rightarrow\Pi_3=\mu/(\rho nD^2)$</p>
+</li>
+<li><p>求 $l$ 的 $\Pi$ 数</p>
+<p>$\Pi_4=\rho^an^bD^cη\Rightarrow M^0L^0T^0=(ML^{-3})^a(T^{-1})^b(L)^c(L)\Rightarrow a=0,b=0,c=-1\Rightarrow \Pi_4=l/D$</p>
+</li>
+<li><p>求 $\varepsilon$ 的 $\Pi$ 数</p>
+<p>$\Pi_5=\rho^an^bD^cη\Rightarrow M^0L^0T^0=(ML^{-3})^a(T^{-1})^b(L)^c1\Rightarrow a=0,b=0,c=-1\Rightarrow \Pi_4=\varepsilon/D$</p>
+</li>
+<li><p>列表达式</p>
+<p>$\Pi_1=f(\Pi_2,\Pi_3,\Pi_4,\Pi_5)\Rightarrow\eta=f(Q/(nD^3),\mu/(\rho nD^2),l/D,\varepsilon/D)$</p>
+</li>
+</ol>
+</blockquote>
+<h2 id="常见的相似准则"><a href="#常见的相似准则" class="headerlink" title="常见的相似准则"></a>常见的相似准则</h2><p>流体力学常用的相似准则包含：密度 $\rho$ 、速度 $v$ 、粘度 $\mu$ 、重力加速度 $g$ 、压强差 $\Delta p$ 、外力 $F$    </p>
+<ul>
+<li>粘性力相似<script type="math/tex; mode=display">
+Re=\frac{\rho vl}{\mu}</script></li>
+</ul>
+<blockquote>
+<p>适用于有压管流、射流、绕流、流体机械中的流动</p>
+</blockquote>
+<ul>
+<li>重力相似</li>
+</ul>
+<script type="math/tex; mode=display">
+Fr=\frac{v}{\sqrt{gh}}</script><blockquote>
+<p>Fr 表示迁移惯性力与重力之比，反应重力对流体影响的相对重要性，是描述有自由液面的流体流动时最重要的参数</p>
+</blockquote>
+<ul>
+<li>压力相似</li>
+</ul>
+<script type="math/tex; mode=display">
+Eu=\frac{\Delta p}{\rho v^2}</script><ul>
+<li>外力相似</li>
+</ul>
+<script type="math/tex; mode=display">
+Ne=\frac{F}{\rho v^2l^2}</script><hr>
+<p>Learning By Sharing，2018©Fu_Qingchen，Markdown，$\LaTeX$</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E6%B6%B2%E5%8E%8B%E7%9B%B8%E5%85%B3/">液压相关</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%B6%B2%E5%8E%8B/">液压</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%B5%81%E4%BD%93/">流体</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2018/12/12/WHUT/JiXieZhiZaoGongYiXue/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">机械制造工艺学笔记</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2018/12/09/WHUT/FiniteElementMethod/">
+                        <span class="hidden-mobile">机械有限元分析笔记</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"DNr2pgYBNbnn4YMKmdstH2Sw-gzGzoHsz","appKey":"6RRAdTwPs2Y3Tk5iKNo2qo1D","placeholder":"说点什么","path":"window.location.pathname","avatar":"retro","meta":["nick","mail"],"pageSize":10,"lang":"zh-CN","highlight":true,"recordIP":false,"serverURLs":"https://dnr2pgyb.lc-cn-n1-shared.com","emojiCDN":null,"emojiMaps":null,"enableQQ":false,"requiredFields":[],"appid":"DNr2pgYBNbnn4YMKmdstH2Sw-gzGzoHsz","appkey":"6RRAdTwPs2Y3Tk5iKNo2qo1D"},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
