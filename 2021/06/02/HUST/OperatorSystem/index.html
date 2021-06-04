@@ -1,0 +1,595 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.ico">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="Fu Qingchen">
+  <meta name="keywords" content="MSE, CS">
+  
+  <title>操作系统 | Fu&#39;s Web</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/vs2015.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.11","typing":{"enable":false,"typeSpeed":30,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null},"tajs":null},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 50vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Fu's Web</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('https://gitee.com/fuqingchen/picture-lib/raw/master/img/Test_Tree.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="操作系统">
+              
+                操作系统
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-06-02 15:13" pubdate>
+        2021年6月2日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      3.4k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      37
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">操作系统</h1>
+            
+            <div class="markdown-body">
+              <p>操作系统的笔记和总结，方便日后回顾用</p>
+<h1 id="操作系统基础"><a href="#操作系统基础" class="headerlink" title="操作系统基础"></a>操作系统基础</h1><p>操作系统是介于硬件与应用程序之间的一层，它管理着计算机的硬件，让用户更加高效的使用计算机。用户只能通过操作系统的接口来使用硬件。用户既可以通过应用程序间接使用操作系统，也可以直接使用。</p>
+<p>计算机最重要的东西就是CPU和内存，操作系通过进程管理CPU。对于Linux来说，万物都是I/O设备。所有的外部硬件都是通过I/O管理的。</p>
+<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20210531094301.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>总的来说，操作系统有两大重要的组成部分，一个是多进程视图，一个是文件视图。多进程视图中主要研究进程管理和内存管理，文件视图主要研究文件管理和IO管理。</p>
+<h2 id="系统启动"><a href="#系统启动" class="headerlink" title="系统启动"></a>系统启动</h2><p>一切从操作系统的启动开始。当电源上电时，硬件电路会初始化PC的值为 <code>0xFFFF0</code> ，内存中这一段地址是 BIOS，负责对程序的硬件进行检测。检测成功后，利用BIOS的输入功能将启动磁盘的启动扇区读入内存，将 PC 的值设置为 <code>0x7C00</code>，这一段是 <code>bootsects.s</code>（此时还不算是操作系统的启动）</p>
+<blockquote>
+<p>PC：CPU中的程序计数器</p>
+</blockquote>
+<p>当PC进入到 <code>bootsect.s</code> 中时，操作系统开始启动。<code>bootsect.s</code> 的作用是将启动的另一段程序 <code>setup.s</code> 读入内存、向显示器显示LOGO和正在启动信息、将操作系统内容读入内存。随后，PC将进入 <code>setup.s</code></p>
+<p><code>setup.s</code> 的主要作用是读取硬件信息，并将操作系统从 16 位的实模式切换位 64 位的保护模式。从此之后，操作系统将以64位的模式进行工作。切换之后，PC将跳转到 <code>head.s</code> 文件</p>
+<blockquote>
+<p>保护模式的PC的译码方式改变了。保护模式的PC查询 GDT 表，间接得到要访问的地址。</p>
+<blockquote>
+<p>GDT：global decriptor table 全局描述表</p>
+</blockquote>
+</blockquote>
+<p><code>head.s</code> 的主要作用就是初始化 IDT表和 GDT表和页表。<code>head.s</code> 运行完毕后，PC将跳转到 <code>0x0</code> 地址处，也就是操作系统的函数 <code>main.c</code>。</p>
+<blockquote>
+<p>IDT：interrupt decriptor table 中断描述表。</p>
+<p>页表：主要作用是内存管理</p>
+<p><code>setup.s</code> 为了在保护模式下能跳转到 <code>head.s</code> 也进行了 IDT 和 GDT 表的初始化，不过 <code>head.s</code> 中的是临时建立的， <code>head.s</code> 是正式建立</p>
+</blockquote>
+<p><code>main.c</code> 负责初始化一些硬件表，初始化其他重要的数据结构，创建进程，启动 Shell</p>
+<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/image-20210531104930510.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="系统接口"><a href="#系统接口" class="headerlink" title="系统接口"></a>系统接口</h2><p>为了保证系统内核的安全，应用程序是直接对硬件进行操作的，要想使用计算机硬件，只能通过操作系统的接口。这些接口函数由操作系统提供，同时又以函数的形式调用，因此称为<strong>系统调用</strong>。</p>
+<blockquote>
+<p>系统调用连接了计算机硬件和应用程序</p>
+<p>系统调用由 IEEE 指定的 <strong>POSIX 标准</strong>定义，常见的系统调用有 fork(), open(), read(), write() 等</p>
+</blockquote>
+<p>为了实现这一目标，操作系统将内存设置了不同的权限（特权级），CPU在运行的时候通过硬件电路来检测特权级。CPU读取当前特权级（CPL）和目标特权级（DPL），将其比较，当 CPL &lt;= DPL 时执行。</p>
+<blockquote>
+<p>通过硬件电路是为了提高效率</p>
+<p>特权级从小到大，权限越来越低。0是内核态，3是用户态。系统内核的 DPL 是0，CPU在运行用户代码是 CPL被设为 3 。因此无法直接访问内存地址。</p>
+<p>CPL在CPU寄存器存放，DPL是 GDT 表中存放的数据</p>
+</blockquote>
+<p>应用程序要访问内核态的数据就需要依赖于系统调用了。操作系统给应用程序留了一个 <code>0x80</code> 号中断作为应用程序进入操作系统的入口。以 C 语言的 <code>printf</code> 函数为例。<code>printf</code> 里面就有一段内联汇编，里面涉及到 <code>0x80</code> 中断，同时传入系统调用号来区别不同的系统调用</p>
+<figure class="highlight c"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">write</span><span class="hljs-params">(<span class="hljs-keyword">int</span> fd, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *buf, <span class="hljs-keyword">off_t</span> count)</span> </span>&#123;<br>    <span class="hljs-keyword">long</span> __res;<br>    __asm__volatile(<span class="hljs-string">&quot;int 0x80&quot;</span> : <span class="hljs-string">&quot;=a&quot;</span>(__res) : <span class="hljs-string">&quot;&quot;</span>(__NR_write)), <span class="hljs-string">&quot;b&quot;</span>((<span class="hljs-keyword">long</span>)(fd)), <span class="hljs-string">&quot;c&quot;</span>((<span class="hljs-keyword">long</span>)(buf)), <span class="hljs-string">&quot;c&quot;</span>((<span class="hljs-keyword">long</span>)(count));<br>    <span class="hljs-comment">// __NR_write 就是系统调用号，&quot;b&quot;((long)(fd))表示将 fd 赋值给 %ebx</span><br>    <span class="hljs-comment">// 核心就是使用 int 0x80 中断，然后将系统调用号传入</span><br>&#125;<br></code></pre></div></td></tr></table></figure>
+<p>操作系统收到 <code>int 0x80</code> 后进行中断处理，根据系统调用号查询 IDT 表，跳转到相应的中断处理函数执行操作。跳转到中断处理函数后，CPL = 0，就可以进行对系统内核和硬件的操作了。总的来说就是一下步骤：</p>
+<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/image-20210531113501809.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h1 id="进程管理"><a href="#进程管理" class="headerlink" title="进程管理"></a>进程管理</h1><p>进程管理其实就是对计算机CPU的管理。CPU的工作流程就是不断的取址执行、取址执行，给CPU一个初始地址就可以让它工作了</p>
+<p>这样效率很低，一旦某个程序在进行I/O操作，CPU就必须等待硬件的读写完成。为了提高效率，有必要让CPU在不同的程序之间切换，多个程序同时出发，交替运行。在切换时要记录当前程序的相关信息以便切换回来能够恢复上下文，保存的这个数据结构就是 <strong>PCB（程序控制块）</strong>。这种在运行的程序就叫做 <strong>进程</strong></p>
+<blockquote>
+<p>进程于程序的主要区别就是一个在运行，内存中有PCB，一个没有在运行</p>
+</blockquote>
+<h2 id="多进程视图"><a href="#多进程视图" class="headerlink" title="多进程视图"></a>多进程视图</h2><p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20210602205247.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="多进程的组织"><a href="#多进程的组织" class="headerlink" title="多进程的组织"></a>多进程的组织</h3><p>操作系统是通过状态队列来管理操作系统的</p>
+<p>总共有5种状态：新建态、就绪态、阻塞态、运行态、退出态</p>
+<p>操作系统对状态有一个队列，队列中存放的就是一个个进程</p>
+<figure class="highlight routeros"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs routeros">运行态	  :  [<span class="hljs-attribute">PID</span>=1,PC=...]<br>就绪态队列:	[<span class="hljs-attribute">PID</span>=2,PC=...], [<span class="hljs-attribute">PID</span>=4,PC=...]<br>阻塞态队列:	[<span class="hljs-attribute">PID</span>=3,PC=...], [<span class="hljs-attribute">PID</span>=5,PC=...]<br></code></pre></div></td></tr></table></figure>
+<p>根据发生的事件，各个程序在不同的状态中进行切换</p>
+<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20210602211326.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="进程间切换"><a href="#进程间切换" class="headerlink" title="进程间切换"></a>进程间切换</h3><p>本文底下 <strong>用户级线程</strong> 和 <strong>核心级线程</strong> 有更深的介绍</p>
+<h3 id="进程间分离"><a href="#进程间分离" class="headerlink" title="进程间分离"></a>进程间分离</h3><p>如果进程A要读取内存中的一段数据，进程B修改了这个数据，那么进程A就会得到错误的结果</p>
+<p>为了防止这种事情的发生，操作系统进行了<strong>内存映射</strong>，在运行的时候查 GDT 表来实现地址的分离</p>
+<h3 id="进程间通信"><a href="#进程间通信" class="headerlink" title="进程间通信"></a>进程间通信</h3><p>最基本的模式就是两个进程在一块共享缓存区中读写</p>
+<p>此时，如果一个进程还没执行完，就执行另外一个，此时就会出现错误</p>
+<blockquote>
+<figure class="highlight cpp"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs cpp">process1:<br><span class="hljs-keyword">void</span> A &#123; a = file.<span class="hljs-built_in">read</span>(); a += <span class="hljs-number">3</span>; file.<span class="hljs-built_in">write</span>(a); &#125;<br>						⬆ PC在此次跳转到process2，a就会发生错误<br>process2:<br><span class="hljs-keyword">void</span> B &#123; b = file.<span class="hljs-built_in">read</span>(); b *= <span class="hljs-number">2</span>; file.<span class="hljs-built_in">write</span>(b); &#125;<br></code></pre></div></td></tr></table></figure>
+</blockquote>
+<p>解决方法就是在执行 process1 的时候一次性执行完全。或者说设置共享缓冲区的控制权，让 process2 无法操作文件</p>
+<h2 id="进程切换"><a href="#进程切换" class="headerlink" title="进程切换"></a>进程切换</h2><p>进程的切换包括两个部分，一个是指令流的切换，一个是资源的切换。而指令流刚好是CPU的切换，也是线程的切换。</p>
+<h3 id="线程"><a href="#线程" class="headerlink" title="线程"></a>线程</h3><p>线程是同一个程序中的并行。这个程序的代码间共享的资源非常多，但是又有子程序交替执行的特点，就有了多线程的概念。</p>
+<blockquote>
+<p>例如一个浏览器，既要通过网络下载，又要在客户端显示。一个比较好的实现方法就是网络下载和客户端显示同时开始，交替进行（两个线程并行）。这就需要支持多线程。</p>
+</blockquote>
+<p>为了能恢复线程的上下文，线程也有一个记录 CPU 寄存器信息等资源的内容，成为 TCB（线程控制块）</p>
+<blockquote>
+<p>不过由于资源的切换少，线程的切换比进程快很多。</p>
+</blockquote>
+<p>线程有两类：用户级线程和内核级线程。用户级线程是应用程序自己实现多线程，在操作系统眼里还是单线程。而核心级线程是深入操作系统中，操作系统会分配相应的硬件资源。</p>
+<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20210603203318.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<blockquote>
+<p>MMU 是 CPU 中的共享储存管理部件（Memory Management unit）。进程切换不仅需要切换 PC 指针，还需要切换 MMU，而线程切换不需要切换 MMU</p>
+<p>进程的切换就是在内核级线程的切换 + 映射表等资源的切换</p>
+</blockquote>
+<h3 id="用户级线程"><a href="#用户级线程" class="headerlink" title="用户级线程"></a>用户级线程</h3><p>多个线程共用一个栈时，跳转时要进行压栈存放下一步的 PC 值，这时多个线的 PC 值就混在一起了。因此，一个线程对应一个栈</p>
+<blockquote>
+<figure class="highlight dts"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs dts"><span class="hljs-symbol">Thread1:</span><br><span class="hljs-class">A </span>&#123; B(); ... &#125;<br><span class="hljs-class">B </span>&#123; Yield(Thread2); ... &#125;<br><span class="hljs-symbol">Thread2:</span><br><span class="hljs-class">C </span>&#123; D(); ... &#125;<br><span class="hljs-class">D </span>&#123; Yield(Thread1); ... &#125;<br><span class="hljs-symbol">Stack:</span> [ A B C D<br></code></pre></div></td></tr></table></figure>
+<p>Thread2 跳转回 Thread1 后，理想状态下将返回到 B，但是此时栈底是 D，将跳转到 D</p>
+</blockquote>
+<p>用户级线程的核心是<strong>一个线程一个栈</strong> 以及 <strong>Yield()</strong></p>
+<p>应用程序想要切换时，调用 Yield() 函数即可。Yield 会将当前栈指针 <code>%rsp</code> 和其他寄存器保存在 TCB 中，然后找到下一个线程的 TCB，然后取出新 TCB 中的 <code>%rsp</code> 完成栈的切换，并恢复上下文。</p>
+<p><strong>用户级线程的创建</strong> 就是在内存中分配一块地址给 线程的栈 和 TCB，并初始化</p>
+<blockquote>
+<p>用户级线程就是函数调用，在操作系统无多线程的时候有用，不过用户级线程无法处理一个线程堵塞导致其他线程卡死的现象。这种需要核心级线程解决</p>
+</blockquote>
+<h3 id="内核级线程"><a href="#内核级线程" class="headerlink" title="内核级线程"></a>内核级线程</h3><p>核心级线程需要由于涉及到操作系统，因此需要通过中断 <code>int 0x80</code> 进入操作系统内核，通过中断返回 <code>iret</code> 从操作系统返回到用户态代码。</p>
+<p>如果一个线程继续使用一个栈，这个栈中可能存放着一些危险代码，内核在执行时会以内核态的特权级执行，因此不安全，需要将栈分为用户态的栈和内核态的栈。内核态的栈中存放着用户栈的首尾地址和中断进入内核前的 PC 值，以便能够回到原来的地方继续执行，同时内核栈中还存放在中断返回代码的地址。</p>
+<p>内核级线程的切换包括代码的切换（PC指针的切换）、TCB的切换、用户栈的切换和内核栈的切换。PC指针压在栈中，切换的时候弹栈赋值；栈的切换主要是 <code>%rsp</code> 的变化。有5个步骤</p>
+<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20210603222854.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ol>
+<li><p>进入操作系统核心。应用进程通过中断来到操作系统核心，将用户栈的首尾位置、PC指针位置等信息压入内核栈。执行中断处理函数。</p>
+<blockquote>
+<p>用户代码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs assembly">mov %eax, __NR_fork<br>INT 0x80	#进入系统内核<br>mov res, %eax<br></code></pre></div></td></tr></table></figure>
+<p>接下来操作系统就会执行系统调用的函数 <code>system_call</code></p>
+</blockquote>
+</li>
+<li><p>调用 <code>schedule()</code> ，找到下一个执行的线程的 TCB。找到下一个进程的过程在后面进程调度中会介绍</p>
+<blockquote>
+<p>系统调用：<code>system_cal</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs assembly">push %ds ... # 将CPU寄存器记录到内核栈中<br>call sys_fork<br>push %eax<br>...<br>cmpl $0 counter(%eax)	# 判断是否阻塞或超时<br>je schedule()		# 如果阻塞或超时就切换<br>ret_from_sys_call:<br></code></pre></div></td></tr></table></figure>
+<blockquote>
+<p><code>sys_fork</code> 在后面内核级线程的创建会介绍</p>
+</blockquote>
+</blockquote>
+</li>
+<li><p>进行内核栈的切换。根据 TCB 的信息完成内核栈的切换</p>
+<blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs assembly">schedule:<br>	next = ...;<br>	call switch_to(next);<br>switch_to:<br>	TCB[curr].esp = %esp;<br>	%esp = TCB[next].esp;<br></code></pre></div></td></tr></table></figure>
+</blockquote>
+</li>
+<li><p>中断返回。从内核态重新返回为用户态。</p>
+<blockquote>
+<p>系统调用：<code>system_cal</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs assembly">ret_from_sys_call:<br>	popl %eax ...	# 将用户态还原<br>	iret	# 中断返回<br></code></pre></div></td></tr></table></figure>
+</blockquote>
+</li>
+<li><p>进行用户栈的切换。根据中断返回将PC设置为内存栈中的PC，还原之前压入栈的寄存器。</p>
+</li>
+</ol>
+<p><strong>内核级线程的创建</strong> 的关键是为TCP和内存栈申请内存，初始化TCP、内核栈、完成和用户栈的绑定</p>
+<h3 id="进程调度"><a href="#进程调度" class="headerlink" title="进程调度"></a>进程调度</h3><p>应用程序有着不同的性质，一类对反馈性要求高，即希望CPU的切换时间短；另外一类对任务的周转时间要求高，就是希望任务能够尽快做完，即希望CPU给出充足的时间让它一次性做完。</p>
+<p>操作系统的进程调用要尽量满足两种应用的需求。</p>
+<p>常见的调度方法有以下一些部分</p>
+<ul>
+<li>FCFS：先到先服务</li>
+<li>SJF：短作业优先</li>
+<li>RR：时间片轮转</li>
+<li>多极队列调度<ul>
+<li>前台队列 RR</li>
+<li>后台队列 SJF</li>
+</ul>
+</li>
+</ul>
+<p>在实际的操作系统中，使用的是 <strong>多极反馈队列调度</strong>。动态根据应用运行时间和等待时间调节进程的优先级</p>
+<figure class="highlight cpp"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">schedule</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">while</span>(<span class="hljs-literal">true</span>) &#123;<br>        foreach(task : taskqueue) &#123;<br>            <span class="hljs-keyword">if</span>(task.state == TASK_RUNNING &amp;&amp; task.counter &gt; c) &#123; next = task; &#125; &#125;<br>        <span class="hljs-keyword">if</span>(next.counter == <span class="hljs-number">0</span>) &#123;<br>            foreach(task : taskqueue) &#123;<br>                task.counter = (task.counter &gt;&gt; <span class="hljs-number">1</span>) + task.priority;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">else</span> &#123; <span class="hljs-keyword">break</span>; &#125;<br>    &#125;<br>    <span class="hljs-built_in">switch_to</span>(next);<br>&#125;<br></code></pre></div></td></tr></table></figure>
+<h2 id="进程同步"><a href="#进程同步" class="headerlink" title="进程同步"></a>进程同步</h2><p>进程同步使得多个进程之间的合作合理有序</p>
+<h1 id="内存管理"><a href="#内存管理" class="headerlink" title="内存管理"></a>内存管理</h1><h1 id="文件管理"><a href="#文件管理" class="headerlink" title="文件管理"></a>文件管理</h1><h1 id="IO管理"><a href="#IO管理" class="headerlink" title="IO管理"></a>IO管理</h1>
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9B%B8%E5%85%B3/">计算机相关</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/05/02/HUST/ComputerNetworking/">
+                        <span class="hidden-mobile">计算机网络</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"DNr2pgYBNbnn4YMKmdstH2Sw-gzGzoHsz","appKey":"6RRAdTwPs2Y3Tk5iKNo2qo1D","placeholder":"说点什么","path":"window.location.pathname","avatar":"retro","meta":["nick","mail"],"pageSize":10,"lang":"zh-CN","highlight":true,"recordIP":false,"serverURLs":"https://dnr2pgyb.lc-cn-n1-shared.com","emojiCDN":null,"emojiMaps":null,"enableQQ":false,"requiredFields":[],"appid":"DNr2pgYBNbnn4YMKmdstH2Sw-gzGzoHsz","appkey":"6RRAdTwPs2Y3Tk5iKNo2qo1D"},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/mermaid@8.10.1/dist/mermaid.min.js" ></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({"theme":"default"});
+    }
+  </script>
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
