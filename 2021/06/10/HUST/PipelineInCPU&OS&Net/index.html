@@ -1,0 +1,517 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.ico">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="流水线在优化效率中特别常见，这里就对比一下这三块中用到的方法，把他们串起来">
+  <meta name="author" content="Fu Qingchen">
+  <meta name="keywords" content="MSE, CS">
+  
+  <title>CPU、操作系统和网络中的流水线 | Fu&#39;s Web</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/vs2015.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.11","typing":{"enable":false,"typeSpeed":30,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null},"tajs":null},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 50vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Fu's Web</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('https://gitee.com/fuqingchen/picture-lib/raw/master/img/Test_Tree.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="CPU、操作系统和网络中的流水线">
+              
+                CPU、操作系统和网络中的流水线
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-06-10 15:13" pubdate>
+        2021年6月10日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.2k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      12
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">CPU、操作系统和网络中的流水线</h1>
+            
+            <div class="markdown-body">
+              <p>流水线在优化效率中特别常见，这里就对比一下这三块中用到的方法，把他们串起来</p>
+<span id="more"></span>
+<p>从最底层的CPU，再到操作系统，最后到网络一层层向上</p>
+<h1 id="CPU中的流水线"><a href="#CPU中的流水线" class="headerlink" title="CPU中的流水线"></a>CPU中的流水线</h1><p>CPU中，一条指令的执行可以分为 <strong>取指、译码、执行、访存、写回和PC更新</strong> 6个阶段，当执行到某一阶段时，其他电路就会停下来等待，这样就造成了资源的浪费。因此采用流水线当一条指令还没执行完，就开始执行下一条指令。</p>
+<ul>
+<li><p>取指（Fetch）：CPU根据 PC 寄存器从内存中取出指令字节。并从字节中识别指令类型，判断是否含有寄存器指示符、常数等，计算指令长度。</p>
+<blockquote>
+<p>指令类型由 <code>icode</code> 和 <code>ifun</code> 两个值表示</p>
+</blockquote>
+</li>
+<li><p>译码（Decode）：从寄存器文件读取数据</p>
+</li>
+<li><p>执行（Execute）：ALU进行运算（有三种类型的运算：算术逻辑运算、有效地址的计算和 <code>push,pop</code> 指令中栈的计算）</p>
+</li>
+<li><p>访存（Memory）：内存的读写</p>
+</li>
+<li><p>写回（Write back）：将计算结果写回到寄存器中</p>
+</li>
+<li><p>PC更新：将PC设置为下一条指令的地址。当涉及到条件判断时，采用 <strong>分支预测</strong> 策略，先假定要执行其中一个。如果预测失败，在进行相应的回退</p>
+</li>
+</ul>
+<blockquote>
+<p>一条指令执行的 6 个部分不一定全部都执行</p>
+</blockquote>
+<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20210612103026.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<blockquote>
+<p>在第5个时刻，CPU的所有部件都运行起来了</p>
+</blockquote>
+<p>引入流水线后，相邻指令之间就会出现一些问题，可以分为 2 类</p>
+<ul>
+<li>数据冒险：当一条指令的执行需要用到正在运行的指令的结果，如果不进行处理，就会产生错误</li>
+<li>控制冒险：当遇到 <code>jmp,ret</code> 或调用这些指令时，需要计算下一个指令的地址，可能会出现错误</li>
+</ul>
+<h2 id="数据冒险"><a href="#数据冒险" class="headerlink" title="数据冒险"></a>数据冒险</h2><p>解决数据冒险最简单的策略就是 <strong>暂停</strong>，在各个阶段的电路中运行一段空的指令（气泡）。气泡不会改变寄存器和CPU的状态</p>
+<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20210612105638.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>有些数据在写回阶段前就已经计算出了结果，因此为了提高效率，可以直接把执行阶段的计算结果 <strong>转发</strong> 给译码阶段</p>
+<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20210612111310.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<blockquote>
+<p>当然，有些指令到了后期才出结果，就算转发也会出现数据冒险（如 <code>mov (%rbx),  %rax</code> ），这时候就要 转发 + 暂停 结合使用</p>
+</blockquote>
+<h2 id="控制冒险"><a href="#控制冒险" class="headerlink" title="控制冒险"></a>控制冒险</h2><p>当执行 <code>ret</code> 指令时，下一条指令的地址在内存栈中，因此要在访存阶段才会得到下一条指令的地址。再就是 <code>jmp</code> 指令不好预测</p>
+<p>对 <code>ret</code> 指令，就是通过暂停来解决控制冒险</p>
+<p>对 <code>jmp</code> 指令，当发现预测错误，就立即停止正在执行的错误代码，然后向后面的阶段 <strong>插入气泡</strong> ，重新执行正确的代码</p>
+<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20210612113714.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>当然，执行的时候可能出现不止一个错误。采用暂停 + 插入气泡的方式解决</p>
+<h1 id="操作系统中的流水线"><a href="#操作系统中的流水线" class="headerlink" title="操作系统中的流水线"></a>操作系统中的流水线</h1><p>操作系统中的流水线主要就是CPU进程的切换。当进程因为 IO 或超时计时器到时了，操作系统就需要切换应用进程，保证CPU一直处于工作中。</p>
+<p>和CPU中的流水线相比，操作系统麻烦的地方在于数据的保存。由于切换后需要恢复进程的上下文，同时，由于涉及到对操作系统核心的保护，操作系统的切换分成了 5 段</p>
+<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20210612135352.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h1 id="网络中的流水线"><a href="#网络中的流水线" class="headerlink" title="网络中的流水线"></a>网络中的流水线</h1><p>计算机网络中的流水线有两个地方</p>
+<ul>
+<li>应用层 HTTP1.1 中采用持续性链接的 HTTP，在同一个 TCP 连接中，一个请求的响应还没接收就继续发送下一个请求</li>
+<li>传输层中 TCP 连接发送报文段。设置发送缓冲区 &gt; 1 以实现流水线发送，根据接收缓冲区的大小有两种流水方式，第一种是 GBN 协议，另外一种是 SR 协议</li>
+</ul>
+<p>网络中的流水线不需要考虑到计算出错，也不需要考虑恢复状态，因此简单很多，只需要考虑差错恢复。</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>由于不同的使用环境，导致流水线不同的关注重点。CPU要求执行不能出错，因此 CPU 流水线对相邻指令干扰的情况设置了暂停、气泡的方式；操作系统要求切换前后状态不变，因此操作系统流水线设置了 5 段以及映射表的切换，来实现切换前后进程的栈、PCB和内存是不变的；网络丢失了重发就可以，因此只需要考虑差错恢复，设置重发的规则即可。</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9B%B8%E5%85%B3/">计算机相关</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E7%BD%91%E7%BB%9C/">网络</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/06/25/HUST/OperatorSystem/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">操作系统</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/05/02/HUST/ComputerNetworking/">
+                        <span class="hidden-mobile">计算机网络</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"DNr2pgYBNbnn4YMKmdstH2Sw-gzGzoHsz","appKey":"6RRAdTwPs2Y3Tk5iKNo2qo1D","placeholder":"说点什么","path":"window.location.pathname","avatar":"retro","meta":["nick","mail"],"pageSize":10,"lang":"zh-CN","highlight":true,"recordIP":false,"serverURLs":"https://dnr2pgyb.lc-cn-n1-shared.com","emojiCDN":null,"emojiMaps":null,"enableQQ":false,"requiredFields":[],"appid":"DNr2pgYBNbnn4YMKmdstH2Sw-gzGzoHsz","appkey":"6RRAdTwPs2Y3Tk5iKNo2qo1D"},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/mermaid@8.10.1/dist/mermaid.min.js" ></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({"theme":"default"});
+    }
+  </script>
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
