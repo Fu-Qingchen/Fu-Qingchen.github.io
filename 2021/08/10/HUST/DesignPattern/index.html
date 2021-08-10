@@ -14,11 +14,11 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
   <meta name="theme-color" content="#2f4154">
-  <meta name="description" content="本文是 正月点灯笼Linux入门教程 的笔记">
+  <meta name="description" content="设计模式和软件工程作用是差不多的，都是为了更高效的软件开发。">
   <meta name="author" content="Fu Qingchen">
   <meta name="keywords" content="MSE, CS">
   
-  <title>Linux快速入门 | Fu&#39;s Web</title>
+  <title>设计模式 | Fu&#39;s Web</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
 
@@ -163,9 +163,9 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="Linux快速入门">
+            <span class="h2" id="subtitle" title="设计模式">
               
-                Linux快速入门
+                设计模式
               
             </span>
 
@@ -175,8 +175,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2020-11-06 09:55" pubdate>
-        2020年11月6日 上午
+      <time datetime="2021-08-10 21:13" pubdate>
+        2021年8月10日 晚上
       </time>
     </span>
   
@@ -187,7 +187,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      986 字
+      607 字
     </span>
   
 
@@ -197,7 +197,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      12
+      6
        分钟
     </span>
   
@@ -227,92 +227,33 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Linux快速入门</h1>
+            <h1 style="display: none">设计模式</h1>
             
             <div class="markdown-body">
-              <p>本文是 <a target="_blank" rel="noopener" href="https://space.bilibili.com/24014925/channel/detail?cid=12754"><strong>正月点灯笼</strong>Linux入门教程</a> 的笔记</p>
+              <p>设计模式和软件工程作用是差不多的，都是为了更高效的软件开发。</p>
 <span id="more"></span>
-<h1 id="Linux基本命令"><a href="#Linux基本命令" class="headerlink" title="Linux基本命令"></a>Linux基本命令</h1><h2 id="目录操作"><a href="#目录操作" class="headerlink" title="目录操作"></a>目录操作</h2><ul>
-<li><code>pwd</code>：present workspace direction | 当前的位置</li>
-<li><code>cd</code>：跳转目录<ul>
-<li><code>cd ~</code>：跳转到全局变量 <code>HOME</code> 指向的目录</li>
-<li><code>cd ..</code>：返回上一级</li>
-<li><code>cd test</code>：进入当前目录下的 <code>test</code> 文件夹</li>
+<p>设计模式关注的核心问题是在于当产品的 <strong>业务需求</strong> 发生变更时，如何更加 <strong>安全高效</strong> 的开发软件，设计模式的关键是让 <strong>代码复用</strong></p>
+<h1 id="设计原则"><a href="#设计原则" class="headerlink" title="设计原则"></a>设计原则</h1><ul>
+<li><strong>依赖倒置原则</strong>：高层模块（稳定的模块）不应该依赖于底层模块（变化的模块），二者都应该依赖于抽象。抽象（稳定的部分）不应依赖于实现细节（变化的部分），实现细节应该依赖于抽象</li>
+<li><strong>开放封闭原则</strong>：类模块应该是可拓展的，但是不可修改</li>
+<li><strong>单一职责原则</strong>：一个类应该仅有一个引起它变化的原因</li>
+<li><strong>Liskov替换原则</strong>：子类必须能替换它们的基类（Sub <strong>IS A</strong> Base）</li>
+<li><strong>接口隔离原则</strong>：接口应该小而完备，不应强迫客户程序依赖它们不用的方法</li>
+<li><strong>优先使用对象组合，而不是类继承</strong></li>
+<li><strong>封装变化点</strong></li>
+<li><strong>针对接口编程，而不是针对实现编程</strong>：客户端无需知道对象的具体类型，只需要知道对象所具有的接口</li>
 </ul>
-</li>
-<li><code>ls</code>：列出当前目录内的文件和文件夹<ul>
-<li><code>ls -l</code>：将会显示文件和文件夹的详细信息，其中每行前10个字符的形式为 <code>drwxrwxrwx</code> ，第一个字符表示类型：文件夹为 <code>d</code> ，文件为 <code>-</code> ；后面每三个为一组，分别代表 <code>u</code> （作者），<code>g</code> （小组） 和 <code>o</code> （其他）这三类人群的读 <code>r</code> 、写 <code>w</code> 和运行 <code>x</code> 的权限</li>
-</ul>
-</li>
-<li><code>chmod o-rw filename.txt</code> ：去除其他（<code>o</code>）这类人的读（<code>r</code>）写（<code>w</code>）权限</li>
-<li><code>chmod u+x filename.txt</code>：增加作者（<code>u</code>）这类人的运行（<code>x</code>）权限</li>
-</ul>
-<blockquote>
-<p>这里也可以使用二进制更改，如 <code>chmod 444 filename.txt</code> 会使得  <code>filename.txt</code> 文件的权限变为 <code>r--r--r--</code></p>
-</blockquote>
-<h2 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a>文件操作</h2><ul>
-<li><code>cp filename.txt target.txt</code>：将 <code>filename.txt</code> 复制一份并命名为 <code>target.txt</code></li>
-<li><code>mkdir dirname</code>：创建一个名为 <code>dirname</code> 的文件夹</li>
-<li><code>rmdir</code>：删除空文件夹</li>
-<li><code>rm</code>：删除文件（<code>rm -rf dirname</code> 可以实现删除有内容的文件夹，<code>r</code> 代表向下递归，<code>f</code> 代表强制删除）</li>
-</ul>
-<p><span class="label label-danger">Linux没有回收站，需要谨慎使用<code>rm</code> 命令，尤其涉及到 <code>rm -rf</code> </span></p>
-<ul>
-<li><code>touch filename.txt</code>：创建名为 <code>filename.txt</code> 的文件</li>
-<li><code>mv filename.txt tragetname.txt/tragerdir</code> ：将文件重命名为 <code>tragetname.txt</code> 或者把文件移动到 <code>tragetdir</code> 目录下</li>
-<li><code>cat filename.txt</code>：在终端输出 <code>filename.txt</code> 的文件内容</li>
-<li><code>less filename.txt</code>：在终端输出 <code>filename.txt</code> 的文件内容，不过一次加载一面，按 <code>Q</code> 退出</li>
-<li><code>diff filename1.txt filename2.txt</code> ：输出 <code>filename1.txt</code> 和 <code>filename2.txt</code> 中不同的地方</li>
-<li><code>head filename.txt -n 6</code>：查看 <code>filename.txt</code> 文件前 6 行的内容</li>
-<li><code>tail filename.txt -n6</code>：查看 <code>filename.txt</code> 文件后 6 行的内容</li>
-<li><code>wc filename.txt</code>：查看 <code>filename.txt</code> 的行数(<code>-l</code>)、单词书(<code>-w</code>)和字符数(<code>-c</code>)</li>
-</ul>
-<h2 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h2><ul>
-<li><code>grep Text filename.txt</code>：在 <code>filename.txt</code> 中查找 <code>Text</code> ，会把所有存在的输出（所在的那一行打印）<ul>
-<li><code>grep TT* filename.txt</code> ：首字母是 <code>T</code>，随后跟着0~n个 <code>T</code> 所在的那一行</li>
-<li><code>grep ^Tex filename.txt</code> ：以 <code>Tex</code> 开头的那一行</li>
-<li><code>grep T.xt filename.txt</code>：存在 <code>T</code> <code>任意字母</code> <code>xt</code> 的那一行，如 <code>Text</code> 和 <code>Taxt</code></li>
-<li><code>grep [Tt]ex[A-Za-z] filename.txt</code>：包含首字母是 <code>T</code> 或 <code>t</code> ，中间是 <code>ex</code> ，最后一个是任意字母序列的那一行</li>
-</ul>
-</li>
-</ul>
-<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><ul>
-<li><code>date</code>：当前日期时间</li>
-<li><code>cal</code>：当月日历<ul>
-<li><code>cal 2020</code></li>
-<li><code>cal 1 2020</code></li>
-</ul>
-</li>
-<li><code>grep tex filename.txt | wc</code> ：<code>|</code> 表示命令的组合，把 <code>|</code> 前面得出的结果传递给这个符号后面的命令，这个例子的输出是统计 <code>filename.txt</code> 文件里包含 <code>tex</code> 序列的行数、单词书和字符数</li>
-</ul>
-<h1 id="Shell脚本"><a href="#Shell脚本" class="headerlink" title="Shell脚本"></a>Shell脚本</h1><ul>
-<li>Linux的脚本文件以 <code>.sh</code>结尾，使用 <code>sh test.sh</code> 运行（当有 <strong>数组</strong> 时，使用 <code>bash test.sh</code> ）</li>
-<li><code>&gt;</code> 和 <code>&lt;</code> ：重定向命令，把输出打到文件或者把文件内容当成输入</li>
-<li><code>a=10</code>：给变量 <code>a</code> 赋值为 10，注意 <code>=</code> 两端不能有空格</li>
-<li><code>$a</code> ：使用变量 <code>a</code> </li>
-<li><code>echo $a Text</code>：输出的命令，相当于 <code>cout &lt;&lt; a &lt;&lt; &quot; Text&quot;;</code> </li>
-<li><code>read a</code> 输入保存到变量 <code>a</code></li>
-<li><p><code>c=&#39;expr $a + $b&#39;</code> ：计算表达式，其中 <code>&#39;</code> 是键盘上 <code>~</code> 对应的飘号，注意运算符两边要有空格</p>
-</li>
-<li><p><code>*,(,)</code>号无法当作乘号，应该在前面加上转义符号 <code>\</code> </p>
-</li>
-<li><p>判断</p>
-<figure class="highlight sh"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs sh"><span class="hljs-keyword">if</span> [ <span class="hljs-variable">$a</span> -gt <span class="hljs-variable">$b</span> ]<br><span class="hljs-keyword">then</span><br>	<span class="hljs-built_in">echo</span> <span class="hljs-variable">$a</span><br><span class="hljs-keyword">else</span> <br>	<span class="hljs-built_in">echo</span> <span class="hljs-variable">$b</span><br><span class="hljs-keyword">fi</span><br></code></pre></div></td></tr></table></figure>
-<ul>
-<li>对于数字，用 <code>-gt,-lt,-gq,le,-eq,-ne</code> 表示 $\gt,\lt,\ge,\le,=,\ne$</li>
-<li>对于字符串，可以直接使用 <code>&gt;,=,&lt;</code></li>
-</ul>
-</li>
-<li><p>循环</p>
-<figure class="highlight sh"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs sh"><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> 1..3<br><span class="hljs-keyword">do</span><br>	<span class="hljs-built_in">echo</span> <span class="hljs-variable">$i</span><br><span class="hljs-keyword">done</span><br>a=10<br><span class="hljs-keyword">while</span> [a -gt 0]<br><span class="hljs-keyword">do</span><br>	<span class="hljs-built_in">echo</span> <span class="hljs-variable">$a</span><br>	a=`expr <span class="hljs-variable">$a</span> - 1`<br><span class="hljs-keyword">done</span><br></code></pre></div></td></tr></table></figure>
-</li>
-<li><p><code>-z a</code> ：判断 <code>a</code> 是否是空，相反，用 <code>-n</code> 可以判断 <code>a</code> 是否不空</p>
-</li>
-<li>数组初始化：<code>array=(1 2 3)</code></li>
-<li>数组元素的使用：<code>echo $&#123;array[2]&#125;</code></li>
-<li>数组的遍历</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash"><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-variable">$&#123;array[@]&#125;</span><br><span class="hljs-keyword">do</span><br>	<span class="hljs-built_in">echo</span> <span class="hljs-variable">$i</span><br><span class="hljs-keyword">done</span><br></code></pre></div></td></tr></table></figure>
+<h1 id="常见设计模式"><a href="#常见设计模式" class="headerlink" title="常见设计模式"></a>常见设计模式</h1><h2 id="模板方法模式"><a href="#模板方法模式" class="headerlink" title="模板方法模式"></a>模板方法模式</h2><p>子类决定如何实现算法步骤</p>
+<p>在一个方法中定义算法的骨架，将算法的一些步骤延迟到子类中。模板算法可以使得子类在不改变算法结构的情况下，重新定义算法中的某些步骤。</p>
+<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20210716110223.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="策略模式"><a href="#策略模式" class="headerlink" title="策略模式"></a>策略模式</h2><p>封装可交换的行为，然后用委托决定使用哪一个。</p>
+<p>策略模式定义了算法族，分别封装起来，让他们可以替换，这种模式让算法独立于用户。</p>
+<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20210716111022.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>这种模式提供了用条件判断语句以外的另一种选择，消除条件判断语句，就是在解耦合。含有许多条件判断语句的代码通常都需要Strategy模式。</p>
+<h2 id="观察者模式"><a href="#观察者模式" class="headerlink" title="观察者模式"></a>观察者模式</h2><p>类似与 Qt 的信号槽机制，就是当一个类发生变化时，通知其他所有相关联的类。</p>
+<p>观察者模式定义了一对多的依赖，当一个对象改变状态时，他的所有依赖者都会收到通知并自动更新。</p>
+<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20210716111611.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="单例模式"><a href="#单例模式" class="headerlink" title="单例模式"></a>单例模式</h2><h2 id="工厂模式"><a href="#工厂模式" class="headerlink" title="工厂模式"></a>工厂模式</h2><h2 id="代理模式"><a href="#代理模式" class="headerlink" title="代理模式"></a>代理模式</h2>
             </div>
             <hr>
             <div>
@@ -329,7 +270,7 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/linux/">linux</a>
+                      <a class="hover-with-bg" href="/tags/%E8%BD%AF%E4%BB%B6/">软件</a>
                     
                   </div>
                 
@@ -346,18 +287,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2020/11/21/HUST/LearnCPP/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">C++ Primer 阅读笔记</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2020/10/03/HUST/NumbericalAnalysis/">
-                        <span class="hidden-mobile">数值分析笔记</span>
+                      <a href="/2021/08/09/HUST/LinuxCrash/">
+                        <span class="hidden-mobile">Linux快速入门</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

@@ -1,0 +1,652 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.ico">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="本文是 Liunx 命令行和一些小工具的笔记，方便忘记了回顾用">
+  <meta name="author" content="Fu Qingchen">
+  <meta name="keywords" content="MSE, CS">
+  
+  <title>Linux快速入门 | Fu&#39;s Web</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/vs2015.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.11","typing":{"enable":false,"typeSpeed":30,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null},"tajs":null},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 50vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Fu's Web</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('https://gitee.com/fuqingchen/picture-lib/raw/master/img/Test_Tree.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="Linux快速入门">
+              
+                Linux快速入门
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-08-09 09:55" pubdate>
+        2021年8月9日 上午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.7k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      21
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Linux快速入门</h1>
+            
+            <div class="markdown-body">
+              <p>本文是 Liunx 命令行和一些小工具的笔记，方便忘记了回顾用</p>
+<span id="more"></span>
+<h1 id="Linux基本命令"><a href="#Linux基本命令" class="headerlink" title="Linux基本命令"></a>Linux基本命令</h1><h2 id="目录操作"><a href="#目录操作" class="headerlink" title="目录操作"></a>目录操作</h2><ul>
+<li><code>pwd</code>：present workspace direction | 当前的位置</li>
+<li><code>cd</code>：跳转目录<ul>
+<li><code>cd ~</code>：跳转到全局变量 <code>HOME</code> 指向的目录</li>
+<li><code>cd ..</code>：返回上一级</li>
+<li><code>cd test</code>：进入当前目录下的 <code>test</code> 文件夹</li>
+</ul>
+</li>
+<li><code>ls</code>：列出当前目录内的文件和文件夹<ul>
+<li><code>ls -l</code>：将会显示文件和文件夹的详细信息，其中每行前10个字符的形式为 <code>drwxrwxrwx</code> ，第一个字符表示类型：文件夹为 <code>d</code> ，文件为 <code>-</code> ；后面每三个为一组，分别代表 <code>u</code> （作者），<code>g</code> （小组） 和 <code>o</code> （其他）这三类人群的读 <code>r</code> 、写 <code>w</code> 和运行 <code>x</code> 的权限</li>
+</ul>
+</li>
+<li><code>chmod o-rw filename.txt</code> ：去除其他（<code>o</code>）这类人的读（<code>r</code>）写（<code>w</code>）权限</li>
+<li><code>chmod u+x filename.txt</code>：增加作者（<code>u</code>）这类人的运行（<code>x</code>）权限</li>
+</ul>
+<blockquote>
+<p>这里也可以使用二进制更改，如 <code>chmod 444 filename.txt</code> 会使得  <code>filename.txt</code> 文件的权限变为 <code>r--r--r--</code></p>
+</blockquote>
+<h2 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a>文件操作</h2><ul>
+<li><code>cp filename.txt target.txt</code>：将 <code>filename.txt</code> 复制一份并命名为 <code>target.txt</code></li>
+<li><code>mkdir dirname</code>：创建一个名为 <code>dirname</code> 的文件夹</li>
+<li><code>rmdir</code>：删除空文件夹</li>
+<li><code>rm</code>：删除文件（<code>rm -rf dirname</code> 可以实现删除有内容的文件夹，<code>r</code> 代表向下递归，<code>f</code> 代表强制删除）</li>
+</ul>
+<p><span class="label label-danger">Linux没有回收站，需要谨慎使用<code>rm</code> 命令，尤其涉及到 <code>rm -rf</code> </span></p>
+<ul>
+<li><code>touch filename.txt</code>：创建名为 <code>filename.txt</code> 的文件</li>
+<li><code>mv filename.txt tragetname.txt/tragerdir</code> ：将文件重命名为 <code>tragetname.txt</code> 或者把文件移动到 <code>tragetdir</code> 目录下</li>
+<li><code>cat filename.txt</code>：在终端输出 <code>filename.txt</code> 的文件内容</li>
+<li><code>less filename.txt</code>：在终端输出 <code>filename.txt</code> 的文件内容，不过一次加载一面，按 <code>Q</code> 退出</li>
+<li><code>diff filename1.txt filename2.txt</code> ：输出 <code>filename1.txt</code> 和 <code>filename2.txt</code> 中不同的地方</li>
+<li><code>head filename.txt -n 6</code>：查看 <code>filename.txt</code> 文件前 6 行的内容</li>
+<li><code>tail filename.txt -n6</code>：查看 <code>filename.txt</code> 文件后 6 行的内容</li>
+<li><code>wc filename.txt</code>：查看 <code>filename.txt</code> 的行数(<code>-l</code>)、单词书(<code>-w</code>)和字符数(<code>-c</code>)</li>
+<li><code>find</code>：文件查找指令<ul>
+<li><code>find . -name filename.txt -type -d</code>  ：在当前目录下查找名字为 <code>filename.txt</code> 的文件夹（<code>type -f</code> 表示文件）</li>
+<li><code>find / -size +10M</code>：找到所有文件大小大于 10M 的文件</li>
+<li><code>find / -ctime -1</code>：找到所有修改时间在一天内的文件 （可替换为<code>-cmin</code>表示1min之内修改，<code>+1</code> 表示一天/min前修改的文件，<code>c</code> 表示更改、<code>a</code> 表示读）</li>
+<li><code>find . -maxdepth 3 -name filename.txt</code> ：找到当前文件夹下文件层数最多为3文件名称为 <code>filename</code> 的文件</li>
+</ul>
+</li>
+</ul>
+<h2 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h2><ul>
+<li><code>grep Text filename.txt</code>：在 <code>filename.txt</code> 中查找 <code>Text</code> ，会把所有存在的输出（所在的那一行打印）<ul>
+<li><code>grep TT* filename.txt</code> ：首字母是 <code>T</code>，随后跟着0~n个 <code>T</code> 所在的那一行</li>
+<li><code>grep ^Tex filename.txt</code> ：以 <code>Tex</code> 开头的那一行</li>
+<li><code>grep T.xt filename.txt</code>：存在 <code>T</code> <code>任意字母</code> <code>xt</code> 的那一行，如 <code>Text</code> 和 <code>Taxt</code></li>
+<li><code>grep [Tt]ex[A-Za-z] filename.txt</code>：包含首字母是 <code>T</code> 或 <code>t</code> ，中间是 <code>ex</code> ，最后一个是任意字母序列的那一行</li>
+<li><code>grep -n Text filename.txt</code> ：输出行号</li>
+<li><code>-r</code>：递归子路径</li>
+<li><code>-A 2</code>：输出找到的那一行和它下面2行（After）</li>
+<li><code>-B 2</code> ：输出找到的那一行和它上面2行（Before）</li>
+</ul>
+</li>
+</ul>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><ul>
+<li><code>date</code>：当前日期时间</li>
+<li><code>cal</code>：当月日历<ul>
+<li><code>cal 2020</code></li>
+<li><code>cal 1 2020</code></li>
+</ul>
+</li>
+<li><code>grep tex filename.txt | wc</code> ：<code>|</code> 表示命令的组合，把 <code>|</code> 前面得出的结果传递给这个符号后面的命令，这个例子的输出是统计 <code>filename.txt</code> 文件里包含 <code>tex</code> 序列的行数、单词书和字符数</li>
+</ul>
+<h1 id="Shell脚本"><a href="#Shell脚本" class="headerlink" title="Shell脚本"></a>Shell脚本</h1><ul>
+<li>Linux的脚本文件以 <code>.sh</code>结尾，使用 <code>sh test.sh</code> 运行（当有 <strong>数组</strong> 时，使用 <code>bash test.sh</code> ）</li>
+<li><code>&gt;</code> 和 <code>&lt;</code> ：重定向命令，把输出打到文件或者把文件内容当成输入</li>
+<li><code>a=10</code>：给变量 <code>a</code> 赋值为 10，注意 <code>=</code> 两端不能有空格</li>
+<li><code>$a</code> ：使用变量 <code>a</code> </li>
+<li><code>echo $a Text</code>：输出的命令，相当于 <code>cout &lt;&lt; a &lt;&lt; &quot; Text&quot;;</code> </li>
+<li><code>read a</code> 输入保存到变量 <code>a</code></li>
+<li><p><code>c=&#39;expr $a + $b&#39;</code> ：计算表达式，其中 <code>&#39;</code> 是键盘上 <code>~</code> 对应的飘号，注意运算符两边要有空格</p>
+</li>
+<li><p><code>*,(,)</code>号无法当作乘号，应该在前面加上转义符号 <code>\</code> </p>
+</li>
+<li><p>判断</p>
+<figure class="highlight sh"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs sh"><span class="hljs-keyword">if</span> [ <span class="hljs-variable">$a</span> -gt <span class="hljs-variable">$b</span> ]<br><span class="hljs-keyword">then</span><br>	<span class="hljs-built_in">echo</span> <span class="hljs-variable">$a</span><br><span class="hljs-keyword">else</span> <br>	<span class="hljs-built_in">echo</span> <span class="hljs-variable">$b</span><br><span class="hljs-keyword">fi</span><br></code></pre></div></td></tr></table></figure>
+<ul>
+<li>对于数字，用 <code>-gt,-lt,-gq,le,-eq,-ne</code> 表示 $\gt,\lt,\ge,\le,=,\ne$</li>
+<li>对于字符串，可以直接使用 <code>&gt;,=,&lt;</code></li>
+</ul>
+</li>
+<li><p>循环</p>
+<figure class="highlight sh"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs sh"><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> 1..3<br><span class="hljs-keyword">do</span><br>	<span class="hljs-built_in">echo</span> <span class="hljs-variable">$i</span><br><span class="hljs-keyword">done</span><br>a=10<br><span class="hljs-keyword">while</span> [a -gt 0]<br><span class="hljs-keyword">do</span><br>	<span class="hljs-built_in">echo</span> <span class="hljs-variable">$a</span><br>	a=`expr <span class="hljs-variable">$a</span> - 1`<br><span class="hljs-keyword">done</span><br></code></pre></div></td></tr></table></figure>
+</li>
+<li><p><code>-z a</code> ：判断 <code>a</code> 是否是空，相反，用 <code>-n</code> 可以判断 <code>a</code> 是否不空</p>
+</li>
+<li>数组初始化：<code>array=(1 2 3)</code></li>
+<li>数组元素的使用：<code>echo $&#123;array[2]&#125;</code></li>
+<li>数组的遍历</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash"><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-variable">$&#123;array[@]&#125;</span><br><span class="hljs-keyword">do</span><br>	<span class="hljs-built_in">echo</span> <span class="hljs-variable">$i</span><br><span class="hljs-keyword">done</span><br></code></pre></div></td></tr></table></figure>
+<h1 id="Vim"><a href="#Vim" class="headerlink" title="Vim"></a>Vim</h1><p>编辑器</p>
+<h1 id="GCC"><a href="#GCC" class="headerlink" title="GCC"></a>GCC</h1><p>编译器</p>
+<blockquote>
+<p>官方文档：<a target="_blank" rel="noopener" href="https://gcc.gnu.org/onlinedocs/gcc-11.2.0/gcc.pdf">https://gcc.gnu.org/onlinedocs/gcc-11.2.0/gcc.pdf</a></p>
+</blockquote>
+<h2 id="阶段停止的命令"><a href="#阶段停止的命令" class="headerlink" title="阶段停止的命令"></a>阶段停止的命令</h2><pre><code class=" mermaid">graph LR
+	A[hello.cpp] --预处理器-E--&gt; B[hello.i]
+	B --编译器-S--&gt; C[hello.s]
+	C --汇编器-c--&gt; D[hello.o]
+	D --链接器--&gt; E[hello]
+	F[printf.o] --链接器--&gt; E[hello]
+</code></pre>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:left">选项</th>
+<th style="text-align:left">解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>-E</code></td>
+<td style="text-align:left">只运行预编译器，生成修改了的源程序文本文件</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>-S</code></td>
+<td style="text-align:left">只运行到编译器，生成汇编程序（文本文件）</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>-c</code></td>
+<td style="text-align:left">只运行到汇编器，生成二进制的可重定位目标程序</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="debug相关"><a href="#debug相关" class="headerlink" title="debug相关"></a>debug相关</h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:left">选项</th>
+<th style="text-align:left">解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>-g</code></td>
+<td style="text-align:left">生成调试信息。GNU 调试器可利用该信息。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>-Og</code></td>
+<td style="text-align:left">不进行优化处理。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>-O1</code> <code>-O2</code> <code>-O3</code></td>
+<td style="text-align:left">优化生成代码，数字越大，优化程度越高</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="其他-1"><a href="#其他-1" class="headerlink" title="其他"></a>其他</h2><h3 id="gcc-命令的常用选项"><a href="#gcc-命令的常用选项" class="headerlink" title="gcc 命令的常用选项"></a>gcc 命令的常用选项</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:left">选项</th>
+<th style="text-align:left">解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>-o FILE</code></td>
+<td style="text-align:left">生成指定的输出文件，用在生成可执行文件时</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>-pthread</code></td>
+<td style="text-align:left">用于生成多线程的可执行文件</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h1 id="GDB"><a href="#GDB" class="headerlink" title="GDB"></a>GDB</h1><p>调试器</p>
+<h1 id="Makefile"><a href="#Makefile" class="headerlink" title="Makefile"></a>Makefile</h1><p>解决多文件编译输入命令麻烦的问题</p>
+<p>假如有以下文件需要编译成一个可执行程序</p>
+<pre><code class=" mermaid">graph LR
+	main.cpp
+	main.cpp --&gt; math.cpp --&gt; math.h
+	main.cpp --&gt; tool.cpp --&gt; tool.h
+</code></pre>
+<p>用下面的命令可以将这些程序编译为名字为 <code>main</code> 的可执行程序</p>
+<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">g++ main.cpp math.cpp tool.cpp -o main<br></code></pre></div></td></tr></table></figure>
+<p>但是当文件很多时，这样写就很麻烦，这时候就需要 Makefile 了</p>
+<figure class="highlight makefile"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs makefile">CC = g++	<span class="hljs-comment"># 定义变量</span><br><span class="hljs-section">main: main.cpp math.o tool.o	# 从这一句开始一次查找依赖, 发现需要 math.o tool.o</span><br>	<span class="hljs-variable">$(CC)</span> main.cpp math.o tool.o -o main<br><span class="hljs-section">math.o: math.cpp	# 构建 main 需要 math.o, 执行这一步</span><br>	<span class="hljs-variable">$(CC)</span> -c math.cpp<br><span class="hljs-section">tool.o: tool.cpp	# 同上</span><br>	<span class="hljs-variable">$(CC)</span> -c tool.cpp<br><span class="hljs-section">clear:				# 构建 main 不需要执行 clear, 因此不会执行这一步</span><br>	rm *.o main<br></code></pre></div></td></tr></table></figure>
+<p>Makefile文件的名称必须是 <code>Makefile</code> 或 <code>makefile</code> ，编译的时候，在命令行中执行下面的语句就可以了</p>
+<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">make<br></code></pre></div></td></tr></table></figure>
+<p>执行 <code>clear</code> 执行需要在命令行中执行</p>
+<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">make clear<br></code></pre></div></td></tr></table></figure>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9B%B8%E5%85%B3/">计算机相关</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/linux/">linux</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/08/10/HUST/DesignPattern/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">设计模式</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/06/25/HUST/OperatorSystem/">
+                        <span class="hidden-mobile">操作系统</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"DNr2pgYBNbnn4YMKmdstH2Sw-gzGzoHsz","appKey":"6RRAdTwPs2Y3Tk5iKNo2qo1D","placeholder":"说点什么","path":"window.location.pathname","avatar":"retro","meta":["nick","mail"],"pageSize":10,"lang":"zh-CN","highlight":true,"recordIP":false,"serverURLs":"https://dnr2pgyb.lc-cn-n1-shared.com","emojiCDN":null,"emojiMaps":null,"enableQQ":false,"requiredFields":[],"appid":"DNr2pgYBNbnn4YMKmdstH2Sw-gzGzoHsz","appkey":"6RRAdTwPs2Y3Tk5iKNo2qo1D"},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/mermaid@8.10.1/dist/mermaid.min.js" ></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({"theme":"default"});
+    }
+  </script>
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
