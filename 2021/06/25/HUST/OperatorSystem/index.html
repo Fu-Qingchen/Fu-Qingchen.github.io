@@ -434,7 +434,7 @@
 <h4 id="出现原因"><a href="#出现原因" class="headerlink" title="出现原因"></a>出现原因</h4><ul>
 <li><strong>资源互斥</strong>：资源不等被共享，1 个资源只能 1 个进程用</li>
 <li><strong>不可剥夺</strong>：进程已经获得的资源，只能由这个进程释放</li>
-<li><strong>请求保持</strong>：一个进程对一个资源进行请求后，如果发生阻塞，不会释放掉已经占用的资源</li>
+<li><strong>占有等待</strong>：已经得到了某个资源的进程可以再请求新的资源</li>
 <li><strong>循环等待</strong>：若干进程形成首尾相接的环状请求等待链</li>
 </ul>
 <h4 id="死锁预防"><a href="#死锁预防" class="headerlink" title="死锁预防"></a>死锁预防</h4><ul>
@@ -606,11 +606,17 @@ sector=blocknr\times\text{blocksize}</script><p>其中，<code>blocksize</code> 
 <p>UNIX采用的是多极索引，小文件不索引，中等文件一级索引，大文件二级索引</p>
 <p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20210624211552.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>在访问时，根据文件找到其FCB，然后根据偏移量的大小分别进行直接读取、一级索引、二级索引操作，得到系统的盘块号，然后根据盘块号计算CHS，进行数据的读取。而 <code>file</code> 变量与文件的 FCB有关</p>
+<blockquote>
+<p>FCB也称为 <code>iNode</code> 。在 Linux 操作系统中，可以使用 <code>df -i</code> 查看 FCB 的使用情况</p>
+</blockquote>
 <h3 id="抽象5：从文件名到文件"><a href="#抽象5：从文件名到文件" class="headerlink" title="抽象5：从文件名到文件"></a>抽象5：从文件名到文件</h3><p>这层抽象处理从文件名找到FCB，即 <code>ofstream file(&quot;Demo.txt&quot;);</code> </p>
 <p>磁盘在用户眼中是一颗目录树。因此，磁盘管理器和操作系统就需要将树构造出来。目录的信息存放在 FCB 中（目录和文件都有 FCB ）。每一层目录的FCB中都存放一个散列表，里面存放 <code>&lt;string name, int number&gt;</code> (key 是 文件/目录名，value是文件的/目录的FCB号)。</p>
 <p>进行目录解析时，例如当前目录为 <code>/data</code> 要进入子目录 <code>/data/test</code> ，操作系统会在 <code>/data</code> FCB中的 inode 数组中匹配 <code>test</code> ，得到 <code>/data/test</code> 的 FCB号，然后根据 FCB号就可以读到 <code>/data/test</code> 的 FCB，也就进入了 <code>/data/test</code> 目录，迭代下去就可以找到最终的文件。</p>
 <p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20210625101016.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>当磁盘格式化的时候，会在 0 位置存放一些信息：引导块、超级块、空间空闲管理、FCB、根目录和数据区。（超级块中存放超级块、空闲空间管理等的大小）操作系统在启动的时候就会根据超级块中存放的信息将根目录的 FCB 找到。</p>
+<blockquote>
+<p>在Linux操作系统中，可以使用<code>ls -i</code> 查看FCB号</p>
+</blockquote>
 <h2 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h2><p>操作系统管理磁盘的步骤是</p>
 <p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/%E7%A3%81%E7%9B%98%E5%A4%9A%E8%BF%9B%E7%A8%8B%E9%98%9F%E5%88%97.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ol>

@@ -187,7 +187,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.7k 字
+      1.9k 字
     </span>
   
 
@@ -197,7 +197,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      21
+      23
        分钟
     </span>
   
@@ -269,7 +269,12 @@
 <li><code>find</code>：文件查找指令<ul>
 <li><code>find . -name filename.txt -type -d</code>  ：在当前目录下查找名字为 <code>filename.txt</code> 的文件夹（<code>type -f</code> 表示文件）</li>
 <li><code>find / -size +10M</code>：找到所有文件大小大于 10M 的文件</li>
-<li><code>find / -ctime -1</code>：找到所有修改时间在一天内的文件 （可替换为<code>-cmin</code>表示1min之内修改，<code>+1</code> 表示一天/min前修改的文件，<code>c</code> 表示更改、<code>a</code> 表示读）</li>
+<li><code>find / -ctime -1</code>：找到所有修改时间在一天内的文件 （可替换为<code>-cmin</code>表示1min之内修改，<code>+1</code> 表示一天/min前修改的文件，<code>c</code> 表示更改、<code>a</code> 表示读）<ul>
+<li><code>-ctime</code>：文件 <code>iNode</code> 信息发生改变</li>
+<li><code>-mtime</code>：文件内容发生改变</li>
+<li><code>-atime</code>：文件查看</li>
+</ul>
+</li>
 <li><code>find . -maxdepth 3 -name filename.txt</code> ：找到当前文件夹下文件层数最多为3文件名称为 <code>filename</code> 的文件</li>
 </ul>
 </li>
@@ -325,6 +330,46 @@
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash"><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-variable">$&#123;array[@]&#125;</span><br><span class="hljs-keyword">do</span><br>	<span class="hljs-built_in">echo</span> <span class="hljs-variable">$i</span><br><span class="hljs-keyword">done</span><br></code></pre></div></td></tr></table></figure>
 <h1 id="Vim"><a href="#Vim" class="headerlink" title="Vim"></a>Vim</h1><p>编辑器</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:left">命令</th>
+<th style="text-align:left">解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>:w</code></td>
+<td style="text-align:left">保存文件</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>:q</code></td>
+<td style="text-align:left">关闭文件，<code>:wq</code> 表示保存并关闭文件，<code>:q！</code> 表示强制关闭文件</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>j/J</code> <code>k/K</code> <code>h/H</code> <code>l/L</code></td>
+<td style="text-align:left">让光标进行上、下、左、右的移动</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>3gg/GG</code> <code>3j/J</code> <code>3k/K</code></td>
+<td style="text-align:left">让光标移动到第3行、光标向上移动3行、光标向下移动3行</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>/string</code></td>
+<td style="text-align:left">查找字符串 <code>string</code> 文件中的所有该字符串都会高亮显示 <code>n/N</code> 可以让光标定位到下一个 <code>string</code>。 <code>Ctrl+n/N</code> 可以让光标定位到上一个 <code>string</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>CC</code> <code>Y</code> <code>P</code> <code>U</code></td>
+<td style="text-align:left">剪切所在行、复制、粘贴、撤销</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>V</code></td>
+<td style="text-align:left">进入 Visual 模式，可以大规模选中</td>
+</tr>
+</tbody>
+</table>
+</div>
 <h1 id="GCC"><a href="#GCC" class="headerlink" title="GCC"></a>GCC</h1><p>编译器</p>
 <blockquote>
 <p>官方文档：<a target="_blank" rel="noopener" href="https://gcc.gnu.org/onlinedocs/gcc-11.2.0/gcc.pdf">https://gcc.gnu.org/onlinedocs/gcc-11.2.0/gcc.pdf</a></p>
@@ -454,9 +499,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2021/08/10/HUST/DesignPattern/">
+                      <a href="/2021/08/10/HUST/CPPInterview/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">设计模式</span>
+                        <span class="hidden-mobile">C++面试突击</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     

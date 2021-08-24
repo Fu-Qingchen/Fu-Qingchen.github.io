@@ -1,0 +1,798 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.ico">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="设计模式和软件工程作用是差不多的，都是为了更高效的软件开发">
+  <meta name="author" content="Fu Qingchen">
+  <meta name="keywords" content="MSE, CS">
+  
+  <title>设计模式 | Fu&#39;s Web</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/vs2015.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.11","typing":{"enable":false,"typeSpeed":30,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null},"tajs":null},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 50vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Fu's Web</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('https://gitee.com/fuqingchen/picture-lib/raw/master/img/Test_Tree.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="设计模式">
+              
+                设计模式
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-08-22 21:13" pubdate>
+        2021年8月22日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      3.1k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      36
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">设计模式</h1>
+            
+            <div class="markdown-body">
+              <p>设计模式和软件工程作用是差不多的，都是为了更高效的软件开发</p>
+<span id="more"></span>
+<p>设计模式是软件开发中一个些典型问题的解决方法。设计模式主要关心当产品的 <strong>业务需求</strong> 发生变更时，要怎么做，让软件开发更加<strong>安全高效</strong></p>
+<p>软件的开发需要依据一些设计原则，违反了这些设计原则后，开发就会因为业务需求的变化而变的十分困难。这时候，就需要用到设计模式了</p>
+<p>设计模式有三大类</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">类别</th>
+<th style="text-align:center">特点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">创造型</td>
+<td style="text-align:center">关注类的创建，提供创造类的对象的机制</td>
+</tr>
+<tr>
+<td style="text-align:center">行为型</td>
+<td style="text-align:center">关注类的通讯和职责委派</td>
+</tr>
+<tr>
+<td style="text-align:center">结构型</td>
+<td style="text-align:center">介绍如何将对象和类组装成较大的结构</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h1 id="UML类图"><a href="#UML类图" class="headerlink" title="UML类图"></a>UML类图</h1><pre><code class=" mermaid">classDiagram
+Delivered --|&gt; Base : 继承
+Realization ..|&gt; Interface : 实现
+Penguin --&gt; Climate : 关联
+LiHua --o Chinese : 聚合
+Wing --* Bird : 组合
+Animal ..&gt; Water : 依赖
+</code></pre>
+<ul>
+<li>关联：一个类需要知道另外一个类的一些消息</li>
+<li>聚合：一种弱的拥有关系，体现的是A对象可以包含B对象，但是B对象不是A对象的一部分</li>
+<li>组合：一种强的拥有关系，体现部分和整体的关系，部分和整体的声明周期是相同的</li>
+</ul>
+<h1 id="设计原则-Design-Principles"><a href="#设计原则-Design-Principles" class="headerlink" title="设计原则 | Design Principles"></a>设计原则 | Design Principles</h1><ul>
+<li><p>依赖倒置原则</p>
+<ul>
+<li>高层模块不应该依赖于底层模块，两者都应该依赖与抽象</li>
+<li>抽象不应该依赖于细节。细节应该依赖抽象</li>
+</ul>
+<blockquote>
+<p>针对接口（抽象）编程，不要针对实现（细节）编程</p>
+</blockquote>
+</li>
+<li><p>单一职责原则</p>
+<ul>
+<li>一个类只应该有一个影响它变化的因素</li>
+</ul>
+<blockquote>
+<p>类的职责过多的话，当每一处的需求发生变化的话就会牵一发而动全身，把指着分开则可以实现代码的高效复用</p>
+</blockquote>
+</li>
+<li><p>开放封闭原则</p>
+<ul>
+<li>类应该是可拓展的，但是不可修改的</li>
+</ul>
+<blockquote>
+<p>可拓展是为了应对变化，不可修改是为了防止错误</p>
+</blockquote>
+</li>
+<li><p>里氏替换原则</p>
+<ul>
+<li>子类应该可以替换父类（IS-A）</li>
+</ul>
+</li>
+<li><p>接口隔离原则</p>
+<ul>
+<li>接口应该小而完整</li>
+</ul>
+</li>
+<li><p>优先使用对象组合，而不是类继承</p>
+<ul>
+<li>类的继承是白箱复用，对象组合是黑箱组合</li>
+<li>类继承破坏了封装性，子类父类耦合性高</li>
+<li>而对象组合则只要求被组合的对象具有良好定义的接口</li>
+</ul>
+</li>
+<li><p>封装变化点</p>
+<ul>
+<li>应该将变化的部分和稳定的部分分开，设计者可以在分界的一侧进行修改，而不会对另一侧产生不良的影响，从而实现层次间的松耦合</li>
+</ul>
+</li>
+<li><p>针对接口编程，而不是针对实现编程</p>
+<ul>
+<li>不将变量类型声明为某个特定的具体类，而是声明为某个接口</li>
+<li>客户程序无需获知对象的具体类型，只需要知道对象所具有的接口</li>
+<li>减少系统中各部分的依赖关系，从而实现“高内聚、松耦合”的类型设计方案</li>
+</ul>
+</li>
+</ul>
+<h1 id="创造型模式-Creational-Patterns"><a href="#创造型模式-Creational-Patterns" class="headerlink" title="创造型模式 | Creational Patterns"></a>创造型模式 | Creational Patterns</h1><p>提供创建对象的机制， 增加已有代码的灵活性和可复用性</p>
+<p>主要的措施是绕开 <code>new</code> 然后避免紧耦合（编译时依赖）</p>
+<h2 id="简单工厂"><a href="#简单工厂" class="headerlink" title="简单工厂"></a>简单工厂</h2><h3 id="针对的问题"><a href="#针对的问题" class="headerlink" title="针对的问题"></a>针对的问题</h3><p>针对由于需求的需要，创建的对象经常改变的情况。</p>
+<blockquote>
+<p>例如在界面中之前使用 <code>Lable</code> 显示进度，现在要改为进度条。如果 <code>Lable</code> 在原先的代码中</p>
+</blockquote>
+<h3 id="实现的方法"><a href="#实现的方法" class="headerlink" title="实现的方法"></a>实现的方法</h3><pre><code class=" mermaid">classDiagram
+	Product &lt;.. Client
+	Creator &lt;.. Client
+	ProductA &lt;.. Creator
+	class Product &#123;
+		&lt;&lt;Interface&gt;&gt;
+		+doStuff()*
+	&#125;
+	class Creator&#123;
+		+creatorProduct(flag)
+	&#125;
+	Product &lt;|.. ProductA
+</code></pre>
+<ul>
+<li><code>Creator::creatorProduct(flag)</code> 中对传入的<code>flag</code>进行判断，通过条件分支创建不同的对象</li>
+<li><code>Client</code>通过<code>Product *pd = Creator::creatorProduct(flag)</code> 创建对象</li>
+</ul>
+<h3 id="带来的好处"><a href="#带来的好处" class="headerlink" title="带来的好处"></a>带来的好处</h3><p>简单工厂的出现能够让代码更加方便的管理。当使用 <code>new</code> 创建对象的时候就形成了稳定的模块依赖于变化的模块了，违反了依赖倒置原则。</p>
+<p>如果不采用简单工厂方法，为了适应对象经常改变的这种情况，就需要在代码中不断的出现<code>if-else</code>这种条件语句，用来更改对应的对象，如果现在新添加一种类型的对象，就需要在每个条件语句进行更改，同时，所有更改的文件都需要重新编译，效率低下</p>
+<p>如果采用简答工厂方法，添加新类型的时候就只需要在对应的工厂类中的<code>Creator::creatorProduct(flag)</code>进行更改</p>
+<h3 id="存在的问题"><a href="#存在的问题" class="headerlink" title="存在的问题"></a>存在的问题</h3><p>简单工厂每次修改都需要更改<code>Creator::creatorProduct(flag)</code>，违反了开放封闭原则。当这些产品种类变的很多的时候，工厂的条件判断就会变的十分庞杂。同时很多人进行协作时，会对这个工厂进行频繁的修改，管理起来就会比较麻烦。</p>
+<h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_22238021/article/details/79832092">https://blog.csdn.net/qq_22238021/article/details/79832092</a></p>
+<h2 id="工厂方法"><a href="#工厂方法" class="headerlink" title="工厂方法"></a>工厂方法</h2><h3 id="针对的问题-1"><a href="#针对的问题-1" class="headerlink" title="针对的问题"></a>针对的问题</h3><p>解决和简单工厂一样的问题，但是针对简单工厂违反开放封闭原则的问题，将条件分支转化为了类接口的实现</p>
+<blockquote>
+<p>工厂方法 = 简单工厂 + 策略模式</p>
+</blockquote>
+<h3 id="实现的方法-1"><a href="#实现的方法-1" class="headerlink" title="实现的方法"></a>实现的方法</h3><p>解决方法是为每个产品定义一个工厂，工厂负责创造产品的实例。所有的产品都继承自一个抽象产品类，所有的工厂都继承自一个抽象工厂类。使用的时候通过不同的工厂获得不同的产品</p>
+<pre><code class=" mermaid">classDiagram
+	Creator &lt;.. Client
+	Product &lt;.. Client
+	class Creator&#123;
+		&lt;&lt;Interface&gt;&gt;
+		+creatProduct()*
+	&#125;
+	class Product&#123;
+		&lt;&lt;Interface&gt;&gt;
+		+doStuff()*
+	&#125;
+	class CreatorA&#123;
+		+createProduct()
+	&#125;
+	class CreatorB&#123;
+		+createProduct()
+	&#125;
+	Creator &lt;|.. CreatorA
+	Creator &lt;|.. CreatorB
+	Product &lt;|.. ProductA
+	Product &lt;|.. ProductB
+	ProductA &lt;.. CreatorA
+	ProductB &lt;.. CreatorB
+</code></pre>
+<ul>
+<li><code>createProduct()</code> 返回具体 <code>Createor</code> 对应的 <code>Product</code> 对象（<code>CreatorA::createProduct() &#123; return new ProductA; &#125;</code>）。</li>
+<li>构造 <code>Product</code> 对象时，通过调用 <code>product *p = creator-&gt;creatProduct()</code> 实现对象的创建，当业务需求时更改创建的对象时，只需更改 <code>creator</code> 指向的对象即可</li>
+</ul>
+<h3 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h3><p><strong>优点：</strong> 1、一个调用者想创建一个对象，只要知道其名称就可以了。 2、扩展性高，如果想增加一个产品，只要扩展一个工厂类就可以。 3、屏蔽产品的具体实现，调用者只关心产品的接口。</p>
+<p><strong>缺点：</strong>每次增加一个产品时，都需要增加一个具体类和对象实现工厂，使得系统中类的个数成倍增加，在一定程度上增加了系统的复杂度，同时也增加了系统具体类的依赖。这并不是什么好事。</p>
+<h2 id="抽象工厂"><a href="#抽象工厂" class="headerlink" title="抽象工厂"></a>抽象工厂</h2><p>主要是针对一系列相互依赖的对象的创建工作</p>
+<p>具体的解决方法时提供一个接口，让这个接口负责创建一系列相互依赖的对象</p>
+<pre><code class=" mermaid">classDiagram
+	AbstractCreator &lt;.. Client
+	AbstractProductA &lt;.. Client
+	AbstractProductB &lt;.. Client
+	class AbstractCreator &#123;
+		&lt;&lt;Interface&gt;&gt;
+		+createProductA()*
+		+createProductB()*
+	&#125;
+	class AbstractProductA &#123;
+		&lt;&lt;Interface&gt;&gt;
+	&#125;
+	class AbstractProductB &#123;
+		&lt;&lt;Interface&gt;&gt;
+	&#125;
+	class Creator1 &#123;
+		+createProductA()
+		+createProductB()
+	&#125;
+	class Creator2 &#123;
+		+createProductA()
+		+createProductB()
+	&#125;
+	AbstractCreator &lt;|.. Creator1
+	AbstractCreator &lt;|.. Creator2
+	AbstractProductA &lt;|.. ProductA1
+	AbstractProductA &lt;|.. ProductA2
+	AbstractProductB &lt;|.. ProductB1
+	AbstractProductB &lt;|.. ProductB2
+	ProductA1 &lt;.. Creator1
+	ProductB1 &lt;.. Creator1
+	ProductA2 &lt;.. Creator2
+	ProductB2 &lt;.. Creator2
+</code></pre>
+<h3 id="特点-1"><a href="#特点-1" class="headerlink" title="特点"></a>特点</h3><p><strong>优点：</strong>当一个产品族中的多个对象被设计成一起工作时，它能保证客户端始终只使用同一个产品族中的对象。</p>
+<p><strong>缺点：</strong>产品族扩展非常困难，要增加一个系列的某一产品，既要在抽象的 Creator 里加代码，又要在具体的里面加代码。</p>
+<h2 id="单例"><a href="#单例" class="headerlink" title="单例"></a>单例</h2><p>解决只生成一个实例的问题</p>
+<pre><code class=" mermaid">classDiagram
+	class Singleton&#123;
+		-Singleton()
+		+getInstance()$
+	&#125;
+</code></pre>
+<figure class="highlight cpp"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Singleton</span> &#123;</span><br><span class="hljs-keyword">private</span>:<br>    <span class="hljs-built_in">Singleton</span>() &#123;&#125;<br>    ~<span class="hljs-built_in">Singleton</span>() &#123;&#125;<br>    <span class="hljs-built_in">Singleton</span>(<span class="hljs-keyword">const</span> Singleton &amp;) = <span class="hljs-keyword">delete</span>;<br>    Singleton &amp;<span class="hljs-keyword">operator</span>=(<span class="hljs-keyword">const</span> Singleton &amp;) = <span class="hljs-keyword">delete</span>;<br>    <span class="hljs-built_in">Singleton</span>(Singleton &amp;&amp;) = <span class="hljs-keyword">delete</span>;<br>    Singleton &amp;<span class="hljs-keyword">operator</span>=(Singleton&amp;&amp;) = <span class="hljs-keyword">delete</span>;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">static</span> Singleton &amp;<span class="hljs-title">getInstance</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">static</span> Singleton s;<br>        <span class="hljs-keyword">return</span> s;<br>    &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+<h1 id="行为模式-Behavioral-Patterns"><a href="#行为模式-Behavioral-Patterns" class="headerlink" title="行为模式 | Behavioral Patterns"></a>行为模式 | Behavioral Patterns</h1><p>负责对象间的高效沟通和职责委派</p>
+<h2 id="观察者"><a href="#观察者" class="headerlink" title="观察者"></a>观察者</h2><p>实现订阅-通知这种关系，一个对象的状态发生改变，就立即通知其他的对象，是一种一对多或者多对多的通知关系</p>
+<pre><code class=" mermaid">classDiagram
+	Publisher &lt;.. Client
+	Subscriber &lt;.. Client
+	class Publisher &#123;
+		&lt;&lt;Interface&gt;&gt;
+		+attach(Subscriber)*
+		+detach(Subscriber)*
+		-notify()*
+	&#125;
+	class ConcretePublisher &#123;
+		+getDate()
+		-attach(Subscriber)
+		-detach(Subscriber)
+		-notify()
+		-mainProgess()
+	&#125;
+	class Subscriber &#123;
+		&lt;&lt;Interface&gt;&gt;
+		update()*
+	&#125;
+	class ConcreteSubscriber &#123;
+		update()
+	&#125;
+	Publisher &lt;|.. ConcretePublisher
+	Subscriber &lt;|.. ConcreteSubscriber
+	Publisher &lt;.. Subscriber
+	ConcretePublisher &lt;.. ConcreteSubscriber
+</code></pre>
+<h2 id="策略"><a href="#策略" class="headerlink" title="策略"></a>策略</h2><h3 id="针对问题"><a href="#针对问题" class="headerlink" title="针对问题"></a>针对问题</h3><p>某些对象使用的算法可能多种多样，经常改变，如果将这些算法都编码到对象中，将会使对象变得异常复杂；而且有时候支持不使用的算法也是一个性能负担</p>
+<p>虽然可以将算法类抽象成一个对象，然后使用简单工厂创建。但是遇到算法更改十分频繁的时候，工厂类会同时部署起来也十分的麻烦，因此不是最好的解决方法。</p>
+<h3 id="实现的方法-2"><a href="#实现的方法-2" class="headerlink" title="实现的方法"></a>实现的方法</h3><p>定义一系列算法，把它们一个个封装起来，并且使它们可互相替换（变化）。该模式使得算法可独立于使用它的客户程 序(稳定)而变化（扩展，子类化）</p>
+<pre><code class=" mermaid">classDiagram
+	Context &lt;.. Client
+	StrategyA &lt;.. Client
+	StrategyB &lt;.. Client
+	StrategyC &lt;.. Client
+	Strategy --o Context
+	class Strategy &#123;
+		&lt;&lt;Interface&gt;&gt;
+		+Algorithm()*
+	&#125;
+	class StrategyA &#123;
+		+Algorithm()
+	&#125;
+	class StrategyB &#123;
+		+Algorithm()
+	&#125;
+	class StrategyC &#123;
+		+Algorithm()
+	&#125;
+	class Context &#123;
+		+Context(Strategy)
+		+contextInterface()
+	&#125;
+	Strategy &lt;|.. StrategyA
+	Strategy &lt;|.. StrategyB
+	Strategy &lt;|.. StrategyC
+</code></pre>
+<ul>
+<li><code>Context::contextInterface() &#123; strategy-&gt;Algorithm(); &#125;</code> 这个函数执行算法</li>
+<li>使用算法时，调用<code>Context(new StrategyA())</code>创建上下文后调用<code>Context::Contextinterface()</code>即可</li>
+</ul>
+<h3 id="特点-2"><a href="#特点-2" class="headerlink" title="特点"></a>特点</h3><p><strong>优点：</strong> 1、算法可以自由切换。 2、避免使用多重条件判断。 3、扩展性良好。</p>
+<p><strong>缺点：</strong> 1、策略类会增多。 2、所有策略类都需要对外暴露。</p>
+<p>Strategy模式提供了用条件判断语句以外的另一种选择，消除条件判断语句，就是在解耦合。含有许多条件判断语句的代码通常都需 要Strategy模式。</p>
+<h2 id="模板方法"><a href="#模板方法" class="headerlink" title="模板方法"></a>模板方法</h2><p>对于某一项任务，它常常有稳定的整体操作结构，但各个子步骤却有很多改变的需求，或者由于固有的原因 （比如框架与应用之间的关系）而无法和任务的整体结构同时实现</p>
+<p>定义一个操作中的算法的骨架 (稳定)，而将一些步骤延迟 (变化)到子类中。Template Method使得子类可以不改变 (复用)一个算法的结构即可重定义(override 重写)该算法的 某些特定步骤。</p>
+<pre><code class=" mermaid">classDiagram
+	class AbstractClass &#123;
+		+templateMethod()
+		-step1()*
+		-step2()*
+		-step3()*
+	&#125;
+	class Class1 &#123;
+		-step1()
+	&#125;
+	class Class2 &#123;
+		-step2()
+		-step3()
+	&#125;
+	AbstractClass &lt;|.. Class1
+	AbstractClass &lt;|.. Class2
+</code></pre>
+<h1 id="结构型模式-Structural-Patterns"><a href="#结构型模式-Structural-Patterns" class="headerlink" title="结构型模式 | Structural Patterns"></a>结构型模式 | Structural Patterns</h1><p>介绍如何将对象和类组装成较大的结构， 并同时保持结构的灵活和高效</p>
+<h2 id="装饰模式"><a href="#装饰模式" class="headerlink" title="装饰模式"></a>装饰模式</h2><h3 id="针对的问题-2"><a href="#针对的问题-2" class="headerlink" title="针对的问题"></a>针对的问题</h3><p>在通过类的继承实现拓展的时候，有时候一些组合会使得拓展出来的子类数量急剧的膨胀</p>
+<p>例如咖啡类。如果要在咖啡上添加牛奶、巧克力和糖，就会产生8个子类</p>
+<p>装饰模式能够实现类的动态拓展，避免子类数量的膨胀</p>
+<h3 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h3><pre><code class=" mermaid">classDiagram
+	ConcreteComponent &lt;.. Client
+	DecoratorComponentA &lt;.. Client
+	DecoratorComponentB &lt;.. Client
+	class Component&#123;
+		&lt;&lt;Interface&gt;&gt;
+		+operation()*
+	&#125;
+	Component &lt;|.. ConcreteComponent
+	class ConcreteComponent&#123;
+		+operation()
+	&#125;
+	Component &lt;|-- Decorator
+	class Decorator&#123;
+		&lt;&lt;Interface&gt;&gt;
+		+Decorator(Component)
+		+operation()
+	&#125;
+	class DecoratorComponentA&#123;
+		+Decorator(Component)
+		+operation()
+		-addItem()
+	&#125;
+	class DecoratorComponentB&#123;
+		+Decorator(Component)
+		+operation()
+		-addString
+	&#125;
+	Decorator &lt;|.. DecoratorComponentA
+	Decorator &lt;|.. DecoratorComponentB
+</code></pre>
+<ul>
+<li><p>装饰类<code>DecoratorComponentA/B</code>的<code>operation()</code>中包括传入的<code>component</code>的<code>opration()</code>和自己添加的操作</p>
+<figure class="highlight cpp"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">DecoratorComponentA::operation</span><span class="hljs-params">()</span> </span>&#123;<br>    component.<span class="hljs-built_in">operation</span>();	<span class="hljs-comment">// component是这个类构造函数中传入的对象</span><br>    ...	<span class="hljs-comment">// DecoratorComponentA自己的操作</span><br>&#125;<br></code></pre></div></td></tr></table></figure>
+</li>
+<li><p><code>Client</code>使用时，进行如下操作即可</p>
+<figure class="highlight cpp"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">doStuff</span><span class="hljs-params">()</span> </span>&#123;<br>    Component *cc = <span class="hljs-keyword">new</span> <span class="hljs-built_in">ConcreteComponent</span>();<br>    DecorationComponentA *dca = <span class="hljs-keyword">new</span> <span class="hljs-built_in">DecorationComponentA</span>(cc);<br>    DecorationComponentB *dcb = <span class="hljs-keyword">new</span> <span class="hljs-built_in">DecorationComponentB</span>(dca);<br>    dcb-&gt;<span class="hljs-built_in">operation</span>();<br>&#125;<br></code></pre></div></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="特点-3"><a href="#特点-3" class="headerlink" title="特点"></a>特点</h3><p><strong>优点：</strong>装饰类和被装饰类可以独立发展，不会相互耦合，装饰模式是继承的一个替代模式，装饰模式可以动态扩展一个实现类的功能。</p>
+<p><strong>缺点：</strong>多层装饰比较复杂。</p>
+<h1 id="参考资料-1"><a href="#参考资料-1" class="headerlink" title="参考资料"></a>参考资料</h1><ol>
+<li><a target="_blank" rel="noopener" href="https://refactoringguru.cn/design-patterns/">https://refactoringguru.cn/design-patterns/</a></li>
+<li>程杰.《大话数据结构》</li>
+</ol>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9B%B8%E5%85%B3/">计算机相关</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E8%BD%AF%E4%BB%B6/">软件</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/08/18/HUST/Introduction2Algorithms/">
+                        <span class="hidden-mobile">数据结构与算法</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"DNr2pgYBNbnn4YMKmdstH2Sw-gzGzoHsz","appKey":"6RRAdTwPs2Y3Tk5iKNo2qo1D","placeholder":"说点什么","path":"window.location.pathname","avatar":"retro","meta":["nick","mail"],"pageSize":10,"lang":"zh-CN","highlight":true,"recordIP":false,"serverURLs":"https://dnr2pgyb.lc-cn-n1-shared.com","emojiCDN":null,"emojiMaps":null,"enableQQ":false,"requiredFields":[],"appid":"DNr2pgYBNbnn4YMKmdstH2Sw-gzGzoHsz","appkey":"6RRAdTwPs2Y3Tk5iKNo2qo1D"},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/mermaid@8.10.1/dist/mermaid.min.js" ></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({"theme":"default"});
+    }
+  </script>
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
