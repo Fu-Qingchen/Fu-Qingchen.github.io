@@ -18,7 +18,7 @@
   <meta name="author" content="Fu Qingchen">
   <meta name="keywords" content="MSE, CS">
   
-  <title>C++面试突击 | Fu&#39;s Web</title>
+  <title>C++基础回顾 | Fu&#39;s Web</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
 
@@ -163,9 +163,9 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="C++面试突击">
+            <span class="h2" id="subtitle" title="C++基础回顾">
               
-                C++面试突击
+                C++基础回顾
               
             </span>
 
@@ -187,7 +187,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      7.7k 字
+      8.2k 字
     </span>
   
 
@@ -197,7 +197,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      85
+      91
        分钟
     </span>
   
@@ -227,7 +227,7 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">C++面试突击</h1>
+            <h1 style="display: none">C++基础回顾</h1>
             
             <div class="markdown-body">
               <p>C++的基础知识，用于面试前的突击。</p>
@@ -324,6 +324,10 @@
 <li><p>智能指针还会产生 <strong>循环引用</strong> 的问题，两个指针相互指向对方的内存空间，导致内存无法释放。</p>
 <figure class="highlight cpp"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">B</span>;</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">A</span>&#123;</span> <span class="hljs-keyword">public</span>: shared_ptr&lt;B&gt; b; &#125;<br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">B</span>&#123;</span> <span class="hljs-keyword">public</span>: shared_ptr&lt;A&gt; a; &#125;<br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    A a; B b;	<span class="hljs-comment">// A::b, B::a useCount = 1</span><br>    a.b = b;	<span class="hljs-comment">// A::b useCount = 2</span><br>    b.a = a;	<span class="hljs-comment">// B::a useCount = 2</span><br>&#125;	<span class="hljs-comment">// A::b, B::a useCount = 1，资源不会进行释放</span><br></code></pre></div></td></tr></table></figure>
 </li>
+</ul>
+<h2 id="声明和定义的区别"><a href="#声明和定义的区别" class="headerlink" title="声明和定义的区别"></a>声明和定义的区别</h2><ul>
+<li>声明只是把变量的类型和名字告诉编译器，并没有分配内存。定义的话需要分配内存</li>
+<li>可以多次声明（<code>extern</code>），但是只能有一次定义</li>
 </ul>
 <h1 id="面向对象"><a href="#面向对象" class="headerlink" title="面向对象"></a>面向对象</h1><h2 id="什么是面向对象？面向对象的三大特性"><a href="#什么是面向对象？面向对象的三大特性" class="headerlink" title="什么是面向对象？面向对象的三大特性"></a>什么是面向对象？面向对象的三大特性</h2><p>面向对象就是把对象抽象成类，类中包括成员变量和成员方法。</p>
 <ul>
@@ -486,6 +490,22 @@
 <li>多线程中如果两个线程更改同一个变量时，如果编译器对它进行优化，就会出现一个正在使用内存中的变量，一个正在使用CPU寄存器中的变量，导致计算结果不符合预期。<code>volatile</code>的意思是让编译器每次操作该变量时一定要从内存中真正取出，而不是使用已经存在寄存器中的值。</li>
 <li>当读取一些硬件设备寄存器的时候，他们的寄存器的值可能很快的改变，<code>volatile</code> 可以保证编译器不会对这个访问进行优化</li>
 </ul>
+<h2 id="强制类型转换"><a href="#强制类型转换" class="headerlink" title="强制类型转换"></a>强制类型转换</h2><h3 id="static-cast"><a href="#static-cast" class="headerlink" title="static_cast"></a><code>static_cast</code></h3><p>只能用于<strong>低风险</strong>的强制类型转换（只能用于可以进行隐式类型转换的情况，作用只是将隐式类型转换挑明），无法用于不同类型指针之间的转换、整形和指针之间的转换</p>
+<ul>
+<li><code>void *</code> 转换成其他类型的指针</li>
+<li>浮点、整数、字符的转换</li>
+<li>父类转换为子类（这种情况是特例，隐式类型转换不能编译通过，但是<code>static_cast</code>可以）</li>
+<li>子类转换为父类</li>
+<li>转换运算符</li>
+</ul>
+<p><code>static_cast</code> 主要功能是替换隐式类型转换，让代码可读性更好</p>
+<h3 id="const-cast"><a href="#const-cast" class="headerlink" title="const_cast"></a><code>const_cast</code></h3><p>将常量转化为非常量，只针对指针、引用和 <code>this</code> 指针</p>
+<figure class="highlight cpp"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> ci = <span class="hljs-number">0</span>;<br><span class="hljs-keyword">int</span> i = <span class="hljs-keyword">const_cast</span>&lt;<span class="hljs-keyword">int</span>&gt;(ci);	<span class="hljs-comment">// ERROR</span><br><span class="hljs-keyword">int</span> *pi = <span class="hljs-keyword">const_cast</span>&lt;<span class="hljs-keyword">int</span> *&gt;(&amp;ci);<br><span class="hljs-keyword">int</span> &amp;i = <span class="hljs-keyword">const_cast</span>&lt;<span class="hljs-keyword">int</span> &amp;&gt;(ci);<br></code></pre></div></td></tr></table></figure>
+<h3 id="dynamic-cast"><a href="#dynamic-cast" class="headerlink" title="dynamic_cast"></a><code>dynamic_cast</code></h3><p>负责子类和父类之间的转换。实现了一个检测功能，当发现不安全这种情况会判断转型失败，返回空指针，对应用类型的转换失败会抛出异常</p>
+<p><code>dynamic_cast</code> 采用了 <code>RTTI</code> （运行时类型识别）这种技术来在运行时检测被转换的指针的类型，有额外的开销，因此建议只在<strong>父类指针转子类</strong>的情况下使用</p>
+<p><code>RTTI</code> 的实现依赖于虚函数，因此 <code>dynamic_cast</code> 只能在<strong>有虚函数</strong>的类转换过程中使用，否则会编译错误</p>
+<figure class="highlight cpp"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">A</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-built_in">A</span>() &#123; std::cout &lt;&lt; <span class="hljs-string">&quot;Create A&quot;</span> &lt;&lt; std::endl; &#125;<br>    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">print</span><span class="hljs-params">()</span> </span>&#123; std::cout &lt;&lt; <span class="hljs-string">&quot;Print A&quot;</span> &lt;&lt; std::endl; &#125;<br>&#125;;<br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">B</span>:</span> <span class="hljs-keyword">public</span> A &#123; <span class="hljs-keyword">public</span>: <span class="hljs-keyword">int</span> data = <span class="hljs-number">1</span>; &#125;;<br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    B *ptrB = <span class="hljs-keyword">dynamic_cast</span>&lt;B *&gt;(<span class="hljs-keyword">new</span> A);	<span class="hljs-comment">// 不安全，转型失败，ptrB == nullptr</span><br>    A *ptrA = <span class="hljs-keyword">dynamic_cast</span>&lt;A *&gt;(<span class="hljs-keyword">new</span> B);	<span class="hljs-comment">// 安全</span><br>    B *ptrBA = <span class="hljs-keyword">dynamic_cast</span>&lt;B *&gt;(ptrA);	<span class="hljs-comment">// 安全</span><br>&#125;<br></code></pre></div></td></tr></table></figure>
+<h3 id="reinterpret-cast"><a href="#reinterpret-cast" class="headerlink" title="reinterpret_cast"></a><code>reinterpret_cast</code></h3><p>用于替换强制类型转换，是进行逐字节的重新翻译</p>
 <h1 id="类相关"><a href="#类相关" class="headerlink" title="类相关"></a>类相关</h1><h2 id="虚函数与纯虚函数"><a href="#虚函数与纯虚函数" class="headerlink" title="虚函数与纯虚函数"></a>虚函数与纯虚函数</h2><p>虚函数是用 <code>virtual</code> 关键字修饰的成员函数，当子类继承有虚函数的类，并且重写了这个虚函数时，如果一个父类的指针指向子类的对象，那么这个指针在调用虚函数时，处理的函数时子类中对应的函数</p>
 <p>纯虚函数时 <code>virtual</code> 关键字修饰，并且在函数声明的末尾用 <code>=0</code> 进行修饰的函数，有了纯虚函数的类叫做抽象类，这个类不能够实例化，子类继承抽象类后实现所有的纯虚函数才能够实例化</p>
 <h3 id="两者区别"><a href="#两者区别" class="headerlink" title="两者区别"></a>两者区别</h3><ul>
@@ -564,9 +584,13 @@
 <li><p>拷贝构造函数：同一类型的对象进行拷贝</p>
 <figure class="highlight cpp"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-built_in">Box</span>(Box&amp; other); <span class="hljs-comment">// Avoid if possible--allows modification of other.</span><br><span class="hljs-built_in">Box</span>(<span class="hljs-keyword">const</span> Box&amp; other);<br><span class="hljs-built_in">Box</span>(<span class="hljs-keyword">volatile</span> Box&amp; other);<br><span class="hljs-built_in">Box</span>(<span class="hljs-keyword">volatile</span> <span class="hljs-keyword">const</span> Box&amp; other);<br><span class="hljs-comment">// Additional parameters OK if they have default values</span><br><span class="hljs-built_in">Box</span>(Box&amp; other, <span class="hljs-keyword">int</span> i = <span class="hljs-number">42</span>, string label = <span class="hljs-string">&quot;Box&quot;</span>);<br></code></pre></div></td></tr></table></figure>
 </li>
-<li><p>移动构造函数：</p>
+<li><p>移动构造函数：传入参数为右值引用的构造函数</p>
 </li>
-<li><p>委托构造函数：</p>
+<li><p>委托构造函数：一个构造函数调用了另外一个个构造函数</p>
+<figure class="highlight cpp"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-built_in">Box</span>() &#123;&#125;<br><span class="hljs-built_in">Box</span>(<span class="hljs-keyword">int</span> i) : <span class="hljs-built_in">Box</span>() &#123;&#125;	<span class="hljs-comment">// 委托构造函数</span><br></code></pre></div></td></tr></table></figure>
+</li>
+<li><p>继承构造函数：子类用了基类的构造函数</p>
+<figure class="highlight cpp"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">A</span> &#123;</span><br>  <span class="hljs-built_in">A</span>(<span class="hljs-keyword">int</span> i) &#123;&#125;<br>  <span class="hljs-built_in">A</span>(<span class="hljs-keyword">double</span> d, <span class="hljs-keyword">int</span> i) &#123;&#125;<br>  <span class="hljs-built_in">A</span>(<span class="hljs-keyword">float</span> f, <span class="hljs-keyword">int</span> i, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>* c) &#123;&#125;<br>  <span class="hljs-comment">//...</span><br>&#125;;<br><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">B</span> :</span> A &#123; <span class="hljs-keyword">using</span> A::A; &#125;;	<span class="hljs-comment">//关于基类各构造函数的继承一句话搞定 </span><br></code></pre></div></td></tr></table></figure>
 </li>
 </ul>
 <h2 id="空类的默认函数"><a href="#空类的默认函数" class="headerlink" title="空类的默认函数"></a>空类的默认函数</h2><p>对于一份空类来说，如果没有实例化，编译器不会为它生成任何函数，在使用的时候，会根据情况生成 6 类函数</p>
@@ -612,7 +636,7 @@
 </li>
 <li><p>右值就相当于是一个临时的对象，例如字面量和两个对象相加形成的没有名字的临时变量，右值很快就会被销毁</p>
 </li>
-<li><p>C++11标准又引入了一个 <code>xvalue</code> 将亡值，是由右值引用的产生而引起的，它是通过“右值引用”产生的对象，有两类</p>
+<li><p>C++11 标准又引入了一个 <code>xvalue</code> 将亡值，是由右值引用的产生而引起的，它是通过“右值引用”产生的对象，有两类</p>
 <ul>
 <li>返回右值引用的函数的调用表达式</li>
 <li>转换为右值引用的转换函数的调用表达式</li>
@@ -671,20 +695,6 @@
 <h3 id="常量指针和指针常量"><a href="#常量指针和指针常量" class="headerlink" title="常量指针和指针常量"></a>常量指针和指针常量</h3><ul>
 <li>常量指针：指针指向一个常量，无法更改所指向对象的值</li>
 <li>指针常量：指针是一个常量，无法更改所指向对象</li>
-</ul>
-<h2 id="强制类型转换"><a href="#强制类型转换" class="headerlink" title="强制类型转换"></a>强制类型转换</h2><ul>
-<li><p><code>static_cast</code> ：只能用于低风险的强制类型转换（只能用于可以进行隐式类型转换的情况，作用只是将隐式类型转换挑明），无法用于不同类型指针之间的转换、整形和指针之间的转换</p>
-<ul>
-<li><code>void *</code> 转换成其他类型的指针</li>
-<li>浮点、整数、字符的转换</li>
-<li>父类转换为子类（这种情况是特例，隐式类型转换不能编译通过）</li>
-<li>子类转换为父类</li>
-<li>转换运算符</li>
-</ul>
-</li>
-<li><p><code>const_cast</code>：将常量转化为非常量，只针对指针、引用和 <code>this</code> 指针</p>
-<figure class="highlight cpp"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> ci = <span class="hljs-number">0</span>;<br><span class="hljs-keyword">int</span> i = <span class="hljs-keyword">const_cast</span>&lt;<span class="hljs-keyword">int</span>&gt;(ci);	<span class="hljs-comment">// ERROR</span><br><span class="hljs-keyword">int</span> *pi = <span class="hljs-keyword">const_cast</span>&lt;<span class="hljs-keyword">int</span> *&gt;(&amp;ci);<br><span class="hljs-keyword">int</span> &amp;i = <span class="hljs-keyword">const_cast</span>&lt;<span class="hljs-keyword">int</span> &amp;&gt;(ci);<br></code></pre></div></td></tr></table></figure>
-</li>
 </ul>
 
             </div>
