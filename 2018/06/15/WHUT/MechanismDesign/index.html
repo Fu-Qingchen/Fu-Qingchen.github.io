@@ -1,7 +1,7 @@
 
 
 <!DOCTYPE html>
-<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+<html lang="zh-CN" data-default-color-scheme=auto>
 
 
 
@@ -9,67 +9,108 @@
   <meta charset="UTF-8">
   <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
   <link rel="icon" href="/img/favicon.ico">
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
   <meta name="theme-color" content="#2f4154">
-  <meta name="description" content="主要讲了一些机械零件的选型计算。老师上复习课的时候说了下要记忆的公式，然后考了90%……
-注：基于武汉理工大学MOOC、《机械原理与机械设计》（ISBN：9787040402827）">
   <meta name="author" content="Fu Qingchen">
   <meta name="keywords" content="MSE, CS">
   
+    <meta name="description" content="主要讲了一些机械零件的选型计算。老师上复习课的时候说了下要记忆的公式，然后考了90%…… 注：基于武汉理工大学MOOC、《机械原理与机械设计》（ISBN：9787040402827）">
+<meta property="og:type" content="article">
+<meta property="og:title" content="机械设计笔记">
+<meta property="og:url" content="http://example.com/2018/06/15/WHUT/MechanismDesign/index.html">
+<meta property="og:site_name" content="Fu&#39;s Web">
+<meta property="og:description" content="主要讲了一些机械零件的选型计算。老师上复习课的时候说了下要记忆的公式，然后考了90%…… 注：基于武汉理工大学MOOC、《机械原理与机械设计》（ISBN：9787040402827）">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20200823214528.png">
+<meta property="og:image" content="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20200823214547.png">
+<meta property="og:image" content="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20200823214606.png">
+<meta property="og:image" content="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20200823214634.png">
+<meta property="og:image" content="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20200823214713.png">
+<meta property="og:image" content="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20200823214733.png">
+<meta property="og:image" content="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20200823214828.png">
+<meta property="og:image" content="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20200823214846.png">
+<meta property="og:image" content="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20200823214932.png">
+<meta property="og:image" content="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20200823214949.png">
+<meta property="og:image" content="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20200823215017.png">
+<meta property="og:image" content="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20200823215033.png">
+<meta property="og:image" content="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20200823215048.png">
+<meta property="og:image" content="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20200823215101.png">
+<meta property="article:published_time" content="2018-06-15T14:13:45.000Z">
+<meta property="article:modified_time" content="2022-05-25T15:13:14.317Z">
+<meta property="article:author" content="Fu Qingchen">
+<meta property="article:tag" content="机械设计">
+<meta property="article:tag" content="机械">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20200823214528.png">
+  
+  
+  
   <title>机械设计笔记 | Fu&#39;s Web</title>
 
-  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
 
-  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
-  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
 
-  
-    
-    
-      
-      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/vs2015.min.css" />
-    
-  
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
 
-  
-    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
-  
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
 
 
 
 <!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
 
 
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
 
 
 <link  rel="stylesheet" href="/css/main.css" />
 
-<!-- 自定义样式保持在最底部 -->
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
 
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.11","typing":{"enable":false,"typeSpeed":30,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null},"tajs":null},"search_path":"/local-search.xml"};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.0","typing":{"enable":false,"typeSpeed":30,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"tajs":null},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
+
+  
 <meta name="generator" content="Hexo 5.4.0"></head>
 
 
 <body>
-  <header style="height: 50vh;">
-    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 50vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
-    <a class="navbar-brand"
-       href="/">&nbsp;<strong>Fu's Web</strong>&nbsp;</a>
+    <a class="navbar-brand" href="/">
+      <strong>Fu&#39;s Web</strong>
+    </a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
             data-target="#navbarSupportedContent"
@@ -143,13 +184,15 @@
         
         
           <li class="nav-item" id="search-btn">
-            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
-                class="iconfont icon-search"></i>&nbsp;</a>
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
           </li>
+          
         
         
           <li class="nav-item" id="color-toggle-btn">
-            <a class="nav-link" target="_self">&nbsp;<i
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
                 class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
           </li>
         
@@ -158,62 +201,71 @@
   </div>
 </nav>
 
-    <div class="banner" id="banner" parallax=true
-         style="background: url('https://gitee.com/fuqingchen/picture-lib/raw/master/img/Test_Tree.png') no-repeat center center;
-           background-size: cover;">
-      <div class="full-bg-img">
-        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-          <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="机械设计笔记">
-              
-                机械设计笔记
-              
-            </span>
-
-            
-              <div class="mt-3">
-  
-  
-    <span class="post-meta">
-      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2018-06-15 22:13" pubdate>
-        2018年6月15日 晚上
-      </time>
-    </span>
-  
-</div>
-
-<div class="mt-1">
-  
-    
-    <span class="post-meta mr-2">
-      <i class="iconfont icon-chart"></i>
-      15.4k 字
-    </span>
   
 
-  
-    
-    <span class="post-meta mr-2">
-      <i class="iconfont icon-clock-fill"></i>
-      
-      
-      176
-       分钟
-    </span>
-  
-
-  
-  
-</div>
-
-            
-          </div>
-
+<div id="banner" class="banner" parallax=true
+     style="background: url('https://gitee.com/fuqingchen/picture-lib/raw/master/img/Test_Tree.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle">机械设计笔记</span>
           
         </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2018-06-15 22:13" pubdate>
+          2018年6月15日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          <!-- compatible with older versions-->
+          25k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          <!-- compatible with older versions-->
+          205 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
       </div>
+
+      
     </div>
+  </div>
+</div>
+
+</div>
+
   </header>
 
   <main>
@@ -222,15 +274,20 @@
 
 <div class="container-fluid nopadding-x">
   <div class="row nomargin-x">
-    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
     <div class="col-lg-8 nopadding-x-md">
       <div class="container nopadding-x-md" id="board-ctn">
-        <div class="py-5" id="board">
+        <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
             <h1 style="display: none">机械设计笔记</h1>
             
             <div class="markdown-body">
+              
               <p>主要讲了一些机械零件的选型计算。老师上复习课的时候说了下要记忆的公式，然后考了90%……</p>
 <p>注：基于武汉理工大学MOOC、《机械原理与机械设计》（ISBN：9787040402827）</p>
 <span id="more"></span>
@@ -311,7 +368,7 @@ F^{'}=\frac{K_fF_R}{fm}</script><ul>
 <li><strong>适用于轴向不受工作载荷的紧螺栓连接</strong></li>
 <li>$K_f,F_R,f,m$ 可靠性系数，横向工作载荷，摩擦系数，<strong>结合面数量</strong></li>
 </ul>
-<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20200823214528.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20200823214528.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <blockquote>
 <p>波波说要知道这个式子的物理意义。</p>
 <p>这个式子是为了<strong>防止被连接件之间发生相对滑动，结合面之间的摩擦必须大于横向载荷</strong>得来的。</p>
@@ -325,7 +382,7 @@ F_0=F^{''}+F=F^{'}+\frac{C_1}{C_1+C_2}F</script><ul>
 <li><strong>适用于轴向受工作载荷的紧螺纹连接</strong></li>
 <li>详细解释见下图，其中$C_1=\tan\theta_1,C_2=\tan\theta_2$</li>
 </ul>
-<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20200823214547.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20200823214547.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <hr>
 <p><code>螺纹连接</code></p>
 <script type="math/tex; mode=display">
@@ -548,25 +605,25 @@ L_h=\frac{10^6}{60n}(\frac{Cf_t}{P})^\varepsilon</script><ul>
 <p>机械零件一般都是变应力。。。</p>
 <p>为了描述变应力这里有一些参数</p>
 <h3 id="变应力参数"><a href="#变应力参数" class="headerlink" title="变应力参数"></a>变应力参数</h3><p>一般来说变应力是正弦变化的，因此我们可以把应力这样画出来：</p>
-<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20200823214606.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20200823214606.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>可以发现有一些关键的数据：</p>
 <p>最大应力 $\sigma_{max}$、最小应力 $\sigma_{min}$</p>
 <p>平均应力$\sigma_{m}=\frac{\sigma_{max}+\sigma_{min}}{2}$、应力$\sigma_{a}=\frac{\sigma_{max}-\sigma_{min}}{2}$</p>
 <p>循环特征 $r = \frac{\sigma_{min}}{\sigma_{max}}$（易得，$-1\leq r\leq1$）</p>
 <p>然后呢有一些比较有名的特例，在后面也比较常见。</p>
-<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20200823214634.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20200823214634.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <h2 id="机械零件的疲劳极限"><a href="#机械零件的疲劳极限" class="headerlink" title="机械零件的疲劳极限"></a>机械零件的疲劳极限</h2><p><strong>【本章重点】</strong>满足强度要求是机械最基本的要求，然后强度又分为静应力强度和变应力强度，然后机械中最常见的又是变应力。。。</p>
 <h3 id="疲劳损坏机理"><a href="#疲劳损坏机理" class="headerlink" title="疲劳损坏机理"></a>疲劳损坏机理</h3><p>先来研究一下这个，看看疲劳极限有什么东西有关：</p>
 <p>变应力作用下的疲劳断裂有一下过程：零件表面应力超过极限值→微裂纹→扩展→裂纹</p>
 <p>根据以往的经验，疲劳极限除了与 <strong>材料</strong> 有关，还与 <strong>循环特征 r</strong>、<strong>应力循环次数 N</strong>、应力集中、绝对尺寸及表面状态有关。</p>
 <h3 id="疲劳极限"><a href="#疲劳极限" class="headerlink" title="疲劳极限"></a>疲劳极限</h3><p>知道了疲劳极限与什么有关之后就要开始求了。根据应力疲劳试验有以下图形：</p>
-<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20200823214713.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20200823214713.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>对上图，一般取一个 <strong>规定</strong> 的 $N_0$，有一个对应的 $\sigma_r$，这个值就是材料的疲劳极限（也就是无限寿命疲劳极限）。</p>
 <p>研究无限寿命区的疲劳极限没有意义（都无限寿命了就没极限了），有限寿命区的疲劳极限由图形可以得到：</p>
 <script type="math/tex; mode=display">
 \sigma_{rN}=\sigma_r\sqrt[m]{N_0/N}</script><p>然而这个只能得到一种循环特征 r下的疲劳极限，而且应力疲劳试验做起来成本比较高。对每个 r 都做试验然后得到上面的式子显然不实际。<strong>极限应力图</strong> 解决了这个问题，工程上也常常用这个图来近似代替。</p>
 <h3 id="极限应力图"><a href="#极限应力图" class="headerlink" title="极限应力图"></a>极限应力图</h3><p>以 $\sigma_a$ 为纵坐标，$\sigma_m$ 为横坐标，即可做出任意材料的极限应力图。工程上一般先测出 <em>对称循环</em> 和 <em>脉动循环</em> 的疲劳极限为 $\sigma_{-1},\sigma_{0}$，此时可以在图上画出3个点（静力点 $(\sigma_s,0)$、对称循环 $(0,\sigma_{-1})$、脉动循环 $(\sigma_0/2,\sigma_0/2)$）。根据这三个点，按照下图，即可画出由两条直线构成的曲线。这个曲线叫做 <strong>简化极限应力曲线</strong></p>
-<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20200823214733.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20200823214733.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>这个曲线不但可以使用很少的已知数据 $(\sigma_{-1},\sigma_0,\sigma_s)$ 画出，而且能够满足设计的需要。</p>
 <p>其中：</p>
 <p>AD段方程为：$\sigma_a^{‘} = \sigma_{-1}+\sigma_m^{‘}\times\frac{\frac{\sigma_0}{2}-\sigma_{-1}}{\frac{\sigma_0}{2}}\Rightarrow\sigma_{-1}=\sigma_a^{‘}+\sigma_m^{‘}\times\psi_\sigma$</p>
@@ -821,7 +878,7 @@ S=\frac{S_{\sigma}S_\tau}{\sqrt{S_\sigma^2+S_\tau^2}}</script><h2 id="机械中�
 <p><strong>注：选择的范围并不是特别的严格</strong></p>
 <h3 id="齿轮轴"><a href="#齿轮轴" class="headerlink" title="齿轮轴"></a>齿轮轴</h3><p>齿轮和轴做成一体的轴。</p>
 <p>当圆柱齿轮齿根圆到键槽底面的径向距离 $e\leq2.5 m(m_n)$，要制作成齿轮轴。</p>
-<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20200823214828.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20200823214828.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>制作成这样的原因是很难做出来，即使制作出来轮毂的强度也不够。</p>
 <h3 id="实心式齿轮"><a href="#实心式齿轮" class="headerlink" title="实心式齿轮"></a>实心式齿轮</h3><p>最基本最简单的齿轮。</p>
 <p>当 $d_a\leq200mm$ 且 $e\geq 2.5m(m_n)$ 时，做成实心式齿轮。</p>
@@ -834,7 +891,7 @@ S=\frac{S_{\sigma}S_\tau}{\sqrt{S_\sigma^2+S_\tau^2}}</script><h2 id="机械中�
 <h3 id="焊接式齿轮"><a href="#焊接式齿轮" class="headerlink" title="焊接式齿轮"></a>焊接式齿轮</h3><p>用钢板焊接出来的齿轮。</p>
 <p>适用于单件生产、尺寸过大又不利于铸造的齿轮</p>
 <p>缺点是有焊接内应力</p>
-<h2 id="受力分析"><a href="#受力分析" class="headerlink" title="受力分析"></a>受力分析</h2><h3 id="直齿圆柱齿轮"><a href="#直齿圆柱齿轮" class="headerlink" title="直齿圆柱齿轮"></a>直齿圆柱齿轮</h3><p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20200823214846.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="受力分析"><a href="#受力分析" class="headerlink" title="受力分析"></a>受力分析</h2><h3 id="直齿圆柱齿轮"><a href="#直齿圆柱齿轮" class="headerlink" title="直齿圆柱齿轮"></a>直齿圆柱齿轮</h3><p><img src="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20200823214846.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <div class="table-container">
 <table>
 <thead>
@@ -1299,7 +1356,7 @@ F_{max}=2F_0\frac{1{e^{f\alpha_1}-1}}{1{e^{f\alpha_1}+1}}</script><blockquote>
 <li>用带轮张紧（加一个带轮）</li>
 </ul>
 <h1 id="链传动"><a href="#链传动" class="headerlink" title="链传动"></a>链传动</h1><p>已标准化</p>
-<h2 id="套筒滚子链结构"><a href="#套筒滚子链结构" class="headerlink" title="套筒滚子链结构"></a>套筒滚子链结构</h2><p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20200823214932.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="套筒滚子链结构"><a href="#套筒滚子链结构" class="headerlink" title="套筒滚子链结构"></a>套筒滚子链结构</h2><p><img src="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20200823214932.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>1：内链板        2：外链板        3：销轴        4：套筒        5：滚子</p>
 <p>其中，1、4为过盈配合；2、3为过盈配合；4、5为间隙配合；3、4为间隙配合</p>
 <p>销轴于销轴之间的距离称为 <strong>链节距</strong> ，是链传动的主要参数</p>
@@ -1321,7 +1378,7 @@ i=\frac{\omega_1}{\omega_2}=\frac{R_2\cos\gamma}{R_1\cos\beta}</script><p><stron
 </ul>
 <h1 id="轴毂连接设计"><a href="#轴毂连接设计" class="headerlink" title="轴毂连接设计"></a>轴毂连接设计</h1><p>轮毂链接最常用的其实是 <strong>键连接</strong></p>
 <p>主要参数为：键宽、键高</p>
-<h2 id="键的主要类型"><a href="#键的主要类型" class="headerlink" title="键的主要类型"></a>键的主要类型</h2><p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20200823214949.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="键的主要类型"><a href="#键的主要类型" class="headerlink" title="键的主要类型"></a>键的主要类型</h2><p><img src="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20200823214949.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <h2 id="键的选择"><a href="#键的选择" class="headerlink" title="键的选择"></a>键的选择</h2><ul>
 <li>键宽与键高：由轴的直径按照标准确定</li>
 <li>键长：需要符合长度系列，等于或略小于轮毂长</li>
@@ -1574,7 +1631,7 @@ F_\max=\frac{ML_\max}{L_1^2+L_2^2+...+L^2_z}</script><ul>
 <h3 id="设计准则"><a href="#设计准则" class="headerlink" title="设计准则"></a>设计准则</h3><p>主要失效形式为：<strong>疲劳断裂</strong></p>
 <p>设计时一般进行 <strong>疲劳强度计算</strong></p>
 <p>对有刚度要求的轴（车床主轴）要进行 <strong>刚度计算</strong> ，瞬时过载很大，则需要 <strong>按照最大载荷计算静强度</strong> ，对高速轴还要进行 <strong>稳定振动分析</strong></p>
-<h3 id="设计过程"><a href="#设计过程" class="headerlink" title="设计过程"></a>设计过程</h3><figure class="highlight plaintext"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs flow">st=&gt;start: 已知条件<br>op1=&gt;operation: 选择轴的材料<br>op2=&gt;operation: 初算轴径<br>op3=&gt;operation: 结构设计<br>op4=&gt;operation: 计算弯矩、扭矩<br>op5=&gt;condition: 校核计算<br>e=&gt;end: 完善设计<br><br>st-&gt;op1-&gt;op2-&gt;op3-&gt;op4-&gt;op5<br>op5(yes)-&gt;e<br>op5(no)-&gt;op3<br><br></code></pre></div></td></tr></table></figure>
+<h3 id="设计过程"><a href="#设计过程" class="headerlink" title="设计过程"></a>设计过程</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs flow">st=&gt;start: 已知条件<br>op1=&gt;operation: 选择轴的材料<br>op2=&gt;operation: 初算轴径<br>op3=&gt;operation: 结构设计<br>op4=&gt;operation: 计算弯矩、扭矩<br>op5=&gt;condition: 校核计算<br>e=&gt;end: 完善设计<br><br>st-&gt;op1-&gt;op2-&gt;op3-&gt;op4-&gt;op5<br>op5(yes)-&gt;e<br>op5(no)-&gt;op3<br><br></code></pre></td></tr></table></figure>
 <h2 id="轴径的初步估计"><a href="#轴径的初步估计" class="headerlink" title="轴径的初步估计"></a>轴径的初步估计</h2><p>按 <strong>扭转强度</strong> 估算：</p>
 <script type="math/tex; mode=display">
 \tau_T=\frac{T}{W_T}=\frac{9.55\times10^6P/n}{0.2d^3}\leq[\tau_T]</script><p>化简得：</p>
@@ -2167,7 +2224,7 @@ n_\max\leq f_1f_2n_\lim</script><ul>
 <li>传动件位置的调整（还是垫片）</li>
 </ul>
 <blockquote>
-<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20200823215017.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20200823215017.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>其中 垫片1 是为了调整锥齿轮位置；垫片2 是为了调整轴承游隙。画图时要注意</p>
 </blockquote>
 <ul>
@@ -2196,7 +2253,7 @@ n_\max\leq f_1f_2n_\lim</script><ul>
 </li>
 </ul>
 <h2 id="课本例题"><a href="#课本例题" class="headerlink" title="课本例题"></a>课本例题</h2><p>如图为斜齿轮、轴、轴承、联轴器组合图。斜齿轮用油润滑，轴承用脂润滑，试改正错误。</p>
-<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20200823215033.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20200823215033.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <div class="table-container">
 <table>
 <thead>
@@ -2249,47 +2306,100 @@ n_\max\leq f_1f_2n_\lim</script><ul>
 </tbody>
 </table>
 </div>
-<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20200823215048.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20200823215101.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20200823215048.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20200823215101.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <hr>
 <p>Learning By Sharing，2018©Fu_Qingchen，Markdown，LaTeX</p>
 
+              
             </div>
-            <hr>
+            <hr/>
             <div>
-              <div class="post-metas mb-3">
-                
-                  <div class="post-meta mr-3">
-                    <i class="iconfont icon-category"></i>
-                    
-                      <a class="hover-with-bg" href="/categories/%E6%9C%BA%E6%A2%B0%E7%9B%B8%E5%85%B3/">机械相关</a>
-                    
-                  </div>
-                
-                
-                  <div class="post-meta">
-                    <i class="iconfont icon-tags"></i>
-                    
-                      <a class="hover-with-bg" href="/tags/%E6%9C%BA%E6%A2%B0%E8%AE%BE%E8%AE%A1/">机械设计</a>
-                    
-                      <a class="hover-with-bg" href="/tags/%E6%9C%BA%E6%A2%B0/">机械</a>
-                    
-                  </div>
-                
-              </div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%9C%BA%E6%A2%B0%E7%9B%B8%E5%85%B3/" class="category-chain-item">机械相关</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E6%9C%BA%E6%A2%B0%E8%AE%BE%E8%AE%A1/">#机械设计</a>
+      
+        <a href="/tags/%E6%9C%BA%E6%A2%B0/">#机械</a>
+      
+    </div>
+  
+</div>
+
+
               
-                <p class="note note-warning">
-                  
-                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
-                  
-                </p>
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>机械设计笔记</div>
+      <div>http://example.com/2018/06/15/WHUT/MechanismDesign/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Fu Qingchen</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2018年6月15日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
               
-              
-                <div class="post-prevnext">
+                <div class="post-prevnext my-3">
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2018/06/16/WHUT/MetalTechnology/">
+                      <a href="/2018/06/16/WHUT/MetalTechnology/" title="金属工艺学笔记">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">金属工艺学笔记</span>
                         <span class="visible-mobile">上一篇</span>
@@ -2299,7 +2409,7 @@ n_\max\leq f_1f_2n_\lim</script><ul>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2018/03/31/WHUT/AndroidOpenDoor/">
+                      <a href="/2018/03/31/WHUT/AndroidOpenDoor/" title="Android入门之旅">
                         <span class="hidden-mobile">Android入门之旅</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
@@ -2311,55 +2421,87 @@ n_\max\leq f_1f_2n_\lim</script><ul>
             </div>
 
             
-              <!-- Comments -->
-              <article class="comments" id="comments" lazyload>
-                
-                  
-                
-                
+  <article id="comments" lazyload>
+    
   <div id="valine"></div>
   <script type="text/javascript">
     Fluid.utils.loadComments('#valine', function() {
-      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.4.16/Valine.min.js', function() {
         var options = Object.assign(
-          {"appId":"DNr2pgYBNbnn4YMKmdstH2Sw-gzGzoHsz","appKey":"6RRAdTwPs2Y3Tk5iKNo2qo1D","placeholder":"说点什么","path":"window.location.pathname","avatar":"retro","meta":["nick","mail"],"pageSize":10,"lang":"zh-CN","highlight":true,"recordIP":false,"serverURLs":"https://dnr2pgyb.lc-cn-n1-shared.com","emojiCDN":null,"emojiMaps":null,"enableQQ":false,"requiredFields":[],"appid":"DNr2pgYBNbnn4YMKmdstH2Sw-gzGzoHsz","appkey":"6RRAdTwPs2Y3Tk5iKNo2qo1D"},
+          {"appId":"DNr2pgYBNbnn4YMKmdstH2Sw-gzGzoHsz","appKey":"6RRAdTwPs2Y3Tk5iKNo2qo1D","path":"window.location.pathname","placeholder":"说点什么","avatar":"retro","meta":["nick","mail"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":true,"recordIP":false,"serverURLs":"https://dnr2pgyb.lc-cn-n1-shared.com","emojiCDN":null,"emojiMaps":null,"enableQQ":false,"appid":"DNr2pgYBNbnn4YMKmdstH2Sw-gzGzoHsz","appkey":"6RRAdTwPs2Y3Tk5iKNo2qo1D"},
           {
             el: "#valine",
             path: window.location.pathname
           }
         )
         new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
       });
     });
   </script>
   <noscript>Please enable JavaScript to view the comments</noscript>
 
 
-              </article>
-            
+  </article>
+
+
           </article>
         </div>
       </div>
     </div>
-    
-      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
-        <div id="toc">
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
   <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
   <div class="toc-body" id="toc-body"></div>
 </div>
 
-      </div>
-    
+
+
+  </aside>
+
+
+    </div>
   </div>
 </div>
 
-<!-- Custom -->
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
 
 
     
 
     
-      <a id="scroll-top-button" href="#" role="button">
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
         <i class="iconfont icon-arrowup" aria-hidden="true"></i>
       </a>
     
@@ -2378,35 +2520,37 @@ n_\max\leq f_1f_2n_\lim</script><ul>
       <div class="modal-body mx-3">
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v"
-                 for="local-search-input">关键词</label>
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>
     </div>
   </div>
 </div>
+
     
 
     
   </main>
 
-  <footer class="text-center mt-5 py-3">
-  <div class="footer-content">
-     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
-  </div>
+  <footer>
+    <div class="footer-inner">
   
-
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
   
-
   
-</footer>
-
-
-  <!-- SCRIPTS -->
   
-  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
-  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
 
   <script>
     NProgress.configure({"showSpinner":false,"trickleSpeed":100})
@@ -2417,12 +2561,15 @@ n_\max\leq f_1f_2n_\lim</script><ul>
   </script>
 
 
-<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
-<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
 <script  src="/js/events.js" ></script>
 <script  src="/js/plugins.js" ></script>
 
-<!-- Plugins -->
+
+
+
+
 
 
   
@@ -2431,25 +2578,137 @@ n_\max\leq f_1f_2n_\lim</script><ul>
 
 
 
+
   
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.0/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
 
 
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
 
-  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
 
 
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
 
-  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
 
 
-
-  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
-
-
-
-  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
-
-
+  <script>Fluid.plugins.imageCaption();</script>
 
   <script  src="/js/local-search.js" ></script>
 
@@ -2457,24 +2716,15 @@ n_\max\leq f_1f_2n_\lim</script><ul>
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- 主题的启动项 保持在最底部 -->
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
 <script  src="/js/boot.js" ></script>
 
 
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
 </body>
 </html>

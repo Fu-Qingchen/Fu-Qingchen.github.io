@@ -1,7 +1,7 @@
 
 
 <!DOCTYPE html>
-<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+<html lang="zh-CN" data-default-color-scheme=auto>
 
 
 
@@ -9,50 +9,82 @@
   <meta charset="UTF-8">
   <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
   <link rel="icon" href="/img/favicon.ico">
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
   <meta name="theme-color" content="#2f4154">
-  <meta name="description" content="">
   <meta name="author" content="Fu Qingchen">
   <meta name="keywords" content="MSE, CS">
   
+    <meta property="og:type" content="website">
+<meta property="og:title" content="Fu&#39;s Web">
+<meta property="og:url" content="http://example.com/page/4/index.html">
+<meta property="og:site_name" content="Fu&#39;s Web">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="Fu Qingchen">
+<meta property="article:tag" content="MSE, CS">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
   <title>Fu&#39;s Web</title>
 
-  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
 
 
 
 <!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
 
 
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
 
 
 <link  rel="stylesheet" href="/css/main.css" />
 
-<!-- 自定义样式保持在最底部 -->
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
 
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.11","typing":{"enable":false,"typeSpeed":30,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null},"tajs":null},"search_path":"/local-search.xml"};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.0","typing":{"enable":false,"typeSpeed":30,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"tajs":null},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
+
+  
 <meta name="generator" content="Hexo 5.4.0"></head>
 
 
 <body>
-  <header style="height: 100vh;">
-    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 100vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
-    <a class="navbar-brand"
-       href="/">&nbsp;<strong>Fu's Web</strong>&nbsp;</a>
+    <a class="navbar-brand" href="/">
+      <strong>Fu&#39;s Web</strong>
+    </a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
             data-target="#navbarSupportedContent"
@@ -126,13 +158,15 @@
         
         
           <li class="nav-item" id="search-btn">
-            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
-                class="iconfont icon-search"></i>&nbsp;</a>
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
           </li>
+          
         
         
           <li class="nav-item" id="color-toggle-btn">
-            <a class="nav-link" target="_self">&nbsp;<i
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
                 class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
           </li>
         
@@ -141,36 +175,40 @@
   </div>
 </nav>
 
-    <div class="banner" id="banner" parallax=true
-         style="background: url('https://gitee.com/fuqingchen/picture-lib/raw/master/img/whut_names.png') no-repeat center center;
-           background-size: cover;">
-      <div class="full-bg-img">
-        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.7)">
-          <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="Learning by Sharing（￣▽￣）">
-              
-                Learning by Sharing（￣▽￣）
-              
-            </span>
+  
 
-            
-          </div>
-
+<div id="banner" class="banner" parallax=true
+     style="background: url('https://gitee.com/fuqingchen/picture-lib/raw/master/img/whut_names.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.7)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
           
-            <div class="scroll-down-bar">
-              <i class="iconfont icon-arrowdown"></i>
-            </div>
+            <span id="subtitle">Learning by Sharing（￣▽￣）</span>
           
         </div>
+
+        
       </div>
+
+      
+        <div class="scroll-down-bar">
+          <i class="iconfont icon-arrowdown"></i>
+        </div>
+      
     </div>
+  </div>
+</div>
+
+</div>
+
   </header>
 
   <main>
     
       <div class="container nopadding-x-md">
-        <div class="py-5" id="board"
-          style=margin-top:0>
+        <div id="board"
+          style="margin-top: 0">
           
           <div class="container">
             <div class="row">
@@ -184,21 +222,80 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
+        <a href="/2018/07/13/WHUT/CourseDesignOfMechanismDesign/" target="_self">
+          课程设计：双级圆柱斜齿轮减速器
+        </a>
+      </h1>
+
+      <a class="index-excerpt" href="/2018/07/13/WHUT/CourseDesignOfMechanismDesign/" target="_self">
+        <div>
+          
+          放在这留作纪念，不过为了放抄袭故意设置了一些明显错误。
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2018-07-13 22:58" pubdate>
+              2018-07-13
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%9C%BA%E6%A2%B0%E7%9B%B8%E5%85%B3/" class="category-chain-item">机械相关</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E6%9C%BA%E6%A2%B0%E8%AE%BE%E8%AE%A1/">#机械设计</a>
+            
+              <a href="/tags/%E8%AF%BE%E7%A8%8B%E8%AE%BE%E8%AE%A1/">#课程设计</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
         <a href="/2018/06/23/WHUT/ProbabilityTheoryMathStatistic/" target="_self">
           概率论与数理统计笔记
         </a>
       </h1>
 
-      <p class="index-excerpt">
-        <a href="/2018/06/23/WHUT/ProbabilityTheoryMathStatistic/" target="_self">
+      <a class="index-excerpt" href="/2018/06/23/WHUT/ProbabilityTheoryMathStatistic/" target="_self">
+        <div>
           
-          
-            
-          
-          学机器学习前就要弄懂的一门课。
-基于《概率论与数理统计》（第三版），ISBN：978-7-04-044003-4。
-        </a>
-      </p>
+          学机器学习前就要弄懂的一门课。 基于《概率论与数理统计》（第三版），ISBN：978-7-04-044003-4。
+        </div>
+      </a>
 
       <div class="index-btm post-metas">
         
@@ -210,20 +307,34 @@
           </div>
         
         
-          <div class="post-meta mr-3">
+          <div class="post-meta mr-3 d-flex align-items-center">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/%E6%9C%BA%E6%A2%B0%E7%9B%B8%E5%85%B3/">机械相关</a>
-            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%9C%BA%E6%A2%B0%E7%9B%B8%E5%85%B3/" class="category-chain-item">机械相关</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
           </div>
         
         
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/">概率论与数理统计</a>
+              <a href="/tags/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/">#概率论与数理统计</a>
             
-              <a href="/tags/%E6%95%B0%E5%AD%A6/">数学</a>
+              <a href="/tags/%E6%95%B0%E5%AD%A6/">#数学</a>
             
           </div>
         
@@ -242,15 +353,12 @@
         </a>
       </h1>
 
-      <p class="index-excerpt">
-        <a href="/2018/06/16/WHUT/MetalTechnology/" target="_self">
-          
-          
-            
+      <a class="index-excerpt" href="/2018/06/16/WHUT/MetalTechnology/" target="_self">
+        <div>
           
           这玩意全靠背诵记忆，期末捣鼓了好一阵子，当时靠写这玩意来复习了。
-        </a>
-      </p>
+        </div>
+      </a>
 
       <div class="index-btm post-metas">
         
@@ -262,20 +370,34 @@
           </div>
         
         
-          <div class="post-meta mr-3">
+          <div class="post-meta mr-3 d-flex align-items-center">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/%E6%9C%BA%E6%A2%B0%E7%9B%B8%E5%85%B3/">机械相关</a>
-            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%9C%BA%E6%A2%B0%E7%9B%B8%E5%85%B3/" class="category-chain-item">机械相关</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
           </div>
         
         
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/%E6%95%99%E7%A8%8B/">教程</a>
+              <a href="/tags/%E6%95%99%E7%A8%8B/">#教程</a>
             
-              <a href="/tags/%E9%87%91%E5%B1%9E%E5%B7%A5%E8%89%BA%E5%AD%A6/">金属工艺学</a>
+              <a href="/tags/%E9%87%91%E5%B1%9E%E5%B7%A5%E8%89%BA%E5%AD%A6/">#金属工艺学</a>
             
           </div>
         
@@ -294,16 +416,12 @@
         </a>
       </h1>
 
-      <p class="index-excerpt">
-        <a href="/2018/06/15/WHUT/MechanismDesign/" target="_self">
+      <a class="index-excerpt" href="/2018/06/15/WHUT/MechanismDesign/" target="_self">
+        <div>
           
-          
-            
-          
-          主要讲了一些机械零件的选型计算。老师上复习课的时候说了下要记忆的公式，然后考了90%……
-注：基于武汉理工大学MOOC、《机械原理与机械设计》（ISBN：9787040402827）
-        </a>
-      </p>
+          主要讲了一些机械零件的选型计算。老师上复习课的时候说了下要记忆的公式，然后考了90%…… 注：基于武汉理工大学MOOC、《机械原理与机械设计》（ISBN：9787040402827）
+        </div>
+      </a>
 
       <div class="index-btm post-metas">
         
@@ -315,20 +433,34 @@
           </div>
         
         
-          <div class="post-meta mr-3">
+          <div class="post-meta mr-3 d-flex align-items-center">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/%E6%9C%BA%E6%A2%B0%E7%9B%B8%E5%85%B3/">机械相关</a>
-            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%9C%BA%E6%A2%B0%E7%9B%B8%E5%85%B3/" class="category-chain-item">机械相关</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
           </div>
         
         
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/%E6%9C%BA%E6%A2%B0%E8%AE%BE%E8%AE%A1/">机械设计</a>
+              <a href="/tags/%E6%9C%BA%E6%A2%B0%E8%AE%BE%E8%AE%A1/">#机械设计</a>
             
-              <a href="/tags/%E6%9C%BA%E6%A2%B0/">机械</a>
+              <a href="/tags/%E6%9C%BA%E6%A2%B0/">#机械</a>
             
           </div>
         
@@ -347,17 +479,12 @@
         </a>
       </h1>
 
-      <p class="index-excerpt">
-        <a href="/2018/03/31/WHUT/AndroidOpenDoor/" target="_self">
+      <a class="index-excerpt" href="/2018/03/31/WHUT/AndroidOpenDoor/" target="_self">
+        <div>
           
-          
-            
-          
-          注：这是一个学习笔记。很可惜今年的 Google Study Jams 活动取消了，于是就只能自己来了，幸好 Google 官方有很多面向新手的教程，那么，开干！本文基于https://developers.google.cn/training/android/ 给出的教程(而且是中文教程，感觉很良心)
-2018©Fu_Qingchen，Typora
-本文的运行环境是：12345Android S
-        </a>
-      </p>
+          注：这是一个学习笔记。很可惜今年的 Google Study Jams 活动取消了，于是就只能自己来了，幸好 Google 官方有很多面向新手的教程，那么，开干！本文基于https:&#x2F;&#x2F;developers.google.cn&#x2F;training&#x2F;android&#x2F; 给出的教程(而且是中文教程，感觉很良心) 2018©Fu_Qingchen，Typora 本文的运行环境是：12345Android S
+        </div>
+      </a>
 
       <div class="index-btm post-metas">
         
@@ -369,22 +496,36 @@
           </div>
         
         
-          <div class="post-meta mr-3">
+          <div class="post-meta mr-3 d-flex align-items-center">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9B%B8%E5%85%B3/">计算机相关</a>
-            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9B%B8%E5%85%B3/" class="category-chain-item">计算机相关</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
           </div>
         
         
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/%E7%BC%96%E7%A8%8B/">编程</a>
+              <a href="/tags/%E7%BC%96%E7%A8%8B/">#编程</a>
             
-              <a href="/tags/Android/">Android</a>
+              <a href="/tags/Android/">#Android</a>
             
-              <a href="/tags/Google/">Google</a>
+              <a href="/tags/Google/">#Google</a>
             
           </div>
         
@@ -403,16 +544,12 @@
         </a>
       </h1>
 
-      <p class="index-excerpt">
-        <a href="/2018/01/28/WHUT/CourseDesignOfMechanicalPrinciple/" target="_self">
+      <a class="index-excerpt" href="/2018/01/28/WHUT/CourseDesignOfMechanicalPrinciple/" target="_self">
+        <div>
           
-          
-            
-          
-          机械原理课程设计实验报告书
-这个是一个很经典的设计，这些年来一直都没有变过
-        </a>
-      </p>
+          机械原理课程设计实验报告书 这个是一个很经典的设计，这些年来一直都没有变过
+        </div>
+      </a>
 
       <div class="index-btm post-metas">
         
@@ -424,22 +561,36 @@
           </div>
         
         
-          <div class="post-meta mr-3">
+          <div class="post-meta mr-3 d-flex align-items-center">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/%E6%9C%BA%E6%A2%B0%E7%9B%B8%E5%85%B3/">机械相关</a>
-            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%9C%BA%E6%A2%B0%E7%9B%B8%E5%85%B3/" class="category-chain-item">机械相关</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
           </div>
         
         
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/%E8%AF%BE%E7%A8%8B%E8%AE%BE%E8%AE%A1/">课程设计</a>
+              <a href="/tags/%E8%AF%BE%E7%A8%8B%E8%AE%BE%E8%AE%A1/">#课程设计</a>
             
-              <a href="/tags/%E6%9C%BA%E6%A2%B0/">机械</a>
+              <a href="/tags/%E6%9C%BA%E6%A2%B0/">#机械</a>
             
-              <a href="/tags/%E6%9C%BA%E6%A2%B0%E5%8E%9F%E7%90%86/">机械原理</a>
+              <a href="/tags/%E6%9C%BA%E6%A2%B0%E5%8E%9F%E7%90%86/">#机械原理</a>
             
           </div>
         
@@ -458,16 +609,12 @@
         </a>
       </h1>
 
-      <p class="index-excerpt">
-        <a href="/2018/01/17/WHUT/InterchangeabilityAndMeasuringTechnology/" target="_self">
+      <a class="index-excerpt" href="/2018/01/17/WHUT/InterchangeabilityAndMeasuringTechnology/" target="_self">
+        <div>
           
-          
-            
-          
-          听正在工作的师兄说这是一门非常重要的课程。
-基于《互换性与测量技术》（ISBN：978-7-118-08882-3）
-        </a>
-      </p>
+          听正在工作的师兄说这是一门非常重要的课程。 基于《互换性与测量技术》（ISBN：978-7-118-08882-3）
+        </div>
+      </a>
 
       <div class="index-btm post-metas">
         
@@ -479,20 +626,34 @@
           </div>
         
         
-          <div class="post-meta mr-3">
+          <div class="post-meta mr-3 d-flex align-items-center">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/%E6%9C%BA%E6%A2%B0%E7%9B%B8%E5%85%B3/">机械相关</a>
-            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%9C%BA%E6%A2%B0%E7%9B%B8%E5%85%B3/" class="category-chain-item">机械相关</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
           </div>
         
         
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/%E6%9C%BA%E6%A2%B0/">机械</a>
+              <a href="/tags/%E6%9C%BA%E6%A2%B0/">#机械</a>
             
-              <a href="/tags/%E4%BA%92%E6%8D%A2%E6%80%A7%E4%B8%8E%E6%B5%8B%E9%87%8F%E6%8A%80%E6%9C%AF/">互换性与测量技术</a>
+              <a href="/tags/%E4%BA%92%E6%8D%A2%E6%80%A7%E4%B8%8E%E6%B5%8B%E9%87%8F%E6%8A%80%E6%9C%AF/">#互换性与测量技术</a>
             
           </div>
         
@@ -511,17 +672,12 @@
         </a>
       </h1>
 
-      <p class="index-excerpt">
-        <a href="/2018/01/16/WHUT/PrincipleOfMechanism/" target="_self">
+      <a class="index-excerpt" href="/2018/01/16/WHUT/PrincipleOfMechanism/" target="_self">
+        <div>
           
-          
-            
-          
-          一半是几何画图，一半是理论力学的应用，哦，还有个齿轮的计算。画图相关的现在都用计算机辅助软件了，估计过几年这门课就要改版了。
-参考资料：《机械原理与机械设计》第三版（ISBN：978-7-04-039981-3）
-
-        </a>
-      </p>
+          一半是几何画图，一半是理论力学的应用，哦，还有个齿轮的计算。画图相关的现在都用计算机辅助软件了，估计过几年这门课就要改版了。 参考资料：《机械原理与机械设计》第三版（ISBN：978-7-04-039981-3）
+        </div>
+      </a>
 
       <div class="index-btm post-metas">
         
@@ -533,20 +689,34 @@
           </div>
         
         
-          <div class="post-meta mr-3">
+          <div class="post-meta mr-3 d-flex align-items-center">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/%E6%9C%BA%E6%A2%B0%E7%9B%B8%E5%85%B3/">机械相关</a>
-            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%9C%BA%E6%A2%B0%E7%9B%B8%E5%85%B3/" class="category-chain-item">机械相关</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
           </div>
         
         
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/%E6%9C%BA%E6%A2%B0/">机械</a>
+              <a href="/tags/%E6%9C%BA%E6%A2%B0/">#机械</a>
             
-              <a href="/tags/%E6%9C%BA%E6%A2%B0%E5%8E%9F%E7%90%86/">机械原理</a>
+              <a href="/tags/%E6%9C%BA%E6%A2%B0%E5%8E%9F%E7%90%86/">#机械原理</a>
             
           </div>
         
@@ -565,16 +735,12 @@
         </a>
       </h1>
 
-      <p class="index-excerpt">
-        <a href="/2018/01/15/WHUT/MechanicsOfMaterials/" target="_self">
+      <a class="index-excerpt" href="/2018/01/15/WHUT/MechanicsOfMaterials/" target="_self">
+        <div>
           
-          
-            
-          
-          材料力学是一门非常重要的课程，它的知识点可以说是贯穿了整个大学后半段。
-基于《材料力学Ⅰ》（ISBN：978-7-04-030895-2）、《材料力学Ⅱ》（ISBN：978-7-04-030894-5）
-        </a>
-      </p>
+          材料力学是一门非常重要的课程，它的知识点可以说是贯穿了整个大学后半段。 基于《材料力学Ⅰ》（ISBN：978-7-04-030895-2）、《材料力学Ⅱ》（ISBN：978-7-04-030894-5）
+        </div>
+      </a>
 
       <div class="index-btm post-metas">
         
@@ -586,20 +752,34 @@
           </div>
         
         
-          <div class="post-meta mr-3">
+          <div class="post-meta mr-3 d-flex align-items-center">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/%E6%9C%BA%E6%A2%B0%E7%9B%B8%E5%85%B3/">机械相关</a>
-            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%9C%BA%E6%A2%B0%E7%9B%B8%E5%85%B3/" class="category-chain-item">机械相关</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
           </div>
         
         
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/%E6%9C%BA%E6%A2%B0/">机械</a>
+              <a href="/tags/%E6%9C%BA%E6%A2%B0/">#机械</a>
             
-              <a href="/tags/%E6%9D%90%E6%96%99%E5%8A%9B%E5%AD%A6/">材料力学</a>
+              <a href="/tags/%E6%9D%90%E6%96%99%E5%8A%9B%E5%AD%A6/">#材料力学</a>
             
           </div>
         
@@ -618,15 +798,12 @@
         </a>
       </h1>
 
-      <p class="index-excerpt">
-        <a href="/2016/09/01/CommemorationHighSchool/" target="_self">
-          
-          
-            
+      <a class="index-excerpt" href="/2016/09/01/CommemorationHighSchool/" target="_self">
+        <div>
           
           汇总一些高中四处玩的视频，图片资料。
-        </a>
-      </p>
+        </div>
+      </a>
 
       <div class="index-btm post-metas">
         
@@ -638,20 +815,34 @@
           </div>
         
         
-          <div class="post-meta mr-3">
+          <div class="post-meta mr-3 d-flex align-items-center">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/%E5%85%B6%E4%BB%96/">其他</a>
-            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%85%B6%E4%BB%96/" class="category-chain-item">其他</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
           </div>
         
         
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/%E5%A4%B7%E9%99%B5%E4%B8%AD%E5%AD%A6/">夷陵中学</a>
+              <a href="/tags/%E6%AF%95%E4%B8%9A%E7%BA%AA%E5%BF%B5/">#毕业纪念</a>
             
-              <a href="/tags/%E6%AF%95%E4%B8%9A%E7%BA%AA%E5%BF%B5/">毕业纪念</a>
+              <a href="/tags/%E5%A4%B7%E9%99%B5%E4%B8%AD%E5%AD%A6/">#夷陵中学</a>
             
           </div>
         
@@ -677,7 +868,7 @@
     
 
     
-      <a id="scroll-top-button" href="#" role="button">
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
         <i class="iconfont icon-arrowup" aria-hidden="true"></i>
       </a>
     
@@ -696,35 +887,37 @@
       <div class="modal-body mx-3">
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v"
-                 for="local-search-input">关键词</label>
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>
     </div>
   </div>
 </div>
+
     
 
     
   </main>
 
-  <footer class="text-center mt-5 py-3">
-  <div class="footer-content">
-     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
-  </div>
+  <footer>
+    <div class="footer-inner">
   
-
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
   
-
   
-</footer>
-
-
-  <!-- SCRIPTS -->
   
-  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
-  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
 
   <script>
     NProgress.configure({"showSpinner":false,"trickleSpeed":100})
@@ -735,31 +928,21 @@
   </script>
 
 
-<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
-<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
 <script  src="/js/events.js" ></script>
 <script  src="/js/plugins.js" ></script>
 
-<!-- Plugins -->
+
+
+
+
 
 
   
     <script  src="/js/img-lazyload.js" ></script>
   
 
-
-
-  
-
-
-
-
-
-
-
-
-
-  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
 
 
 
@@ -769,24 +952,15 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- 主题的启动项 保持在最底部 -->
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
 <script  src="/js/boot.js" ></script>
 
 
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
 </body>
 </html>

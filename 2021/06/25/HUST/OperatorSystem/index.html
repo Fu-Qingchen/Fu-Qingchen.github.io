@@ -1,7 +1,7 @@
 
 
 <!DOCTYPE html>
-<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+<html lang="zh-CN" data-default-color-scheme=auto>
 
 
 
@@ -9,66 +9,110 @@
   <meta charset="UTF-8">
   <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
   <link rel="icon" href="/img/favicon.ico">
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
   <meta name="theme-color" content="#2f4154">
-  <meta name="description" content="操作系统的笔记和总结，方便日后回顾用">
   <meta name="author" content="Fu Qingchen">
   <meta name="keywords" content="MSE, CS">
   
+    <meta name="description" content="操作系统的笔记和总结，方便日后回顾用">
+<meta property="og:type" content="article">
+<meta property="og:title" content="操作系统">
+<meta property="og:url" content="http://example.com/2021/06/25/HUST/OperatorSystem/index.html">
+<meta property="og:site_name" content="Fu&#39;s Web">
+<meta property="og:description" content="操作系统的笔记和总结，方便日后回顾用">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20210531094301.png">
+<meta property="og:image" content="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/image-20210531104930510.png">
+<meta property="og:image" content="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/image-20210531113501809.png">
+<meta property="og:image" content="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20210602205247.png">
+<meta property="og:image" content="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20210602211326.png">
+<meta property="og:image" content="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20210603203318.png">
+<meta property="og:image" content="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20210603222854.png">
+<meta property="og:image" content="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20210617221554.png">
+<meta property="og:image" content="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20210618093943.png">
+<meta property="og:image" content="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20210618100546.png">
+<meta property="og:image" content="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20210618101628.png">
+<meta property="og:image" content="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20210914161148.png">
+<meta property="og:image" content="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20210618223922.png">
+<meta property="og:image" content="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20210619094437.png">
+<meta property="og:image" content="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20210624211552.png">
+<meta property="og:image" content="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20210625101016.png">
+<meta property="og:image" content="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/%E7%A3%81%E7%9B%98%E5%A4%9A%E8%BF%9B%E7%A8%8B%E9%98%9F%E5%88%97.png">
+<meta property="article:published_time" content="2021-06-25T07:13:00.000Z">
+<meta property="article:modified_time" content="2022-05-25T15:14:12.479Z">
+<meta property="article:author" content="Fu Qingchen">
+<meta property="article:tag" content="操作系统">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20210531094301.png">
+  
+  
+  
   <title>操作系统 | Fu&#39;s Web</title>
 
-  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
 
-  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
-  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
 
-  
-    
-    
-      
-      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/vs2015.min.css" />
-    
-  
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
 
-  
-    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
-  
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
 
 
 
 <!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
 
 
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
 
 
 <link  rel="stylesheet" href="/css/main.css" />
 
-<!-- 自定义样式保持在最底部 -->
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
 
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.11","typing":{"enable":false,"typeSpeed":30,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null},"tajs":null},"search_path":"/local-search.xml"};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.0","typing":{"enable":false,"typeSpeed":30,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"tajs":null},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
+
+  
 <meta name="generator" content="Hexo 5.4.0"></head>
 
 
 <body>
-  <header style="height: 50vh;">
-    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 50vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
-    <a class="navbar-brand"
-       href="/">&nbsp;<strong>Fu's Web</strong>&nbsp;</a>
+    <a class="navbar-brand" href="/">
+      <strong>Fu&#39;s Web</strong>
+    </a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
             data-target="#navbarSupportedContent"
@@ -142,13 +186,15 @@
         
         
           <li class="nav-item" id="search-btn">
-            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
-                class="iconfont icon-search"></i>&nbsp;</a>
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
           </li>
+          
         
         
           <li class="nav-item" id="color-toggle-btn">
-            <a class="nav-link" target="_self">&nbsp;<i
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
                 class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
           </li>
         
@@ -157,62 +203,71 @@
   </div>
 </nav>
 
-    <div class="banner" id="banner" parallax=true
-         style="background: url('https://gitee.com/fuqingchen/picture-lib/raw/master/img/Test_Tree.png') no-repeat center center;
-           background-size: cover;">
-      <div class="full-bg-img">
-        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-          <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="操作系统">
-              
-                操作系统
-              
-            </span>
-
-            
-              <div class="mt-3">
-  
-  
-    <span class="post-meta">
-      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2021-06-25 15:13" pubdate>
-        2021年6月25日 下午
-      </time>
-    </span>
-  
-</div>
-
-<div class="mt-1">
-  
-    
-    <span class="post-meta mr-2">
-      <i class="iconfont icon-chart"></i>
-      11.1k 字
-    </span>
   
 
-  
-    
-    <span class="post-meta mr-2">
-      <i class="iconfont icon-clock-fill"></i>
-      
-      
-      124
-       分钟
-    </span>
-  
-
-  
-  
-</div>
-
-            
-          </div>
-
+<div id="banner" class="banner" parallax=true
+     style="background: url('https://gitee.com/fuqingchen/picture-lib/raw/master/img/Test_Tree.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle">操作系统</span>
           
         </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2021-06-25 15:13" pubdate>
+          2021年6月25日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          <!-- compatible with older versions-->
+          17k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          <!-- compatible with older versions-->
+          143 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
       </div>
+
+      
     </div>
+  </div>
+</div>
+
+</div>
+
   </header>
 
   <main>
@@ -221,20 +276,25 @@
 
 <div class="container-fluid nopadding-x">
   <div class="row nomargin-x">
-    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
     <div class="col-lg-8 nopadding-x-md">
       <div class="container nopadding-x-md" id="board-ctn">
-        <div class="py-5" id="board">
+        <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
             <h1 style="display: none">操作系统</h1>
             
             <div class="markdown-body">
+              
               <p>操作系统的笔记和总结，方便日后回顾用</p>
 <span id="more"></span>
 <h1 id="操作系统基础"><a href="#操作系统基础" class="headerlink" title="操作系统基础"></a>操作系统基础</h1><p>操作系统是介于硬件与应用程序之间的一层，它管理着计算机的硬件，让用户更加高效的使用计算机。用户只能通过操作系统的接口来使用硬件。用户既可以通过应用程序间接使用操作系统，也可以直接使用。</p>
 <p>计算机最重要的东西就是CPU和内存，操作系通过进程管理CPU。对于Linux来说，万物都是I/O设备。所有的外部硬件都是通过I/O管理的。</p>
-<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20210531094301.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20210531094301.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>总的来说，操作系统有两大重要的组成部分，一个是多进程视图，一个是文件视图。多进程视图中主要研究进程管理和内存管理，文件视图主要研究文件管理和IO管理。</p>
 <h2 id="系统启动"><a href="#系统启动" class="headerlink" title="系统启动"></a>系统启动</h2><p>一切从操作系统的启动开始。当电源上电时，硬件电路会初始化PC的值为 <code>0xFFFF0</code> ，内存中这一段地址是 BIOS，负责对程序的硬件进行检测。检测成功后，利用BIOS的输入功能将启动磁盘的启动扇区读入内存，将 PC 的值设置为 <code>0x7C00</code>，这一段是 <code>bootsects.s</code>（此时还不算是操作系统的启动）</p>
 <blockquote>
@@ -255,7 +315,7 @@
 <p><code>setup.s</code> 为了在保护模式下能跳转到 <code>head.s</code> 也进行了 IDT 和 GDT 表的初始化，不过 <code>head.s</code> 中的是临时建立的， <code>head.s</code> 是正式建立</p>
 </blockquote>
 <p><code>main.c</code> 负责初始化一些硬件表，初始化其他重要的数据结构，创建进程，启动 Shell</p>
-<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/image-20210531104930510.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/image-20210531104930510.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <h2 id="系统接口"><a href="#系统接口" class="headerlink" title="系统接口"></a>系统接口</h2><p>为了保证系统内核的安全，应用程序是直接对硬件进行操作的，要想使用计算机硬件，只能通过操作系统的接口。这些接口函数由操作系统提供，同时又以函数的形式调用，因此称为<strong>系统调用</strong>。</p>
 <blockquote>
 <p>系统调用连接了计算机硬件和应用程序</p>
@@ -268,22 +328,22 @@
 <p>CPL在CPU寄存器存放，DPL是 GDT 表中存放的数据</p>
 </blockquote>
 <p>应用程序要访问内核态的数据就需要依赖于系统调用了。操作系统给应用程序留了一个 <code>0x80</code> 号中断作为应用程序进入操作系统的入口。以 C 语言的 <code>printf</code> 函数为例。<code>printf</code> 里面就有一段内联汇编，里面涉及到 <code>0x80</code> 中断，同时传入系统调用号来区别不同的系统调用</p>
-<figure class="highlight c"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">write</span><span class="hljs-params">(<span class="hljs-keyword">int</span> fd, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *buf, <span class="hljs-keyword">off_t</span> count)</span> </span>&#123;<br>    <span class="hljs-keyword">long</span> __res;<br>    __asm__volatile(<span class="hljs-string">&quot;int 0x80&quot;</span> : <span class="hljs-string">&quot;=a&quot;</span>(__res) : <span class="hljs-string">&quot;&quot;</span>(__NR_write)), <span class="hljs-string">&quot;b&quot;</span>((<span class="hljs-keyword">long</span>)(fd)), <span class="hljs-string">&quot;c&quot;</span>((<span class="hljs-keyword">long</span>)(buf)), <span class="hljs-string">&quot;c&quot;</span>((<span class="hljs-keyword">long</span>)(count));<br>    <span class="hljs-comment">// __NR_write 就是系统调用号，&quot;b&quot;((long)(fd))表示将 fd 赋值给 %ebx</span><br>    <span class="hljs-comment">// 核心就是使用 int 0x80 中断，然后将系统调用号传入</span><br>&#125;<br></code></pre></div></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">write</span><span class="hljs-params">(<span class="hljs-keyword">int</span> fd, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *buf, <span class="hljs-keyword">off_t</span> count)</span> </span>&#123;<br>    <span class="hljs-keyword">long</span> __res;<br>    __asm__volatile(<span class="hljs-string">&quot;int 0x80&quot;</span> : <span class="hljs-string">&quot;=a&quot;</span>(__res) : <span class="hljs-string">&quot;&quot;</span>(__NR_write)), <span class="hljs-string">&quot;b&quot;</span>((<span class="hljs-keyword">long</span>)(fd)), <span class="hljs-string">&quot;c&quot;</span>((<span class="hljs-keyword">long</span>)(buf)), <span class="hljs-string">&quot;c&quot;</span>((<span class="hljs-keyword">long</span>)(count));<br>    <span class="hljs-comment">// __NR_write 就是系统调用号，&quot;b&quot;((long)(fd))表示将 fd 赋值给 %ebx</span><br>    <span class="hljs-comment">// 核心就是使用 int 0x80 中断，然后将系统调用号传入</span><br>&#125;<br></code></pre></td></tr></table></figure>
 <p>操作系统收到 <code>int 0x80</code> 后进行中断处理，根据系统调用号查询 IDT 表，跳转到相应的中断处理函数执行操作。跳转到中断处理函数后，CPL = 0，就可以进行对系统内核和硬件的操作了。总的来说就是一下步骤：</p>
-<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/image-20210531113501809.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/image-20210531113501809.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <h2 id="系统调用Linux命令"><a href="#系统调用Linux命令" class="headerlink" title="系统调用Linux命令"></a>系统调用Linux命令</h2><p><code>strace</code>：查看进程调用了哪些系统调用</p>
 <h1 id="进程管理"><a href="#进程管理" class="headerlink" title="进程管理"></a>进程管理</h1><p>进程管理其实就是对计算机CPU的管理。CPU的工作流程就是不断的取址执行、取址执行，给CPU一个初始地址就可以让它工作了</p>
 <p>这样效率很低，一旦某个程序在进行I/O操作，CPU就必须等待硬件的读写完成。为了提高效率，有必要让CPU在不同的程序之间切换，多个程序同时出发，交替运行。在切换时要记录当前程序的相关信息以便切换回来能够恢复上下文，保存的这个数据结构就是 <strong>PCB（程序控制块）</strong>。这种在运行的程序就叫做 <strong>进程</strong></p>
 <blockquote>
 <p>进程于程序的主要区别就是一个在运行，内存中有PCB，一个没有在运行</p>
 </blockquote>
-<h2 id="多进程视图"><a href="#多进程视图" class="headerlink" title="多进程视图"></a>多进程视图</h2><p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20210602205247.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="多进程视图"><a href="#多进程视图" class="headerlink" title="多进程视图"></a>多进程视图</h2><p><img src="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20210602205247.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <h3 id="多进程的组织"><a href="#多进程的组织" class="headerlink" title="多进程的组织"></a>多进程的组织</h3><p>一个进程会有不同的状态，操作系统是通过状态队列来管理多个进程的</p>
 <p>进程主要有3种状态：就绪态、运行态、阻塞态</p>
 <p>操作系统对每个状态有一个队列，队列中存放的就是一个个进程</p>
-<figure class="highlight routeros"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs routeros">运行态	  :  [<span class="hljs-attribute">PID</span>=1,PC=...]<br>就绪态队列:	[<span class="hljs-attribute">PID</span>=2,PC=...], [<span class="hljs-attribute">PID</span>=4,PC=...]<br>阻塞态队列:	[<span class="hljs-attribute">PID</span>=3,PC=...], [<span class="hljs-attribute">PID</span>=5,PC=...]<br></code></pre></div></td></tr></table></figure>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs routeros">运行态	  :  [<span class="hljs-attribute">PID</span>=1,PC=...]<br>就绪态队列:	[<span class="hljs-attribute">PID</span>=2,PC=...], [<span class="hljs-attribute">PID</span>=4,PC=...]<br>阻塞态队列:	[<span class="hljs-attribute">PID</span>=3,PC=...], [<span class="hljs-attribute">PID</span>=5,PC=...]<br></code></pre></td></tr></table></figure>
 <p>根据发生的事件，各个程序在不同的状态中进行切换</p>
-<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20210602211326.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20210602211326.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ul>
 <li>运行态到就绪态的切换：当一个进程运行了很多时间，超过了操作系统给它分配的时间片后，这个进程将会被剥夺CPU，进入运行态</li>
 <li>就绪态到运行态的切换：当CPU出现空闲，比如刚刚一个进程的CPU被剥夺，就会调用调度算法，在就绪态中找到一个进程，然后把这个进程变为运行态。</li>
@@ -296,7 +356,7 @@
 <h3 id="进程间通信"><a href="#进程间通信" class="headerlink" title="进程间通信"></a>进程间通信</h3><p>最基本的模式就是两个进程在一块共享缓存区中读写</p>
 <p>此时，如果一个进程还没执行完，就执行另外一个，此时就会出现错误</p>
 <blockquote>
-<figure class="highlight cpp"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs cpp">process1:<br><span class="hljs-keyword">void</span> A &#123; a = file.<span class="hljs-built_in">read</span>(); a += <span class="hljs-number">3</span>; file.<span class="hljs-built_in">write</span>(a); &#125;<br>						⬆ PC在此次跳转到process2，a就会发生错误<br>process2:<br><span class="hljs-keyword">void</span> B &#123; b = file.<span class="hljs-built_in">read</span>(); b *= <span class="hljs-number">2</span>; file.<span class="hljs-built_in">write</span>(b); &#125;<br></code></pre></div></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs cpp">process1:<br><span class="hljs-keyword">void</span> A &#123; a = file.<span class="hljs-built_in">read</span>(); a += <span class="hljs-number">3</span>; file.<span class="hljs-built_in">write</span>(a); &#125;<br>						⬆ PC在此次跳转到process2，a就会发生错误<br>process2:<br><span class="hljs-keyword">void</span> B &#123; b = file.<span class="hljs-built_in">read</span>(); b *= <span class="hljs-number">2</span>; file.<span class="hljs-built_in">write</span>(b); &#125;<br></code></pre></td></tr></table></figure>
 </blockquote>
 <p>解决方法就是在执行 process1 的时候一次性执行完全。或者说设置共享缓冲区的控制权，让 process2 无法操作文件</p>
 <p>本文底下 <strong>进程同步</strong> 有深入的介绍</p>
@@ -310,14 +370,14 @@
 <p>不过由于资源的切换少，线程的切换比进程快很多。</p>
 </blockquote>
 <p>线程有两类：用户级线程和内核级线程。用户级线程是应用程序自己实现多线程，在操作系统眼里还是单线程。而核心级线程是深入操作系统中，操作系统会分配相应的硬件资源。</p>
-<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20210603203318.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20210603203318.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <blockquote>
 <p>MMU 是 CPU 中的共享储存管理部件（Memory Management unit）。进程切换不仅需要切换 PC 指针，还需要切换 MMU，而线程切换不需要切换 MMU</p>
 <p>进程的切换就是在内核级线程的切换 + 映射表等资源的切换</p>
 </blockquote>
 <h3 id="用户级线程"><a href="#用户级线程" class="headerlink" title="用户级线程"></a>用户级线程</h3><p>多个线程共用一个栈时，跳转时要进行压栈存放下一步的 PC 值，这时多个线程的 PC 值就混在一起了。因此，一个线程对应一个栈</p>
 <blockquote>
-<figure class="highlight dts"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs dts"><span class="hljs-symbol">Thread1:</span><br><span class="hljs-class">A </span>&#123; B(); ... &#125;<br><span class="hljs-class">B </span>&#123; Yield(Thread2); ... &#125;<br><span class="hljs-symbol">Thread2:</span><br><span class="hljs-class">C </span>&#123; D(); ... &#125;<br><span class="hljs-class">D </span>&#123; Yield(Thread1); ... &#125;<br><span class="hljs-symbol">Stack:</span> [ A B C D<br></code></pre></div></td></tr></table></figure>
+<figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs dts"><span class="hljs-symbol">Thread1:</span><br><span class="hljs-class">A </span>&#123; B(); ... &#125;<br><span class="hljs-class">B </span>&#123; Yield(Thread2); ... &#125;<br><span class="hljs-symbol">Thread2:</span><br><span class="hljs-class">C </span>&#123; D(); ... &#125;<br><span class="hljs-class">D </span>&#123; Yield(Thread1); ... &#125;<br><span class="hljs-symbol">Stack:</span> [ A B C D<br></code></pre></td></tr></table></figure>
 <p>Thread2 跳转回 Thread1 后，理想状态下将返回到 B，但是此时栈底是 D，将跳转到 D</p>
 </blockquote>
 <p>用户级线程的核心是<strong>一个线程一个栈</strong> 以及 <strong>Yield()</strong></p>
@@ -329,19 +389,19 @@
 <h3 id="内核级线程"><a href="#内核级线程" class="headerlink" title="内核级线程"></a>内核级线程</h3><p>核心级线程需要由于涉及到操作系统，因此需要通过中断 <code>int 0x80</code> 进入操作系统内核，通过中断返回 <code>iret</code> 从操作系统返回到用户态代码。</p>
 <p>如果一个线程继续使用一个栈，这个栈中可能存放着一些危险代码，内核在执行时会以内核态的特权级执行，因此不安全，需要将栈分为用户态的栈和内核态的栈。内核态的栈中存放着用户栈的首尾地址和中断进入内核前的 PC 值，以便能够回到原来的地方继续执行，同时内核栈中还存放在中断返回代码的地址。</p>
 <p>内核级线程的切换包括代码的切换（PC指针的切换）、TCB的切换、用户栈的切换和内核栈的切换。PC指针压在栈中，切换的时候弹栈赋值；栈的切换主要是 <code>%rsp</code> 的变化。有5个步骤</p>
-<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20210603222854.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20210603222854.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ol>
 <li><p>进入操作系统核心。应用进程通过中断来到操作系统核心，将用户栈的首尾位置、PC指针位置等信息压入内核栈。执行中断处理函数。</p>
 <blockquote>
 <p>用户代码</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs assembly">mov %eax, __NR_fork<br>INT 0x80	#进入系统内核<br>mov res, %eax<br></code></pre></div></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs assembly">mov %eax, __NR_fork<br>INT 0x80	#进入系统内核<br>mov res, %eax<br></code></pre></td></tr></table></figure>
 <p>接下来操作系统就会执行系统调用的函数 <code>system_call</code></p>
 </blockquote>
 </li>
 <li><p>调用 <code>schedule()</code> ，找到下一个执行的线程的 TCB。找到下一个进程的过程在后面进程调度中会介绍</p>
 <blockquote>
 <p>系统调用：<code>system_cal</code></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs assembly">push %ds ... # 将CPU寄存器记录到内核栈中<br>call sys_fork<br>push %eax<br>...<br>cmpl $0 counter(%eax)	# 判断是否阻塞或超时<br>je schedule()		# 如果阻塞或超时就切换<br>ret_from_sys_call:<br></code></pre></div></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs assembly">push %ds ... # 将CPU寄存器记录到内核栈中<br>call sys_fork<br>push %eax<br>...<br>cmpl $0 counter(%eax)	# 判断是否阻塞或超时<br>je schedule()		# 如果阻塞或超时就切换<br>ret_from_sys_call:<br></code></pre></td></tr></table></figure>
 <blockquote>
 <p><code>sys_fork</code> 在后面内核级线程的创建会介绍</p>
 </blockquote>
@@ -349,13 +409,13 @@
 </li>
 <li><p>进行内核栈的切换。根据 TCB 的信息完成内核栈的切换</p>
 <blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs assembly">schedule:<br>	next = ...;<br>	call switch_to(next);<br>switch_to:<br>	TCB[curr].esp = %esp;<br>	%esp = TCB[next].esp;<br></code></pre></div></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs assembly">schedule:<br>	next = ...;<br>	call switch_to(next);<br>switch_to:<br>	TCB[curr].esp = %esp;<br>	%esp = TCB[next].esp;<br></code></pre></td></tr></table></figure>
 </blockquote>
 </li>
 <li><p>中断返回。从内核态重新返回为用户态。</p>
 <blockquote>
 <p>系统调用：<code>system_cal</code></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs assembly">ret_from_sys_call:<br>	popl %eax ...	# 将用户态还原<br>	iret	# 中断返回<br></code></pre></div></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs assembly">ret_from_sys_call:<br>	popl %eax ...	# 将用户态还原<br>	iret	# 中断返回<br></code></pre></td></tr></table></figure>
 </blockquote>
 </li>
 <li><p>进行用户栈的切换。根据中断返回将PC设置为内存栈中的PC，还原之前压入栈的寄存器。</p>
@@ -376,7 +436,7 @@
 </li>
 </ul>
 <p>在实际的操作系统中，使用的是 <strong>多极反馈队列调度</strong>。动态根据应用运行时间和等待时间调节进程的优先级</p>
-<figure class="highlight cpp"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">schedule</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">while</span>(<span class="hljs-literal">true</span>) &#123;<br>        foreach(task : taskqueue) &#123;<br>            <span class="hljs-keyword">if</span>(task.state == TASK_RUNNING &amp;&amp; task.counter &gt; c) &#123; <br>                next = task; c = task.counter; <br>            &#125; <br>        &#125;	<span class="hljs-comment">// 在运行队列中找到最大count最大的那个</span><br>        <span class="hljs-keyword">if</span>(next.counter == <span class="hljs-number">0</span>) &#123;<br>            foreach(task : taskqueue) &#123;<br>                <span class="hljs-comment">// 增加时间，使得从就绪态到运行态的新进程和等的久的进程先执行</span><br>                task.counter = (task.counter &gt;&gt; <span class="hljs-number">1</span>) + task.priority;<br>            &#125;	<span class="hljs-comment">// 所有进程</span><br>        &#125;	<span class="hljs-comment">// 运行队列的时间片清零了</span><br>        <span class="hljs-keyword">else</span> &#123; <span class="hljs-keyword">break</span>; &#125;	<span class="hljs-comment">// 这个进程的时间片还有剩余时间</span><br>    &#125;<br>    <span class="hljs-built_in">switch_to</span>(next);<br>&#125;<br></code></pre></div></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">schedule</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">while</span>(<span class="hljs-literal">true</span>) &#123;<br>        foreach(task : taskqueue) &#123;<br>            <span class="hljs-keyword">if</span>(task.state == TASK_RUNNING &amp;&amp; task.counter &gt; c) &#123; <br>                next = task; c = task.counter; <br>            &#125; <br>        &#125;	<span class="hljs-comment">// 在运行队列中找到最大count最大的那个</span><br>        <span class="hljs-keyword">if</span>(next.counter == <span class="hljs-number">0</span>) &#123;<br>            foreach(task : taskqueue) &#123;<br>                <span class="hljs-comment">// 增加时间，使得从就绪态到运行态的新进程和等的久的进程先执行</span><br>                task.counter = (task.counter &gt;&gt; <span class="hljs-number">1</span>) + task.priority;<br>            &#125;	<span class="hljs-comment">// 所有进程</span><br>        &#125;	<span class="hljs-comment">// 运行队列的时间片清零了</span><br>        <span class="hljs-keyword">else</span> &#123; <span class="hljs-keyword">break</span>; &#125;	<span class="hljs-comment">// 这个进程的时间片还有剩余时间</span><br>    &#125;<br>    <span class="hljs-built_in">switch_to</span>(next);<br>&#125;<br></code></pre></td></tr></table></figure>
 <h2 id="进程同步"><a href="#进程同步" class="headerlink" title="进程同步"></a>进程同步</h2><p>两个进程之间会存在合作依赖关系（例如消费者-生产者模型，生产者生产后消费者才能消费）。进程同步使得多个进程之间的合作合理有序，实现了两个进程之间的依赖关系。</p>
 <p>操作系统是通过：一个进程在需要同步的时候停下，等待依赖进程。当依赖进程执行完毕后，该进行继续执行的办法实现进程同步。</p>
 <blockquote>
@@ -384,22 +444,22 @@
 </blockquote>
 <p>应用进程在需要同步的地方将自己阻塞，等待信号；当各个进程协调一致了，就会发射一个信号给操作系统。操作系统收到信号后，会将进程唤醒。</p>
 <h3 id="信号量"><a href="#信号量" class="headerlink" title="信号量"></a>信号量</h3><p>信号量就是告诉应用进程在什么时候停，在什么时候走的一个信号。应用进程通过信号量的值来执行等待或唤醒操作。信号量的结构如下</p>
-<figure class="highlight c"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">semaphore</span> &#123;</span><br>    <span class="hljs-keyword">int</span> value;	<span class="hljs-comment">// 信号的量</span><br>    PCB *<span class="hljs-built_in">queue</span>;	<span class="hljs-comment">// 等待在该信号量上的进程队列</span><br>&#125;;<br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">P</span><span class="hljs-params">(semaphore s)</span> </span>&#123;<br>    --s.value;<br>    <span class="hljs-keyword">if</span>(s.value &lt; <span class="hljs-number">0</span>) &#123; sleep(s.<span class="hljs-built_in">queue</span>); &#125;<br>&#125;	<span class="hljs-comment">// 使用资源的进程通过该函数判断是否等待</span><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">V</span><span class="hljs-params">(semaphore s)</span> </span>&#123;<br>    ++s.value;<br>    <span class="hljs-keyword">if</span>(s.value &lt;= <span class="hljs-number">0</span>) &#123; wake_up(s.<span class="hljs-built_in">queue</span>); &#125;<br>&#125;	<span class="hljs-comment">// 生产资源的进程通过该函数唤醒对应进程</span><br></code></pre></div></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">semaphore</span> &#123;</span><br>    <span class="hljs-keyword">int</span> value;	<span class="hljs-comment">// 信号的量</span><br>    PCB *<span class="hljs-built_in">queue</span>;	<span class="hljs-comment">// 等待在该信号量上的进程队列</span><br>&#125;;<br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">P</span><span class="hljs-params">(semaphore s)</span> </span>&#123;<br>    --s.value;<br>    <span class="hljs-keyword">if</span>(s.value &lt; <span class="hljs-number">0</span>) &#123; sleep(s.<span class="hljs-built_in">queue</span>); &#125;<br>&#125;	<span class="hljs-comment">// 使用资源的进程通过该函数判断是否等待</span><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">V</span><span class="hljs-params">(semaphore s)</span> </span>&#123;<br>    ++s.value;<br>    <span class="hljs-keyword">if</span>(s.value &lt;= <span class="hljs-number">0</span>) &#123; wake_up(s.<span class="hljs-built_in">queue</span>); &#125;<br>&#125;	<span class="hljs-comment">// 生产资源的进程通过该函数唤醒对应进程</span><br></code></pre></td></tr></table></figure>
 <blockquote>
 <p>其中，<code>s.value</code> 表示剩余资源的数量。消费者调用 <code>P(s)</code> 时，<code>value &lt; 0</code> 说明生产者生产的资源不够，消费者需要等待；生产者调用 <code>V(s)</code> 时，<code>value &lt;= 0</code> 说明有 <code>1 - value</code> 个进行正在等待，而此时生产了一个资源，需要唤醒一个进程消耗。</p>
 </blockquote>
 <p>生产者-消费者模型是信号量的一个很好的应用</p>
 <blockquote>
 <p>OS：</p>
-<figure class="highlight c"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c">&gt;semaphore full = <span class="hljs-number">0</span>;				<span class="hljs-comment">// 占用缓冲区</span><br>&gt;semaphore empty = BUFFER_SIZE;	<span class="hljs-comment">// 空闲缓冲区</span><br>&gt;semaphore entry = <span class="hljs-number">1</span>;			<span class="hljs-comment">// 是否进行读写了</span><br></code></pre></div></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c">&gt;semaphore full = <span class="hljs-number">0</span>;				<span class="hljs-comment">// 占用缓冲区</span><br>&gt;semaphore empty = BUFFER_SIZE;	<span class="hljs-comment">// 空闲缓冲区</span><br>&gt;semaphore entry = <span class="hljs-number">1</span>;			<span class="hljs-comment">// 是否进行读写了</span><br></code></pre></td></tr></table></figure>
 <p>生产者：</p>
-<figure class="highlight c++"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c++">&gt;<span class="hljs-keyword">while</span>(<span class="hljs-literal">true</span>) &#123;<br>   <span class="hljs-built_in">P</span>(empty);	<span class="hljs-comment">// 判读是否有空闲缓冲区资源</span><br>   <span class="hljs-built_in">P</span>(entry);	<span class="hljs-comment">// 判断是否其他进程正在使用缓冲区</span><br>   buffer[i] = item; i = (i + <span class="hljs-number">1</span>) % BUFFER_SIZE;	<span class="hljs-comment">// 写内容</span><br>   <span class="hljs-built_in">V</span>(entry);	<br>   <span class="hljs-built_in">V</span>(full);	<span class="hljs-comment">// 生产后占用了的缓冲区会增加，空闲缓冲区减少</span><br>&gt;&#125;<br></code></pre></div></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs c++">&gt;<span class="hljs-keyword">while</span>(<span class="hljs-literal">true</span>) &#123;<br>   <span class="hljs-built_in">P</span>(empty);	<span class="hljs-comment">// 判读是否有空闲缓冲区资源</span><br>   <span class="hljs-built_in">P</span>(entry);	<span class="hljs-comment">// 判断是否其他进程正在使用缓冲区</span><br>   buffer[i] = item; i = (i + <span class="hljs-number">1</span>) % BUFFER_SIZE;	<span class="hljs-comment">// 写内容</span><br>   <span class="hljs-built_in">V</span>(entry);	<br>   <span class="hljs-built_in">V</span>(full);	<span class="hljs-comment">// 生产后占用了的缓冲区会增加，空闲缓冲区减少</span><br>&gt;&#125;<br></code></pre></td></tr></table></figure>
 <p>消费者：</p>
-<figure class="highlight c"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c">&gt;<span class="hljs-keyword">while</span>(<span class="hljs-literal">true</span>) &#123;<br>   P(full);	<span class="hljs-comment">// 判断缓冲区是否为空</span><br>   P(entry);	<span class="hljs-comment">// 判断是否其他进程正在使用缓冲区</span><br>   item = buffer[o]; o = (o + <span class="hljs-number">1</span>) % BUFFER_SIZE;<br>   V(entry);<br>   V(empty);	<span class="hljs-comment">// 生产后空闲缓冲区会增加，占用了的缓冲区会减少</span><br>&gt;&#125;<br></code></pre></div></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs c">&gt;<span class="hljs-keyword">while</span>(<span class="hljs-literal">true</span>) &#123;<br>   P(full);	<span class="hljs-comment">// 判断缓冲区是否为空</span><br>   P(entry);	<span class="hljs-comment">// 判断是否其他进程正在使用缓冲区</span><br>   item = buffer[o]; o = (o + <span class="hljs-number">1</span>) % BUFFER_SIZE;<br>   V(entry);<br>   V(empty);	<span class="hljs-comment">// 生产后空闲缓冲区会增加，占用了的缓冲区会减少</span><br>&gt;&#125;<br></code></pre></td></tr></table></figure>
 </blockquote>
 <h4 id="信号量的保护"><a href="#信号量的保护" class="headerlink" title="信号量的保护"></a>信号量的保护</h4><p>信号量的语义必须是正确的，进程的交互才能继续完成。而对信号量的修改实在两条语句中，可能会被 CPU切换掉，导致信号量表示的信息与实际情况不一样。</p>
 <p>操作系统的解决方案就是在更改信号量的地方设置临界区保护区</p>
-<figure class="highlight cpp"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs cpp">... (进入区代码)<br>++s.value;<br>... (退出区代码)<br></code></pre></div></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs cpp">... (进入区代码)<br>++s.value;<br>... (退出区代码)<br></code></pre></td></tr></table></figure>
 <p>使得一次只有一个进程进入临界区。</p>
 <p>有三种解决方式</p>
 <ul>
@@ -420,29 +480,29 @@
 </ul>
 <blockquote>
 <p>面包片算法</p>
-<figure class="highlight cpp"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-keyword">while</span>(<span class="hljs-literal">true</span>) &#123;<br>    choosing[i] = <span class="hljs-literal">true</span>;	<span class="hljs-comment">// 对 number[i]的保护</span><br>    number[i] = <span class="hljs-built_in">max</span>(number.<span class="hljs-built_in">begin</span>(), number.<span class="hljs-built_in">end</span>()) + <span class="hljs-number">1</span>;<span class="hljs-comment">// 序号小（先申请）的进程先执行</span><br>    choosing[i] = <span class="hljs-literal">false</span>;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>; j &lt; number.<span class="hljs-built_in">size</span>(); ++j) &#123;<br>        <span class="hljs-keyword">while</span>(choosing[j]) &#123; ; &#125;	<span class="hljs-comment">// 其他进程在未给number赋初值时就切出了</span><br>        <span class="hljs-keyword">while</span>(number[j] != <span class="hljs-number">0</span> &amp;&amp; number[j] &lt; number[i]) &#123; ; &#125;	<span class="hljs-comment">// 有序号小的进程在队列中</span><br>    &#125;<br>    ...	<span class="hljs-comment">// 临界区代码</span><br>    number[i] = <span class="hljs-number">0</span>;	<span class="hljs-comment">// 表示修改信号量执行完毕</span><br>&#125;<br></code></pre></div></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">while</span>(<span class="hljs-literal">true</span>) &#123;<br>    choosing[i] = <span class="hljs-literal">true</span>;	<span class="hljs-comment">// 对 number[i]的保护</span><br>    number[i] = <span class="hljs-built_in">max</span>(number.<span class="hljs-built_in">begin</span>(), number.<span class="hljs-built_in">end</span>()) + <span class="hljs-number">1</span>;<span class="hljs-comment">// 序号小（先申请）的进程先执行</span><br>    choosing[i] = <span class="hljs-literal">false</span>;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>; j &lt; number.<span class="hljs-built_in">size</span>(); ++j) &#123;<br>        <span class="hljs-keyword">while</span>(choosing[j]) &#123; ; &#125;	<span class="hljs-comment">// 其他进程在未给number赋初值时就切出了</span><br>        <span class="hljs-keyword">while</span>(number[j] != <span class="hljs-number">0</span> &amp;&amp; number[j] &lt; number[i]) &#123; ; &#125;	<span class="hljs-comment">// 有序号小的进程在队列中</span><br>    &#125;<br>    ...	<span class="hljs-comment">// 临界区代码</span><br>    number[i] = <span class="hljs-number">0</span>;	<span class="hljs-comment">// 表示修改信号量执行完毕</span><br>&#125;<br></code></pre></td></tr></table></figure>
 <p>临界区的代码需要满足<strong>互斥进入</strong>、<strong>有空让进</strong>和<strong>有限等待</strong>的要求</p>
 </blockquote>
 <h4 id="信号量的实现"><a href="#信号量的实现" class="headerlink" title="信号量的实现"></a>信号量的实现</h4><p>在实际的操作系统中(Linux 0.11)，信号量的定义和上文所说的有所不同</p>
 <p>上文用正负代表进程是否需要阻塞 / 唤醒。而在操作系统中，用 1 代表阻塞，用 0 代表唤醒</p>
 <p>在唤醒时，一次性唤醒所有的进程，在阻塞时，将信号量置为 1</p>
-<figure class="highlight cpp"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-built_in">sleep_on</span>(PCB *queue)&#123;<br>    PCB temp = *queue; *queue = current;	<span class="hljs-comment">// 将当前PCB添加到信号量进程队列的队首</span><br>    current.state = TASK_BLOCK;				<span class="hljs-comment">// 将当前PCB状态设置为阻塞</span><br>    <span class="hljs-built_in">schedule</span>();								<span class="hljs-comment">// 通过调度切换到下一个进程（有优先级）</span><br>    <span class="hljs-keyword">if</span>(temp) &#123;<br>        temp.state = TASK_RUN;				<span class="hljs-comment">// 信号量进程队列的下一个进程设为就绪态</span><br>    &#125;<br>&#125;<br><span class="hljs-built_in">wake_up</span>(PCB *queue) &#123;<br>    <span class="hljs-keyword">if</span>(queue &amp; queue.<span class="hljs-built_in">first</span>()) &#123; queue.<span class="hljs-built_in">first</span>().state = <span class="hljs-number">0</span>; &#125;	<br>&#125;<br><span class="hljs-built_in">P</span>(semaphore s)&#123;<br>    <span class="hljs-built_in">cli</span>();	<span class="hljs-comment">// 进入区</span><br>    <span class="hljs-keyword">while</span>(s.value &amp;&amp; s.queue) &#123; <span class="hljs-built_in">sleep_on</span>(s.queue); &#125;	<span class="hljs-comment">// s = 1, 阻塞所有请求的进程</span><br>    s.value = <span class="hljs-number">1</span>;<br>    <span class="hljs-built_in">sti</span>();	<span class="hljs-comment">// 离开区</span><br>&#125;<br></code></pre></div></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-built_in">sleep_on</span>(PCB *queue)&#123;<br>    PCB temp = *queue; *queue = current;	<span class="hljs-comment">// 将当前PCB添加到信号量进程队列的队首</span><br>    current.state = TASK_BLOCK;				<span class="hljs-comment">// 将当前PCB状态设置为阻塞</span><br>    <span class="hljs-built_in">schedule</span>();								<span class="hljs-comment">// 通过调度切换到下一个进程（有优先级）</span><br>    <span class="hljs-keyword">if</span>(temp) &#123;<br>        temp.state = TASK_RUN;				<span class="hljs-comment">// 信号量进程队列的下一个进程设为就绪态</span><br>    &#125;<br>&#125;<br><span class="hljs-built_in">wake_up</span>(PCB *queue) &#123;<br>    <span class="hljs-keyword">if</span>(queue &amp; queue.<span class="hljs-built_in">first</span>()) &#123; queue.<span class="hljs-built_in">first</span>().state = <span class="hljs-number">0</span>; &#125;	<br>&#125;<br><span class="hljs-built_in">P</span>(semaphore s)&#123;<br>    <span class="hljs-built_in">cli</span>();	<span class="hljs-comment">// 进入区</span><br>    <span class="hljs-keyword">while</span>(s.value &amp;&amp; s.queue) &#123; <span class="hljs-built_in">sleep_on</span>(s.queue); &#125;	<span class="hljs-comment">// s = 1, 阻塞所有请求的进程</span><br>    s.value = <span class="hljs-number">1</span>;<br>    <span class="hljs-built_in">sti</span>();	<span class="hljs-comment">// 离开区</span><br>&#125;<br></code></pre></td></tr></table></figure>
 <blockquote>
 <p>操作系统的实现方式将进程的切换用调度函数实现，考虑了优先级因素。</p>
 </blockquote>
 <h3 id="信号"><a href="#信号" class="headerlink" title="信号"></a>信号</h3><p>信号的话是异常控制流中的一种，一般用来结束（<code>kill</code>）进程。通过 <code>kill -l</code> 命令可以查看所有的信号。</p>
 <h4 id="发送信号"><a href="#发送信号" class="headerlink" title="发送信号"></a>发送信号</h4><p>通过 <code>kill &lt;PID&gt;</code> 可以发送 <code>SIGTEM</code> 信号，通过 <code>Ctrl+C</code> 可以发送 <code>SIGINT</code> 信号，<code>C++</code> 中还提供了 <code>kill()</code> 函数来发送信号</p>
-<figure class="highlight cpp"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;sys/types.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;string&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;csignal&gt;</span></span><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-keyword">int</span> argc, <span class="hljs-keyword">char</span> **argv)</span></span>&#123;<br>    <span class="hljs-keyword">if</span>(argc != <span class="hljs-number">2</span>) &#123; std::cout &lt;&lt; <span class="hljs-string">&quot;[SendError]: Inpur Error!&quot;</span> &lt;&lt; std::endl; &#125;<br>    <span class="hljs-keyword">else</span> &#123;<br>        <span class="hljs-comment">// 发射信号的函数，第一个参数是PID，第二个是信号</span><br>        <span class="hljs-built_in">kill</span>(std::<span class="hljs-built_in">stoi</span>(argv[<span class="hljs-number">1</span>]), SIGINT);	<br>        std::cout &lt;&lt; <span class="hljs-string">&quot;[Send]: Send SIGINT to PID:&quot;</span> &lt;&lt; argv[<span class="hljs-number">1</span>] &lt;&lt; std::endl;<br>    &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>
-<h4 id="接收信号"><a href="#接收信号" class="headerlink" title="接收信号"></a>接收信号</h4><figure class="highlight cpp"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;csignal&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">handler</span><span class="hljs-params">(<span class="hljs-keyword">int</span> signal_number)</span> </span>&#123; <span class="hljs-comment">// 信号处理函数</span><br>    std::cout &lt;&lt; <span class="hljs-string">&quot;[Recive]: Caught SIGNAL &quot;</span> &lt;&lt; signal_number &lt;&lt; std::endl;<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-comment">// 注册信号处理函数</span><br>    <span class="hljs-keyword">if</span>(std::<span class="hljs-built_in">signal</span>(SIGINT, handler) == SIG_ERR) &#123;<br>        std::cout &lt;&lt; <span class="hljs-string">&quot;[ReciveError]&quot;</span> &lt;&lt; std::endl;<br>    &#125;<br>    <span class="hljs-keyword">while</span>(<span class="hljs-literal">true</span>) &#123;&#125;	<span class="hljs-comment">// 用来暂停</span><br>&#125;<br></code></pre></div></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;sys/types.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;string&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;csignal&gt;</span></span><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-keyword">int</span> argc, <span class="hljs-keyword">char</span> **argv)</span></span>&#123;<br>    <span class="hljs-keyword">if</span>(argc != <span class="hljs-number">2</span>) &#123; std::cout &lt;&lt; <span class="hljs-string">&quot;[SendError]: Inpur Error!&quot;</span> &lt;&lt; std::endl; &#125;<br>    <span class="hljs-keyword">else</span> &#123;<br>        <span class="hljs-comment">// 发射信号的函数，第一个参数是PID，第二个是信号</span><br>        <span class="hljs-built_in">kill</span>(std::<span class="hljs-built_in">stoi</span>(argv[<span class="hljs-number">1</span>]), SIGINT);	<br>        std::cout &lt;&lt; <span class="hljs-string">&quot;[Send]: Send SIGINT to PID:&quot;</span> &lt;&lt; argv[<span class="hljs-number">1</span>] &lt;&lt; std::endl;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h4 id="接收信号"><a href="#接收信号" class="headerlink" title="接收信号"></a>接收信号</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;csignal&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">handler</span><span class="hljs-params">(<span class="hljs-keyword">int</span> signal_number)</span> </span>&#123; <span class="hljs-comment">// 信号处理函数</span><br>    std::cout &lt;&lt; <span class="hljs-string">&quot;[Recive]: Caught SIGNAL &quot;</span> &lt;&lt; signal_number &lt;&lt; std::endl;<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-comment">// 注册信号处理函数</span><br>    <span class="hljs-keyword">if</span>(std::<span class="hljs-built_in">signal</span>(SIGINT, handler) == SIG_ERR) &#123;<br>        std::cout &lt;&lt; <span class="hljs-string">&quot;[ReciveError]&quot;</span> &lt;&lt; std::endl;<br>    &#125;<br>    <span class="hljs-keyword">while</span>(<span class="hljs-literal">true</span>) &#123;&#125;	<span class="hljs-comment">// 用来暂停</span><br>&#125;<br></code></pre></td></tr></table></figure>
 <h3 id="管道"><a href="#管道" class="headerlink" title="管道"></a>管道</h3><p>管道就是把一个进程的输出当作另外一个进程的输入</p>
 <h4 id="匿名管道（PIPE）"><a href="#匿名管道（PIPE）" class="headerlink" title="匿名管道（PIPE）"></a>匿名管道（PIPE）</h4><p>匿名管道就是 <code>cat test.cpp | grep include</code> </p>
 <p>在 C++ 中，可以通过</p>
-<figure class="highlight cpp"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;unistd.h&gt;</span></span><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">pipe</span><span class="hljs-params">(<span class="hljs-keyword">int</span> pipefd[<span class="hljs-number">2</span>])</span></span>; <br><span class="hljs-comment">// 管道两端用fd[0]和fd[1]来描述，读的一端用fd[0]表示，写的一端用fd[1]表示。</span><br></code></pre></div></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;unistd.h&gt;</span></span><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">pipe</span><span class="hljs-params">(<span class="hljs-keyword">int</span> pipefd[<span class="hljs-number">2</span>])</span></span>; <br><span class="hljs-comment">// 管道两端用fd[0]和fd[1]来描述，读的一端用fd[0]表示，写的一端用fd[1]表示。</span><br></code></pre></td></tr></table></figure>
 <p>创建匿名管道。父子进程中，一个进程通过写文件的方式操作管道，另外一个进程通过读文件的方式操作管道</p>
 <p>匿名管道是在父子进程之间使用的。父进程在创造子进程前打开管道文件，然后产生子进程。此时子进程拷贝父进程的虚拟地址空间，父子进程在此时虚拟地址空间的映射的文件相同，能够访问这个管道文件。</p>
 <p>这个管道只能在父子进程间使用，其他进程无法访问管道文件</p>
 <h4 id="有名管道（FIFO）"><a href="#有名管道（FIFO）" class="headerlink" title="有名管道（FIFO）"></a>有名管道（FIFO）</h4><p>通过 <code>mkfifo &lt;fifo_name&gt;</code> 命令可以创建有名管道</p>
-<figure class="highlight cpp"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">mkfifo</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *pathname, <span class="hljs-keyword">mode_t</span> mode)</span></span>;<br><span class="hljs-comment">// pathname：即将创建的FIFO文件路径，如果文件存在需要先删除。</span><br><span class="hljs-comment">// mode：和open()中的参数相同。</span><br></code></pre></div></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">mkfifo</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *pathname, <span class="hljs-keyword">mode_t</span> mode)</span></span>;<br><span class="hljs-comment">// pathname：即将创建的FIFO文件路径，如果文件存在需要先删除。</span><br><span class="hljs-comment">// mode：和open()中的参数相同。</span><br></code></pre></td></tr></table></figure>
 <p>有名管道是一个文件，文件类型为 <code>p</code> ，此时这个文件相当于有了一个全局的名称，任何不想管的进程都可以进行访问。</p>
 <h3 id="消息队列"><a href="#消息队列" class="headerlink" title="消息队列"></a>消息队列</h3><p>消息队列是由操作系统维护的以字节流为基本单位的一种进程通信机制。</p>
 <p>相比于 FIFO，消息队列具有以下优点：</p>
@@ -550,8 +610,8 @@
 </table>
 </div>
 </blockquote>
-<figure class="highlight cpp"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-function">vector&lt;<span class="hljs-keyword">int</span>&gt; <span class="hljs-title">Available</span><span class="hljs-params">(m)</span></span>;	<span class="hljs-comment">// m类资源对应可分配的资源数</span><br>vector&lt;vector&lt;<span class="hljs-keyword">int</span>&gt;&gt; <span class="hljs-built_in">Need</span>(n, <span class="hljs-built_in">vector</span>(m));		<span class="hljs-comment">// n个进程各自请求的资源数</span><br>vector&lt;vector&lt;<span class="hljs-keyword">int</span>&gt;&gt; <span class="hljs-built_in">Allocation</span>(n, <span class="hljs-built_in">vector</span>(m));		<span class="hljs-comment">// n个进程各自占有的资源数</span><br><span class="hljs-function">vector&lt;<span class="hljs-keyword">int</span>&gt; <span class="hljs-title">isFinish</span><span class="hljs-params">(n, <span class="hljs-literal">false</span>)</span></span>;	<span class="hljs-comment">// 进程是否结束</span><br></code></pre></div></td></tr></table></figure>
-<figure class="highlight cpp"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-keyword">while</span>(<span class="hljs-literal">true</span>) &#123;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n; ++i) &#123;<br>        <span class="hljs-keyword">bool</span> isVaild = <span class="hljs-literal">false</span>;<br>        <span class="hljs-keyword">if</span>(isFinish[i] == <span class="hljs-literal">false</span>) &#123;<br>            <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>; j &lt; m; ++j) &#123; <br>                <span class="hljs-keyword">if</span>(Need[i][j] &gt; Available[j]) &#123; <span class="hljs-keyword">bool</span> = <span class="hljs-literal">false</span>; <span class="hljs-keyword">break</span>; &#125; &#125;<br>            <span class="hljs-keyword">if</span>(isVaild) &#123;<br>               	<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>; j &lt; m; ++j) &#123; Available[j] += Allocation[i][j]; &#125;<br>                isFinish[i] = <span class="hljs-literal">true</span>;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">else</span> &#123; <span class="hljs-built_in"><span class="hljs-keyword">throw</span></span>(); &#125;<br>    &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function">vector&lt;<span class="hljs-keyword">int</span>&gt; <span class="hljs-title">Available</span><span class="hljs-params">(m)</span></span>;	<span class="hljs-comment">// m类资源对应可分配的资源数</span><br>vector&lt;vector&lt;<span class="hljs-keyword">int</span>&gt;&gt; <span class="hljs-built_in">Need</span>(n, <span class="hljs-built_in">vector</span>(m));		<span class="hljs-comment">// n个进程各自请求的资源数</span><br>vector&lt;vector&lt;<span class="hljs-keyword">int</span>&gt;&gt; <span class="hljs-built_in">Allocation</span>(n, <span class="hljs-built_in">vector</span>(m));		<span class="hljs-comment">// n个进程各自占有的资源数</span><br><span class="hljs-function">vector&lt;<span class="hljs-keyword">int</span>&gt; <span class="hljs-title">isFinish</span><span class="hljs-params">(n, <span class="hljs-literal">false</span>)</span></span>;	<span class="hljs-comment">// 进程是否结束</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">while</span>(<span class="hljs-literal">true</span>) &#123;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n; ++i) &#123;<br>        <span class="hljs-keyword">bool</span> isVaild = <span class="hljs-literal">false</span>;<br>        <span class="hljs-keyword">if</span>(isFinish[i] == <span class="hljs-literal">false</span>) &#123;<br>            <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>; j &lt; m; ++j) &#123; <br>                <span class="hljs-keyword">if</span>(Need[i][j] &gt; Available[j]) &#123; <span class="hljs-keyword">bool</span> = <span class="hljs-literal">false</span>; <span class="hljs-keyword">break</span>; &#125; &#125;<br>            <span class="hljs-keyword">if</span>(isVaild) &#123;<br>               	<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>; j &lt; m; ++j) &#123; Available[j] += Allocation[i][j]; &#125;<br>                isFinish[i] = <span class="hljs-literal">true</span>;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">else</span> &#123; <span class="hljs-built_in"><span class="hljs-keyword">throw</span></span>(); &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 <p>请求出现时，先假装分配，任何调用银行家算法</p>
 <h4 id="死锁检测-恢复"><a href="#死锁检测-恢复" class="headerlink" title="死锁检测/恢复"></a>死锁检测/恢复</h4><p>定时检测或发现资源利用率低的时候检测。检测的算法和 银行家 算法一样</p>
 <h4 id="死锁忽略"><a href="#死锁忽略" class="headerlink" title="死锁忽略"></a>死锁忽略</h4><p>一般 PC 机都使用 死锁忽略，因为</p>
@@ -572,7 +632,7 @@
 </blockquote>
 <p>这样在切换进程的时候，除了切换用户态栈、内核态栈、PC指针、PCB外，还需要切换基址寄存器来实现内存的切换。</p>
 <h2 id="内存分段"><a href="#内存分段" class="headerlink" title="内存分段"></a>内存分段</h2><p>分段是因为在程序中，有些数据是常数，有些数据是代码，有些数据是变量。这些数据具有不同的属性，把不同属性的数据分开存放比较好。因此有了分段的概念</p>
-<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20210617221554.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20210617221554.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>分段后一个基址就表示不了所有的数据，这时候，引入<strong>LDT（局部描述符表）</strong>。进行地址转换的时候就通过段号查询 LDT 表获取基址，然后通过 基址+ 偏移 来获得最终的地址。切换进程的时候，除了换掉进程管理的那些，还需要换掉 CPU 的 LDTR 寄存器。</p>
 <blockquote>
 <p>例如常数和代码就是只读的，变量就是可读可写的</p>
@@ -585,7 +645,7 @@
 <p>采用多级页表。页表被分为两级，一个是页目录表，一个是页表。页目标中某一项完全没有使用，就不需要建立它的页表，这样就节省了空间</p>
 <h3 id="时间优化"><a href="#时间优化" class="headerlink" title="时间优化"></a>时间优化</h3><p>采用快表。</p>
 <p>把最近使用的页号和物理地址的对应关系用硬件记录下来，这样就节省了时间</p>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20210618093943.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p><img src="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20210618093943.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ol>
 <li>将物理内存分页并以页为单位进行内存分配，解决内存碎片的问题</li>
 <li>分页后通过页表实现地址转换</li>
@@ -593,13 +653,13 @@
 <li>采用快表降低多极页表造成的时间开销</li>
 </ol>
 <h2 id="段页结合"><a href="#段页结合" class="headerlink" title="段页结合"></a>段页结合</h2><p>对应用程序来说，希望在操作系统中分段，把每个段分开存储，独立编址。对物理硬件来说，希望在操作系统中分页，提高物理内存的使用效率。因此，操作系统既要实现分段也要实现分页。</p>
-<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20210618100546.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20210618100546.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>解决方法是，先将程序分段，并建立映射，储存在一个中间结构中，然后每一段在存储的时候分页存储在物理内存中，并建立页与页框的映射。</p>
 <p>这个中间结构就是虚拟内存，虚拟内存是连接分段和分页的桥梁。</p>
 <blockquote>
 <p>一个操作系统一个虚拟内存，一个进程一个虚拟地址空间</p>
 </blockquote>
-<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20210618101628.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20210618101628.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <blockquote>
 <p>目前的操作系统放弃了分段，只保留了分页</p>
 </blockquote>
@@ -608,7 +668,7 @@
 <p>在页表中有一项用来表示这页内存是否在物理内存中。MMU在地址转换前会查看页表中的那个位置是否存在。如果存在就将转换后的地址发到地址总线；如果不存在，说明这一页不在物理内存中，就会申请调页。调页结束后将地址发送到地址总线。</p>
 <h4 id="请求调页"><a href="#请求调页" class="headerlink" title="请求调页"></a>请求调页</h4><p>操作系统通过中断来实现。当不在内存中时，触发缺页中断。</p>
 <p>中断处理函数会找到一块空闲的物理内存，然后把硬盘中对应的数据写入到那一页，然后修改页表建立联系。</p>
-<figure class="highlight c"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">do_no_page</span><span class="hljs-params">(<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">long</span> error_code, <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">long</span> address)</span> </span>&#123;<br>    address &amp;= <span class="hljs-number">0xfffff000</span>;	<span class="hljs-comment">// 找到对应的页</span><br>    page = get_free_page();<br>    bread_page(page, current-&gt;executable-&gt;i_dev, nr);	<span class="hljs-comment">// 找到磁盘中当前运行的可执行程序，把那一页赋值到空闲页中</span><br>    put_page(page, address);	<span class="hljs-comment">// 在页表中将空闲页与虚拟地址关联起来</span><br>&#125;<br></code></pre></div></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">do_no_page</span><span class="hljs-params">(<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">long</span> error_code, <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">long</span> address)</span> </span>&#123;<br>    address &amp;= <span class="hljs-number">0xfffff000</span>;	<span class="hljs-comment">// 找到对应的页</span><br>    page = get_free_page();<br>    bread_page(page, current-&gt;executable-&gt;i_dev, nr);	<span class="hljs-comment">// 找到磁盘中当前运行的可执行程序，把那一页赋值到空闲页中</span><br>    put_page(page, address);	<span class="hljs-comment">// 在页表中将空闲页与虚拟地址关联起来</span><br>&#125;<br></code></pre></td></tr></table></figure>
 <h3 id="内存换出"><a href="#内存换出" class="headerlink" title="内存换出"></a>内存换出</h3><p>在上面 <code>get_free_page()</code> 中要找到一个空闲页。当物理内存全部填充满了就需要将一页内存换出了。而将哪一页换出则需要看采用了什么 <strong>页面换出算法</strong></p>
 <ul>
 <li>FIFO</li>
@@ -624,7 +684,7 @@
 <li>虚拟内存为每个进程提供了相同的内存模型，便于内存的管理</li>
 <li>虚拟内存能够让进程使用比物理内存大的内存空间</li>
 </ul>
-<h3 id="虚拟内存的使用（地址翻译）"><a href="#虚拟内存的使用（地址翻译）" class="headerlink" title="虚拟内存的使用（地址翻译）"></a>虚拟内存的使用（地址翻译）</h3><p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20210914161148.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="虚拟内存的使用（地址翻译）"><a href="#虚拟内存的使用（地址翻译）" class="headerlink" title="虚拟内存的使用（地址翻译）"></a>虚拟内存的使用（地址翻译）</h3><p><img src="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20210914161148.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>CPU想要访问内存中的数据时，</p>
 <ol>
 <li><p>将这个数据的虚拟地址（VA）发送给内存管理单元（MMU）</p>
@@ -665,7 +725,7 @@
 </ol>
 <h2 id="内存相关Linux命令"><a href="#内存相关Linux命令" class="headerlink" title="内存相关Linux命令"></a>内存相关Linux命令</h2><p><code>free</code></p>
 <p><code>free</code> 命令负责查看内存的使用情况</p>
-<figure class="highlight apache"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs apache"><span class="hljs-attribute">pi</span>@raspberrypi:~ $ free -h<br>              <span class="hljs-attribute">total</span>        used        free      shared  buff/cache   available<br><span class="hljs-attribute">Mem</span>:          <span class="hljs-number">1</span>.<span class="hljs-number">8</span>Gi       <span class="hljs-number">104</span>Mi       <span class="hljs-number">1</span>.<span class="hljs-number">5</span>Gi       <span class="hljs-number">8</span>.<span class="hljs-number">0</span>Mi       <span class="hljs-number">250</span>Mi       <span class="hljs-number">1</span>.<span class="hljs-number">6</span>Gi<br><span class="hljs-attribute">Swap</span>:          <span class="hljs-number">99</span>Mi          <span class="hljs-number">0</span>B        <span class="hljs-number">99</span>Mi<br></code></pre></div></td></tr></table></figure>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">pi</span>@raspberrypi:~ $ free -h<br>              <span class="hljs-attribute">total</span>        used        free      shared  buff/cache   available<br><span class="hljs-attribute">Mem</span>:          <span class="hljs-number">1</span>.<span class="hljs-number">8</span>Gi       <span class="hljs-number">104</span>Mi       <span class="hljs-number">1</span>.<span class="hljs-number">5</span>Gi       <span class="hljs-number">8</span>.<span class="hljs-number">0</span>Mi       <span class="hljs-number">250</span>Mi       <span class="hljs-number">1</span>.<span class="hljs-number">6</span>Gi<br><span class="hljs-attribute">Swap</span>:          <span class="hljs-number">99</span>Mi          <span class="hljs-number">0</span>B        <span class="hljs-number">99</span>Mi<br></code></pre></td></tr></table></figure>
 <blockquote>
 <p><code>-h</code> 表示用人类友好的输出样式，不加就是以 <code>k</code> 为单位的显示</p>
 </blockquote>
@@ -675,7 +735,7 @@
 </ul>
 <p><code>pmap</code>：查看进程的内存映射</p>
 <h1 id="IO管理"><a href="#IO管理" class="headerlink" title="IO管理"></a>IO管理</h1><p>IO管理就是对外部设备的管理，操作系统将不同的外部设备统一抽象成了文件，对外设的使用，就是读写外设对应的文件。</p>
-<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20210618223922.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20210618223922.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <blockquote>
 <p>操作系统中有几种类型的文件：普通文件、字符特殊文件和块特殊文件。字符特殊文件和块特殊文件对应外设。字符特殊文件用于输入输出（键鼠、显示器和网络），块特殊文件用于磁盘。</p>
 </blockquote>
@@ -685,9 +745,9 @@
 <li>外设工作完后通过中断通知CPU</li>
 </ul>
 <p>下面以显示器驱动为例介绍 CPU 发送命令给外设，以键盘为例介绍外设中断通知 CPU</p>
-<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20210619094437.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20210619094437.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <h1 id="文件管理"><a href="#文件管理" class="headerlink" title="文件管理"></a>文件管理</h1><p>在 C++ 中，我们通过</p>
-<figure class="highlight c++"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c++"><span class="hljs-function">ofstream <span class="hljs-title">file</span><span class="hljs-params">(<span class="hljs-string">&quot;Demo.txt&quot;</span>)</span></span>;<br>file &lt;&lt; <span class="hljs-string">&quot;Test&quot;</span> &lt;&lt; endl;<br></code></pre></div></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-function">ofstream <span class="hljs-title">file</span><span class="hljs-params">(<span class="hljs-string">&quot;Demo.txt&quot;</span>)</span></span>;<br>file &lt;&lt; <span class="hljs-string">&quot;Test&quot;</span> &lt;&lt; endl;<br></code></pre></td></tr></table></figure>
 <p>向 <code>Demo.txt</code> 文件输出 <code>Test</code> 文字。</p>
 <p>而磁盘的使用是通过CHS（柱面cylinder、磁头magnetic head和扇区sector）这几个数据让磁头移动到对应的位置，然后读取磁盘上的数据。</p>
 <p>操作系统通过一层层抽象，将CHS这些物理数据变成了 路径名+文件名 的形式。</p>
@@ -719,7 +779,7 @@ sector=blocknr\times\text{blocksize}</script><p>其中，<code>blocksize</code> 
 <li>索引存储</li>
 </ul>
 <p>UNIX采用的是多极索引，小文件不索引，中等文件一级索引，大文件二级索引</p>
-<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20210624211552.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20210624211552.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>在访问时，根据文件找到其FCB，然后根据偏移量的大小分别进行直接读取、一级索引、二级索引操作，得到系统的盘块号，然后根据盘块号计算CHS，进行数据的读取。而 <code>file</code> 变量与文件的 FCB有关</p>
 <blockquote>
 <p>FCB也称为 <code>iNode</code> 。在 Linux 操作系统中，可以使用 <code>df -i</code> 查看 FCB 的使用情况</p>
@@ -728,13 +788,13 @@ sector=blocknr\times\text{blocksize}</script><p>其中，<code>blocksize</code> 
 <h3 id="抽象5：从文件名到文件"><a href="#抽象5：从文件名到文件" class="headerlink" title="抽象5：从文件名到文件"></a>抽象5：从文件名到文件</h3><p>这层抽象处理从文件名找到FCB，即 <code>ofstream file(&quot;Demo.txt&quot;);</code> </p>
 <p>磁盘在用户眼中是一颗目录树。因此，磁盘管理器和操作系统就需要将树构造出来。目录的信息存放在 FCB 中（目录和文件都有 FCB ）。每一层目录的FCB中都存放一个散列表，里面存放 <code>&lt;string name, int number&gt;</code> (key 是 文件/目录名，value是文件的/目录的FCB号)。</p>
 <p>进行目录解析时，例如当前目录为 <code>/data</code> 要进入子目录 <code>/data/test</code> ，操作系统会在 <code>/data</code> FCB中的 inode 数组中匹配 <code>test</code> ，得到 <code>/data/test</code> 的 FCB号，然后根据 FCB号就可以读到 <code>/data/test</code> 的 FCB，也就进入了 <code>/data/test</code> 目录，迭代下去就可以找到最终的文件。</p>
-<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20210625101016.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20210625101016.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>当磁盘格式化的时候，会在 0 位置存放一些信息：引导块、超级块、空间空闲管理、FCB、根目录和数据区。（超级块中存放超级块、空闲空间管理等的大小）操作系统在启动的时候就会根据超级块中存放的信息将根目录的 FCB 找到。</p>
 <blockquote>
 <p>在Linux操作系统中，可以使用<code>ls -i</code> 查看FCB号</p>
 </blockquote>
 <h2 id="文件管理总结"><a href="#文件管理总结" class="headerlink" title="文件管理总结"></a>文件管理总结</h2><p>操作系统管理磁盘的步骤是</p>
-<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/%E7%A3%81%E7%9B%98%E5%A4%9A%E8%BF%9B%E7%A8%8B%E9%98%9F%E5%88%97.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/%E7%A3%81%E7%9B%98%E5%A4%9A%E8%BF%9B%E7%A8%8B%E9%98%9F%E5%88%97.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ol>
 <li>安装操作系统时，将磁盘格式化为如上图 <code>root</code> 所示样式</li>
 <li>系统启动的时候，在初始化过程中，将磁盘根目录FCB找到，将磁盘 <code>inode</code> 数组找到，放入内存中</li>
@@ -747,40 +807,93 @@ sector=blocknr\times\text{blocksize}</script><p>其中，<code>blocksize</code> 
 <li>读取完毕后产生磁盘中断，唤醒对应的应用进程。</li>
 </ol>
 
+              
             </div>
-            <hr>
+            <hr/>
             <div>
-              <div class="post-metas mb-3">
-                
-                  <div class="post-meta mr-3">
-                    <i class="iconfont icon-category"></i>
-                    
-                      <a class="hover-with-bg" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9B%B8%E5%85%B3/">计算机相关</a>
-                    
-                  </div>
-                
-                
-                  <div class="post-meta">
-                    <i class="iconfont icon-tags"></i>
-                    
-                      <a class="hover-with-bg" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a>
-                    
-                  </div>
-                
-              </div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9B%B8%E5%85%B3/" class="category-chain-item">计算机相关</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">#操作系统</a>
+      
+    </div>
+  
+</div>
+
+
               
-                <p class="note note-warning">
-                  
-                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
-                  
-                </p>
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>操作系统</div>
+      <div>http://example.com/2021/06/25/HUST/OperatorSystem/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Fu Qingchen</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2021年6月25日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
               
-              
-                <div class="post-prevnext">
+                <div class="post-prevnext my-3">
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2021/08/09/HUST/LinuxCrash/">
+                      <a href="/2021/08/09/HUST/LinuxCrash/" title="Linux快速入门">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">Linux快速入门</span>
                         <span class="visible-mobile">上一篇</span>
@@ -790,7 +903,7 @@ sector=blocknr\times\text{blocksize}</script><p>其中，<code>blocksize</code> 
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2021/06/10/HUST/PipelineInCPU&amp;OS&amp;Net/">
+                      <a href="/2021/06/10/HUST/PipelineInCPU&amp;OS&amp;Net/" title="CPU、操作系统和网络中的流水线">
                         <span class="hidden-mobile">CPU、操作系统和网络中的流水线</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
@@ -802,55 +915,94 @@ sector=blocknr\times\text{blocksize}</script><p>其中，<code>blocksize</code> 
             </div>
 
             
-              <!-- Comments -->
-              <article class="comments" id="comments" lazyload>
-                
-                  
-                
-                
+  <article id="comments" lazyload>
+    
   <div id="valine"></div>
   <script type="text/javascript">
     Fluid.utils.loadComments('#valine', function() {
-      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.4.16/Valine.min.js', function() {
         var options = Object.assign(
-          {"appId":"DNr2pgYBNbnn4YMKmdstH2Sw-gzGzoHsz","appKey":"6RRAdTwPs2Y3Tk5iKNo2qo1D","placeholder":"说点什么","path":"window.location.pathname","avatar":"retro","meta":["nick","mail"],"pageSize":10,"lang":"zh-CN","highlight":true,"recordIP":false,"serverURLs":"https://dnr2pgyb.lc-cn-n1-shared.com","emojiCDN":null,"emojiMaps":null,"enableQQ":false,"requiredFields":[],"appid":"DNr2pgYBNbnn4YMKmdstH2Sw-gzGzoHsz","appkey":"6RRAdTwPs2Y3Tk5iKNo2qo1D"},
+          {"appId":"DNr2pgYBNbnn4YMKmdstH2Sw-gzGzoHsz","appKey":"6RRAdTwPs2Y3Tk5iKNo2qo1D","path":"window.location.pathname","placeholder":"说点什么","avatar":"retro","meta":["nick","mail"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":true,"recordIP":false,"serverURLs":"https://dnr2pgyb.lc-cn-n1-shared.com","emojiCDN":null,"emojiMaps":null,"enableQQ":false,"appid":"DNr2pgYBNbnn4YMKmdstH2Sw-gzGzoHsz","appkey":"6RRAdTwPs2Y3Tk5iKNo2qo1D"},
           {
             el: "#valine",
             path: window.location.pathname
           }
         )
         new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
       });
     });
   </script>
   <noscript>Please enable JavaScript to view the comments</noscript>
 
 
-              </article>
-            
+  </article>
+
+
           </article>
         </div>
       </div>
     </div>
-    
-      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
-        <div id="toc">
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
   <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
   <div class="toc-body" id="toc-body"></div>
 </div>
 
-      </div>
-    
+
+
+  </aside>
+
+
+    </div>
   </div>
 </div>
 
-<!-- Custom -->
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  <script>
+  Fluid.utils.createScript('https://lib.baomitu.com/mermaid/8.13.10/mermaid.min.js', function() {
+    mermaid.initialize({"theme":"default"});
+  });
+</script>
+
+
+
 
 
     
 
     
-      <a id="scroll-top-button" href="#" role="button">
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
         <i class="iconfont icon-arrowup" aria-hidden="true"></i>
       </a>
     
@@ -869,35 +1021,37 @@ sector=blocknr\times\text{blocksize}</script><p>其中，<code>blocksize</code> 
       <div class="modal-body mx-3">
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v"
-                 for="local-search-input">关键词</label>
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>
     </div>
   </div>
 </div>
+
     
 
     
   </main>
 
-  <footer class="text-center mt-5 py-3">
-  <div class="footer-content">
-     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
-  </div>
+  <footer>
+    <div class="footer-inner">
   
-
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
   
-
   
-</footer>
-
-
-  <!-- SCRIPTS -->
   
-  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
-  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
 
   <script>
     NProgress.configure({"showSpinner":false,"trickleSpeed":100})
@@ -908,12 +1062,15 @@ sector=blocknr\times\text{blocksize}</script><p>其中，<code>blocksize</code> 
   </script>
 
 
-<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
-<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
 <script  src="/js/events.js" ></script>
 <script  src="/js/plugins.js" ></script>
 
-<!-- Plugins -->
+
+
+
+
 
 
   
@@ -922,25 +1079,137 @@ sector=blocknr\times\text{blocksize}</script><p>其中，<code>blocksize</code> 
 
 
 
+
   
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.0/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
 
 
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
 
-  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
 
 
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
 
-  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
 
 
-
-  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
-
-
-
-  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
-
-
+  <script>Fluid.plugins.imageCaption();</script>
 
   <script  src="/js/local-search.js" ></script>
 
@@ -948,31 +1217,15 @@ sector=blocknr\times\text{blocksize}</script><p>其中，<code>blocksize</code> 
 
 
 
-
-
-
-
-
-
-
-
-
-  <script  src="https://cdn.jsdelivr.net/npm/mermaid@8.10.1/dist/mermaid.min.js" ></script>
-  <script>
-    if (window.mermaid) {
-      mermaid.initialize({"theme":"default"});
-    }
-  </script>
-
-
-
-
-
-
-
-<!-- 主题的启动项 保持在最底部 -->
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
 <script  src="/js/boot.js" ></script>
 
 
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
 </body>
 </html>

@@ -1,7 +1,7 @@
 
 
 <!DOCTYPE html>
-<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+<html lang="zh-CN" data-default-color-scheme=auto>
 
 
 
@@ -9,66 +9,132 @@
   <meta charset="UTF-8">
   <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
   <link rel="icon" href="/img/favicon.ico">
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
   <meta name="theme-color" content="#2f4154">
-  <meta name="description" content="计算机网络的笔记和总结，方便日后回顾用">
   <meta name="author" content="Fu Qingchen">
   <meta name="keywords" content="MSE, CS">
   
+    <meta name="description" content="计算机网络的笔记和总结，方便日后回顾用">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机网络">
+<meta property="og:url" content="http://example.com/2021/05/02/HUST/ComputerNetworking/index.html">
+<meta property="og:site_name" content="Fu&#39;s Web">
+<meta property="og:description" content="计算机网络的笔记和总结，方便日后回顾用">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20210502221923.png">
+<meta property="og:image" content="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20210502222124.png">
+<meta property="og:image" content="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/image-20210502222226054.png">
+<meta property="og:image" content="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20210502231712.png">
+<meta property="og:image" content="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20210502223243.png">
+<meta property="og:image" content="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20210505212724.png">
+<meta property="og:image" content="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20210505212533.png">
+<meta property="og:image" content="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20210506202700.png">
+<meta property="og:image" content="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20210506203343.png">
+<meta property="og:image" content="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20210506205056.png">
+<meta property="og:image" content="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20210508213145.png">
+<meta property="og:image" content="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/image-20210507221622319.png">
+<meta property="og:image" content="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20210507223553.png">
+<meta property="og:image" content="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20210507224547.png">
+<meta property="og:image" content="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20210508224817.png">
+<meta property="og:image" content="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20210510220523.png">
+<meta property="og:image" content="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20210510221254.png">
+<meta property="og:image" content="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20210511220138.png">
+<meta property="og:image" content="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20210511220005.png">
+<meta property="og:image" content="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20210524151830.png">
+<meta property="og:image" content="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20210524154505.png">
+<meta property="og:image" content="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20210524162249.png">
+<meta property="og:image" content="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20210524163039.png">
+<meta property="og:image" content="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20210524165127.png">
+<meta property="og:image" content="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20210524195953.png">
+<meta property="og:image" content="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20210524205456.png">
+<meta property="og:image" content="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/image-20210524203925071.png">
+<meta property="og:image" content="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20210524211756.png">
+<meta property="og:image" content="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20210525112748.png">
+<meta property="og:image" content="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20210526132854.png">
+<meta property="og:image" content="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20210526111550.png">
+<meta property="og:image" content="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20210526133629.png">
+<meta property="og:image" content="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20210526150228.png">
+<meta property="og:image" content="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20210526144028.png">
+<meta property="og:image" content="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20210526150617.png">
+<meta property="og:image" content="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20210526151510.png">
+<meta property="og:image" content="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20210527165007.png">
+<meta property="og:image" content="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20210528112352.png">
+<meta property="og:image" content="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20210602142847.png">
+<meta property="article:published_time" content="2021-05-02T07:13:00.000Z">
+<meta property="article:modified_time" content="2022-05-25T15:13:52.876Z">
+<meta property="article:author" content="Fu Qingchen">
+<meta property="article:tag" content="网络">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20210502221923.png">
+  
+  
+  
   <title>计算机网络 | Fu&#39;s Web</title>
 
-  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
 
-  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
-  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
 
-  
-    
-    
-      
-      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/vs2015.min.css" />
-    
-  
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
 
-  
-    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
-  
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
 
 
 
 <!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
 
 
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
 
 
 <link  rel="stylesheet" href="/css/main.css" />
 
-<!-- 自定义样式保持在最底部 -->
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
 
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.11","typing":{"enable":false,"typeSpeed":30,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null},"tajs":null},"search_path":"/local-search.xml"};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.0","typing":{"enable":false,"typeSpeed":30,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"tajs":null},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
+
+  
 <meta name="generator" content="Hexo 5.4.0"></head>
 
 
 <body>
-  <header style="height: 50vh;">
-    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 50vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
-    <a class="navbar-brand"
-       href="/">&nbsp;<strong>Fu's Web</strong>&nbsp;</a>
+    <a class="navbar-brand" href="/">
+      <strong>Fu&#39;s Web</strong>
+    </a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
             data-target="#navbarSupportedContent"
@@ -142,13 +208,15 @@
         
         
           <li class="nav-item" id="search-btn">
-            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
-                class="iconfont icon-search"></i>&nbsp;</a>
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
           </li>
+          
         
         
           <li class="nav-item" id="color-toggle-btn">
-            <a class="nav-link" target="_self">&nbsp;<i
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
                 class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
           </li>
         
@@ -157,62 +225,71 @@
   </div>
 </nav>
 
-    <div class="banner" id="banner" parallax=true
-         style="background: url('https://gitee.com/fuqingchen/picture-lib/raw/master/img/Test_Tree.png') no-repeat center center;
-           background-size: cover;">
-      <div class="full-bg-img">
-        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-          <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="计算机网络">
-              
-                计算机网络
-              
-            </span>
-
-            
-              <div class="mt-3">
-  
-  
-    <span class="post-meta">
-      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2021-05-02 15:13" pubdate>
-        2021年5月2日 下午
-      </time>
-    </span>
-  
-</div>
-
-<div class="mt-1">
-  
-    
-    <span class="post-meta mr-2">
-      <i class="iconfont icon-chart"></i>
-      11.4k 字
-    </span>
   
 
-  
-    
-    <span class="post-meta mr-2">
-      <i class="iconfont icon-clock-fill"></i>
-      
-      
-      121
-       分钟
-    </span>
-  
-
-  
-  
-</div>
-
-            
-          </div>
-
+<div id="banner" class="banner" parallax=true
+     style="background: url('https://gitee.com/fuqingchen/picture-lib/raw/master/img/Test_Tree.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle">计算机网络</span>
           
         </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2021-05-02 15:13" pubdate>
+          2021年5月2日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          <!-- compatible with older versions-->
+          15k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          <!-- compatible with older versions-->
+          122 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
       </div>
+
+      
     </div>
+  </div>
+</div>
+
+</div>
+
   </header>
 
   <main>
@@ -221,15 +298,20 @@
 
 <div class="container-fluid nopadding-x">
   <div class="row nomargin-x">
-    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
     <div class="col-lg-8 nopadding-x-md">
       <div class="container nopadding-x-md" id="board-ctn">
-        <div class="py-5" id="board">
+        <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
             <h1 style="display: none">计算机网络</h1>
             
             <div class="markdown-body">
+              
               <p>计算机网络的笔记和总结，方便日后回顾用</p>
 <span id="more"></span>
 <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><h3 id="因特网"><a href="#因特网" class="headerlink" title="因特网"></a>因特网</h3><p>网络是节点和边，计算机网络就是以计算机为节点的网络。因特网就是全球节点数量最多，覆盖范围最大的一个计算机网络。</p>
@@ -301,7 +383,7 @@
 </ul>
 <h3 id="网络核心"><a href="#网络核心" class="headerlink" title="网络核心"></a>网络核心</h3><p>网络的核心就是链路、路由器和交换机的地盘了。</p>
 <p>这一块的核心就是数据的传输。有两种传输方式</p>
-<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20210502221923.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20210502221923.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ul>
 <li><p>电路交换</p>
 <p>把链路划分成一份一份的（按照原理不同可以分为 时分(TDM)、频分(FDM)和波分 ）。进行数据传输时，建立起一条从源主机到目标主机连接，同时这个连接独占所经过的链路的其中一份。</p>
@@ -324,7 +406,7 @@
 </blockquote>
 </li>
 </ul>
-<h2 id="因特网的结构"><a href="#因特网的结构" class="headerlink" title="因特网的结构"></a>因特网的结构</h2><p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20210502222124.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="因特网的结构"><a href="#因特网的结构" class="headerlink" title="因特网的结构"></a>因特网的结构</h2><p><img src="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20210502222124.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>松散的层次结构</p>
 <ol>
 <li>各个接入ISP 接入一个全球 ISP</li>
@@ -332,7 +414,7 @@
 <li>业务进行细分，出现区域ISP</li>
 <li>内容提供商 (ICP) 建立自己的网络</li>
 </ol>
-<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/image-20210502222226054.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/image-20210502222226054.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <blockquote>
 <p>ISP之间的连接：对等连接、IXP</p>
 </blockquote>
@@ -385,7 +467,7 @@
 </tbody>
 </table>
 </div>
-<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20210502231712.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20210502231712.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>每层通过层间接口访问下层服务获取报文，从而为上层提供服务，最终实现复杂功能。</p>
 <blockquote>
 <p>服务(Service)：低层实体向上层实体提供它们之间的通信的能力，是通过原语(primitive)来操作的</p>
@@ -405,7 +487,7 @@
 <li>n + 1 层拿到数据后把 ICI 和 SDU 分开，并且把SDU重新整合（分组或者合并）载加上自己的头，就形成了协议数据单元(PDU)。当 n + 1 层向下传递时，PDU就变成了SDU（本层的PDU为下层的SDU，本层的SDU为上层的PDU）</li>
 </ul>
 </blockquote>
-<h2 id="因特网的性能"><a href="#因特网的性能" class="headerlink" title="因特网的性能"></a>因特网的性能</h2><p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20210502223243.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="因特网的性能"><a href="#因特网的性能" class="headerlink" title="因特网的性能"></a>因特网的性能</h2><p><img src="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20210502223243.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ul>
 <li>延时：有四种延时<ul>
 <li>传播延时：当两台主机距离过长的时候，就要考虑光的传播速度了</li>
@@ -590,7 +672,7 @@
 </div>
 <h4 id="Cookie"><a href="#Cookie" class="headerlink" title="Cookie"></a>Cookie</h4><p>由于Http是无状态的，但是网页有识别应用的需求。因此就有了Cookie来让Http识别。</p>
 <p>Cookie的实现是这样的</p>
-<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20210505212724.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20210505212724.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>Cookie的四个组成部分</p>
 <ul>
 <li>在HTTP响应报文中有 一个cookie的首部行</li>
@@ -599,7 +681,7 @@
 <li>在Web站点有一个后端数据库</li>
 </ul>
 <h4 id="Web缓存（代理服务器）"><a href="#Web缓存（代理服务器）" class="headerlink" title="Web缓存（代理服务器）"></a>Web缓存（代理服务器）</h4><p>Web由于采用C/S模式，源服务器压力会很大，为了改善上网体验就有了Web缓存，可以不直接访问源服务器就可以获取请求内容。</p>
-<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20210505212533.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20210505212533.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>用户设置浏览器通过缓存访问Web后，浏览器将所有的HTTP 请求发给缓存，然后根据</p>
 <ul>
 <li>对象在缓存中：缓存 直接返回对象</li>
@@ -620,7 +702,7 @@
 </ul>
 </li>
 </ul>
-<h3 id="FTP"><a href="#FTP" class="headerlink" title="FTP"></a>FTP</h3><p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20210506202700.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="FTP"><a href="#FTP" class="headerlink" title="FTP"></a>FTP</h3><p><img src="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20210506202700.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>文件传输协议</p>
 <p><strong>HTTP协议采用 C/S 模式，通过 TCP 协议进行传输，端口号为21，有状态，将数据与控制分开</strong></p>
 <p>FTP协议需要两条TCP连接</p>
@@ -638,9 +720,9 @@
 <li>用户代理：管理邮件，撰写、编辑和阅读邮件都在这个上面</li>
 <li>邮箱服务器：收、发、管理邮件</li>
 </ul>
-<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20210506203343.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20210506203343.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>发送邮件的过程：</p>
-<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20210506205056.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20210506205056.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ol>
 <li>用户写好邮件后，用户代理将用户的邮件发送到发件人的邮件服务器，</li>
 <li>发件人邮件服务器将邮件放入外出报文队列中。</li>
@@ -684,7 +766,7 @@
 <li>P2P 模式，服务器只需要发送一个文件，其余的各个P2P的对等体互相传输，分发的时间为  $t_{\text{P2P}}=\max\{\frac{F}{u_S},\frac{F}{d_{\min}},\frac{NF}{u_s+\sum u}\}$</li>
 </ul>
 </blockquote>
-<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20210508213145.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20210508213145.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <blockquote>
 <p>典型 P2P 应用：Napster，Gnutella，KaZaA，BT，DHT</p>
 </blockquote>
@@ -707,7 +789,7 @@
 </blockquote>
 <h3 id="域名到IP的转换"><a href="#域名到IP的转换" class="headerlink" title="域名到IP的转换"></a>域名到IP的转换</h3><p>由于使用单服务器会产生单点故障、拓展性差和距离远近等问题，DNS采用分布式的数据库。</p>
 <p>每个域被划分成一块一块的区域，一个区域内的主机有一个权威名字服务器，权威名字服务器中记录这个区域中每个主机的IP和域名的对应关系，找到权威名字服务器就找到了这个区域所有主机域名和IP的对应关系。同时，每个ISP都有一个本地服务器</p>
-<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/image-20210507221622319.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/image-20210507221622319.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>DNS服务器以资源记录（RR格式）的方式记录域名和IP的对应关系</p>
 <div class="table-container">
 <table>
@@ -783,12 +865,12 @@
 <p>通过缓存可用提高效率，缓存中每个记录有TTL来实现数据更新</p>
 </blockquote>
 <p>这种查询分为迭代查询和递归查询两种</p>
-<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20210507223553.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20210507223553.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <blockquote>
 <p>递归查询问题是根服务器负担过大</p>
 </blockquote>
 <h3 id="DNS的维护"><a href="#DNS的维护" class="headerlink" title="DNS的维护"></a>DNS的维护</h3><p>DNS的请求和响应报文格式相同：</p>
-<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20210507224547.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20210507224547.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <h2 id="互联网视频服务"><a href="#互联网视频服务" class="headerlink" title="互联网视频服务"></a>互联网视频服务</h2><p>随着因特网视频的火热，需要为成千上万的人提供并行的视频播放服务，这时候需要解决两个问题</p>
 <ul>
 <li>同时向超大规模的用户提供并行的服务（告示文件+域名解析重定向+CDN内容靠近客户）</li>
@@ -809,9 +891,9 @@
 <li><strong>邀请做客</strong>，在少数一些关键的地方设置缓存节点</li>
 </ul>
 </blockquote>
-<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20210508224817.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<h2 id="套接字编程"><a href="#套接字编程" class="headerlink" title="套接字编程"></a>套接字编程</h2><h3 id="TCP"><a href="#TCP" class="headerlink" title="TCP"></a>TCP</h3><p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20210510220523.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<h3 id="UDP"><a href="#UDP" class="headerlink" title="UDP"></a>UDP</h3><p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20210510221254.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20210508224817.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="套接字编程"><a href="#套接字编程" class="headerlink" title="套接字编程"></a>套接字编程</h2><h3 id="TCP"><a href="#TCP" class="headerlink" title="TCP"></a>TCP</h3><p><img src="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20210510220523.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="UDP"><a href="#UDP" class="headerlink" title="UDP"></a>UDP</h3><p><img src="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20210510221254.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <blockquote>
 <p>cad 和 sad 是两个结构体，里面放着 IP 和端口号，cad是客户端的，sad是服务器的</p>
 </blockquote>
@@ -821,7 +903,7 @@
 <p>提供了<strong>进程的区分</strong>，<strong>加强了网络层的服务</strong></p>
 </blockquote>
 <p>有一个很好的例子</p>
-<figure class="highlight fix"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs fix"><span class="hljs-attr">应用报文</span>=<span class="hljs-string">信件上的字符</span><br><span class="hljs-string">进程=堂兄弟姐妹</span><br><span class="hljs-string">主机=家庭</span><br><span class="hljs-string">运输层协议=把家里的信分给个人</span><br><span class="hljs-string">网络层协议=邮政服务</span><br></code></pre></div></td></tr></table></figure>
+<figure class="highlight fix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs fix"><span class="hljs-attr">应用报文</span>=<span class="hljs-string">信件上的字符</span><br><span class="hljs-string">进程=堂兄弟姐妹</span><br><span class="hljs-string">主机=家庭</span><br><span class="hljs-string">运输层协议=把家里的信分给个人</span><br><span class="hljs-string">网络层协议=邮政服务</span><br></code></pre></td></tr></table></figure>
 <h2 id="传输层多路复用-解复用"><a href="#传输层多路复用-解复用" class="headerlink" title="传输层多路复用/解复用"></a>传输层多路复用/解复用</h2><p><strong>多路复用 </strong>就是发送方应用层给传输层很多不同的Socket，传输层把Socket对应的IP和端口号封装在头部生成报文段，从而可以统一通过网络层发送的过程。</p>
 <blockquote>
 <p>多个应用都采用 TCP 或 UDP 传输数据</p>
@@ -830,9 +912,9 @@
 <blockquote>
 <p>数据解封装，区分应用进程</p>
 </blockquote>
-<h3 id="TCP多路复用解复用"><a href="#TCP多路复用解复用" class="headerlink" title="TCP多路复用解复用"></a>TCP多路复用解复用</h3><p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20210511220138.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="TCP多路复用解复用"><a href="#TCP多路复用解复用" class="headerlink" title="TCP多路复用解复用"></a>TCP多路复用解复用</h3><p><img src="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20210511220138.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>TCP 的 Socket 是一个包含源IP，源端口，目标IP，目标端口的一个四元组，因此只要其中一个不同，就是不同的Socket，分发给不同的应用进程</p>
-<h3 id="UDP多路复用解复用"><a href="#UDP多路复用解复用" class="headerlink" title="UDP多路复用解复用"></a>UDP多路复用解复用</h3><p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20210511220005.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="UDP多路复用解复用"><a href="#UDP多路复用解复用" class="headerlink" title="UDP多路复用解复用"></a>UDP多路复用解复用</h3><p><img src="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20210511220005.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>UDP 的 Socket 是 本地 IP，本地端口的二元组</p>
 <h2 id="UDP-1"><a href="#UDP-1" class="headerlink" title="UDP"></a>UDP</h2><p>User Datagram Protrol。UDP就是在 IP 的基础上加了多路复用解复用的功能和校验和的功能，其他基本上和 IP 的一样。</p>
 <h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><ul>
@@ -847,7 +929,7 @@
 <p>校验和的计算：将报文段看成 16bit 的整数加起来，最高位进位了则回卷（在结果的最低位加1）。得到的数字取反就是校验和</p>
 </blockquote>
 <h2 id="可靠数据传输原理"><a href="#可靠数据传输原理" class="headerlink" title="可靠数据传输原理"></a>可靠数据传输原理</h2><p>传输模型如下</p>
-<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20210524151830.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20210524151830.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <h3 id="rdt1-0"><a href="#rdt1-0" class="headerlink" title="rdt1.0"></a>rdt1.0</h3><p>假设：网络层提供的服务是可靠的（不出错，不丢失）</p>
 <p>实现：此时只需要封装解封装就可以了，只起到一个区分应用进程的作用</p>
 <h3 id="rdt2-0"><a href="#rdt2-0" class="headerlink" title="rdt2.0"></a>rdt2.0</h3><p>假设：传输的数据可能出错</p>
@@ -859,7 +941,7 @@
 </blockquote>
 <h3 id="rdt3-0"><a href="#rdt3-0" class="headerlink" title="rdt3.0"></a>rdt3.0</h3><p>假设：传输的数据既可能出错，又可能丢失</p>
 <p>实现：增加超时重传机制</p>
-<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20210524154505.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20210524154505.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <h3 id="流水线"><a href="#流水线" class="headerlink" title="流水线"></a>流水线</h3><p>rdt3.0的是停止转发协议。发一下停一下，效率比较低。然后通过设置缓冲窗口，可以用流水线的方式来提高效率.</p>
 <p>就是在未经确认的情况下，连续发送多个分组。</p>
 <div class="table-container">
@@ -910,14 +992,14 @@
 <blockquote>
 <p>序号是0，1，2，3，4：如果2出错了，即使3，4正常收到了也丢弃掉</p>
 </blockquote>
-<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20210524162249.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20210524162249.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <blockquote>
 <p>其中的2，4号数据传过去了但是抛弃掉了，就很浪费</p>
 </blockquote>
 <h4 id="SR协议"><a href="#SR协议" class="headerlink" title="SR协议"></a>SR协议</h4><p>选择重传协议（Selective Repeat）</p>
 <p>由于接收窗口也可以缓存了，那么就可以乱序的接受分组了。另外，接收方的确认也不再是累计确认，而是收到一个发送对应的确认。</p>
 <p>对于接收方，分组只对没有收到确认回复的分组重新发送</p>
-<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20210524163039.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20210524163039.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <div class="table-container">
 <table>
 <thead>
@@ -1002,10 +1084,10 @@
 <p>双工：$A\leftrightarrow B$</p>
 <p>全双工：$A\rightleftharpoons B$</p>
 </blockquote>
-<h3 id="段结构"><a href="#段结构" class="headerlink" title="段结构"></a>段结构</h3><p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20210524165127.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="段结构"><a href="#段结构" class="headerlink" title="段结构"></a>段结构</h3><p><img src="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20210524165127.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ul>
 <li><p>TCP的序号：TCP的序号发送端和接收端是不同的，一般来说这个序号是一个随机的序号。这个序号表示PDU首字符在字节流中的位置。确认是对下一个字节的期待（顺序收到的字节的最后一个+ 1）。</p>
-<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20210524195953.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20210524195953.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <blockquote>
 <p>TCP连接在连接握手阶段两台主机会事先交换各自的序列号</p>
 <p>发送端和接收端是不同的原因：这两个不同目的是为了防止老的TCP连接的数据对新TCP连接的数据造成干扰</p>
@@ -1025,13 +1107,13 @@
 <p>手段：将接收窗口以捎带的方式发送给发送端，发送端发送的数据始终小于接收方的缓存空间。</p>
 <h3 id="连接管理"><a href="#连接管理" class="headerlink" title="连接管理"></a>连接管理</h3><p>连接管理就两个部分，连接的建立和拆除</p>
 <h4 id="3次握手"><a href="#3次握手" class="headerlink" title="3次握手"></a>3次握手</h4><p>因为发送端和接收端的序号是不同的，3次次握手主要是为了交换这个序号，并且做确认。</p>
-<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20210524205456.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20210524205456.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <blockquote>
 <p>如果这两边的序号相同，就只需要两次握手了，但是两次握手会产生两个问题，第一个是半连接（只在服务器维护了连接），还有一个是老数据当新数据接收了</p>
-<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/image-20210524203925071.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/image-20210524203925071.png" srcset="/img/loading.gif" lazyload alt=""></p>
 </blockquote>
 <h4 id="4次挥手"><a href="#4次挥手" class="headerlink" title="4次挥手"></a>4次挥手</h4><p>采用对称式的设计，有两军问题，靠定时器凑活解决</p>
-<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20210524211756.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20210524211756.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <blockquote>
 <p>这里等 2MSL 是为了防止服务器的FIN丢失，重传的那一段，保证客户端发送的最后一个ACK报文能够到达服务器。同时，可以防止老的数据</p>
 </blockquote>
@@ -1052,7 +1134,7 @@
 <blockquote>
 <p>MSS 最大报文长度，一般是1460字节. 他需要保证加上一个TCP和一个IP的头部（20+20）后能在链路中传输（1500字节）</p>
 </blockquote>
-<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20210525112748.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20210525112748.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <h1 id="网络层"><a href="#网络层" class="headerlink" title="网络层"></a>网络层</h1><p>网络层提供的服务主要是主机到主机之间的通讯。</p>
 <p>网络层有两大功能：<strong>路由</strong>、<strong>转发</strong></p>
 <ul>
@@ -1065,7 +1147,7 @@
 <li>数据平面：负责实现转发的功能，决定从输入路由器的数据报要输出到那个输出链路。</li>
 <li>控制平面：负责实现路由的功能，控制数据报从源主机到目标主机的传输路径。</li>
 </ul>
-<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20210526132854.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20210526132854.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>网络层的这两个平面有两种实现方式</p>
 <ul>
 <li>传统方式<ul>
@@ -1080,7 +1162,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="数据平面"><a href="#数据平面" class="headerlink" title="数据平面"></a>数据平面</h2><h3 id="路由器原理"><a href="#路由器原理" class="headerlink" title="路由器原理"></a>路由器原理</h3><p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20210526111550.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="数据平面"><a href="#数据平面" class="headerlink" title="数据平面"></a>数据平面</h2><h3 id="路由器原理"><a href="#路由器原理" class="headerlink" title="路由器原理"></a>路由器原理</h3><p><img src="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20210526111550.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>路由器由三个部分组成：输入端口、交换机构、输出端口、路由处理器</p>
 <ul>
 <li><p>输入端口和输出端口都实现物理层、链路层和网络层的功能。其中输入端口负责查询路由表，输出端口涉及到分组调度</p>
@@ -1097,14 +1179,14 @@
 </li>
 </ul>
 <h3 id="IPv4"><a href="#IPv4" class="headerlink" title="IPv4"></a>IPv4</h3><p>IP协议为上层提供的服务是尽力而为的一种服务(可能会丢包、乱序、重复)</p>
-<h4 id="报文格式-1"><a href="#报文格式-1" class="headerlink" title="报文格式"></a>报文格式</h4><p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20210526133629.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h4 id="报文格式-1"><a href="#报文格式-1" class="headerlink" title="报文格式"></a>报文格式</h4><p><img src="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20210526133629.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <blockquote>
 <p>分片重组的原因：分组的大小超过了链路的MTU(最大传输单元)</p>
 <p>分片的实现：IP协议的报文中有 <code>identifier,flags,fragment offset</code> 三个值。<code>identifier</code> 用于表示这些分片所属的分组，<code>flag</code> 判断是否是最后一个分片，<code>fragment offset</code> 表示这个分片数据的首字节在整个分组中的偏移量。</p>
 </blockquote>
 <h4 id="IPv4编址"><a href="#IPv4编址" class="headerlink" title="IPv4编址"></a>IPv4编址</h4><p>IP地址：主机或路由器网络接口的标识，分为网络部分和主机部分</p>
 <p>网络层为了提高效率，有 <strong>路由汇聚</strong> 的效应：连续子网前缀的子网可达信息可以做汇聚，以减少路由器路由表计算胡传输。(同一个子网的前缀相同，这样，他们就可以通过一个IP计算可达信息)</p>
-<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20210526150228.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20210526150228.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>子网：</p>
 <ul>
 <li>子网内的主机通信不需要借助路由器，链路层交换机即可</li>
@@ -1113,7 +1195,7 @@
 <p>子网掩码</p>
 <p>子网掩码和IP地址配合使用，子网掩码为 1 表是这个位在IP地址中是网络位。</p>
 <p>IP地址分类</p>
-<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20210526144028.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20210526144028.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <blockquote>
 <p>其中 D 类是多播，E类是预留的IP地址</p>
 </blockquote>
@@ -1122,9 +1204,9 @@
 <p> 主机加入互联网后，向同一子网的所有主机广播 DHCP发现报文。同一子网的多个 DHCP 服务器收到报文后，广播DHCP提供报文，并在报文中附上自己的IP。主机收到 DHCP提供报文后</p>
 </blockquote>
 <h4 id="NAT"><a href="#NAT" class="headerlink" title="NAT"></a>NAT</h4><p>网络地址转换，工作方式如下</p>
-<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20210526150617.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20210526150617.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <h3 id="IPv6"><a href="#IPv6" class="headerlink" title="IPv6"></a>IPv6</h3><p>从32位变为128位</p>
-<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20210526151510.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20210526151510.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>IPv4到IPv6的迁移：隧道</p>
 <h3 id="SDN"><a href="#SDN" class="headerlink" title="SDN"></a>SDN</h3><p>工作原理</p>
 <ul>
@@ -1164,7 +1246,7 @@
 <script type="math/tex; mode=display">
 d_x(y)=\min\{c(x,v),d_v(y)\}</script><blockquote>
 <p>从 x 到 y 的代价 $d_x(y)$ = 从 x 到它邻居 v 的代价 $c(x,v)$ +  从 v 到 y 的代价</p>
-<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20210527165007.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20210527165007.png" srcset="/img/loading.gif" lazyload alt=""></p>
 </blockquote>
 <p>DV算法具有好消息传的快，坏消息传的慢的特点。</p>
 <h4 id="比较"><a href="#比较" class="headerlink" title="比较"></a>比较</h4><ul>
@@ -1193,7 +1275,7 @@ d_x(y)=\min\{c(x,v),d_v(y)\}</script><blockquote>
 <li>控制平面功能在数据交换设备外实现</li>
 <li>网络可编程</li>
 </ul>
-<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20210528112352.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20210528112352.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <h3 id="ICMP协议"><a href="#ICMP协议" class="headerlink" title="ICMP协议"></a>ICMP协议</h3><p>作用：主机和路由器之间沟通网络层消息。常见的消息有差错报告（404这些的）</p>
 <h1 id="链路层"><a href="#链路层" class="headerlink" title="链路层"></a>链路层</h1><p>链路层提供端到端的通信</p>
 <blockquote>
@@ -1226,7 +1308,7 @@ d_x(y)=\min\{c(x,v),d_v(y)\}</script><blockquote>
 <p>因此发送方只需要在原有的数据 $D$ 上增加</p>
 <script type="math/tex; mode=display">
 R=(D\ll r)\%G</script><p>的比特位即可</p>
-<figure class="highlight brainfuck"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs brainfuck"><span class="hljs-comment">|</span>&lt;--<span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-comment">d</span> <span class="hljs-comment">比特</span>--<span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span>&gt;<span class="hljs-comment">|</span>&lt;--<span class="hljs-comment">d</span> <span class="hljs-comment">比特</span>--&gt;<span class="hljs-comment">|</span><br><span class="hljs-comment">┏</span>--<span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-comment">┯</span>--<span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-comment">┒</span><br><span class="hljs-comment">┃D:</span> <span class="hljs-comment">被发送的数据比特┃</span> <span class="hljs-comment">R:</span> <span class="hljs-comment">CRC比特</span> <span class="hljs-comment">┃</span><br><span class="hljs-comment">┗</span>--<span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-comment">┺</span>--<span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-comment">┛</span><br></code></pre></div></td></tr></table></figure>
+<figure class="highlight brainfuck"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs brainfuck"><span class="hljs-comment">|</span>&lt;--<span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-comment">d</span> <span class="hljs-comment">比特</span>--<span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span>&gt;<span class="hljs-comment">|</span>&lt;--<span class="hljs-comment">d</span> <span class="hljs-comment">比特</span>--&gt;<span class="hljs-comment">|</span><br><span class="hljs-comment">┏</span>--<span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-comment">┯</span>--<span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-comment">┒</span><br><span class="hljs-comment">┃D:</span> <span class="hljs-comment">被发送的数据比特┃</span> <span class="hljs-comment">R:</span> <span class="hljs-comment">CRC比特</span> <span class="hljs-comment">┃</span><br><span class="hljs-comment">┗</span>--<span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-comment">┺</span>--<span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-comment">┛</span><br></code></pre></td></tr></table></figure>
 <blockquote>
 <p>CRC 能检测数据比特小于 r + 1 位的差错，对大于 r + 1 位的有 $1-0.5^r$ 概率被检测到</p>
 </blockquote>
@@ -1252,7 +1334,7 @@ R=(D\ll r)\%G</script><p>的比特位即可</p>
 </blockquote>
 </li>
 </ul>
-<p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20210602142847.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20210602142847.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <h4 id="CSMA-CA"><a href="#CSMA-CA" class="headerlink" title="CSMA/CA"></a>CSMA/CA</h4><p>用于无线局域网。由于无线局域网有 信号强度随距离递减、有其他源的干扰、多路径传播 等特点，和有限局域网使用同样的逻辑就不太适用了。无线局域网还有隐藏终端和信号太弱无法检测的问题</p>
 <p>无线局域网使用的是 <strong>带碰撞避免的CSMA/CA</strong> （CSMA with Collision Avoidance）</p>
 <ul>
@@ -1268,40 +1350,93 @@ R=(D\ll r)\%G</script><p>的比特位即可</p>
 <li>令牌传递协议</li>
 </ul>
 <h2 id="交换局域网"><a href="#交换局域网" class="headerlink" title="交换局域网"></a>交换局域网</h2>
+              
             </div>
-            <hr>
+            <hr/>
             <div>
-              <div class="post-metas mb-3">
-                
-                  <div class="post-meta mr-3">
-                    <i class="iconfont icon-category"></i>
-                    
-                      <a class="hover-with-bg" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9B%B8%E5%85%B3/">计算机相关</a>
-                    
-                  </div>
-                
-                
-                  <div class="post-meta">
-                    <i class="iconfont icon-tags"></i>
-                    
-                      <a class="hover-with-bg" href="/tags/%E7%BD%91%E7%BB%9C/">网络</a>
-                    
-                  </div>
-                
-              </div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9B%B8%E5%85%B3/" class="category-chain-item">计算机相关</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E7%BD%91%E7%BB%9C/">#网络</a>
+      
+    </div>
+  
+</div>
+
+
               
-                <p class="note note-warning">
-                  
-                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
-                  
-                </p>
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>计算机网络</div>
+      <div>http://example.com/2021/05/02/HUST/ComputerNetworking/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Fu Qingchen</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2021年5月2日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
               
-              
-                <div class="post-prevnext">
+                <div class="post-prevnext my-3">
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2021/06/10/HUST/PipelineInCPU&amp;OS&amp;Net/">
+                      <a href="/2021/06/10/HUST/PipelineInCPU&amp;OS&amp;Net/" title="CPU、操作系统和网络中的流水线">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">CPU、操作系统和网络中的流水线</span>
                         <span class="visible-mobile">上一篇</span>
@@ -1311,7 +1446,7 @@ R=(D\ll r)\%G</script><p>的比特位即可</p>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2020/11/22/HUST/MatrixTheorem/">
+                      <a href="/2020/11/22/HUST/MatrixTheorem/" title="矩阵论笔记">
                         <span class="hidden-mobile">矩阵论笔记</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
@@ -1323,55 +1458,94 @@ R=(D\ll r)\%G</script><p>的比特位即可</p>
             </div>
 
             
-              <!-- Comments -->
-              <article class="comments" id="comments" lazyload>
-                
-                  
-                
-                
+  <article id="comments" lazyload>
+    
   <div id="valine"></div>
   <script type="text/javascript">
     Fluid.utils.loadComments('#valine', function() {
-      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.4.16/Valine.min.js', function() {
         var options = Object.assign(
-          {"appId":"DNr2pgYBNbnn4YMKmdstH2Sw-gzGzoHsz","appKey":"6RRAdTwPs2Y3Tk5iKNo2qo1D","placeholder":"说点什么","path":"window.location.pathname","avatar":"retro","meta":["nick","mail"],"pageSize":10,"lang":"zh-CN","highlight":true,"recordIP":false,"serverURLs":"https://dnr2pgyb.lc-cn-n1-shared.com","emojiCDN":null,"emojiMaps":null,"enableQQ":false,"requiredFields":[],"appid":"DNr2pgYBNbnn4YMKmdstH2Sw-gzGzoHsz","appkey":"6RRAdTwPs2Y3Tk5iKNo2qo1D"},
+          {"appId":"DNr2pgYBNbnn4YMKmdstH2Sw-gzGzoHsz","appKey":"6RRAdTwPs2Y3Tk5iKNo2qo1D","path":"window.location.pathname","placeholder":"说点什么","avatar":"retro","meta":["nick","mail"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":true,"recordIP":false,"serverURLs":"https://dnr2pgyb.lc-cn-n1-shared.com","emojiCDN":null,"emojiMaps":null,"enableQQ":false,"appid":"DNr2pgYBNbnn4YMKmdstH2Sw-gzGzoHsz","appkey":"6RRAdTwPs2Y3Tk5iKNo2qo1D"},
           {
             el: "#valine",
             path: window.location.pathname
           }
         )
         new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
       });
     });
   </script>
   <noscript>Please enable JavaScript to view the comments</noscript>
 
 
-              </article>
-            
+  </article>
+
+
           </article>
         </div>
       </div>
     </div>
-    
-      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
-        <div id="toc">
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
   <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
   <div class="toc-body" id="toc-body"></div>
 </div>
 
-      </div>
-    
+
+
+  </aside>
+
+
+    </div>
   </div>
 </div>
 
-<!-- Custom -->
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  <script>
+  Fluid.utils.createScript('https://lib.baomitu.com/mermaid/8.13.10/mermaid.min.js', function() {
+    mermaid.initialize({"theme":"default"});
+  });
+</script>
+
+
+
 
 
     
 
     
-      <a id="scroll-top-button" href="#" role="button">
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
         <i class="iconfont icon-arrowup" aria-hidden="true"></i>
       </a>
     
@@ -1390,35 +1564,37 @@ R=(D\ll r)\%G</script><p>的比特位即可</p>
       <div class="modal-body mx-3">
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v"
-                 for="local-search-input">关键词</label>
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>
     </div>
   </div>
 </div>
+
     
 
     
   </main>
 
-  <footer class="text-center mt-5 py-3">
-  <div class="footer-content">
-     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
-  </div>
+  <footer>
+    <div class="footer-inner">
   
-
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
   
-
   
-</footer>
-
-
-  <!-- SCRIPTS -->
   
-  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
-  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
 
   <script>
     NProgress.configure({"showSpinner":false,"trickleSpeed":100})
@@ -1429,12 +1605,15 @@ R=(D\ll r)\%G</script><p>的比特位即可</p>
   </script>
 
 
-<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
-<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
 <script  src="/js/events.js" ></script>
 <script  src="/js/plugins.js" ></script>
 
-<!-- Plugins -->
+
+
+
+
 
 
   
@@ -1443,25 +1622,137 @@ R=(D\ll r)\%G</script><p>的比特位即可</p>
 
 
 
+
   
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.0/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
 
 
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
 
-  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
 
 
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
 
-  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
 
 
-
-  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
-
-
-
-  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
-
-
+  <script>Fluid.plugins.imageCaption();</script>
 
   <script  src="/js/local-search.js" ></script>
 
@@ -1469,31 +1760,15 @@ R=(D\ll r)\%G</script><p>的比特位即可</p>
 
 
 
-
-
-
-
-
-
-
-
-
-  <script  src="https://cdn.jsdelivr.net/npm/mermaid@8.10.1/dist/mermaid.min.js" ></script>
-  <script>
-    if (window.mermaid) {
-      mermaid.initialize({"theme":"default"});
-    }
-  </script>
-
-
-
-
-
-
-
-<!-- 主题的启动项 保持在最底部 -->
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
 <script  src="/js/boot.js" ></script>
 
 
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
 </body>
 </html>

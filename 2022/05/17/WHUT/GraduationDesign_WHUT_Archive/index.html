@@ -1,0 +1,1844 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Fu Qingchen">
+  <meta name="keywords" content="MSE, CS">
+  
+    <meta name="description" content="放在这留作纪念，不过为了放抄袭故意设置了一些明显错误。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【本科毕业设计·全文】一种直角坐标式船舶系泊辅助机械臂设计与分析">
+<meta property="og:url" content="http://example.com/2022/05/17/WHUT/GraduationDesign_WHUT_Archive/index.html">
+<meta property="og:site_name" content="Fu&#39;s Web">
+<meta property="og:description" content="放在这留作纪念，不过为了放抄袭故意设置了一些明显错误。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20220517140902.png">
+<meta property="og:image" content="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/image-20220517140935441.png">
+<meta property="og:image" content="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/image-20220517141112145.png">
+<meta property="og:image" content="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/image-20220517141205779.png">
+<meta property="og:image" content="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20220517141345.png">
+<meta property="og:image" content="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/image-20220517141618046.png">
+<meta property="og:image" content="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/image-20220517141653324.png">
+<meta property="og:image" content="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/image-20220517141725009.png">
+<meta property="og:image" content="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/image-20220517141911864.png">
+<meta property="og:image" content="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/image-20220517142008714.png">
+<meta property="og:image" content="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/image-20220517142052719.png">
+<meta property="og:image" content="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/image-20220517144453344.png">
+<meta property="og:image" content="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/image-20220517144509554.png">
+<meta property="og:image" content="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/image-20220517154346514.png">
+<meta property="og:image" content="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/image-20220517155648064.png">
+<meta property="og:image" content="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/image-20220517155717022.png">
+<meta property="og:image" content="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/image-20220517160116315.png">
+<meta property="og:image" content="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/image-20220517160133846.png">
+<meta property="og:image" content="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/image-20220517160148051.png">
+<meta property="og:image" content="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/image-20220521153143756.png">
+<meta property="og:image" content="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/image-20220521155625420.png">
+<meta property="og:image" content="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/image-20220521160659178.png">
+<meta property="og:image" content="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/image-20220521161019290.png">
+<meta property="og:image" content="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/image-20220517163240718.png">
+<meta property="og:image" content="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/image-20220517163317202.png">
+<meta property="og:image" content="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/image-20220517163346327.png">
+<meta property="og:image" content="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/image-20220517163417386.png">
+<meta property="og:image" content="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/image-20220517163447939.png">
+<meta property="og:image" content="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/image-20220517163516864.png">
+<meta property="og:image" content="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/image-20220517163906933.png">
+<meta property="og:image" content="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/image-20220521161748975.png">
+<meta property="og:image" content="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/image-20220521162935725.png">
+<meta property="og:image" content="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/image-20220521163129493.png">
+<meta property="og:image" content="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/image-20220521163409433.png">
+<meta property="og:image" content="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/image-20220521164438091.png">
+<meta property="og:image" content="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/image-20220521164630460.png">
+<meta property="og:image" content="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/image-20220517162806024.png">
+<meta property="og:image" content="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/image-20220517160623743.png">
+<meta property="og:image" content="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/image-20220517160729494.png">
+<meta property="og:image" content="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/image-20220517160759828.png">
+<meta property="og:image" content="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/image-20220517160854229.png">
+<meta property="og:image" content="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/image-20220517160916836.png">
+<meta property="og:image" content="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/image-20220517161039553.png">
+<meta property="og:image" content="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/image-20220517161106022.png">
+<meta property="og:image" content="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/image-20220517161156747.png">
+<meta property="og:image" content="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/image-20220517161329137.png">
+<meta property="og:image" content="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/image-20220517161357001.png">
+<meta property="og:image" content="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/image-20220517161413598.png">
+<meta property="article:published_time" content="2022-05-17T14:07:51.000Z">
+<meta property="article:modified_time" content="2022-05-25T15:12:42.111Z">
+<meta property="article:author" content="Fu Qingchen">
+<meta property="article:tag" content="课程设计">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20220517140902.png">
+  
+  
+  
+  <title>【本科毕业设计·全文】一种直角坐标式船舶系泊辅助机械臂设计与分析 | Fu&#39;s Web</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.0","typing":{"enable":false,"typeSpeed":30,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"tajs":null},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 50vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fu&#39;s Web</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('https://gitee.com/fuqingchen/picture-lib/raw/master/img/Test_Tree.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle">【本科毕业设计·全文】一种直角坐标式船舶系泊辅助机械臂设计与分析</span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-05-17 22:07" pubdate>
+          2022年5月17日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          <!-- compatible with older versions-->
+          32k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          <!-- compatible with older versions-->
+          267 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">【本科毕业设计·全文】一种直角坐标式船舶系泊辅助机械臂设计与分析</h1>
+            
+            <div class="markdown-body">
+              
+              <p>放在这留作纪念，不过为了放抄袭故意设置了一些<strong>明显错误</strong>。</p>
+<span id="more"></span>
+<h1 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h1><p>​        全球经济的不断发展，对港口的智能化提出越来越多的要求。目前，系泊作为港口的一道重要工序，绝大多港口仍使用传统的缆绳系缆。这种方法效率低，危险性高，船舶还会随着海浪运动，给装卸造成不必要的麻烦。21 世纪以来，一种自动系泊系统被发明出来，该系统使用带有真空吸盘的机械臂对船舶进行固定，极大的提升了船舶系泊的效率和安全性。这种自动系泊系统在国外已经发展成熟，然而在国内仍处于起步阶段。<br>​        在此背景下，本文设计了一种直角坐标式船舶系泊辅助机械臂，该机械臂主要控制机械臂末端真空吸盘的位置。当船舶靠近时，码头上的机械臂组控制真空吸盘与船舶表面贴合，真空吸盘的吸附力将船舶固定，实现系泊操作。当船舶到达机械臂的极限时，机械臂组会以步进移动的方式改变自己的位置。<br>​        该机械臂主要由驱动装置、支承装置、传动装置和真空吸盘四个部分组成。支承装置采用钢结构焊接而成，传动装置由摇板、竖直传动模块和纵向传动模块模块组成，其中竖直传动模块采用内、外门架和链轮链条结构实现行程的倍增。本文根据设计构型对机械臂运动学、动力学进行分析，详细描述了系泊机械臂各个部分的设计计算和选型，并使用 ANSYS 软件对机械臂关键结构进行分析改进，然后对该结构经济性能进行分析，最终得到了一个经济可靠的设计方案。</p>
+<p><strong>关键词</strong>：自动系泊系统；结构设计；直角坐标机械臂；有限元分析</p>
+<h1 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h1><p>​        The continuous development of the global economy puts more requirements on the intelligence of ports today. At present, mooring is an important process in ports, and most ports still use traditional cable mooring, which is inefficient and dangerous, and the ship will move with the waves, causing unnecessary trouble for loading and unloading. Since the 21st century, an automatic mooring system has been invented. This system uses manipulators with vacuum chucks to fix the ship, which greatly improves the efficiency and safety of the ship mooring. This automatic mooring system has developed well abroad, but it is still in its infancy in China.</p>
+<p>​        Under this background, this paper designed a cartesian coordinate manipulator to assist ship mooring. The manipulator controls the position of the vacuum chucks, which is at the end of it. When the ship approaches, the manipulators on the wharf controls the vacuum chucks to fit the surface of the ship, and the suction force of the vacuum chucks fixes the ship to realize the mooring operation. When the ship reaches the limit of the manipulators, the manipulators will change its position by stepping.</p>
+<p>​        The manipulator is mainly composed of the driving device, the supporting devices, the transmission devices, and vacuum chucks. The support device is welded with steel structure. The transmission device is composed of a rocking plate, vertical transmission module, and longitudinal transmission module, in which the vertical transmission module uses the inner and outer gantry and sprocket chain structure to double the stroke. Firstly, this paper analyzes the kinematics and dynamics of the manipulator according to the design configuration. Secondly, it describes the  calculation and selection of each part of the mooring manipulator in detail. Thirdly, it uses ANSYS software to analyze and improve on the key structure of the manipulator. Fourthly, it analyzes the economic performance of the structure. Finally, an economical and reliable design was obtained.</p>
+<p><strong>Key Words：</strong> automated mooring system; structural design; cartesian coordinate manipulator; finite element analysis</p>
+<h1 id="第-1-章-绪论"><a href="#第-1-章-绪论" class="headerlink" title="第 1 章 绪论"></a>第 1 章 绪论</h1><h2 id="研究背景"><a href="#研究背景" class="headerlink" title="研究背景"></a>研究背景</h2><p>​        港口是国家重要的综合交通枢纽，也是经济发展的战略资源和重要支撑，在国家政治领域、经济领域、文化领域等都起着重要作用。根据交通运输部等九部门制定的《关于建设世界一流港口的指导意见》[1]，到 2025 年，世界一流港口建设取得重要进展，主要港口绿色、智慧、安全发展实现重大突破；到 2035 年，全国港口发展水平整体跃升，引领全球港口绿色发展、智慧发展。这对港口基础设施的建设提出了更高的要求。</p>
+<p>​        系泊是港口码头使用过程中的一道重要工序，是指用系缆设备使船停于泊位的作业过程，系泊时间的长短直接影响港口装卸搬运的效率。目前，世界各地大多数港口仍然使用缆绳系缆。传统的缆绳系泊方式系缆作业难度大、耗时长。一般情况下，系泊一条万吨级的船舶需要 12 根缆绳，耗时 30~40min[2]，遇到更大型的船舶，缆绳的质量、数量和消耗的时间还要增加。另外，传统系缆作业容易发生意外，据不完全统计，每年发生在带缆作业时的人身伤亡事故高达上百起。</p>
+<p><img src="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20220517140902.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>​        除了直接影响系泊效率和危害人生安全，传统的缆绳系泊方式还具有诸多额外影响。通过缆绳系泊的船舶很难完全固定，在外海波浪和附近船只航行产生波浪的联合作用下，船舶会产生较大的移动，严重影响港口起重机装卸作业效率，增加船舶停靠时间，使得港口经济效益降低，甚至发生断缆等事故。为此，港口不得不修筑防波堤，这无疑增加了码头的建造成本。此外，为了满足带缆角度需要，要求泊位长度大于设计船型一定长度（如图 1.2），无形中占据了码头靠泊的空间，对泊位利用率造成一定影响，此部分码头的工程造价也相当可观。</p>
+<p><img src="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/image-20220517140935441.png" srcset="/img/loading.gif" lazyload alt="image-20220517140935441"></p>
+<p>​        为解决以上问题，需要设计一种用于辅助船舶系泊的码头系泊机械臂，这种机械臂能够实现三自由度直角坐标运动，通过驱动真空吸盘实现靠泊船舶的自动系泊。强大的真空吸附力使船舶紧紧的固定在码头，同时每一个真空吸盘可以有多个自由度，以适应船体表面。机械臂的机械结构需要抵御因波浪、排水、搬卸货物引起的运动。</p>
+<h2 id="国内外研究现状"><a href="#国内外研究现状" class="headerlink" title="国内外研究现状"></a>国内外研究现状</h2><h3 id="国内现状"><a href="#国内现状" class="headerlink" title="国内现状"></a>国内现状</h3><p>​        国内码头仍然采用传统的缆绳系泊方式，尚无自动系泊装置的应用。自动系泊装置的设计基本由国外企业垄断，国内虽然有一部分企业申请了相关专利[3]，不过尚无应用，仅有部分介绍性文章[4]。</p>
+<h3 id="国外现状"><a href="#国外现状" class="headerlink" title="国外现状"></a>国外现状</h3><p>​        目前，自动系泊系统在国外是一个成熟的技术。1999 年，世界上第一台新型自动系泊系统在新西兰问世，经过多年的实践与完善，已在国外有不少成功的案例，英标 BS6349-4: 2014 也介绍了此系统。</p>
+<p>​        该系统主要包括吸盘、机械连杆装置、垂直传动装置和控制系统。该系统利用吸附力代替缆绳拉力限制船舶位移，机械连杆控制真空吸盘在水平方向的纵向和横向运动，进而控制船舶的纵移、横移和回转共 3 个方向的运动量。垂直传动装置一般采用轨道，主要针对潮差变化很大的码头和船闸等，自动系泊系统可根据水位自行调节吸附高度[5]。</p>
+<p>​        国外设计此类装置的企业主要有 Cavotec，Trelleborg，Mampaey 以及 MacGreg 等，其主要性能参数对比汇总如下表所示。</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>负载能力/kN</th>
+<th>工作范围/mm</th>
+<th>运行功率/kW</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cavotec</td>
+<td>(200~400)×100</td>
+<td>1000×1000×400</td>
+<td>20~50</td>
+</tr>
+<tr>
+<td>Trelleborg</td>
+<td>200×(-)</td>
+<td>2100×1000×500</td>
+<td>7</td>
+</tr>
+<tr>
+<td>Mampaey</td>
+<td>130×320</td>
+<td>300×1600×450</td>
+<td>30</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><img src="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/image-20220517141112145.png" srcset="/img/loading.gif" lazyload alt="image-20220517141112145"></p>
+<p>​        Cavotec 是一家总部位于瑞士的工程集团，该公司生产的 MoorMaster™ 应用广泛，已在全球 50 个地区安装了超过 275 台[6]。MoorMaster™ 系列产品属于真空吸盘式自动系泊系统，可在几秒内吸住和释放船舶，提供单台 2 吨的吸力。2007 年，他们将此装置应用于船闸中，节省通航时间并为工作人员提供安全的环境；2016 年，他们与芬兰瓦锡兰公司合作开发首个无线充电自动系泊系统，有效降低实物连线的维护成本。</p>
+<p>​        Trelleborg 是一家瑞典企业，其生产的 AutoMoor 是一种真空吸盘式自动系泊系统[7]。他们的 SmartPort 平台可以将众多港口设施互联互通，进一步提高港口效率。此外，他们还为大型船舶设计了单台吸力高达 40 吨的双吸盘装置。</p>
+<p>​        Mampaey 公司开发的 intelligent Docklocking System® 是一种磁力式自动系泊系统[8]。该系统主要应用于燃料船的靠泊，该装置由液压缸带动永磁体移动，并在表面覆盖一层耐磨材料。该装置能够将其自身折叠，减小占用空间。</p>
+<p>​        MacGregor 开发了一种机械式的自动系泊装置，与上述装置不同，该装置需要在船舶船身安装与之相匹配的装置[9]。</p>
+<h2 id="研究意义"><a href="#研究意义" class="headerlink" title="研究意义"></a>研究意义</h2><p>​        随着全球经济的不断发展，海上物流的需求不断增加，对船舶周期加快的要求也越来 越高，低效、安全系数比较低的传统系泊方式逐渐无法适应，因此急需一种更高效、更安 全的系泊方式。自动系泊系统（如图 1.4 ）是一种很好的解决方案，该系统无需缆绳即可完 成系泊操作，能够有效解决上述的多种问题，它具有以下几种现实意义：</p>
+<p><img src="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/image-20220517141205779.png" srcset="/img/loading.gif" lazyload alt="image-20220517141205779"></p>
+<p>​        （1）为船员提供了更加安全的工作环境：自动系泊系统采用吸盘代替绳索，使得工作人员可以通过远程控制系统操作，消除了船员和码头上带缆工人的安全威胁，为他们提供了一个更加安全可靠的工作环境。同时，通过对机械臂上液压装置的压力检测，可以对系泊状态进行实时监控，保证了工作人员可以了解系泊状态。</p>
+<p>​        （2）使得港口作业更加高效：自动系泊系统由于无需调整前后系缆使得缆绳受力均匀，只需要控制机械臂到达指定位置并吸附船体，使得系泊操作难度大大降低，系泊时间也大大减小，由小时级减小到分钟级。同时，由于吸附力使船舶紧紧的固定在码头，系泊船舶的运动量比缆绳系缆小，船上货物的位置比较稳定，货物装卸效率提高。缩短了船舶系泊与等待的时间，提高了码头的使用率。</p>
+<p>​        （3）减少港口建设与运营成本：由于机械臂真空吸盘吸附于船舶的中间部分，因此船首和船尾可以伸出码头，同时也无需为揽桩预留多余的空间，码头靠泊空间得以减小，码头利用率增加，相当于减少了码头的工程建设成本。同时，由于只需要工作人员操纵机械臂，大大减少了码头运营的人力成本。</p>
+<h2 id="主要设计内容"><a href="#主要设计内容" class="headerlink" title="主要设计内容"></a>主要设计内容</h2><p>​        本设计的目的是为船舶系泊提供一种新型解决方案，设计出符合要求的船舶系泊辅助机械臂，建立相关模型后对其关键机构进行有限元分析。</p>
+<p>​        这种机械臂能够实现三自由度直角坐标运动，通过驱动真空吸盘实现靠泊船舶的自动系泊，外观合理美观，性能良好，比传统系泊方式高效、安全以及节能。</p>
+<p>​        设计主要内容可以分为以下部分，全文的结构组织框图如图 1.5 所示：</p>
+<p><img src="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20220517141345.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>​        （1）机械臂的总体方案设计：对本项目需要完成的系泊任务以及工作环境进行分析，确定机械臂的性能指标，包括工作区间、负载能力、重复定位精度等，并提出可行的系泊机械臂总体方案。</p>
+<p>​        （2）机械臂的运动学和动力学分析：使用 D-H 参数法建立机械臂的运动学模型，利用牛顿—欧拉迭代方程建立机械臂动力学模型，计算各个关节所需驱动力。</p>
+<p>​        （3）机械臂的结构设计：对机械臂进行执行元件的选型，运用 SolidWorks 软件对系泊机械臂支承装置、传动装置和真空吸盘进行结构设计。</p>
+<p>​        （4）机械臂的分析与优化：对所设计系泊机械臂通过 ANSYS 软件进行有限元分析，分析其是否满足设计要求，对不满足的零部件进行改进。对机械臂进行经济性分析。</p>
+<h1 id="第-2-章-总体方案设计"><a href="#第-2-章-总体方案设计" class="headerlink" title="第 2 章 总体方案设计"></a>第 2 章 总体方案设计</h1><p>​        本章主要进行船舶辅助系泊机械臂的总体方案设计。系泊机械臂的设计主要需要考虑到船舶的运动与风力、水流等外负载。本章首先对系泊作业工作状况进行分析，明确系泊机械臂的工作原理；然后对系泊机械臂工作行程、负载能力和定位精度进行分析与确定；最后，确定了系泊机械臂的总体设计方案。</p>
+<h2 id="自动系泊系统工作原理"><a href="#自动系泊系统工作原理" class="headerlink" title="自动系泊系统工作原理"></a>自动系泊系统工作原理</h2><h3 id="船舶运动及外载荷分析"><a href="#船舶运动及外载荷分析" class="headerlink" title="船舶运动及外载荷分析"></a>船舶运动及外载荷分析</h3><p>​        船舶停靠在码头上后主要受到风力和水流的作用。除此之外还受到潮汐、排水、装卸货物等外在环境的影响。在外力作用下，船舶可进行纵荡、横荡、垂荡、横摇、纵摇、首摇 6 个自由度的运动，如图 2.1 所示。</p>
+<p><img src="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/image-20220517141618046.png" srcset="/img/loading.gif" lazyload alt="image-20220517141618046"></p>
+<p>​        对于船舶系泊，垂荡不会对货物的装卸产生影响，因此无需进行考虑。同时，在大型船舶满载的情况下，由于船舶惯性较大，船舶横摇和纵摇幅度较小，对系统影响小，可以忽略不计。根据以上分析，船舶在系泊作业中主要受到 <em>x</em> 和 <em>y</em> 方向上的力，系泊机械臂主要承受这两个方向的负载。根据 Mampaey 公司的计算分析，对于一艘长 134.9m，排水 11562m³ 的船舶，当风沿 45° 时船舶所需拉力取最大值，<em>x</em> 和 <em>y</em> 方向最大拉力约为 35kN 和 150kN。</p>
+<h3 id="自动系泊系统工作状态"><a href="#自动系泊系统工作状态" class="headerlink" title="自动系泊系统工作状态"></a>自动系泊系统工作状态</h3><p>​        自动系泊系统采用液压传动，通过真空吸盘产生的吸附力代替缆绳的拉力。系泊作业时，机械臂有两种工作状态：</p>
+<p>​        （1）船舶系泊前：机械臂控制真空吸盘到达预期位置，以接合船只的平面部分。真空吸盘的真空泵启动，根据船舶的类型和等级，使其吸附力达到适宜的真空级别。为了方便说明，参考国外同类产品技术资料[10]，定义各方向如图 2.2 所示。此时机械臂控制在横向、竖直方向和纵向三个方向上的移动。</p>
+<p><img src="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/image-20220517141653324.png" srcset="/img/loading.gif" lazyload alt="image-20220517141653324"></p>
+<p>​        （2）船舶系泊中：一旦真空吸盘吸附在船体上时，真空吸盘被抽真空，以实现船只的固定。真空吸盘上竖直方向的控制关闭，即允许船舶和真空吸盘沿竖直方向自由移动，其余方向对船舶施加力使其固定。同时，控制系统开始对横向和纵向位置进行检测，若超出定位精度，液压缸将施加恢复力使得船舶固定。</p>
+<p>​        机械臂的每个真空吸盘可以有多个自由度，使其有一定程度的被动转动，能够与船舶表面更好的贴合。例如船只左舷和右舷之间的载荷差异，可使船身表面有一定的转动。当机械臂运行至极限位置时，控制系统将以步进的方式交替移动各个机械臂，当负载过大无法步进时，系统会向船只及岸上人员发送警报；当受到外力使船舶有与机械臂分离或相对滑动的运动趋势时，并且这种力大于真空吸盘吸附力时，系统可提高真空吸盘内的真空度，从而提高真空吸盘与船只的保持强度，来保证船舶的安全系泊。</p>
+<h2 id="系泊机械臂关键参数的确定"><a href="#系泊机械臂关键参数的确定" class="headerlink" title="系泊机械臂关键参数的确定"></a>系泊机械臂关键参数的确定</h2><h3 id="系泊机械臂工作行程的确定"><a href="#系泊机械臂工作行程的确定" class="headerlink" title="系泊机械臂工作行程的确定"></a>系泊机械臂工作行程的确定</h3><p>​        （1）横向：港口码头设有护舷，以防止船舶冲撞损坏码头，系泊机械臂的横向伸出时应超过护舷长度，以便真空吸盘与船体贴合。同时，为了方便机械臂的维修与管理，机械臂缩回时应留在码头。因此，系泊机械臂的横向行程应为 500mm。</p>
+<p>​        （2）竖直方向：虽然竖直方向需要考虑潮汐、装卸货物、压排水的影响，需要足够的工作行程。不过，当其运行至极限位置时，机械臂群可以以步进的方式重新定位。因此系泊机械臂的竖直方向行程应为 1000mm。</p>
+<p>​        （3）纵向：机械臂对纵向移动要求较低，无需较大的行程，因此系泊机械臂的纵向行程应为 500mm。</p>
+<h3 id="系泊机械臂负载能力的确定"><a href="#系泊机械臂负载能力的确定" class="headerlink" title="系泊机械臂负载能力的确定"></a>系泊机械臂负载能力的确定</h3><p>​        船舶系泊时需要一组机械臂进行配合。假设每隔 15m 设置一个机械臂，对于一艘 134.9m 长的船只，需要 8 只机械臂为船只提供拉力。</p>
+<p>​        （1）横向：横向为主要受力方向，系泊机械臂真空吸盘需要克服使船舶有与机械臂分离的横向力，根据上述分析，参考国外公司产品性能参数，横向最大负载可设为 200kN。</p>
+<p>​        （2）竖直方向：竖直方向虽然正常工作时不受载，但是在到达临界位置时机械臂交替步进时会承受一定的拉力，为安全起见，取其负载为 25kN。</p>
+<p>​        （3）纵向：系泊机械臂真空吸盘还需要克服使吸盘与船体相对滑动的纵向力。根据上述分析，参考国外公司产品性能参数，纵向最大负载可设为 100kN。</p>
+<h3 id="系泊机械臂定位精度的确定"><a href="#系泊机械臂定位精度的确定" class="headerlink" title="系泊机械臂定位精度的确定"></a>系泊机械臂定位精度的确定</h3><p>​        系泊机械臂传动机构使真空吸盘到达指定位置，与船只进行贴合，其定位精度对船舶系泊影响较小，因此系泊机械臂的对定位精度无很高要求。参考国外各公司产品性能参数（如下表），取各个方向定位精度为 40mm。</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>横向</th>
+<th>竖直方向</th>
+<th>纵向</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>工作行程/mm</td>
+<td>500</td>
+<td>1000</td>
+<td>500</td>
+</tr>
+<tr>
+<td>负载能力/kN</td>
+<td>200</td>
+<td>25</td>
+<td>100</td>
+</tr>
+<tr>
+<td>定位精度/mm</td>
+<td>40</td>
+<td>40</td>
+<td>40</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="系泊机械臂的构型设计"><a href="#系泊机械臂的构型设计" class="headerlink" title="系泊机械臂的构型设计"></a>系泊机械臂的构型设计</h2><p>​        系泊机械臂采用直角坐标机械臂，各个关节独立控制，在控制上比较简单。机械臂提供三个自由度，构型为 PPP。系泊机械臂主要由驱动装置、支承装置、传动装置和真空吸盘组成。由于处于重载环境，因此采用液压驱动。传动装置能够在横向、竖直方向和纵向实现真空吸盘的定位。</p>
+<p><img src="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/image-20220517141725009.png" srcset="/img/loading.gif" lazyload alt="image-20220517141725009"></p>
+<p>​        结合实际工况要求，并参考相关设计案例[11-12]，拟采用如图 2.3 所示设计方案。系泊机械臂支承装置采用框架式钢结构，由型钢连接而成。横向液压缸固定在支承装置上进行伸缩运动，驱动真空吸盘沿横向运动。此液压缸末端连接导轨，导轨由液压缸连接链条驱动，使真空吸盘沿竖直方向运动。由于竖直方向受力较小，行程较大，为了缩小装置体积，拟采用含有动滑轮的增程机构。链条末端固定一双杆液压缸，以实现真空吸盘的纵向移动。传动装置与真空吸盘通过外球面球轴承连接，使得真空吸盘可以绕横向、竖直方向和纵向进行一定角度的转动。</p>
+<h2 id="本章小结"><a href="#本章小结" class="headerlink" title="本章小结"></a>本章小结</h2><p>​        本章针对系泊机械臂的负载和工作原理进行分析，明确了系泊机械臂的工况要求和实现功能；根据其工作特点，确定了其横向、竖直方向和纵向三个方向的工作行程、负载能力和定位精度等关键参数；最后，对机械臂构型和主要执行机构及其动作的实现进行了讨论和确定。</p>
+<h1 id="第-3-章-运动学、动力学分析"><a href="#第-3-章-运动学、动力学分析" class="headerlink" title="第 3 章 运动学、动力学分析"></a>第 3 章 运动学、动力学分析</h1><p>​        运动学是机械臂位置、姿态运动和轨迹规划的基础，从而可以设计出能够完成指定任务的机械臂。动力学可以得到机械臂作业末端要求的输出力和各关节驱动力之间的关系，是机械臂控制中必须考虑的问题。</p>
+<h2 id="系泊机械臂运动学分析"><a href="#系泊机械臂运动学分析" class="headerlink" title="系泊机械臂运动学分析"></a>系泊机械臂运动学分析</h2><p>​        机器人运动学研究机械臂的运动特性，而不考虑使机械臂运动产生的力，包括正运动学和逆运动学两类基本问题。</p>
+<h3 id="系泊机械臂正运动学分析"><a href="#系泊机械臂正运动学分析" class="headerlink" title="系泊机械臂正运动学分析"></a>系泊机械臂正运动学分析</h3><p>​        系泊机械臂可以看作一段固定在码头、通过一系列连杆由关节串联形成的运动链，本文采用 Craig 提出的改进 D-H 参数法建立系泊机械臂的数学模型。由于横向液压缸既有移动又有转动，同时竖直方向液压缸关节轴方向固定，为方便计算，将其简化为两个移动关节。各连杆坐标系的分布如图 3.1 所示。改进 D-H 参数法使用 4×4 的齐次变换矩阵描述相邻连杆上坐标系的变换关系，继而推导出机械臂末端执行器真空吸盘相对于工具台坐标系 {<em>S</em>} 的位姿关系。</p>
+<p><img src="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/image-20220517141911864.png" srcset="/img/loading.gif" lazyload alt="image-20220517141911864"></p>
+<p>​        根据图 3.1 各连杆坐标系的分布关系，系泊机械臂的 D-H 参数如下表所示。</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>连杆 $i$</th>
+<th>$a_{i-1}$/mm</th>
+<th>$α_{i-1}$/°</th>
+<th>$d_i$/mm</th>
+<th>$θ_i$/°</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$1_V$</td>
+<td>0</td>
+<td>0</td>
+<td>$d_1\sinθ_1$</td>
+<td>0</td>
+</tr>
+<tr>
+<td>$1_H$</td>
+<td>0</td>
+<td>-90</td>
+<td>$*d_1\cosθ_1$</td>
+<td>0</td>
+</tr>
+<tr>
+<td>2</td>
+<td>0</td>
+<td>-90</td>
+<td>$d_2$</td>
+<td>-90</td>
+</tr>
+<tr>
+<td>3</td>
+<td>0</td>
+<td>90</td>
+<td>$d_3$</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>​        表中各个变量意义如下所示：</p>
+<p>​        $a_i$——杆长，沿 $X_i$ 轴，从 $Z_i$ 移动到 $Z_{i+1}$ 的距离；</p>
+<p>​        $α_i$——扭转角，绕 $X_i$ 轴，从 $Z_i$ 旋转到 $Z_{i+1}$ 的角度；</p>
+<p>​        $d_i$——偏距，沿 $Z_i$ 轴，从 $X_{i-1}$ 移动到 $X_i$ 的距离；</p>
+<p>​        $θ_i$——关节角，绕 $Z_i$ 轴，从 $X_{i-1}$ 旋转到 $X_i$ 的角度。</p>
+<p>​        根据改进的 D-H 参数法，相邻杆件坐标变换关系通式为</p>
+<script type="math/tex; mode=display">
+{ }_{i}^{i-1} T=\left[\begin{array}{cccc}
+\cos \theta_{i} & -\sin \theta_{i} & 0 & a_{i-1} \\
+\sin \theta_{i} \cos \alpha_{i-1} & \cos \theta_{i} \cos \alpha_{i-1} & -\sin \alpha_{i-1} & -\sin \alpha_{i-1} d_{i} \\
+\sin \theta_{i} \sin \alpha_{i-1} & \cos \theta_{i} \sin \alpha_{i-1} & \cos \alpha_{i-1} & \cos \alpha_{i-1} d_{i} \\
+0 & 0 & 0 & 1
+\end{array}\right]</script><p>​        将 D-H 参数表中数据带入式 $(1)$ 可以分别求得  ，因此系泊机械臂在基坐标系 {<em>B</em>} 下的正运动学方程为</p>
+<script type="math/tex; mode=display">
+{ }_{3}^{0} T={ }_{1_{\mathrm{v}}}^{0} T_{1_{\mathrm{H}}}^{1_{\mathrm{v}}} T_{2}^{1_{\mathrm{H}}} T_{3}^{2} T=\left[\begin{array}{cccc}
+0 & 0 & -1 & -d_{3} \\
+1 & 0 & 0 & d_{1} \cos \theta_{1} \\
+0 & -1 & 0 & d_{1} \sin \theta_{1}-d_{2} \\
+0 & 0 & 0 & 1
+\end{array}\right]</script><p>​        系泊机械臂腕部坐标系 {<em>W</em>} 相对于工具台坐标系 {<em>S</em>} 的变换方程为</p>
+<script type="math/tex; mode=display">
+{ }_{W}^{S} T={ }_{B}^{S} T_{W}^{B} T={ }_{B}^{S} T_{3}^{0} T=\left[\begin{array}{cccc}
+1 & 0 & 0 & d_{1} \cos \theta_{1} \\
+0 & -1 & 0 & L+d_{1} \sin \theta_{1}-d_{2} \\
+0 & 0 & -1 & -d_{3} \\
+0 & 0 & 0 & 1
+\end{array}\right]</script><p>​        由于系泊机械臂只有 3 个自由度，即 $θ_1$ 可以由 $d_1$ 表示，对平行四连杆机构进行分析，可以得到机构简图如图 3.2 所示。</p>
+<p><img src="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/image-20220517142008714.png" srcset="/img/loading.gif" lazyload alt="image-20220517142008714"></p>
+<p>​        以横向液压缸底座为原点建立坐标系，可以写出 <em>A</em> 和 <em>B</em> 点的坐标，利用这两点的距离公式建立等式</p>
+<script type="math/tex; mode=display">
+(l_1-d_1\cos\theta_1)^2+(h-d_1\sin\theta_1)^2=l_2^2</script><p>式中    $l_1$——机械臂液压缸底座到支承装置外边缘的距离；</p>
+<p>​            $h$——横向液压缸活塞杆到竖直方向液压缸导槽结构的距离；</p>
+<p>​            $l_2$——机械臂摇板长度。</p>
+<p>​        将 $θ_1$ 用 $d_1$ 表示可以得到</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\theta_{1}=& 2 \operatorname{atan}(( l _ { 1 } ^ { 2 } + 2 l _ { 1 } d _ { 1 } + d _ { 1 } ^ { 2 } + h ^ { 2 } - l _ { 2 } ^ { 2 } ) ^ { - 1 } (2 d_{1} h-(-l_{1}^{4}+2 l_{1}^{2} d_{1}^{2}\\
+&-2 l_{1}^{2} h^{2}+2 l_{1}^{2} l_{2}^{2}-d_{1}^{4}+2 d_{1}^{2} h^{2}+2 d_{1}^{2} l_{2}^{2}-h^{4}+2 h^{2} l_{2}^{2}-l_{2}^{4})^{0.5}))
+\end{aligned}</script><h3 id="系泊机械臂逆运动学析"><a href="#系泊机械臂逆运动学析" class="headerlink" title="系泊机械臂逆运动学析"></a>系泊机械臂逆运动学析</h3><p>​        机器人逆运动学的求解方法主要有封闭解法和数值解法两种。封闭解法根据在末端执行器位姿，给出每个关节变量的数学函数表达式，包含代数解法和几何解法。数值法则用递推算法给出关节变量的具体数值。由于该机械臂封闭解法表达式十分复杂，本文使用数值解法进行求解。</p>
+<p>​        已知基坐标系下机械臂末端执行器位置 $[p_x,p_y,p_z]^T$，求关节截距 $[d_1,d_2,d_3]^T$ 。</p>
+<p>​        式 $(3)$ 中变换矩阵第 4 列为机械臂末端执行器的位置矢量，因此有</p>
+<script type="math/tex; mode=display">
+p_x=&d_1\cos\theta\\
+p_y=&L+d_1\sin\theta_1-d_2\\
+p_z=&-d_3</script><p>​        根据式 $(5)$ 和式 $(6)$，构造迭代算法，其程序框图如图 3.3 所示</p>
+<p><img src="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/image-20220517142052719.png" srcset="/img/loading.gif" lazyload alt="image-20220517142052719"></p>
+<h3 id="系泊机械臂关节速度求解"><a href="#系泊机械臂关节速度求解" class="headerlink" title="系泊机械臂关节速度求解"></a>系泊机械臂关节速度求解</h3><p>​        机械臂每一个连杆的运动都与它的相邻连杆有关。根据相邻杆件的分析，可以得到杆间速度传递公式为</p>
+<script type="math/tex; mode=display">
+\begin{array}{c}
+{ }^{i+1} \omega_{i+1}={ }_{i}^{i+1} R^{i} \omega_{i} \\
+{ }^{i+1} v_{i+1}={ }_{i}^{i+1} R\left({ }^{i} v_{i}+{ }^{i} \omega_{i} \times{ }^{i} P_{i+1}\right)+\dot{d}_{i+1}{ }^{i+1} \hat{Z}_{i+1}
+\end{array}</script><p>式中    ${ }_{i}^{i+1} R$——由 <em>i</em> 到 <em>i</em>+1 旋转变换矩阵；</p>
+<p>​            ${ }^{i} P_{i+1}$——{<em>i</em>} 坐标系下 {<em>i</em>+1} 坐标系原点的坐标。</p>
+<p>​        由式 $(7)$ 可以推导出工作台坐标系下关节速度和机械臂末端速度的关系</p>
+<script type="math/tex; mode=display">
+{ }^{S} v=\left[\begin{array}{c}
+{ }^{S} v_{x} \\
+{ }^{S} v_{y} \\
+{ }^{S} v_{z}
+\end{array}\right]=\left[\begin{array}{c}
+\dot{d}_{1} \cos \theta_{1}-d_{1} \sin \theta_{1} \\
+\dot{d}_{1} \sin \theta_{1}+d_{1} \cos \theta_{1}-\dot{d}_{2} \\
+-\dot{d}_{3}
+\end{array}\right]</script><h3 id="系泊机械臂运动学仿真"><a href="#系泊机械臂运动学仿真" class="headerlink" title="系泊机械臂运动学仿真"></a>系泊机械臂运动学仿真</h3><p>​        为验证系泊机械臂正、逆运动学的正确性，使用 python 库 manim 进行运动学仿真。首先为偏距 $d_1$，$d_2$，$d_3$ 规划了运动轨迹，如图 3.4 所示。通过正运动学求解，得到机械臂各关节在工作空间的运动轨迹，如图 3.5 所示，$d_3$ 旁圆点为由正运动学计算得到的空间采样点。然后，将正运动学得到的机械臂末端执行器位姿带入逆运动学表达式中，解得每个采样带点对应的偏距，将其与规划值进行比较，结果如下表所示。</p>
+<p><img src="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/image-20220517144453344.png" srcset="/img/loading.gif" lazyload alt="image-20220517144453344"></p>
+<p><img src="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/image-20220517144509554.png" srcset="/img/loading.gif" lazyload alt="image-20220517144509554"></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>$d_1$ 设计值/m</th>
+<th>$d_1$ 计算值/m</th>
+<th>$d_2$ 设计值/m</th>
+<th>$d_2$ 计算值/m</th>
+<th>$d_3$ 计算值/m</th>
+<th>$d_3$ 计算值/m</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1.004089</td>
+<td>1.0031</td>
+<td>0.003578</td>
+<td>0.003574</td>
+<td>0.003067</td>
+<td>0.003067</td>
+</tr>
+<tr>
+<td>1.012316</td>
+<td>1.0114</td>
+<td>0.010776</td>
+<td>0.010765</td>
+<td>0.009237</td>
+<td>0.009237</td>
+</tr>
+<tr>
+<td>1.027364</td>
+<td>1.0264</td>
+<td>0.023943</td>
+<td>0.023917</td>
+<td>0.020523</td>
+<td>0.020523</td>
+</tr>
+<tr>
+<td>1.054215</td>
+<td>1.0533</td>
+<td>0.047438</td>
+<td>0.047389</td>
+<td>0.040661</td>
+<td>0.040661</td>
+</tr>
+<tr>
+<td>1.100072</td>
+<td>1.0991</td>
+<td>0.087563</td>
+<td>0.087466</td>
+<td>0.075054</td>
+<td>0.075054</td>
+</tr>
+<tr>
+<td>1.172822</td>
+<td>1.1719</td>
+<td>0.151219</td>
+<td>0.151058</td>
+<td>0.129616</td>
+<td>0.129616</td>
+</tr>
+<tr>
+<td>1.275741</td>
+<td>1.2748</td>
+<td>0.241273</td>
+<td>0.241007</td>
+<td>0.206806</td>
+<td>0.206806</td>
+</tr>
+<tr>
+<td>1.400000</td>
+<td>1.399</td>
+<td>0.350000</td>
+<td>0.349577</td>
+<td>0.300000</td>
+<td>0.300000</td>
+</tr>
+<tr>
+<td>1.524259</td>
+<td>1.5233</td>
+<td>0.458727</td>
+<td>0.458176</td>
+<td>0.393194</td>
+<td>0.393194</td>
+</tr>
+<tr>
+<td>1.627178</td>
+<td>1.6261</td>
+<td>0.548781</td>
+<td>0.548015</td>
+<td>0.470384</td>
+<td>0.470384</td>
+</tr>
+<tr>
+<td>1.699928</td>
+<td>1.6988</td>
+<td>0.612437</td>
+<td>0.611517</td>
+<td>0.524946</td>
+<td>0.524946</td>
+</tr>
+<tr>
+<td>1.745785</td>
+<td>1.7447</td>
+<td>0.652562</td>
+<td>0.651600</td>
+<td>0.559339</td>
+<td>0.559339</td>
+</tr>
+<tr>
+<td>1.772636</td>
+<td>1.7715</td>
+<td>0.676057</td>
+<td>0.675000</td>
+<td>0.579477</td>
+<td>0.579477</td>
+</tr>
+<tr>
+<td>1.787684</td>
+<td>1.7865</td>
+<td>0.689224</td>
+<td>0.688093</td>
+<td>0.590763</td>
+<td>0.590763</td>
+</tr>
+<tr>
+<td>1.795911</td>
+<td>1.7948</td>
+<td>0.696422</td>
+<td>0.695346</td>
+<td>0.596933</td>
+<td>0.596933</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>​        误差在允许范围内，符合设计要求，验证了机械臂正逆运动学求解的正确性。</p>
+<h2 id="系泊机械臂动力学分析"><a href="#系泊机械臂动力学分析" class="headerlink" title="系泊机械臂动力学分析"></a>系泊机械臂动力学分析</h2><p>​        动力学主要研究产生运动所需要的力。本文使用牛顿—欧拉法，该算法由两部分组成。第一部分是对每个连杆应用牛顿—欧拉方程，从连杆 0 到连杆 <em>n</em>-1 向外迭代计算连杆的速度和加速度。第二部分是从连杆 <em>n</em> 到连杆 1 向内迭代计算连杆间的相互作用力和力矩以及驱动力和力矩。该算法的计算公式为</p>
+<script type="math/tex; mode=display">
+\begin{array}{l}
+i: 0 \rightarrow 2\\
+{ }^{i+1} \dot{\omega}_{i+1}=&{ }_{i}^{i+1} R^{i} \dot{\omega}_{i}\\
+{ }^{i+1} \dot{v}_{i+1}=&{ }_{i}^{i+1} R\left({ }^{i} \dot{\omega}_{i} \times{ }^{i} P_{i+1}+{ }^{i} \omega_{i} \times\left({ }^{i} \omega_{i} \times{ }^{i} P_{i+1}\right)+{ }^{i} \dot{v}_{i}\right)\\
+&+2{ }^{i+1} \omega_{i+1} \times \dot{d}_{i+1}{ }^{i+1} \hat{Z}_{i+1}+\ddot{d}_{i+1}{ }^{i+1} \hat{Z}_{i+1}\\
+{ }^{i+1} \dot{v}_{C_{i+1}}=&{ }^{i+1} \dot{\omega}_{i+1} \times{ }^{i+1} P_{C_{i+1}}+{ }^{i+1} \omega_{i+1} \times\left({ }^{i+1} \omega_{i+1}+{ }^{i+1} P_{C_{l+1}}\right)\\
+&+{ }^{i+1} \dot{v}_{i+1}\\
+{ }^{i+1} F_{i+1}=&m_{i+1}{ }^{i+1} \dot{v}_{C_{i+1}}\\
+i: 3 \rightarrow 1_V\\
+{ }^{i} f_{i} =&{ }_{i+1}^{i} R^{i+1} f_{i+1}+{ }^{i} F_{i} \\
+\tau_{i}=&{ }^{i} f_{i}^{T i} \hat{Z}_{i}
+\end{array}</script><p>式中    ${ }^{i+1} \dot{v}_{C_{i+1}}$——{<em>i</em>+1} 坐标系下连杆质心加速度和质心矢量；</p>
+<p>​            ${ }^{i} P_{i+1}$——{<em>i</em>+1} 坐标系下连杆质心矢量；</p>
+<p>​            ${ }^{i+1} F_{i+1}$——为作用在 <em>i</em>+1 连杆上的惯性力，${ }^{i}f_{i}$为连杆 <em>i</em>-1 作用在连杆 <em>i</em> 上的力，$\tau_i$ 为关节驱动力。</p>
+<p>​        假设各连杆质量均匀分布，其质量为 $m_{1V}$、$m_{1H}$、$m_2$  和 $m_3$，考虑重力因素有­­­  ${}^0\dot v_0=-g\hat Y_0$ ，机械臂末端执行器真空吸盘受外力  ，由式 $(9)$得关节驱动力</p>
+<script type="math/tex; mode=display">
+\left[\begin{array}{c}
+\tau_1\\
+\tau_2\\
+\tau_3\\
+\end{array}\right]
+=
+\left[\begin{array}{c}
+\sqrt{\tau_{1V}^2+\tau_{1H}^2}\\
+\tau_2\\
+\tau_3\\
+\end{array}\right]</script><p>式中    $\tau_{1 \mathrm{~V}} =-f_{y}+\left(m_{1 \mathrm{~V}}+m_{1 \mathrm{H}}+m_{2}+m_{3}\right)\left(\ddot{d}_{1} \sin \theta_{1}+2 \dot{d}_{1} \cos \theta_{1}-d_{1} \sin \theta_{1}+g\right)$</p>
+<p>​            $\tau_{1 \mathrm{H}}=f_{x}-\left(m_{1 \mathrm{H}}+m_{2}+m_{3}\right)\left(-\ddot{d}_{1} \cos \theta_{1}+2 \dot{d}_{1} \sin \theta_{1}+d_{1} \cos \theta_{1}\right)$</p>
+<p>​            $\tau_{2}=f_{y}+\left(m_{2}+m_{3}\right)\left(\ddot{d}_{2}-\ddot{d}_{1} \sin \theta_{1}-2 \dot{d}_{1} \cos \theta_{1}+d_{1} \sin \theta_{1}-g\right)$</p>
+<p>​            $\tau_{3} =f_{z}+m_{3} \ddot{d}_{3}$</p>
+<p>​        系泊机械臂支承装置在工具台坐标系 {<em>S</em>} 下需要承受的力 ${}^SF_N = [{}^SF_{Nx}\ {}^SF_{Ny}\ {}^SF_{Nz}]^T$为</p>
+<script type="math/tex; mode=display">
+{ }^{S} F_{N}={ }_{B}^{S} R^{B} F_{N}={ }_{B}^{S} F^{0} F_{N}=\left[\begin{array}{c}
+\tau_{1 \mathrm{H}} \\
+\tau_{1 \mathrm{~V}}-\tau_{2}+f_{y} \\
+-\tau_{3}
+\end{array}\right]</script><h2 id="本章小结-1"><a href="#本章小结-1" class="headerlink" title="本章小结"></a>本章小结</h2><p>​        本章首先使用改进 D-H 参数法对系泊机械臂建立数学模型，完成正、逆运动学计算以及关节速度的求解。然后利用 python 库 manim 对正、逆运动学结果进行仿真，验证其正确性。最后使用牛顿­—欧拉法建立了机械臂的动力学模型，求解得到机械臂关节驱动力的动力学方程以及机械臂支承装置需要承受的力。</p>
+<h1 id="第-4-章-结构设计"><a href="#第-4-章-结构设计" class="headerlink" title="第 4 章 结构设计"></a>第 4 章 结构设计</h1><p>​        本章将选择系泊机械臂三个关节对应的执行元件，对主体机构以及其他零部件进行结构设计及受力分析，确定其具体结构和详细尺寸，并使用 SolidWorks 进行三维建模，绘制装配图、零件图。</p>
+<h2 id="执行元件的选择"><a href="#执行元件的选择" class="headerlink" title="执行元件的选择"></a>执行元件的选择</h2><p>​        系泊机械臂的三个关节均采用液压传动。与其他传动方式相比，液压传动具有以下优点：（1）液压传动能够输出大推力和大转矩，系泊机械臂系泊船只时需要承受很大的负载，液压传动承载能力大，同时很容易可以实现过载保护，而其他传动方式往往受到限制；（2）液压传动实现直线运动简单且易控，电气技术实现直线运动繁琐且昂贵的，而液压传动操作简单，同时在控制方面很便捷，容易实现自动化；（3）液压传动平稳可靠，可大范围无级调速。</p>
+<p>​        机械臂需要实现双向运动，同时考虑到机械结构形式。横向设置两个液压缸，均为双作用单杆活塞缸，使用耳环连接的方式安装；竖直方向设置一个双作用单杆活塞缸，使用法兰连接；纵向设置一个双杆活塞缸，采用底座型的安装方式。</p>
+<h3 id="系统压力的确定"><a href="#系统压力的确定" class="headerlink" title="系统压力的确定"></a>系统压力的确定</h3><p>​        系统在工作时，基本上处于静止状态，横向和纵向惯性力 $F_g$ 和摩擦力 $F_f$ 可以忽略不记，竖直方向只受惯性力和摩擦力。由于竖直方向采用含动滑轮的增程机构，液压缸负载需要增加一倍。三个方向的最大拉力分别取为 $F_{Nx}$ = 200kN、$F_{Nz}$ = 100kN，为安全起见，取 $F_{Ny}$ = 50kN。液压缸的工作负载为</p>
+<script type="math/tex; mode=display">
+F_R=\frac{F_N+F_f+F_g}{n\eta}</script><p>式中    <em>n</em>——液压缸数量；</p>
+<p>​            <em>η</em>——传动效率，取 <em>η</em> = 0.85。</p>
+<p>​        由式 $(12)$，三个关节液压缸工作负载分别为 118kN、59kN 和 118kN。</p>
+<p>​        根据《现代机械设计手册》液压传动与控制部分[16]的相关理论，按照负载和设备类型选择工作压力，系泊机械臂属于重型机械，该机械常用系统工作压力为 20~30MPa ，由于系泊机械臂位置固定、尺寸不受限，因此压力选择低一些，并综合考虑液压设备的尺寸和重量、元件强度、容积效率、系统可靠性、系统使用寿命等各方面因素，选择系统压力为 <em>p</em> = 25MPa。</p>
+<h3 id="执行元件几何参数的确定"><a href="#执行元件几何参数的确定" class="headerlink" title="执行元件几何参数的确定"></a>执行元件几何参数的确定</h3><p><img src="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/image-20220517154346514.png" srcset="/img/loading.gif" lazyload alt="image-20220517154346514"></p>
+<p>​        （1）缸筒内径</p>
+<p>​        缸筒内径即活塞外径，是液压缸的主要参数，根据液压缸推力要求计算缸筒内径。为得到所要求的推力 $F_R$ ，应使</p>
+<script type="math/tex; mode=display">
+pA\eta_{cm}=F_R</script><p>式中    <em>p</em>——作用在活塞上的有效压力（Pa），<em>p</em>应比液压缸额定压力小，取 <em>p</em> = 20MPa；</p>
+<p>​            <em>A</em>——液压缸的有效工作面积 （m$^2$），<em>A</em> = $πD^2/4$；</p>
+<p>​            $η_{cm}$——液压缸的机械效率，取 $η_{cm}$ = 0.95； </p>
+<p>​            $F_R$ ——液压缸推力（N）。</p>
+<p>​        计算得缸筒内径 <em>D</em> 为</p>
+<script type="math/tex; mode=display">
+D=\sqrt{\frac{4F_R}{\pi p\eta_{cm}}}=\left[\begin{array}{c}
+89\\63\\89
+\end{array}\right]\text{mm}</script><p>​        为安全起见，适当增加缸筒内径并圆整为标准值为 100mm、80mm 和 100mm。</p>
+<p>​        （2）活塞杆直径</p>
+<p>​        设计要求不涉及到速度比，因此按照活塞杆受力状况来确定。活塞杆主要受到拉力作用，有时也会受到压力，活塞杆直径 <em>d</em> = 0.3~0.5<em>D</em>，为安全起见，适当增加活塞杆直径并圆整为标准值，得活塞杆直径分别均为 56mm。由于三者均为长行程液压缸，因此需要进行稳定性校核[17]。</p>
+<p>​        按材料力学理论，当一受压直杆的轴向载荷 <em>F</em> 超过临界受压载荷 $F_K$ 时，即可能失去原有直线状态的平衡，称为失稳。对液压缸，其稳定条件为</p>
+<script type="math/tex; mode=display">
+F\le\frac{F_K}{n_K}</script><p>式中   $n_K$ ——稳定安全系数，取 $n_K$ = 2。</p>
+<p>​        当细长比 $l/k&gt;m\sqrt n$，用欧拉公式计算临界载荷 $F_K$。即</p>
+<script type="math/tex; mode=display">
+F_{\mathrm{K}}=\frac{n \pi^{2} E J}{l^{2}}</script><p>​        当细长比 $l/k\le m\sqrt n$，用戈登·兰金公式计算临界载荷 $F_K$。即</p>
+<script type="math/tex; mode=display">
+F_{\mathrm{K}}=\frac{f A}{1+\frac{a}{n}\left(\frac{l}{K}\right)^{2}}</script><p>式中    <em>l­</em> ——活塞杆计算长度；</p>
+<p>​            <em>E</em>——材料弹性模量，<em>E</em> = 2.1×10$^{11}$Pa；</p>
+<p>​            <em>J</em>——活塞杆横截面转动惯量，<em>J</em> = <em>πd</em>$^4$/64；</p>
+<p>​            <em>K</em>——活塞杆横截面回转半径，<em>K</em> = <em>d</em>/4；</p>
+<p>​            <em>m</em>——柔性系数，活塞杆为 304 不锈钢，取 <em>m</em> = 90；</p>
+<p>​            <em>n</em>——端点安装系数，安装方式为两端铰接，取 <em>n =</em> 1；</p>
+<p>​            <em>f</em>——材料强度实验值，活塞杆为 304 不锈钢，取 <em>f</em> = 340MPa；</p>
+<p>​            A ——活塞杆横截面面积；</p>
+<p>​            <em>a</em> ——实验常量，取 <em>a</em> = 1/7500。</p>
+<p>​        根据稳定条件，横向液压缸由戈登·兰金公式计算得 $F_K$ = 832kN，竖直方向液压缸由欧拉公式计算得 $F_K$ = 454kN，纵向液压缸由欧拉公式计算得 $F_K$ = 445kN，活塞杆直径符合稳定性要求。</p>
+<p>​        （3）实际有效面积</p>
+<p>​        对于无杆腔，有</p>
+<script type="math/tex; mode=display">
+A_1=\frac{\pi D^2}{4}</script><p>​        对于有杆腔，有</p>
+<script type="math/tex; mode=display">
+A_1=\frac{\pi (D^2-d^2)}{4}</script><p>​        横向、竖直方向和纵向的液压缸的几何参数如下表所示。</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>液压缸</th>
+<th>数量</th>
+<th>行程/mm</th>
+<th>缸筒内径/mm</th>
+<th>活塞杆直径/mm</th>
+<th>$A_1$/m$^2$</th>
+<th>$A_2$/m$^2$</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>横向</td>
+<td>2</td>
+<td>500</td>
+<td>100</td>
+<td>56</td>
+<td>0.0079</td>
+<td>0.0054</td>
+</tr>
+<tr>
+<td>竖直方向</td>
+<td>1</td>
+<td>500</td>
+<td>80</td>
+<td>56</td>
+<td>0.0050</td>
+<td>0.0026</td>
+</tr>
+<tr>
+<td>纵向</td>
+<td>1</td>
+<td>500</td>
+<td>100</td>
+<td>56</td>
+<td>0.0054</td>
+<td>0.0054</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="执行元件最大流量的确定"><a href="#执行元件最大流量的确定" class="headerlink" title="执行元件最大流量的确定"></a>执行元件最大流量的确定</h3><p>对液压缸，有</p>
+<script type="math/tex; mode=display">
+q_\max=Av_\max</script><p>式中    $q_\max$——液压缸所需最大流量；</p>
+<p>​            $v_\max$——活塞杆最大运动速度。</p>
+<p>​        液压缸在空载情况下达到最大速度，速度取值空间比较大，本文以较大速度 $v_\max$ = 0.1m/s 进行计算，横向、竖直方向和纵向的最大流量分别为</p>
+<h3 id="执行元件型号的确定"><a href="#执行元件型号的确定" class="headerlink" title="执行元件型号的确定"></a>执行元件型号的确定</h3><p>​        对比市场分析，选用博世力士乐公司的重载型液压缸，横向液压缸、竖直方向液压缸和纵向液压缸的产品型号分别为 CSH1MP5/100/56/500A3X、CSH3MF4/80/56/500A3X 和 CGH1MS2/100/56/500A3X。</p>
+<h2 id="支承装置的设计"><a href="#支承装置的设计" class="headerlink" title="支承装置的设计"></a>支承装置的设计</h2><p>​        支承装置是系泊机械臂的重要组成部分，它是整台机械臂的骨架，用以装置起机械臂的传动、液压设备，承受作用在系泊机械臂上的各种载荷。系泊机械臂为重载设备，主要承受拉力，大部分杆件属于拉弯构件，部分杆间属于受弯构件。</p>
+<p>​        支承装置属于典型的钢结构，按照 GB 50017-2017《钢结构设计标准》[18]进行设计，其设计基本包括 4 个部分：①结构方案设计，包括结构选型、构件布置；②材料选用及截面选择；③结构的极限状态验算；④结构、构件及连接的设计。</p>
+<p>​        在实际设计中，支承装置结构形式和截面需要在不断优化和修改后确定，流程如图 4.2 所示。</p>
+<p><img src="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/image-20220517155648064.png" srcset="/img/loading.gif" lazyload alt="image-20220517155648064"></p>
+<h3 id="支承装置的总体设计"><a href="#支承装置的总体设计" class="headerlink" title="支承装置的总体设计"></a>支承装置的总体设计</h3><p>​        为了减轻装置的质量，支承装置采用框架式结构。根据支承装置内外零部件的形状和尺寸、配置情况、安装与拆卸等要求，参考同类设计产品，初步确定支承装置的形状和尺寸如图 4.3 所示。</p>
+<p><img src="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/image-20220517155717022.png" srcset="/img/loading.gif" lazyload alt="image-20220517155717022"></p>
+<p>​        该结构由 <em>ACEDB</em> 和 <em>A</em>′<em>C</em>′<em>E</em>′<em>D</em>′<em>B</em>′ 两刚架通过 <em>CC</em>′、<em>DD</em>′、<em>EE</em>′、<em>BD</em>′、<em>B</em>′<em>D</em>、<em>D</em>′<em>E</em> 和 <em>DE</em>′ 焊接而成，<em>C</em> 和 <em>C</em>′为放置横向液压缸的地方，<em>C</em>、<em>C</em>′、<em>D</em>、<em>D</em>′、<em>E</em> 和 <em>E</em>′承受与外界连接的拉力。根据前面的分析与计算，在临界条件下，各方向液压缸达到最大拉力，<em>C</em> 和 <em>C</em>′ 各将承受横向 100kN 的拉力，<em>D</em>、<em>D</em>′、<em>E</em>、<em>E</em>′ 各将承受纵向 25kN 的拉力。</p>
+<h3 id="支承装置的受力分析"><a href="#支承装置的受力分析" class="headerlink" title="支承装置的受力分析"></a>支承装置的受力分析</h3><p>​        （1）支承装置外载荷分析</p>
+<p>​        系泊机械臂受到的基本载荷主要有自重载荷 <em>P</em>G、横向工作载荷 <em>P</em>X、纵向工作载荷 <em>P</em>Z和风载荷 <em>P</em>W。其中，由于机械臂本身体积较小，机械臂垂直于风向的有效迎风面积较小，同时，横向工作载荷和纵向工作载荷很大，风载荷可忽略不计。载荷组合为 <em>P</em>G + <em>P</em>X + <em>P</em>Z。</p>
+<p>​        （2）支承装置的内力计算</p>
+<p>​        由于该结构为多次超静定结构，直接求解十分复杂，因此使用三维钢结构分析和设计软件 STAAD.Pro 进行求解。选择梁单元代替杆系，根据图 4.3 建立结构的几何模型，初选钢材，设置结构的约束和荷载，进行分析和图形后处理，得到结构支反力、轴力、弯矩和剪力，各杆件受力如下表所示，绘图如图 4.4 所示。</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>杆件</th>
+<th>构件类型</th>
+<th>轴力<em>N</em>/kN</th>
+<th>剪力<em>Q</em>/kN</th>
+<th><em>Mx</em>/(kN·m)</th>
+<th><em>My</em>/(kN·m)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>BE</em>、<em>B</em>′<em>E</em>′</td>
+<td>拉（压）弯构件</td>
+<td>55.62</td>
+<td>1.99</td>
+<td>1.39</td>
+<td>4.38</td>
+</tr>
+<tr>
+<td><em>CC</em>′</td>
+<td>受弯构件</td>
+<td>5.14</td>
+<td>19.57</td>
+<td>9.75</td>
+<td>0.42</td>
+</tr>
+<tr>
+<td><em>AC</em>、<em>A</em>′<em>C</em>′</td>
+<td>拉（压）弯构件</td>
+<td>106.36</td>
+<td>2.31</td>
+<td>8.97</td>
+<td>7.66</td>
+</tr>
+<tr>
+<td><em>CD</em>、<em>C</em>′<em>D</em>′</td>
+<td>受弯构件</td>
+<td>8.82</td>
+<td>16.75</td>
+<td>13.17</td>
+<td>10.74</td>
+</tr>
+<tr>
+<td><em>BC</em>、<em>B</em>′<em>C</em>′</td>
+<td>拉（压）弯构件</td>
+<td>143.09</td>
+<td>1.50</td>
+<td>1.61</td>
+<td>2.72</td>
+</tr>
+<tr>
+<td><em>CE</em>、<em>C</em>′<em>E</em>′</td>
+<td>拉（压）弯构件</td>
+<td>1.33</td>
+<td>0.57</td>
+<td>0.67</td>
+<td>2.29</td>
+</tr>
+<tr>
+<td><em>B</em>′<em>D</em>、<em>BD</em>′</td>
+<td>拉（压）弯构件</td>
+<td>46.38</td>
+<td>0.71</td>
+<td>1.33</td>
+<td>2.43</td>
+</tr>
+<tr>
+<td><em>EG</em>、<em>E</em>′<em>G</em></td>
+<td>拉（压）弯构件</td>
+<td>50.48</td>
+<td>0.09</td>
+<td>2.38</td>
+<td>4.09</td>
+</tr>
+<tr>
+<td><em>EE</em>′</td>
+<td>受弯构件</td>
+<td>0.91</td>
+<td>16.76</td>
+<td>4.74</td>
+<td>4.29</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><img src="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/image-20220517160116315.png" srcset="/img/loading.gif" lazyload alt="image-20220517160116315"></p>
+<p><img src="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/image-20220517160133846.png" srcset="/img/loading.gif" lazyload alt="image-20220517160133846"></p>
+<p><img src="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/image-20220517160148051.png" srcset="/img/loading.gif" lazyload alt="image-20220517160148051"></p>
+<p>​        由受力分析可以得到该刚架主要受到轴向力 <em>N</em> 和弯矩 <em>Mx</em>、<em>My</em> 的作用，剪切力 <em>Q</em> 很小，可以忽略不计。支承装置杆系主要包含拉（压）弯构件和受弯构件两种类型的杆件，最大弯矩约为 13kN·m，最大轴力约为 141kN。</p>
+<h3 id="4-2-3支承装置的截面选择"><a href="#4-2-3支承装置的截面选择" class="headerlink" title="4.2.3支承装置的截面选择"></a>4.2.3支承装置的截面选择</h3><p>​        根据国外有关资料和使用经验，全部采用 Q345B 材料。</p>
+<p>​        对于拉（压）弯构件，同时承受轴向力 <em>N</em> 和弯矩 <em>M</em> 的作用，根据计算所需截面面积 <em>A</em>，选取满足要求的型钢。根据经验公式，即</p>
+<script type="math/tex; mode=display">
+A\ge\frac{\alpha N}{\beta[\sigma]}</script><p>式中    <em>α</em>——考虑弯矩影响的轴力增大系数，有横向力作用，取 <em>α</em> = 2.0；</p>
+<p>​            <em>β</em>——考虑截面有局部钉孔销削弱的减损系数，支承机构为全焊结构，根据设计经验，取 <em>β</em> = 1；</p>
+<p>​            [<em>σ</em>] ——材料许用应力，取 [<em>σ</em>] = 305MPa。</p>
+<p>​        对于受弯构件，根据强度条件和刚度条件计算截面所需特性参数抗弯模量 <em>W</em> 和惯性矩 <em>I</em>，即</p>
+<script type="math/tex; mode=display">
+W\ge\frac M{[\sigma]}</script><script type="math/tex; mode=display">
+I\ge\frac{Fl^3}{48E[Y_L]}</script><p>式中    [$<em>Y_L</em>$ ]——材料的许用挠度。</p>
+<p>​        所选型号及其性能参数如下表所示，截面形状和尺寸如图 4.5 所示。</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>杆件</th>
+<th>所需截面特性参数/cm$^n$</th>
+<th>型号</th>
+<th>截面系数/cm$^3$</th>
+<th>惯性半径/cm</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>BE</em>、<em>B</em>′<em>E</em>′</td>
+<td><em>A</em> ≥ 3.6</td>
+<td>HW150×150</td>
+<td>216.0，75.1</td>
+<td>6.39，3.77</td>
+</tr>
+<tr>
+<td><em>CC</em>′</td>
+<td><em>W</em> ≥ 32.0，<em>I</em> ≥ 2.0</td>
+<td>F120 钢管</td>
+<td>116.1</td>
+<td>4.51</td>
+</tr>
+<tr>
+<td><em>AC</em>、<em>A</em>′<em>C</em>′</td>
+<td><em>A</em> ≥ 6.9</td>
+<td>F120 钢管</td>
+<td>116.1</td>
+<td>4.51</td>
+</tr>
+<tr>
+<td><em>CD</em>、<em>C</em>′<em>D</em>′</td>
+<td><em>W</em> ≥ 43.1</td>
+<td>F120 钢管</td>
+<td>116.1</td>
+<td>4.51</td>
+</tr>
+<tr>
+<td><em>BC</em>、<em>B</em>′<em>C</em>′</td>
+<td><em>A</em> ≥ 9.4</td>
+<td>F80 钢管</td>
+<td>27.8</td>
+<td>3.07</td>
+</tr>
+<tr>
+<td><em>CE</em>、<em>C</em>′<em>E</em>′</td>
+<td><em>A</em> ≥ 0.1</td>
+<td>F80 钢管</td>
+<td>27.8</td>
+<td>3.07</td>
+</tr>
+<tr>
+<td><em>B</em>′<em>D</em>、<em>BD</em>′</td>
+<td><em>A</em> ≥ 3.0</td>
+<td>F80 钢管</td>
+<td>27.8</td>
+<td>3.07</td>
+</tr>
+<tr>
+<td><em>EG</em>、<em>E</em>′<em>G</em></td>
+<td><em>A</em> ≥ 3.3</td>
+<td>F80 钢管</td>
+<td>27.8</td>
+<td>3.07</td>
+</tr>
+<tr>
+<td><em>EE</em>′</td>
+<td><em>W</em> ≥ 15.5</td>
+<td>F80 钢管</td>
+<td>27.8</td>
+<td>3.07</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><img src="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/image-20220521153143756.png" srcset="/img/loading.gif" lazyload alt="image-20220521153143756"></p>
+<h3 id="支承装置的强度、刚度和稳定性验算"><a href="#支承装置的强度、刚度和稳定性验算" class="headerlink" title="支承装置的强度、刚度和稳定性验算"></a>支承装置的强度、刚度和稳定性验算</h3><p>​        （1）截面强度验算</p>
+<p>​        系泊机械臂可能同时承受横向和纵向载荷，其支承装置承受双向弯矩作用，对于拉（压）弯构件其静强度条件按下式计算</p>
+<script type="math/tex; mode=display">
+\sigma=\frac{N}{A_{j}}+\frac{M_{x}}{\gamma_{x} W_{j x}}+\frac{M_{y}}{\gamma_{y} W_{j y}} \leqslant[\sigma]</script><p>对于受弯构件，按下式计算</p>
+<script type="math/tex; mode=display">
+\sigma=\frac{M_{x}}{\gamma_{x} W_{j x}}+\frac{M_{y}}{\gamma_{y} W_{j y}} \leqslant[\sigma]</script><script type="math/tex; mode=display">
+\tau=\frac{QS}{I\delta}\le[\tau]</script><p>式中    $A_j$——构件计算截面的净截面面积，取 $A_j$ = 0.85<em>A</em>；</p>
+<p>​            $γ_x$、$γ_y$——截面塑性发展系数，HW150×150 截面取 $γ_x$ = 1.05、$γ_y$ = 1.2，其他截面取 $γ_x$ = 1.05、$γ_y$ = 1.05；</p>
+<p>​            $W_{jx}$、$W_{jy}$——构件绕 <em>x</em>-<em>x</em> 轴和 <em>y</em>-<em>y</em> 轴的净截面抗弯模量，取 $W_{jx} = 0.85W_x$、$W+{jy} = 0.85W_y$；</p>
+<p>​            <em>Q</em>——受弯构件的最大剪力；</p>
+<p>​            <em>S</em>——受弯构件毛截面截面最大静矩；</p>
+<p>​            <em>δ</em>——构件的腹板厚度；</p>
+<p>​            [<em>τ</em>] ——许用切应力，取 [<em>τ</em>] = 175MPa。</p>
+<p>​        计算结果如下表所示，各杆件强度均通过检验。</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>杆件</th>
+<th>构件类型</th>
+<th>正应力 <em>σ</em>/MPa</th>
+<th>切应力 <em>τ</em>/MPa</th>
+<th>应力比</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>BE</em>、<em>B</em>′<em>E</em>′</td>
+<td>拉（压）弯构件</td>
+<td>268</td>
+<td>-</td>
+<td>0.88</td>
+</tr>
+<tr>
+<td><em>CC</em>′</td>
+<td>受弯构件</td>
+<td>240</td>
+<td>71</td>
+<td>0.78，0.41</td>
+</tr>
+<tr>
+<td><em>AC</em>、<em>A</em>′<em>C</em>′</td>
+<td>拉（压）弯构件</td>
+<td>216</td>
+<td>-</td>
+<td>0.71</td>
+</tr>
+<tr>
+<td><em>CD</em>、<em>C</em>′<em>D</em>′</td>
+<td>受弯构件</td>
+<td>279</td>
+<td>12</td>
+<td>0.91，0.07</td>
+</tr>
+<tr>
+<td><em>BC</em>、<em>B</em>′<em>C</em>′</td>
+<td>拉（压）弯构件</td>
+<td>133</td>
+<td>-</td>
+<td>0.44</td>
+</tr>
+<tr>
+<td><em>CE</em>、<em>C</em>′<em>E</em>′</td>
+<td>拉（压）弯构件</td>
+<td>61</td>
+<td>-</td>
+<td>0.20</td>
+</tr>
+<tr>
+<td><em>B</em>′<em>D</em>、<em>BD</em>′</td>
+<td>拉（压）弯构件</td>
+<td>171</td>
+<td>-</td>
+<td>0.56</td>
+</tr>
+<tr>
+<td><em>EG</em>、<em>E</em>′<em>G</em></td>
+<td>拉（压）弯构件</td>
+<td>194</td>
+<td>-</td>
+<td>0.64</td>
+</tr>
+<tr>
+<td><em>EE</em>′</td>
+<td>受弯构件</td>
+<td>99</td>
+<td>7</td>
+<td>0.32，0.04</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>​        （2）静态刚性验算</p>
+<p>​        对拉（压）弯构件，在工程中采用限制构件长细比的方法来保证其刚性，按照以下公式进行验算</p>
+<script type="math/tex; mode=display">
+\lambda=\left(\frac{l_c}{r}\right)_\max\le[\lambda]</script><p>式中    <em>λ</em>——构件的最大长细比；</p>
+<p>​            $l_c$——与最大长细比相对应的计算长度；</p>
+<p>​            <em>r</em>——与最大长细比相对应的截面回转半径；</p>
+<p>​            [<em>λ</em>] ——构件的许用长细比，主要构件取 [<em>λ</em>] = 190，次要构件取 [<em>λ</em>] = 250。</p>
+<p>​        对于受弯构件，在前面截面选型的过程中已经作为控制条件，可不再考虑。</p>
+<p>​        使用 SSDD 中国钢结构设计模块计算，对 HW150×150，其最大长细比为 45.7；对F120 钢管，其最大细长比为 29.0；对 F80 钢管，在 <em>EG</em> 和 <em>E</em>′<em>G</em> 杆为最大细长比 33.1。所选三种钢材均满足静态刚性要求。</p>
+<p>​        （3）稳定性验算</p>
+<p>​        稳定性分析是研究结构或构建的平衡状态是否稳定的问题，分为整体稳定性分析和局部稳定性分析。整体稳定性分析主要考虑机构在受到临界荷载时，结构失去原有平衡状态的过程。局部稳定性分析主要是对钢结构宽厚比和高厚比进行验算。</p>
+<p>​        对于拉（压）弯构件，涉及到平面内稳定和平面外稳定。</p>
+<p>​        平面内稳定，即</p>
+<script type="math/tex; mode=display">
+\sigma=\frac{N}{\varphi_{x} A}+\frac{\beta_{\mathrm{m} x} M_{x}}{\gamma_{x} W_{x}\left(1-0.8 \frac{N}{N_{\mathrm{E} x}^{\prime}}\right)}+\frac{\eta \beta_{\mathrm{t} y} M_{y}}{\varphi_{\mathrm{b} y} W_{y}} \leqslant[\sigma]</script><p>​        平面外稳定，即</p>
+<script type="math/tex; mode=display">
+\sigma=\frac{N}{\varphi_{y} A}+\eta \frac{\beta_{\mathrm{t} x} M_{x}}{\varphi_{\mathrm{b} x} W_{x}}+\frac{\beta_{\mathrm{m} y} M_{y}}{\gamma_{y} W_{y}\left(1-0.8 \frac{N}{N_{\mathrm{E} y}^{\prime}}\right)} \leqslant[\sigma]</script><p>​        对受弯构件，整体稳定性，即</p>
+<script type="math/tex; mode=display">
+\sigma=\frac{M_{x}}{\varphi_{\mathrm{b} x} W_{x}}+\frac{M_{y}}{\gamma_{y} W_{y}} \leqslant[\sigma]</script><p>式中    $φ_x$、$φ_y$——对 <em>x-x</em> 轴和 <em>y-y</em> 轴的轴心受压构件稳定系数；</p>
+<p>​            $φ_{\text{b}x}$、$φ_{\text{b}y}$——均匀弯曲的受弯构件整体稳定性系数；</p>
+<p>​            $W_x$、$W_y$——对强轴和弱轴的毛截面模量；</p>
+<p>​            $β_{\text{m}x}$、$β_{\text{m}y}$ ——平面内等效弯矩系数；</p>
+<p>​            $β_{\text{t}x}$、$β_{\text{t}y}$——平面外等效弯矩系数；</p>
+<p>​            $N^′_{\text{Ex}}$、$N^′_{\text{Ey}}$——参数，按照 $N^′_{\text{Ei}} = π^2EA/(1.1λ_i)$确定。</p>
+<p>​        查询相关标准获取系数，使用 SSDD 中国钢结构设计软件模块计算，计算结果如下表所示，其中括号内为许用值。计算表明，该结构不会失稳。</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>杆件</th>
+<th>平面内稳定/MPa</th>
+<th>平面外稳定/MPa</th>
+<th>宽厚比</th>
+<th>高厚比</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>BE</em>、<em>B</em>′<em>E</em>′</td>
+<td>231（305）</td>
+<td>201（305）</td>
+<td>10（12）</td>
+<td>24（37）</td>
+</tr>
+<tr>
+<td><em>CC</em>′</td>
+<td>207（305）</td>
+<td>207（305）</td>
+<td>13（31）</td>
+<td>13（31）</td>
+</tr>
+<tr>
+<td><em>AC</em>、<em>A</em>′<em>C</em>′</td>
+<td>109（305）</td>
+<td>115（305）</td>
+<td>13（37）</td>
+<td>13（37）</td>
+</tr>
+<tr>
+<td><em>CD</em>、<em>C</em>′<em>D</em>′</td>
+<td>243（305）</td>
+<td>243（305）</td>
+<td>13（35）</td>
+<td>13（35）</td>
+</tr>
+<tr>
+<td><em>BC</em>、<em>B</em>′<em>C</em>′</td>
+<td>130（305）</td>
+<td>132（305）</td>
+<td>18（33）</td>
+<td>18（33）</td>
+</tr>
+<tr>
+<td><em>CE</em>、<em>C</em>′<em>E</em>′</td>
+<td>21（305）</td>
+<td>20（305）</td>
+<td>18（33）</td>
+<td>18（33）</td>
+</tr>
+<tr>
+<td><em>B</em>′<em>D</em>、<em>BD</em>′</td>
+<td>88.7（305）</td>
+<td>78（305）</td>
+<td>18（37）</td>
+<td>18（37）</td>
+</tr>
+<tr>
+<td><em>EG</em>、<em>E</em>′<em>G</em></td>
+<td>175（305）</td>
+<td>146（305）</td>
+<td>18（33）</td>
+<td>18（33）</td>
+</tr>
+<tr>
+<td><em>EE</em>′</td>
+<td>87（305）</td>
+<td>87（305）</td>
+<td>18（35）</td>
+<td>18（35）</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="支承装置的连接计算"><a href="#支承装置的连接计算" class="headerlink" title="支承装置的连接计算"></a>支承装置的连接计算</h3><p>​        （1）支承装置与地面的螺纹连接</p>
+<p>​        采用地脚螺栓连接，试选螺栓数 <em>z</em> = 8，螺栓组同时受到轴向力 $F_{PV}$、横向力 $F_{PH}$ 和翻转力矩 <em>M</em> 作用，如图 4.6 所示。</p>
+<p><img src="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/image-20220521155625420.png" srcset="/img/loading.gif" lazyload alt="image-20220521155625420"></p>
+<p>​        在轴向力 $F_P$ 作用下，各螺栓受到工作拉力为 $F_1 = F_{PV}/z$ = 18kN。</p>
+<p>​        在翻转力矩的作用下，远端螺栓受力大，其最大工作拉力为</p>
+<script type="math/tex; mode=display">
+F_{2}=\frac{M L_{\max }}{L_{1}^{2}+L_{2}^{2}+\cdots L_{z}^{2}}=1627 \mathrm{~N}</script><p>式中    $L_\max$——受力最大螺栓到螺栓组对称轴线距离。</p>
+<p>​        因此，远端螺栓受到总的最大拉力为 $F = F_1 + F_2$ = 19611N。</p>
+<p>​        在横向力作用下，底板连接接合面可能产生滑移[19]。按照底板接合面不滑移的条件，并考虑轴向力对预紧力的影响，所需预紧力为</p>
+<script type="math/tex; mode=display">
+F^{\prime}=\frac{1}{z}\left(\frac{K_{\mathrm{f}} F_{\mathrm{PH}}}{f}+\frac{C_{2}}{C_{1}+C_{2}} F_{\mathrm{PV}}\right)=17812 \mathrm{~N}</script><p>式中    $K_f$——考虑由摩擦力传递载荷时的可靠性系数，取 $K_f$ = 1.1；</p>
+<p>​            <em>f</em> ——接合面的摩擦系数，取 <em>f</em> = 0.35；</p>
+<p>​            <em>C</em>2/(<em>C</em>1+<em>C</em>2) ——被连接件的相对刚度，采用金属垫片，取 <em>C</em>2/(<em>C</em>1+<em>C</em>2) = 0.7。</p>
+<p>​        螺栓所受总拉力为</p>
+<script type="math/tex; mode=display">
+F_{0}=F^{\prime}+\frac{C_{1}}{C_{1}+C_{2}} F=23687 \mathrm{~N}</script><p>​        按螺栓危险截面拉伸强度条件，可以得到</p>
+<script type="math/tex; mode=display">
+d_{1} \geqslant \sqrt{\frac{4 \times 1.3 F_{0}}{\pi[\sigma]}}=27.2 \mathrm{~mm}</script><p>式中    $d_1$——螺栓危险截面直径，即螺纹小径；</p>
+<p>​            [<em>σ</em>] ——许用应力，选择螺栓材料为 Q345B 钢，设螺栓所需公称直径 <em>d</em> 在M16~M30 范围内，取 [<em>σ</em>] = $σ_s$/6.5。</p>
+<p>​        根据 GB/T 1228-2006《钢结构用高强度大六角头螺栓》，选择 M30 螺栓。</p>
+<p>​        考虑弹簧预紧力 <em>F</em>′ 的变化，连接接合面下端不压溃和连接接合面上端不出现间隙的条件为</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\sigma_{\mathrm{pmax}} & \approx \frac{1}{A}\left(z F^{\prime}-\frac{C_{2}}{C_{1}+C_{2}} F_{\mathrm{PV}}\right)+\frac{M}{W}=1.32 \mathrm{MPa}<\left[\sigma_{\mathrm{P}}\right]=0.8 \sigma_{\mathrm{S}} \\
+\sigma_{\mathrm{pmin}} & \approx \frac{1}{A}\left(z F^{\prime}-\frac{C_{2}}{C_{1}+C_{2}} F_{\mathrm{PV}}\right)-\frac{M}{W}=0.22 \mathrm{MPa}>0
+\end{aligned}</script><p>​        两者均满足条件。</p>
+<p>​        （2）支承装置与摇板支座的螺栓连接</p>
+<p>​        摇板通过摇板支座与支承装置连接，选择螺栓数 <em>z</em> = 6，螺栓组主要受到横向载荷 $F_R$ 的作用，如图 4.7 所示。</p>
+<p><img src="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/image-20220521160659178.png" srcset="/img/loading.gif" lazyload alt="image-20220521160659178"></p>
+<p>​        以接合面不滑移作为计算准则，有</p>
+<script type="math/tex; mode=display">
+F^′\ge\frac{K_fF_R}{fzm}</script><p>​        得到每个螺栓的预紧力 <em>F</em>′ = 13kN。</p>
+<p>​        按螺栓危险截面拉伸强度条件，可以得到</p>
+<script type="math/tex; mode=display">
+d_{1} \geqslant \sqrt{\frac{4 \times 1.3 F^{\prime}}{\pi[\sigma]}}=15.7 \mathrm{~mm}</script><p>​        选择 M16 螺栓。</p>
+<p>​        （3）支承装置与横向液压缸铰接吊头底座的焊接</p>
+<p>​        横向液压缸通过缸底铰接吊头与支承装置连接，铰接吊头底座通过焊接固定在杆 <em>CC</em>′ 上，该焊接属于在弯矩 <em>M</em> 作用下的角接焊缝，其受力如图 4.8 所示。</p>
+<p> <img src="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/image-20220521161019290.png" srcset="/img/loading.gif" lazyload alt="image-20220521161019290"></p>
+<p>​        焊缝截面内的剪应力均匀分布，其强度按下式计算</p>
+<script type="math/tex; mode=display">
+\tau_{\mathrm{M}}=\frac{M}{W_{\mathrm{f}}}=35 \mathrm{MPa} \leqslant\left[\tau_{\mathrm{h}}\right]=181 \mathrm{MPa}</script><p>式中    <em>M</em>——作用于接头的弯矩，<em>M</em> = $F_H$<em>h</em> = 3750N·m；</p>
+<p>​            $W_f$——焊接计算截面的抗弯模量；</p>
+<p>​            [$τ_h$]——焊缝许用应力，取 $[τ_h]=[\sigma]/\sqrt 2$ ，[<em>σ</em>] 为构件母材的基本许用应力。</p>
+<p>​        横向液压缸与支承装置的焊接符合要求。</p>
+<h2 id="传动装置的设计"><a href="#传动装置的设计" class="headerlink" title="传动装置的设计"></a>传动装置的设计</h2><p>​        系泊机械臂的传动装置实现真空吸盘横向、竖直方向和纵向的串联移动。传动装置由摇板、内门架、外门架、导槽、液压缸、链轮、链条等组成，如图 4.9 所示。横向液压缸通过两个平行的摇板和耳环与纵向内、外门架相连接。为了减小装置体积，内、外门架与导槽组成动滑轮组实现竖直方向行程的增加，纵向液压缸放置在导槽内部，与真空吸盘相连接。</p>
+<p><img src="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/image-20220517163240718.png" srcset="/img/loading.gif" lazyload alt="image-20220517163240718"></p>
+<h3 id="摇板设计"><a href="#摇板设计" class="headerlink" title="摇板设计"></a>摇板设计</h3><p>​        为使竖直方向传动模块始终保持竖直状态，设置了摇板，使其与支承装置和外门架组成平行四边形机构，保证外门架与支承装置钢柱保持平行。摇板的宽度尺寸由布置（即支承装置 H 型钢间距）决定，高度尺寸需要保证摇板处于极限位置时不发生干涉，同时要求横向液压缸在全部缩回时保持水平状态。摇板各位置状态图 4.10 所示。</p>
+<p><img src="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/image-20220517163317202.png" srcset="/img/loading.gif" lazyload alt="image-20220517163317202"></p>
+<p>​        摇板上下两端较厚，中间为销轴孔，摇板通过此孔安装在机械臂支承机构和外门架。为了减轻装置重量，参考同类设计产品，经过多次数据计算和优化，摇板高度优选为 825mm，设置其结构如图 4.11 所示。</p>
+<p><img src="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/image-20220517163346327.png" srcset="/img/loading.gif" lazyload alt="image-20220517163346327"></p>
+<h3 id="竖直传动模块设计"><a href="#竖直传动模块设计" class="headerlink" title="竖直传动模块设计"></a>竖直传动模块设计</h3><p>​        内门架、外门架、竖直方向液压缸和链轮、链条共同组成竖直传动模块，控制系泊机械臂末端真空吸盘竖直方向的位置。由于液压缸的缸筒长度与其最大工作行程有关，如果直接选用大行程液压杆会使结构占用空间过大，造成浪费，因此采用普通行程液压缸和增程结构配合的方案。竖直方向液压缸通过法兰连接固定在外门架上，活塞杆端通过耳环与内门架相连，控制内门架的位置。链条一端与导槽连接，另一端在绕过内门架上的链轮后，固定在外门架上，控制导槽的位置。竖直传动模块组成类似动滑轮的机构，实现液压缸行程的倍增。内、外门架构造如图 4.12 所示。</p>
+<p><img src="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/image-20220517163417386.png" srcset="/img/loading.gif" lazyload alt="image-20220517163417386"></p>
+<p>​        （1）立柱截面</p>
+<p>​        内、外门架分别由左右两根型钢，通过横板焊接而成，形成门式框架。立柱是内门架和导槽作升降运动的导轨，也是主要承载部件。由于叉车工作装置与系泊机械臂竖直传动模块功能较为相似，为了使构件标准化、定型化，提高机械臂经济性，门架截面采用叉车门架立柱槽钢系列[20]。内、外门架截面组合采用 CL 并列式，如图 4.13 所示。</p>
+<p><img src="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/image-20220517163447939.png" srcset="/img/loading.gif" lazyload alt="image-20220517163447939"></p>
+<p>​        CL 并列式截面滚轮间距可变，门架的疲劳载荷小。外门架立柱顶端设有两导向滚轮，内门架立柱外伸翼缘在两滚轮之间运动，内门架底部设有一组导向滚轮，内外门架三组导向滚轮承受负载。为了减小构造尺寸并简化安装，采用标准复合滚轮，如图 4.14 所示。该复合滚轮将侧向滚轮安装在横向滚轮的中心处，从而使得滚轮组的纵向和横向滚轮的间距重合，可以同时对侧向和横向进行支承引导。</p>
+<p><img src="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/image-20220517163516864.png" srcset="/img/loading.gif" lazyload alt="image-20220517163516864"></p>
+<p>​        （2）门架高度的确定</p>
+<p>​        对于二级门架，设内门架伸出时，内、外门架的最小重叠高度为 420mm，与导槽滚轮最大间距相同，内外门架的理论高度为</p>
+<script type="math/tex; mode=display">
+H_{\text {外 }}=H_{\text {内 }}+\delta=\frac{H_{\max }}{2}+\max \left\{A_{g}+d, C\right\}+t=1080 \mathrm{~mm}</script><p>式中    $H_外$——外门架高度；</p>
+<p>​            $H_内$——内门架高度；</p>
+<p>​            <em>δ</em>——外门架底板厚度；</p>
+<p>​            $H_\max$ ——液压缸工作行程；</p>
+<p>​            $A_g$——导槽滚轮组中心距；</p>
+<p>​            <em>d</em>——导槽滚轮组直径；</p>
+<p>​            <em>C</em>——液压缸的导向、缸盖、缸底等固定尺寸；</p>
+<p>​            <em>t</em>——门架上端和下端必要的结构高度。</p>
+<p>​        在满足理论高度的情况下，还需要为其留出足够的安全距离，项目设计外门架高度为 1104mm，内门架高度为 1092mm。</p>
+<p>​        （3）门架的验算</p>
+<p>​        当竖直方向液压缸到达伸展极限位置时，内、外门架受力最大。在正常工作中，内、外门架主要受到横向负载拉力 $F_1$ 和 $F_2$ 作用。同时，内、外门架需要克服导槽、纵向液压缸和真空吸盘的重力 $G_C$ 及机械臂到达极限位置时步进移动产生的竖直方向负载 $F_Y$。滚轮由于偏心负载产生的力矩较小，可以忽略不计。</p>
+<p><img src="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/image-20220517163906933.png" srcset="/img/loading.gif" lazyload alt="image-20220517163906933"></p>
+<p>​        内门架受力分析如图 4.15 所示。由于竖直方向液压缸的推力和该方向的负载在内门架顶端平衡，因此内门架可以视为仅受到弯矩和剪力，门架上下滚轮压力 $F_3$ 和 $F_4$ 通过力的平衡条件计算</p>
+<script type="math/tex; mode=display">
+\left\{\begin{array}{l}
+\sum M=0 \Rightarrow F_{3}=165 \mathrm{kN} \\
+\sum \vec{F}=0 \Rightarrow F_{4}=65 \mathrm{kN}
+\end{array}\right.</script><p>​        由图 4.15 可知，内门架在门架上滚轮处受到最大弯矩 $M_{内\max} = F_3l_1$ = 68.8kN·m和最大剪力 $Q_{内\max} = F_1 + F_2$ = 100kN，该截面为危险截面。使用 SolidWorks 软件测量得，该截面面积 $A_内$ = 7256mm$^2$，形心惯性矩 $I_内$ = 35325264mm$^4$，$y_内$ = 80mm。根据材料力学，内门架最大弯曲应力 $σ_内$ 和内门架最大剪切应力 $τ_内$ 计算公式为</p>
+<script type="math/tex; mode=display">
+\sigma_{\text {内}}=\frac{M_{\max } y}{I_{z}} \leqslant[\sigma]</script><script type="math/tex; mode=display">
+\tau_{\text {内}}=\frac{Q_{\max }}{A} \leqslant[\tau]</script><p>式中    [<em>σ</em>]——许用应力，取安全系数 <em>n</em> = 1.5，对 Q345B，[<em>σ</em>] = 230MPa；</p>
+<p>​            [<em>τ</em>]——许用切应力，[<em>τ</em>] = (0.5-0.7)[<em>σ</em>]，取 [<em>τ</em>] = 140MPa。</p>
+<p><img src="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/image-20220521161748975.png" srcset="/img/loading.gif" lazyload alt="image-20220521161748975"></p>
+<p>​        外门架受力分析如图 4.16 所示。与内门架不同，外门架还受到轴力作用。外门架有两个危险截面，分别是门架上滚轮处和与横向液压缸连接处。门架上滚轮处截面外门架受到最大弯矩 $M_{外\max} = F_3^′l_1 + F_{5y}e_3 – (F_{5x} + F_{X液压缸})(l_1 - l_4)$ = 30kN·m、剪力 $Q_外$ = $F_3^′$ - $F_{X液压缸}$ – $F_{5x}$ = 42.5kN 和最大轴力 $N_外$ = $F_{5y}$ = 103kN；与横向液压缸连接处受到弯矩 $M_外$ = $F_3^′l_4$ + $F_{5y}e_3$ = 24.4kN·m、最大剪力 $Q_{外\max}$ = $F_3^′$ = 156kN 和最大轴力 $N_外$ = $F_{5y}$ = 103kN。使用 SolidWorks 软件测量得，外门架截面面积 $A_外$ = 6571mm$^2$，形心惯性矩 $I_外$ = 33944789mm$^4$，$y_外$ = 75mm。根据材料力学，外门架正应力 <em>σ</em> 外有</p>
+<script type="math/tex; mode=display">
+\sigma=\sigma_{M}+\sigma_{N}=\frac{M y}{I_{z}}+\frac{N}{A} \leqslant[\sigma]</script><p>​        外门架切应力 $τ_外$ 可按式 $(42)$ 计算。内门架与外门架两种危险截面计算结果汇总如下表所示，内、外门架强度均符合要求。</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>截面</th>
+<th>正应力 <em>σ</em>/MPa</th>
+<th>切应力 <em>τ</em>/MPa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>内门架危险截面</td>
+<td>156</td>
+<td>14</td>
+</tr>
+<tr>
+<td>外门架上滚轮处</td>
+<td>82</td>
+<td>16</td>
+</tr>
+<tr>
+<td>外门架与横向液压缸连接处</td>
+<td>70</td>
+<td>24</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>​        滚轮在与立柱翼缘板接触传力时，在接触处会产生局部挤压应力，需要进行考虑。因产生接触应力的位置不在在冀缘材料表层，而在其下一定深度处，且其破坏作用不同于其他应力分量，故只需单独对它进行校核。计算公式为</p>
+<script type="math/tex; mode=display">
+\sigma_{j}=0.418 \sqrt{\frac{P E}{b r}}=905 \mathrm{MPa} \leqslant\left[\sigma_{j}\right]</script><p>式中    <em>P</em>——滚轮压力；</p>
+<p>​            <em>E</em>——弹性模量；</p>
+<p>​            <em>b</em>——滚轮宽度；</p>
+<p>​            <em>r</em>——滚轮半径；</p>
+<p>​            [<em>σj</em>]——与滚轮材质和导轨表面硬度有关的许用接触应力，取材料布氏硬度的 5 倍，即 [<em>σj</em>] = 1000MPa。</p>
+<p>​        （4）链条的选取</p>
+<p>​        常用的链条有套筒滚子链和片式链两种。套筒滚子链结构简单，成本较低，常应用于小吨位的叉车上。片式链链数较多，承载能力和抗冲击能力更强，工作更加可靠。由于系泊机械臂在即将达到极限位置时将以步进的方式移动，在此期间可能会产生较大的拉力，因此选承载能力较强的片式链，其结构如图 4.17 所示。</p>
+<p><img src="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/image-20220521162935725.png" srcset="/img/loading.gif" lazyload alt="image-20220521162935725"></p>
+<p>本装置采用两根链条，设系泊机械臂导槽、纵向液压缸和真空吸盘的重力<em>G</em>C = 5kN，则每根链条的断裂载荷为[21]</p>
+<script type="math/tex; mode=display">
+F_{jx}=\frac{F_Y+G_C}{2}N_L=60\text{kN}</script><p>式中    $F_{jx}$——链条的极限载荷；</p>
+<p>​            $F_Y$——竖直方向最大负载，$F_Y$ = 25kN；</p>
+<p>​            $N_L$——安全系数，取 $N_L$ = 4。</p>
+<p>​        根据拉伸载荷选择链条型号为 LH1044，采用 4×4 的链板组合。</p>
+<h3 id="纵向传动模块设计"><a href="#纵向传动模块设计" class="headerlink" title="纵向传动模块设计"></a>纵向传动模块设计</h3><p>​        导槽和纵向液压缸组成纵向传动模块，一起控制机械臂末端真空吸盘的纵向位置。滚轮架上连接复合滚轮组，复合滚轮组与内门架相接触，实现竖直方向的引导。竖直方向传动模块的链条通过链条连接座与导槽相连，带动纵向传动模块进行升降。导槽与纵向液压缸通过液压缸支座连接，导槽上下两侧还设有纵向导轨，为真空吸盘连接部分提供支承和导向，如图 4.18 所示。</p>
+<p><img src="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/image-20220521163129493.png" srcset="/img/loading.gif" lazyload alt="image-20220521163129493"></p>
+<p>​        （1）整体强度验算</p>
+<p>​        导槽主要受到真空吸盘横向拉力 $F_X$ 和纵向液压缸承受负载 $F_Z$，即主要受到弯矩和轴力的作用，受力分析如图 4.19 所示。</p>
+<p><img src="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/image-20220521163409433.png" srcset="/img/loading.gif" lazyload alt="image-20220521163409433"></p>
+<p>​        由式 $(40)$ 可计算出未知力 $F_7$ = 100kN，$F_8$ = 60.81kN 和 $F_9$ = 139.18kN。</p>
+<p>​        由弯矩图可知，在两滚轮组处，导槽承受最大弯矩 $M_\max = F_X(l_6-l_5)/2$ = 42 kN·m和轴力 <em>N</em> = $F_{Z液压缸}$ = 50kN。</p>
+<p>​        使用 SolidWorks 软件测量得，外门架截面面积 $A_外$ = 11446mm$^2$，形心惯性矩 $I_外$ = 55110186mm$^4$，$y_外$ = 100mm。根据材料力学，槽钢应力计算公式为</p>
+<script type="math/tex; mode=display">
+\sigma=\frac{N}{A}+\frac{M y}{I_{z}}=81 \mathrm{MPa} \leqslant[\sigma]</script><p>​        整体强度符合要求。</p>
+<p>​        （2）滚轮架强度验算</p>
+<p>​        滚轮架主要将纵向液压缸承受的负载通过滚轮组传递到内门架，滚轮的摩擦力和滚轮架自重可以忽略不计，该结构可以看作悬臂梁。</p>
+<p>​        滚轮架在小加强筋末端应力最大，即距离滚轮中心 96mm 处应力最大，为危险截面。使用 SolidWorks 软件测量得，该截面形心惯性矩 $I_外$ = 1780543mm$^4$，$y_外$ = 32.6mm。</p>
+<p>​        由式 $(41)$ 计算得，在连接座根部 <em>σ</em> = 88MPa，符合强度要求。</p>
+<p>​        （3）链条连接座强度验算</p>
+<p>​        链条连接座主要承受来自竖直方向链条的拉力，以带动导槽移动，该结构可以简化为悬臂梁，如图 4.20 所示。</p>
+<p><img src="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/image-20220521164438091.png" srcset="/img/loading.gif" lazyload alt="image-20220521164438091"></p>
+<p>​        连接座根部所受弯矩最大，为危险截面。使用 SolidWorks 软件测量得，该截面形心惯性矩 $I_外$ = 300240mm$^4$，$y_外$ = 25mm。</p>
+<p>​        连接座加强筋末端材料抗弯模量最小，为危险截面，使用 SolidWorks 软件测量得，该截面心惯性矩 $I_外$ = 2026906mm$^4$，$y_外$ = 65mm。</p>
+<p>​        由式 $(41)$ 计算得，在连接座根部 <em>σ</em> = 98.6MPa，在连接座加强筋末端 <em>σ</em> = 122.8MPa，均符合强度要求。</p>
+<p>​        （4）液压缸螺栓连接计算</p>
+<p>​        纵向液压缸与导槽采用螺栓连接，选择螺栓数 <em>z</em> = 4，螺栓组主要受到横向负载 $F_H$ 和纵向负载 $F_Z$ 的作用，如图 4.21 所示。</p>
+<p><img src="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/image-20220521164630460.png" srcset="/img/loading.gif" lazyload alt="image-20220521164630460"></p>
+<p>​        在翻转力矩作用下，远端螺栓受力大，由式 $(31)$ ，其最大工作压力 <em>F</em> = 5500N。</p>
+<p>​        在横向力作用下，接合面可能产生滑移。按照底板接合面不滑移的条件，由式 $(36)$ 所需预紧力为 <em>F</em>′ = 4321N。</p>
+<p>​        由式 $(33)$ ，螺栓受到总拉力 $F_0$ = 5971N。</p>
+<p>​        由式 $(34)$，计算得到螺栓危险截面直径 $d_1$≥11mm，选择 M16 螺栓。</p>
+<h2 id="真空吸盘的设计"><a href="#真空吸盘的设计" class="headerlink" title="真空吸盘的设计"></a>真空吸盘的设计</h2><p>​        本设计采用真空吸盘实现对船舶的系泊。真空吸盘与船体接触，边缘由橡胶密封，通过接管与真空泵等设备相连接。真空泵抽空吸盘内的空气，使吸盘内产生负压，将物体吸住。</p>
+<p>​        真空吸盘具有很多优点。真空吸盘只要不泄露任何气体，即可吸附大部分物体，适用范围十分广泛，目前应用已经十分成熟。同时，由于真空吸盘不产生光、热和电磁，对环境不会产生污染，十分环保，也不会对船舶上的电磁设备造成干扰。另外，真空吸盘大多采用橡胶材质，不会对船舶表面造成损坏，是非常理想的系泊装置。</p>
+<p>​        系泊需要同时克服使吸盘与船舶分离的横向拉力和使吸盘与船体相对滑动的纵向力。</p>
+<p>​        为了使真空吸盘具有一定的吸力，吸盘面积 <em>S</em> 应满足[22]</p>
+<script type="math/tex; mode=display">
+S \geqslant \frac{F_{X} t}{p}=1.97 \mathrm{~m}^{2}\\
+S \geqslant \frac{F_{Z} t}{\mu p}=1.28 \mathrm{~m}^{2}</script><p>式中    <em>t</em>——安全系数；</p>
+<p>​            <em>p</em>——标准大气压；</p>
+<p>​            <em>μ</em>——真空吸盘与船舶表面摩擦系数，取橡胶与钢铁之间的摩擦系数 <em>μ</em> = 0.65。</p>
+<p>​        每个系泊机械臂设置两个真空吸盘，每个真空吸盘长取 1250mm，宽取 800mm，其布置如图 4.22 所示。为保护真空吸盘安全，在其上平均分布 12 个安全触点。</p>
+<p><img src="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/image-20220517162806024.png" srcset="/img/loading.gif" lazyload alt="image-20220517162806024"></p>
+<h2 id="本章小结-2"><a href="#本章小结-2" class="headerlink" title="本章小结"></a>本章小结</h2><p>​        本章详细介绍了系泊机械臂驱动装置、支承装置、传动装置和真空吸盘的功能、安装布置方式和设计，对其中多个零部件进行了设计计算或选型计算。系泊机械臂三个方向均使用液压缸驱动，其中横向设置两个液压缸，其余方向设置一个液压缸。支承装置采用钢结构框架式钢结构，使用三维钢结构分析和设计软件 STAAD.Pro 进行设计计算和校核。传动机构包括摇板、内门架、外门架和导槽，传动机构与驱动装置共同组成一条串联的运动链，其中内、外门架组成形成增程机构，实现竖直方向行程的增加，减小装置体积。真空吸盘采用矩形扁平真空吸盘，与真空泵连接使用。</p>
+<h1 id="第-5-章-结构分析及优化"><a href="#第-5-章-结构分析及优化" class="headerlink" title="第 5 章 结构分析及优化"></a>第 5 章 结构分析及优化</h1><p>​        结构设计完成后，为了判断设计和布局的合理性，本章将对系泊机械臂关键机构或零部件进行有限元分析，并根据分析结果优化结构，从而使得系泊机械臂的设计更加可靠。由于支承结构在结构设计中已经进行了钢结构验算，因此无需再进行有限元分析。有限元分析完成以后，本章将对系泊机械臂与现有港口的系泊方式进行比较，评估其经济性。</p>
+<p>​        本章采用 ANSYS 软件对机械臂关键机构或零部件进行静力学分析，其分析流程如图 5.1 所示。</p>
+<p><img src="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/image-20220517160623743.png" srcset="/img/loading.gif" lazyload alt="image-20220517160623743"></p>
+<p>​        选择静力学分析模块，将第 4 章结构设计建立的 SolidWorks 三维模型进行简化，定义各部分材料属性，得到 CAE 模型。设置 CAE 模型的载荷、约束及接触，对模型划分网格，完成前处理操作。之后对模型进行求解，得到机构或零部件的变形、应力和应变状态。最后检验结果是否准确，通过后处理找出应力较大处，判断是否失效并优化系泊机械臂的结构。</p>
+<h2 id="摇板有限元分析"><a href="#摇板有限元分析" class="headerlink" title="摇板有限元分析"></a>摇板有限元分析</h2><p>​        摇板采用 Q345B 材料制造，输入密度、弹性模量、泊松比等材料属性至软件。取其中一个摇板及其连接板为研究对象，在 SolidWorks 中去除不必要的结构，导入 ANSYS 中。设置摇板和销轴之间为无摩擦接触，其他为固定接触，并对其划分网格。设置轴承座底板为固定约束，限制摇板与竖直方向连接部分横向的位移，并在该处设置轴向载荷 120kN、横向载荷 50kN 和弯矩 10kN·m，添加重力，如图 5.2 所示。</p>
+<p><img src="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/image-20220517160729494.png" srcset="/img/loading.gif" lazyload alt="image-20220517160729494"></p>
+<p>​        求解得到摇板的等效应力和变形如图 5.3 所示。</p>
+<p><img src="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/image-20220517160759828.png" srcset="/img/loading.gif" lazyload alt="image-20220517160759828"></p>
+<p>​        摇板最大等效应力位于摇板与竖直方向传动模块连接处，其值为 207MPa，最大应力小于材料屈服极限，满足强度要求。摇板最大位移也位于摇板与竖直方向传动模块连接处，其值为 0.7mm，变形较小，可以忽略不计，满足刚度要求。</p>
+<h2 id="竖直传动模块有限元分析"><a href="#竖直传动模块有限元分析" class="headerlink" title="竖直传动模块有限元分析"></a>竖直传动模块有限元分析</h2><p>​        去除链条、链轮等不必要零部件，同时在 SolidWorks 中去除起吊耳环孔等不必要结构，导入 ANSYS 中。固定外门架两横梁，设置内、外门架之间的接触为无摩擦接触，内门架与液压缸耳环座之间的接触为固定接触，对其划分网格。设置内门架槽钢内部受到横向力 200kN 和纵向力 100kN，液压缸耳环座和外门架底部受到液压缸推力 25kN，链轮座处受到 25kN 的拉力，添加重力，如图 5.4 所示。</p>
+<p><img src="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/image-20220517160854229.png" srcset="/img/loading.gif" lazyload alt="image-20220517160854229"></p>
+<p>​        求解得到竖直传动模块等效应力图如图 5.5 所示。</p>
+<p><img src="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/image-20220517160916836.png" srcset="/img/loading.gif" lazyload alt="image-20220517160916836"></p>
+<p>​        分析结果表明，内门架满足强度要求。外门架在与液压缸连接处具有较大的应力；同时，外门架底板和 C 型钢连接处有较大的应力集中，最大应力超过材料的强度极限，需要对外门架的结构进行改进。</p>
+<p>​        针对外门架与液压缸连接处较大的应力，增加底板厚度，使用圆角过渡；针对外门架底板与 C 型钢连接处较大的应力集中，在此处设置加强筋，并用圆角过渡，改进结构如图 5.6 所示。</p>
+<p><img src="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/image-20220517161039553.png" srcset="/img/loading.gif" lazyload alt="image-20220517161039553"></p>
+<p>​        再次添加接触、约束和载荷，对竖直方向传动模块进行网格划分并求解，外门架等效应力图和竖直传动模块总变形图如图 5.7 所示。</p>
+<p><img src="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/image-20220517161106022.png" srcset="/img/loading.gif" lazyload alt="image-20220517161106022"></p>
+<p>​        分析结果表明，增加外门架底板厚度之后，应力会大幅减小；增设加强筋后，应力集中现象有所改善。改进后的外门架最大应力小于材料的强度极限，满足强度要求；整个竖直传动模块最大变形为 7mm，可以忽略不计，符合刚度要求。</p>
+<h2 id="纵向传动模块有限元分析"><a href="#纵向传动模块有限元分析" class="headerlink" title="纵向传动模块有限元分析"></a>纵向传动模块有限元分析</h2><p>​        去除螺栓等零部件，在 SolidWorks 中填充螺栓孔等不必要结构，导入 ANSYS。限制导槽滚轮组的横向和纵向位移，链条连接梁竖直方向的位移，设置导槽和真空吸盘连接板导轨部分为不分离接触，对其划分网格。设置真空吸盘连接座受到横向力 200kN，纵向力 100kN，添加重力，如图 5.8 所示。</p>
+<p><img src="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/image-20220517161156747.png" srcset="/img/loading.gif" lazyload alt="image-20220517161156747"></p>
+<p>​        求解得到竖直传动模块等效应力图如图 5.9 所示。</p>
+<p><img src="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/image-20220517161329137.png" srcset="/img/loading.gif" lazyload alt="image-20220517161329137"></p>
+<p>​        分析结果表明，真空吸盘连接板耳环根部收到很大的应力，需要进行改进。增加真空吸盘连接板的厚度，降低伸出的角度，如图 5.10 所示。改进后，连接板应力大幅减小，但是液压缸连接座出现应力集中，且有较大的纵向变形。在液压缸连接座设置加强筋后，纵向传动模块强度和刚度最终合格，如图 5.11 所示。</p>
+<p><img src="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/image-20220517161357001.png" srcset="/img/loading.gif" lazyload alt="image-20220517161357001"></p>
+<p><img src="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/image-20220517161413598.png" srcset="/img/loading.gif" lazyload alt="image-20220517161413598"></p>
+<h2 id="经济性分析"><a href="#经济性分析" class="headerlink" title="经济性分析"></a>经济性分析</h2><p>​        从成本上来看，首先本设计大量使用标准件。支承装置采用标准型钢焊接而成，内外门架使用叉车用型钢与底板、横梁焊接而成，导槽与真空吸盘连接板之间的导轨也采用叉车叉架的设计标准。标准件在生产中容易获得，很大降低了生产制造的成本，同时也降低了设备维修更换的成本。其次，本设计采用轻量化设计，竖直传动模块利用增程机构减少了因大行程液压缸安装尺寸较大而造成的浪费，减少了制造上的材料使用，降低了整机的重量，在减少物料成本外也降低了运输成本。最后，本文采用 STAAD.Pro、SolidWorks、ANSYS 等 CAD 和 CAE 软件，能够判断方案是否合理，大大减少了方案改进和实验验证的成本。</p>
+<p>​        从效益上来看，这种系泊机械臂可以大幅降低船舶的系泊时间。由于系泊操作在港口十分频繁[23]，单次系泊时间的降低能够大幅提高港口的运行效率，使港口系泊更多的船只，得到更多收益。同时由于系泊机械臂能够控制船舶在横向和纵向的位移，相比现有系泊方式，船舶的运动量会减少很多，在起重机装卸货物时将不会受到影响，提高了港口装卸运输的效率。同时，机械臂大幅降低的系泊工作人员的工作量，系泊操作可以由更少的工人完成，降低了港口运营的人工成本。系泊机械臂也提高了港口的空间利用率，即不使用缆绳系缆，理论上泊位长度可以与船舶长度相等，这样可以释放一部分空间。</p>
+<p>​        综上所述，该系泊机械臂具有良好的经济性。</p>
+<h2 id="本章小结-3"><a href="#本章小结-3" class="headerlink" title="本章小结"></a>本章小结</h2><p>​        本章使用 ANSYS 软件对系泊机械臂的结构进行了有限元分析。通过分析发现，系泊机械臂的摇板、内门架和导槽强度和刚度符合结构要求，外门架底板和真空吸盘连接板需要进行改进。对改进后的结构经过二次分析，结果表明达到设计要求，结构设计合理。最后，本文对整个方案的生产和效益方面的经济性进行了分析，本方案具有良好的经济性。</p>
+<h1 id="第-6-章-结论"><a href="#第-6-章-结论" class="headerlink" title="第 6 章 结论"></a>第 6 章 结论</h1><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>​        本文以自动系泊系统为研究对象，分析其工作原理和工作环境，在满足结构强度、刚度的基础上，设计出一种直角坐标式船舶辅助机械臂，并对该机械臂进行分析、建模与仿真。设计主要完成了以下几部分的工作：</p>
+<p>​        （1）对自动系泊系统的功能和工况进行分析，提出可行的解决方案。本文阐述自动系泊系统的工作原理，明确系泊机械臂的功能。并通过对系泊机械臂工作环境的分析，确定机械臂的关键参数。随后，设计出一种可行的构型方案。</p>
+<p>​        （2）对机械臂的运动学、动力学进行建模与分析。根据得到的构想方案，采用改进 D-H 法对机械臂建立运动学模型，对逆运动学求解，并通过 python 对其进行仿真验证。然后通过牛顿—欧拉法建立了机械臂的动力学模型，求解得到关节驱动力。</p>
+<p>​        （3）对机械臂的驱动、支承、传动装置和真空吸盘进行设计。根据关节所需驱动力等条件完成系泊机械臂液压缸的选型计算。使用 STAAD.Pro 软件对机械臂的支承装置完成受力分析、截面选择以及结构检验，支承装置采用型钢焊接组成。参考叉车门架，设计机械臂的竖直传动模块，使用两个平行的摇板连接支承装置与竖直传动模块，使用内含双杆液压缸的导槽连接真空吸盘模块。随后对真空吸盘进行设计计算。</p>
+<p>​        （4）对机械臂进行有限元分析和经济性分析，验证其可靠性和经济性。运用 ANSYS 软件分析了摇板、竖直传动模块和纵向传动模块的强度和刚度，针对危险结构进行了改进，最终使得结构设计合理可靠。同时，对机械臂经济性进行分析，其经济效益良好。</p>
+<h2 id="展望"><a href="#展望" class="headerlink" title="展望"></a>展望</h2><p>​        本文完成了系泊机械臂的结构设计，对自动系泊系统来说还需要进一步的研究，具体表现在以下方面：</p>
+<p>​        （1）本文对系泊机械臂的控制系统只进行了功能上的描述，为了系泊机械臂能够正常的工作，需要进行进一步的完善。完成基础功能的基础上，还可以建立大数据平台，分析系泊数据，控制液压缸驱动大小，使系泊机械臂更加节能。</p>
+<p>​        （2）由于国内疫情等条件限制，无法进行试验，对机械臂进行进一步验证，以确保设计的可靠性。</p>
+<h1 id="致谢"><a href="#致谢" class="headerlink" title="致谢"></a>致谢</h1><p>​        2020 年的元旦，一个武汉市卫健委的情况通报在班级群里开始传播，开启了这并不平凡的一年，随后疫情来袭，病毒肆虐，全民抗疫，复工复产。突如其来的新冠病毒，彻底打乱了我们的生活，给毕业设计也增添了不少挑战。本次毕业设计能够完成，离不开那些支持我的老师、同学、亲友等等。</p>
+<p>​        首先要特别感谢我毕业设计的指导老师袁兵副教授。袁兵老师是我本科期间工程流体力学和单片机原理及接口的任课老师，对我在力学和控制方面的学习提供了极大的帮助。在毕业设计阶段，袁兵老师提供了大量实用的设计参考资料，及时督促我们设计进度，保证了毕业设计的顺利进行，在此向袁兵老师表示感谢。</p>
+<p>​        同时感谢武汉理工大学物流学院的全体教师。武汉理工大学给了我一个能够自由学习的平台，物流学院的老师让我在大学四年内具有机械产品设计的能力，对机械行业有了一个全面的认识，毕业设计的完成离不开老师们的教导。值此三校合并 20 周年之际，向学校表示由衷的祝贺。</p>
+<p>​        同时感谢 ICADCS 第二课堂实验室的创办者陈定方教授、指导老师陶孟仑副教授以及队友罗来臻、周易岗、王浩、高涵、梁霄、夏泽天和任正敏等人。陶孟仑老师十分关心实验室成员的学习，分享行业相关前沿报告，让我对机械行业有了更加深刻的认识。实验室队友们在毕业设计期间给予了我很多支持和帮助，他们的讨论也给了我很多的启发，让我收获颇丰，与他们共战“挑战杯”的时光让我终生难忘。另外，感谢第二课堂杨梓桐学长等师兄师姐师弟师妹的关怀。</p>
+<p>​        同时感谢机设 1606 班的全体同学和室友。在毕业设计阶段，与刘明昕、刘裕燊、亓鹏、张钧华、江雄、吴世安、温明洋等人的讨论给予了我很多帮助和灵感，万典给予了我液压方面的资料，没有他们毕业设计将变的十分麻烦。</p>
+<p>​        此外，感谢 Grant Sanderson，他的系列视频和动画库 manim 让我对数学和编程有了一个全新的认识。感谢 manim-kindergarten 的成员，让我很快掌握这个动画库，并参与两次团队视频的制作，最终将其应用于毕业设计中。</p>
+<p>​        最后，感谢我的父母、爷爷奶奶等人，他们在毕业设计期间时刻关心着我的生活，为我提供了一个十分舒适的设计环境，没有他们的支持，毕业设计将很难完成，他们的付出成就了我的现在，祝愿他们身体健康，万事如意。</p>
+<p>​        Things Change，Summer Comes。拖着行李箱，走过林荫路，穿过熟悉的大门口，身后是那回忆中的四年，我亲爱的理工，不说再见。</p>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%9C%BA%E6%A2%B0%E7%9B%B8%E5%85%B3/" class="category-chain-item">机械相关</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E8%AF%BE%E7%A8%8B%E8%AE%BE%E8%AE%A1/">#课程设计</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>【本科毕业设计·全文】一种直角坐标式船舶系泊辅助机械臂设计与分析</div>
+      <div>http://example.com/2022/05/17/WHUT/GraduationDesign_WHUT_Archive/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Fu Qingchen</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年5月17日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/08/26/HUST/CPPConcurrency/" title="Effective C++ 笔记">
+                        <span class="hidden-mobile">Effective C++ 笔记</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.4.16/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"DNr2pgYBNbnn4YMKmdstH2Sw-gzGzoHsz","appKey":"6RRAdTwPs2Y3Tk5iKNo2qo1D","path":"window.location.pathname","placeholder":"说点什么","avatar":"retro","meta":["nick","mail"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":true,"recordIP":false,"serverURLs":"https://dnr2pgyb.lc-cn-n1-shared.com","emojiCDN":null,"emojiMaps":null,"enableQQ":false,"appid":"DNr2pgYBNbnn4YMKmdstH2Sw-gzGzoHsz","appkey":"6RRAdTwPs2Y3Tk5iKNo2qo1D"},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.0/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

@@ -1,7 +1,7 @@
 
 
 <!DOCTYPE html>
-<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+<html lang="zh-CN" data-default-color-scheme=auto>
 
 
 
@@ -9,66 +9,96 @@
   <meta charset="UTF-8">
   <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
   <link rel="icon" href="/img/favicon.ico">
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
   <meta name="theme-color" content="#2f4154">
-  <meta name="description" content="放在这留作纪念，不过为了放抄袭故意设置了一些明显错误。">
   <meta name="author" content="Fu Qingchen">
   <meta name="keywords" content="MSE, CS">
   
+    <meta name="description" content="放在这留作纪念，不过为了放抄袭故意设置了一些明显错误。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="课程设计：MQ4035门座起重机变幅机构变频调速电气控制线路设计">
+<meta property="og:url" content="http://example.com/2020/01/18/WHUT/CourseDesignOnMechanicalAndElectronicTransmissionAndControl/index.html">
+<meta property="og:site_name" content="Fu&#39;s Web">
+<meta property="og:description" content="放在这留作纪念，不过为了放抄袭故意设置了一些明显错误。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/QQ截图20200822184018.png">
+<meta property="og:image" content="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/QQ截图20200822184226.png">
+<meta property="og:image" content="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20200822184334.png">
+<meta property="article:published_time" content="2020-01-18T14:07:51.000Z">
+<meta property="article:modified_time" content="2022-05-25T15:12:27.622Z">
+<meta property="article:author" content="Fu Qingchen">
+<meta property="article:tag" content="课程设计">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/QQ截图20200822184018.png">
+  
+  
+  
   <title>课程设计：MQ4035门座起重机变幅机构变频调速电气控制线路设计 | Fu&#39;s Web</title>
 
-  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
 
-  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
-  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
 
-  
-    
-    
-      
-      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/vs2015.min.css" />
-    
-  
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
 
-  
-    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
-  
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
 
 
 
 <!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
 
 
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
 
 
 <link  rel="stylesheet" href="/css/main.css" />
 
-<!-- 自定义样式保持在最底部 -->
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
 
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.11","typing":{"enable":false,"typeSpeed":30,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null},"tajs":null},"search_path":"/local-search.xml"};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.0","typing":{"enable":false,"typeSpeed":30,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"tajs":null},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
+
+  
 <meta name="generator" content="Hexo 5.4.0"></head>
 
 
 <body>
-  <header style="height: 50vh;">
-    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 50vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
-    <a class="navbar-brand"
-       href="/">&nbsp;<strong>Fu's Web</strong>&nbsp;</a>
+    <a class="navbar-brand" href="/">
+      <strong>Fu&#39;s Web</strong>
+    </a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
             data-target="#navbarSupportedContent"
@@ -142,13 +172,15 @@
         
         
           <li class="nav-item" id="search-btn">
-            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
-                class="iconfont icon-search"></i>&nbsp;</a>
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
           </li>
+          
         
         
           <li class="nav-item" id="color-toggle-btn">
-            <a class="nav-link" target="_self">&nbsp;<i
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
                 class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
           </li>
         
@@ -157,62 +189,71 @@
   </div>
 </nav>
 
-    <div class="banner" id="banner" parallax=true
-         style="background: url('https://gitee.com/fuqingchen/picture-lib/raw/master/img/Test_Tree.png') no-repeat center center;
-           background-size: cover;">
-      <div class="full-bg-img">
-        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-          <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="课程设计：MQ4035门座起重机变幅机构变频调速电气控制线路设计">
-              
-                课程设计：MQ4035门座起重机变幅机构变频调速电气控制线路设计
-              
-            </span>
-
-            
-              <div class="mt-3">
-  
-  
-    <span class="post-meta">
-      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2020-01-18 22:07" pubdate>
-        2020年1月18日 晚上
-      </time>
-    </span>
-  
-</div>
-
-<div class="mt-1">
-  
-    
-    <span class="post-meta mr-2">
-      <i class="iconfont icon-chart"></i>
-      4.5k 字
-    </span>
   
 
-  
-    
-    <span class="post-meta mr-2">
-      <i class="iconfont icon-clock-fill"></i>
-      
-      
-      49
-       分钟
-    </span>
-  
-
-  
-  
-</div>
-
-            
-          </div>
-
+<div id="banner" class="banner" parallax=true
+     style="background: url('https://gitee.com/fuqingchen/picture-lib/raw/master/img/Test_Tree.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle">课程设计：MQ4035门座起重机变幅机构变频调速电气控制线路设计</span>
           
         </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2020-01-18 22:07" pubdate>
+          2020年1月18日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          <!-- compatible with older versions-->
+          6.2k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          <!-- compatible with older versions-->
+          52 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
       </div>
+
+      
     </div>
+  </div>
+</div>
+
+</div>
+
   </header>
 
   <main>
@@ -221,15 +262,20 @@
 
 <div class="container-fluid nopadding-x">
   <div class="row nomargin-x">
-    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
     <div class="col-lg-8 nopadding-x-md">
       <div class="container nopadding-x-md" id="board-ctn">
-        <div class="py-5" id="board">
+        <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
             <h1 style="display: none">课程设计：MQ4035门座起重机变幅机构变频调速电气控制线路设计</h1>
             
             <div class="markdown-body">
+              
               <p>放在这留作纪念，不过为了放抄袭故意设置了一些<strong>明显错误</strong>。</p>
 <span id="more"></span>
 <h1 id="准备内容"><a href="#准备内容" class="headerlink" title="准备内容"></a>准备内容</h1><h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><h3 id="课程设计报告书装订顺序"><a href="#课程设计报告书装订顺序" class="headerlink" title="课程设计报告书装订顺序"></a>课程设计报告书装订顺序</h3><ul>
@@ -261,17 +307,17 @@
 <li>为保证制动过程平稳，采用双制动器实现软制动</li>
 <li>配置以下保护环节：过电流保护，长期过载保护，双限位保护，零位联锁保护，超负荷限制器幅度保护。</li>
 </ul>
-<h1 id="机电传动方案的分析与拟定"><a href="#机电传动方案的分析与拟定" class="headerlink" title="机电传动方案的分析与拟定"></a>机电传动方案的分析与拟定</h1><h2 id="变幅机构特性分析"><a href="#变幅机构特性分析" class="headerlink" title="变幅机构特性分析"></a>变幅机构特性分析</h2><p>变幅机构由一台电动机驱动，电动机功率为22KW，额定电流为46A，电动机过载倍数为2.86；有增减幅要求，故要求电动机能正反方向运行；分四级起动；且有调速要求。变幅机构带有部分位能负载特征，并且属于变负载机构，在全伸出时负载转矩可能超载，控制要求相对高一些；另外变幅机构运行过程中的冲击与振动较大，特别是在大小行程终点更是如此，因此其调速要求较高。为保证制动过程平稳，采用双制动器实现软制动。</p>
-<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-comment">#@title 原始数据</span><br><span class="hljs-comment">#@markdown 以下数据均为国际单位</span><br><br>P_N = <span class="hljs-number">22000</span>  <span class="hljs-comment">#@param</span><br>I_N = <span class="hljs-number">46</span>  <span class="hljs-comment">#@param</span><br>K_Motor_overload = <span class="hljs-number">2.86</span>  <span class="hljs-comment">#@param</span><br><br></code></pre></div></td></tr></table></figure>
-<h2 id="变频调速方案分析与设计"><a href="#变频调速方案分析与设计" class="headerlink" title="变频调速方案分析与设计"></a>变频调速方案分析与设计</h2><h3 id="变频调速原理"><a href="#变频调速原理" class="headerlink" title="变频调速原理"></a>变频调速原理</h3><p>交流电动机表达式为：</p>
+<h1 id="机电传动方案的分析与拟定"><a href="#机电传动方案的分析与拟定" class="headerlink" title="机电传动方案的分析与拟定"></a>机电传动方案的分析与拟定</h1><h2 id="变幅机构特性分析"><a href="#变幅机构特性分析" class="headerlink" title="变幅机构特性分析"></a>变幅机构特性分析</h2><p>​        变幅机构由一台电动机驱动，电动机功率为22KW，额定电流为46A，电动机过载倍数为2.86；有增减幅要求，故要求电动机能正反方向运行；分四级起动；且有调速要求。变幅机构带有部分位能负载特征，并且属于变负载机构，在全伸出时负载转矩可能超载，控制要求相对高一些；另外变幅机构运行过程中的冲击与振动较大，特别是在大小行程终点更是如此，因此其调速要求较高。为保证制动过程平稳，采用双制动器实现软制动。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#@title 原始数据</span><br><span class="hljs-comment">#@markdown 以下数据均为国际单位</span><br><br>P_N = <span class="hljs-number">22000</span>  <span class="hljs-comment">#@param</span><br>I_N = <span class="hljs-number">46</span>  <span class="hljs-comment">#@param</span><br>K_Motor_overload = <span class="hljs-number">2.86</span>  <span class="hljs-comment">#@param</span><br><br></code></pre></td></tr></table></figure>
+<h2 id="变频调速方案分析与设计"><a href="#变频调速方案分析与设计" class="headerlink" title="变频调速方案分析与设计"></a>变频调速方案分析与设计</h2><h3 id="变频调速原理"><a href="#变频调速原理" class="headerlink" title="变频调速原理"></a>变频调速原理</h3><p>​        交流电动机表达式为：</p>
 <script type="math/tex; mode=display">
-n=\frac{60f_1}{p}(1-S)</script><p>由式子可知，异步电动机的转速 n 正比于定子电源的频率 f ，若连续调节定子电源频率 f 即可连续地改变电动机的转速n。因此，平滑地调节供电电源的频率，就能平滑，无级地调节异步电动机的转速。变频调速调速范围大，低速特性较硬，基频f=50Hz以下，属于恒转矩调速方式，在基频以上，属于恒功率调速方式，与直流电动机的降压和弱磁调速十分相似。且采用变频起动更能显著改善交流电动机的起动性能，大幅度降低电机的起动电流，增加起动转矩。所以变频调速是交流电动机的理想调速方案。</p>
-<h3 id="变频调速控制方式分析"><a href="#变频调速控制方式分析" class="headerlink" title="变频调速控制方式分析"></a>变频调速控制方式分析</h3><p>变频器变频的控制方式有 U/f 控制模式和矢量控制模式两种</p>
-<h4 id="U-f-控制模式"><a href="#U-f-控制模式" class="headerlink" title="U/f 控制模式"></a>U/f 控制模式</h4><p>U/f 控制即恒压频比控制方式，应用广泛。它通过调节电机供电电源电压和频率来进行调速，解决了只改变频率调速时的各种问题：频率上升时，主磁通下降，拖动力矩下降，电机拖动能力下降；频率降低时，主磁通上升，引起主磁通饱和，励磁电流急剧上升，电机发热严重。U/f 控制调速系统的机械特性可以平滑的上下移动，转差率不变，调解时有很高的运行效率。</p>
-<h4 id="矢量控制模式"><a href="#矢量控制模式" class="headerlink" title="矢量控制模式"></a>矢量控制模式</h4><p>矢量控制模式基于电机多项静态和动态参数，经过复杂算法运算得到的高精度动态控制。其基本思想是在调速过程中始终维持定子电流的磁场电流分量不变，而控制转矩电流分量，它就相当于直流电机中维持励磁不变，而通过控制电枢电流来控制电机的转矩一样，能使系统具有较好的动态持性。即如果在调速过程中始终维持定子电流的磁场电流分量不变，而控制转矩电流分量，它就相当于直流电机中维持励磁不变，而通过控制电枢电流来控制电机的转矩一样，能使系统具有较好的动态持性。这就是矢量控制或称矢量变换控制的基本思想。</p>
-<h4 id="选用模式"><a href="#选用模式" class="headerlink" title="选用模式"></a>选用模式</h4><p>本设计采用无速度传感器矢量控制模式。由于在变幅过程中，变幅阻力在不断变化，对电力拖动的动态性能有很高的要求，同时，变幅机构运行过程中的冲击与振动较大，其调速要求较高。矢量控制模式能很好的满足以上要求，因此选用。</p>
-<h3 id="变频器选型计算"><a href="#变频器选型计算" class="headerlink" title="变频器选型计算"></a>变频器选型计算</h3><p>本设计选用安川H1000系列变频器。</p>
-<h4 id="变频器容量"><a href="#变频器容量" class="headerlink" title="变频器容量"></a>变频器容量</h4><p>由经验公式，其容量按照以下公式近似计算：</p>
+n=\frac{60f_1}{p}(1-S)</script><p>​        由式子可知，异步电动机的转速 n 正比于定子电源的频率 f ，若连续调节定子电源频率 f 即可连续地改变电动机的转速n。因此，平滑地调节供电电源的频率，就能平滑，无级地调节异步电动机的转速。变频调速调速范围大，低速特性较硬，基频f=50Hz以下，属于恒转矩调速方式，在基频以上，属于恒功率调速方式，与直流电动机的降压和弱磁调速十分相似。且采用变频起动更能显著改善交流电动机的起动性能，大幅度降低电机的起动电流，增加起动转矩。所以变频调速是交流电动机的理想调速方案。</p>
+<h3 id="变频调速控制方式分析"><a href="#变频调速控制方式分析" class="headerlink" title="变频调速控制方式分析"></a>变频调速控制方式分析</h3><p>​        变频器变频的控制方式有 U/f 控制模式和矢量控制模式两种</p>
+<h4 id="U-f-控制模式"><a href="#U-f-控制模式" class="headerlink" title="U/f 控制模式"></a>U/f 控制模式</h4><p>​        U/f 控制即恒压频比控制方式，应用广泛。它通过调节电机供电电源电压和频率来进行调速，解决了只改变频率调速时的各种问题：频率上升时，主磁通下降，拖动力矩下降，电机拖动能力下降；频率降低时，主磁通上升，引起主磁通饱和，励磁电流急剧上升，电机发热严重。U/f 控制调速系统的机械特性可以平滑的上下移动，转差率不变，调解时有很高的运行效率。</p>
+<h4 id="矢量控制模式"><a href="#矢量控制模式" class="headerlink" title="矢量控制模式"></a>矢量控制模式</h4><p>​        矢量控制模式基于电机多项静态和动态参数，经过复杂算法运算得到的高精度动态控制。其基本思想是在调速过程中始终维持定子电流的磁场电流分量不变，而控制转矩电流分量，它就相当于直流电机中维持励磁不变，而通过控制电枢电流来控制电机的转矩一样，能使系统具有较好的动态持性。即如果在调速过程中始终维持定子电流的磁场电流分量不变，而控制转矩电流分量，它就相当于直流电机中维持励磁不变，而通过控制电枢电流来控制电机的转矩一样，能使系统具有较好的动态持性。这就是矢量控制或称矢量变换控制的基本思想。</p>
+<h4 id="选用模式"><a href="#选用模式" class="headerlink" title="选用模式"></a>选用模式</h4><p>​        本设计采用无速度传感器矢量控制模式。由于在变幅过程中，变幅阻力在不断变化，对电力拖动的动态性能有很高的要求，同时，变幅机构运行过程中的冲击与振动较大，其调速要求较高。矢量控制模式能很好的满足以上要求，因此选用。</p>
+<h3 id="变频器选型计算"><a href="#变频器选型计算" class="headerlink" title="变频器选型计算"></a>变频器选型计算</h3><p>​        本设计选用安川H1000系列变频器。</p>
+<h4 id="变频器容量"><a href="#变频器容量" class="headerlink" title="变频器容量"></a>变频器容量</h4><p>​        由经验公式，其容量按照以下公式近似计算：</p>
 <script type="math/tex; mode=display">
 P_{CN}\geq\frac{kP_N}{\eta\cos\phi}=36.24kW\\
 I_{CN}\geq nKI_{N}=96.47A</script><p>其中：</p>
@@ -286,22 +332,22 @@ I_{CN}\geq nKI_{N}=96.47A</script><p>其中：</p>
 <li>$P_{CN}$：变频器额定容量</li>
 <li>$I_{CN}$：变频器额定电流</li>
 </ul>
-<p>由安川H1000变频器设计资料得，应选用 <strong>CIMR-HB4A0112</strong> 型变频器</p>
-<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-comment">#计算P_&#123;CN&#125;</span><br>k = <span class="hljs-number">1.05</span><br>eta = <span class="hljs-number">0.85</span><br>cos_phi = <span class="hljs-number">0.75</span><br>p_CN = k*P_N/eta/cos_phi<br><span class="hljs-built_in">print</span>(p_CN/<span class="hljs-number">1000</span>)<br><br><span class="hljs-comment">#计算n</span><br>n = K_Motor_overload/<span class="hljs-number">1.5</span><br><span class="hljs-built_in">print</span>(n)<br><br><span class="hljs-comment">#计算I_&#123;CN&#125;</span><br>K = <span class="hljs-number">1.1</span><br>I_CN = n*K*I_N<br><span class="hljs-built_in">print</span>(I_CN)<br></code></pre></div></td></tr></table></figure>
-<div class="hljs code-wrapper"><pre><code>36.23529411764706
+<p>​        由安川H1000变频器设计资料得，应选用 <strong>CIMR-HB4A0112</strong> 型变频器</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#计算P_&#123;CN&#125;</span><br>k = <span class="hljs-number">1.05</span><br>eta = <span class="hljs-number">0.85</span><br>cos_phi = <span class="hljs-number">0.75</span><br>p_CN = k*P_N/eta/cos_phi<br><span class="hljs-built_in">print</span>(p_CN/<span class="hljs-number">1000</span>)<br><br><span class="hljs-comment">#计算n</span><br>n = K_Motor_overload/<span class="hljs-number">1.5</span><br><span class="hljs-built_in">print</span>(n)<br><br><span class="hljs-comment">#计算I_&#123;CN&#125;</span><br>K = <span class="hljs-number">1.1</span><br>I_CN = n*K*I_N<br><span class="hljs-built_in">print</span>(I_CN)<br></code></pre></td></tr></table></figure>
+<pre><code class="hljs">36.23529411764706
 1.9066666666666665
 96.47733333333333
-</code></pre></div><h3 id="制动电路设计"><a href="#制动电路设计" class="headerlink" title="制动电路设计"></a>制动电路设计</h3><p>通用变频器提供的制动方式主要有：能耗制动、再生制动、整流回馈等。本次设计对变幅机构的制动方式采用能耗制动，在变频刚刚减小的瞬间，电动机的同步转速随之下降，而由于机械惯性的作用，转子转速未变。当同步转速低于转子转速时，转子电流的相位几乎改变 180 度，电动机此时处于发电机状态；与此同时，电动机轴上的转矩变成了制动转矩，使电动机的转速迅速下降，此时的电动机处于再生制动状态。此时通过消耗能量而获得制动转矩的，属于能耗制动状态。</p>
-<h4 id="制动电阻作用"><a href="#制动电阻作用" class="headerlink" title="制动电阻作用"></a>制动电阻作用</h4><p>电机在快速停车的过程中，由于惯性作用，会产生大量的动能，动能经过变频器回馈到直流侧，从而引起滤波电容电压的升高，当电容电压超过设定值后，就经制动电阻消耗回馈的能量。可防止电机减速过程中所形成的再生发电制动以及制动过程中的能量回馈。防止变频器和电机的损坏，同时，缩短电机减速时间。</p>
-<h4 id="制动电阻的选用"><a href="#制动电阻的选用" class="headerlink" title="制动电阻的选用"></a>制动电阻的选用</h4><p>由安川H100设计资料得，应选用CIMR-HB4A0112型制动单元，下面进行验算</p>
+</code></pre><h3 id="制动电路设计"><a href="#制动电路设计" class="headerlink" title="制动电路设计"></a>制动电路设计</h3><p>​        通用变频器提供的制动方式主要有：能耗制动、再生制动、整流回馈等。本次设计对变幅机构的制动方式采用能耗制动，在变频刚刚减小的瞬间，电动机的同步转速随之下降，而由于机械惯性的作用，转子转速未变。当同步转速低于转子转速时，转子电流的相位几乎改变 180 度，电动机此时处于发电机状态；与此同时，电动机轴上的转矩变成了制动转矩，使电动机的转速迅速下降，此时的电动机处于再生制动状态。此时通过消耗能量而获得制动转矩的，属于能耗制动状态。</p>
+<h4 id="制动电阻作用"><a href="#制动电阻作用" class="headerlink" title="制动电阻作用"></a>制动电阻作用</h4><p>​        电机在快速停车的过程中，由于惯性作用，会产生大量的动能，动能经过变频器回馈到直流侧，从而引起滤波电容电压的升高，当电容电压超过设定值后，就经制动电阻消耗回馈的能量。可防止电机减速过程中所形成的再生发电制动以及制动过程中的能量回馈。防止变频器和电机的损坏，同时，缩短电机减速时间。</p>
+<h4 id="制动电阻的选用"><a href="#制动电阻的选用" class="headerlink" title="制动电阻的选用"></a>制动电阻的选用</h4><p>​        由安川H100设计资料得，应选用CIMR-HB4A0112型制动单元，下面进行验算</p>
 <script type="math/tex; mode=display">
 R_B = (0.5~1)\frac{U_D}{I_E}=13.48\Omega</script><ul>
 <li>$U_D$：最高母线电压，$U_D=1.21*1.35U_N=620V$</li>
 <li>$I_E$：电动机额定电压，$I_E=46A$</li>
 </ul>
-<p>由设计资料，采用双制动单元并联连线，其最小可接电阻$R’=R/2=9.6\Omega&lt;13.48\Omega$，符合要求，由此可以选用</p>
-<h3 id="变频器输入侧抗干扰措施"><a href="#变频器输入侧抗干扰措施" class="headerlink" title="变频器输入侧抗干扰措施"></a>变频器输入侧抗干扰措施</h3><h4 id="变频器输入侧装设交流电抗器的作用"><a href="#变频器输入侧装设交流电抗器的作用" class="headerlink" title="变频器输入侧装设交流电抗器的作用"></a>变频器输入侧装设交流电抗器的作用</h4><p>主要作用是抑制进线电源的网侧谐波，增大进线电源主回路的短路阻抗;用来限制电网电压突变和操作过电压引起的电流冲击，平滑电源电压中包含的尖峰脉冲，或平滑桥式整流电路换相时产生的电压缺陷;有效地保护变频器和改善功率因数，它既能阻止来自电网的干扰，又能减少整流单元产生的谐波电流对电网的污染。</p>
-<h4 id="交流电抗器的规格"><a href="#交流电抗器的规格" class="headerlink" title="交流电抗器的规格"></a>交流电抗器的规格</h4><p>在选择交流电抗器的容量时，一般按下式进行</p>
+<p>​        由设计资料，采用双制动单元并联连线，其最小可接电阻$R’=R/2=9.6\Omega&lt;13.48\Omega$，符合要求，由此可以选用</p>
+<h3 id="变频器输入侧抗干扰措施"><a href="#变频器输入侧抗干扰措施" class="headerlink" title="变频器输入侧抗干扰措施"></a>变频器输入侧抗干扰措施</h3><h4 id="变频器输入侧装设交流电抗器的作用"><a href="#变频器输入侧装设交流电抗器的作用" class="headerlink" title="变频器输入侧装设交流电抗器的作用"></a>变频器输入侧装设交流电抗器的作用</h4><p>​        主要作用是抑制进线电源的网侧谐波，增大进线电源主回路的短路阻抗;用来限制电网电压突变和操作过电压引起的电流冲击，平滑电源电压中包含的尖峰脉冲，或平滑桥式整流电路换相时产生的电压缺陷;有效地保护变频器和改善功率因数，它既能阻止来自电网的干扰，又能减少整流单元产生的谐波电流对电网的污染。</p>
+<h4 id="交流电抗器的规格"><a href="#交流电抗器的规格" class="headerlink" title="交流电抗器的规格"></a>交流电抗器的规格</h4><p>​        在选择交流电抗器的容量时，一般按下式进行</p>
 <script type="math/tex; mode=display">
 L=\frac{(2\%-5\%)U}{2\pi fI}=0145mH</script><p>其中：</p>
 <ul>
@@ -309,16 +355,16 @@ L=\frac{(2\%-5\%)U}{2\pi fI}=0145mH</script><p>其中：</p>
 <li>f：最大频率，$f=50Hz$</li>
 <li>I：电流，此时考虑到超载的情况，且电抗电流值为电动机额定电流的1.1~1.2倍，$I = 1.1K_{MotorOverload}I_N$</li>
 </ul>
-<p>应选用 <strong>X002567</strong> 订货号的电阻</p>
-<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python">U = <span class="hljs-number">220</span><br>f = <span class="hljs-number">50</span><br>L = <span class="hljs-number">0.03</span>*U/(<span class="hljs-number">2</span>*<span class="hljs-number">3.1415</span>*f*<span class="hljs-number">1.1</span>*K_Motor_overload*I_N)<br><span class="hljs-built_in">print</span>(L*<span class="hljs-number">1000</span>)<br></code></pre></div></td></tr></table></figure>
-<div class="hljs code-wrapper"><pre><code>0.14517449417697842
-</code></pre></div><h2 id="保护环节设计"><a href="#保护环节设计" class="headerlink" title="保护环节设计"></a>保护环节设计</h2><h3 id="变频器输入侧加自动空气断路器和接触器"><a href="#变频器输入侧加自动空气断路器和接触器" class="headerlink" title="变频器输入侧加自动空气断路器和接触器"></a>变频器输入侧加自动空气断路器和接触器</h3><p>自动空气断路器的作用是在安装、检查或维修变频器时，使变频器与电源隔离。同时，可避开变频器投入时直流回路电容器的完全充电电流峰值。选用原则：断路器容量为电机额定电流的1.3-1.4倍，整定值为断路器额定值的3-4倍</p>
-<p>交流接触器在电路中的作用主要是便于操作，当变频器发生故障时，它能迅速切断变频器电源。选用原则：按电机额定电流选用接触器容量，无须按开端次数考核其寿命</p>
-<h3 id="变频器与电动机之间加热继电器"><a href="#变频器与电动机之间加热继电器" class="headerlink" title="变频器与电动机之间加热继电器"></a>变频器与电动机之间加热继电器</h3><p>变幅机构一台变频机构只控制一台电动机。热继电器的作用是过载保护。而此时变频器已经有过载、短路相应的一系列功能，因此不需要加热继电器</p>
-<h3 id="零位联锁保护和行程保护"><a href="#零位联锁保护和行程保护" class="headerlink" title="零位联锁保护和行程保护"></a>零位联锁保护和行程保护</h3><p>零位连锁保护：失压保护的一种形式，用来防止在供电中因电源电压的消失或降低引起机械设备停止运行，以及故障消失后，在没有人工操作的情况下设备自动启动运行而导致的机械或人身事故。</p>
-<p>行程保护：用行程开关，根据生产机械要求运动的位置通过行程开关发出信号，再通过控制电路中的继电器和接触器改变电机工作状态。此外，还有超负荷限位器幅度保护，当超过设定重量时，他能自动的切断电源或报警，从而达到保护机械及人员的目的</p>
-<h1 id="变幅机构PLC控制线路设计"><a href="#变幅机构PLC控制线路设计" class="headerlink" title="变幅机构PLC控制线路设计"></a>变幅机构PLC控制线路设计</h1><h2 id="PLC工作原理及特点"><a href="#PLC工作原理及特点" class="headerlink" title="PLC工作原理及特点"></a>PLC工作原理及特点</h2><p>PLC的输入电路是用来采集被控设备的检测信号或操作命令，输出电路是用来驱动被控设备的执行机构，而执行机构与检测信号，操作命令之间的逻辑则是靠微处理器执行用户程序来实现。PLC一般采用对用户程序循环扫描的工作方式，扫描工作方式分为自诊断、与编程器通信、读入现场信号，执行用户程序，输出结果五个阶段。一个循环结束后紧接着下一个循环开始，周而复始，直到停止运行为止</p>
-<p>PLC具有抗干扰能力强，可靠性高，环境适应性好，编程方法简单易学；应用灵活，通用性好，有完善的监视和诊断功能等特点</p>
+<p>​        应选用 <strong>X002567</strong> 订货号的电阻</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python">U = <span class="hljs-number">220</span><br>f = <span class="hljs-number">50</span><br>L = <span class="hljs-number">0.03</span>*U/(<span class="hljs-number">2</span>*<span class="hljs-number">3.1415</span>*f*<span class="hljs-number">1.1</span>*K_Motor_overload*I_N)<br><span class="hljs-built_in">print</span>(L*<span class="hljs-number">1000</span>)<br></code></pre></td></tr></table></figure>
+<pre><code class="hljs">0.14517449417697842
+</code></pre><h2 id="保护环节设计"><a href="#保护环节设计" class="headerlink" title="保护环节设计"></a>保护环节设计</h2><h3 id="变频器输入侧加自动空气断路器和接触器"><a href="#变频器输入侧加自动空气断路器和接触器" class="headerlink" title="变频器输入侧加自动空气断路器和接触器"></a>变频器输入侧加自动空气断路器和接触器</h3><p>​        自动空气断路器的作用是在安装、检查或维修变频器时，使变频器与电源隔离。同时，可避开变频器投入时直流回路电容器的完全充电电流峰值。选用原则：断路器容量为电机额定电流的1.3-1.4倍，整定值为断路器额定值的3-4倍</p>
+<p>​        交流接触器在电路中的作用主要是便于操作，当变频器发生故障时，它能迅速切断变频器电源。选用原则：按电机额定电流选用接触器容量，无须按开端次数考核其寿命</p>
+<h3 id="变频器与电动机之间加热继电器"><a href="#变频器与电动机之间加热继电器" class="headerlink" title="变频器与电动机之间加热继电器"></a>变频器与电动机之间加热继电器</h3><p>​        变幅机构一台变频机构只控制一台电动机。热继电器的作用是过载保护。而此时变频器已经有过载、短路相应的一系列功能，因此不需要加热继电器</p>
+<h3 id="零位联锁保护和行程保护"><a href="#零位联锁保护和行程保护" class="headerlink" title="零位联锁保护和行程保护"></a>零位联锁保护和行程保护</h3><p>​        零位连锁保护：失压保护的一种形式，用来防止在供电中因电源电压的消失或降低引起机械设备停止运行，以及故障消失后，在没有人工操作的情况下设备自动启动运行而导致的机械或人身事故。</p>
+<p>​        行程保护：用行程开关，根据生产机械要求运动的位置通过行程开关发出信号，再通过控制电路中的继电器和接触器改变电机工作状态。此外，还有超负荷限位器幅度保护，当超过设定重量时，他能自动的切断电源或报警，从而达到保护机械及人员的目的</p>
+<h1 id="变幅机构PLC控制线路设计"><a href="#变幅机构PLC控制线路设计" class="headerlink" title="变幅机构PLC控制线路设计"></a>变幅机构PLC控制线路设计</h1><h2 id="PLC工作原理及特点"><a href="#PLC工作原理及特点" class="headerlink" title="PLC工作原理及特点"></a>PLC工作原理及特点</h2><p>​        PLC的输入电路是用来采集被控设备的检测信号或操作命令，输出电路是用来驱动被控设备的执行机构，而执行机构与检测信号，操作命令之间的逻辑则是靠微处理器执行用户程序来实现。PLC一般采用对用户程序循环扫描的工作方式，扫描工作方式分为自诊断、与编程器通信、读入现场信号，执行用户程序，输出结果五个阶段。一个循环结束后紧接着下一个循环开始，周而复始，直到停止运行为止</p>
+<p>​        PLC具有抗干扰能力强，可靠性高，环境适应性好，编程方法简单易学；应用灵活，通用性好，有完善的监视和诊断功能等特点</p>
 <h2 id="PLC输入-输出地址表"><a href="#PLC输入-输出地址表" class="headerlink" title="PLC输入/输出地址表"></a>PLC输入/输出地址表</h2><div class="table-container">
 <table>
 <thead>
@@ -537,53 +583,106 @@ L=\frac{(2\%-5\%)U}{2\pi fI}=0145mH</script><p>其中：</p>
 </tbody>
 </table>
 </div>
-<h2 id="PLC外部接线图"><a href="#PLC外部接线图" class="headerlink" title="PLC外部接线图"></a>PLC外部接线图</h2><p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/QQ截图20200822184018.png" srcset="/img/loading.gif" lazyload alt="PLC外部接线图"></p>
-<h2 id="PLC梯形图程序"><a href="#PLC梯形图程序" class="headerlink" title="PLC梯形图程序"></a>PLC梯形图程序</h2><p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/QQ截图20200822184226.png" srcset="/img/loading.gif" lazyload alt="PLC梯形图"></p>
-<figure class="highlight apache"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs apache"><span class="hljs-attribute">LD</span>	X<span class="hljs-number">000</span>		;主令控制器处于零位挡<br><span class="hljs-attribute">OR</span>	M<span class="hljs-number">100</span><br><span class="hljs-attribute">AND</span>	X<span class="hljs-number">011</span>		;空气断路器触点闭合<br><span class="hljs-attribute">ANI</span>	X<span class="hljs-number">014</span>		;变频器无故障输出<br><span class="hljs-attribute">ANI</span>	X<span class="hljs-number">012</span>		;超负荷限制器工作正常<br><span class="hljs-attribute">MC</span>	N<span class="hljs-number">0</span>	M<span class="hljs-number">100</span>	;主令控制开始<br><span class="hljs-attribute">OUT</span>	Y<span class="hljs-number">000</span>		;变频器电源接通<br><span class="hljs-attribute">OUT</span>	Y<span class="hljs-number">012</span>		;变幅机构运行正常指示灯开始亮<br><span class="hljs-attribute">LD</span>	Y<span class="hljs-number">000</span>		;变频器电源接通<br><span class="hljs-attribute">OUT</span>	Y<span class="hljs-number">007</span>		;风扇开始工作<br><span class="hljs-attribute">LD</span>	X<span class="hljs-number">001</span>		;收到增幅信号<br><span class="hljs-attribute">ANI</span>	X<span class="hljs-number">002</span>		;不在减幅状态<br><span class="hljs-attribute">ANI</span>	X<span class="hljs-number">005</span>		;没有运行到增幅限位开关<span class="hljs-number">1</span><br><span class="hljs-attribute">ANI</span>	X<span class="hljs-number">006</span>		;没有运行到增幅限位开关<span class="hljs-number">2</span><br><span class="hljs-attribute">OUT</span>	Y<span class="hljs-number">001</span>		;增幅运行<br><span class="hljs-attribute">LD</span>	X<span class="hljs-number">002</span>		;收到减幅信号<br><span class="hljs-attribute">ANI</span>	X<span class="hljs-number">001</span>		;不在增幅状态<br><span class="hljs-attribute">ANI</span>	X<span class="hljs-number">007</span>		;没有运行到减幅限位开关<span class="hljs-number">1</span><br><span class="hljs-attribute">ANI</span>	X<span class="hljs-number">010</span>		;没有运行到减幅限位开关<span class="hljs-number">2</span><br><span class="hljs-attribute">OUT</span>	Y<span class="hljs-number">002</span>		;减幅运行<br><span class="hljs-attribute">LD</span>	X<span class="hljs-number">001</span><br><span class="hljs-attribute">OR</span>	X<span class="hljs-number">002</span><br><span class="hljs-attribute">ANI</span>	X<span class="hljs-number">003</span>		;收到多数调节<span class="hljs-number">1</span>信号<br><span class="hljs-attribute">OUT</span>	Y<span class="hljs-number">003</span>		;输出给变频器<br><span class="hljs-attribute">LD</span>	X<span class="hljs-number">001</span><br><span class="hljs-attribute">OR</span>	X<span class="hljs-number">002</span><br><span class="hljs-attribute">ANI</span>	X<span class="hljs-number">004</span>		;收到多数调节<span class="hljs-number">2</span>信号<br><span class="hljs-attribute">OUT</span>	Y<span class="hljs-number">004</span>		;输出给变频器<br><span class="hljs-attribute">MCR</span>	N<span class="hljs-number">0</span>			;主令控制结束<br><span class="hljs-attribute">LD</span>	X<span class="hljs-number">005</span>		;增幅状态下运行到增幅限位开关<span class="hljs-number">1</span><br><span class="hljs-attribute">ANI</span>	Y<span class="hljs-number">002</span><br><span class="hljs-attribute">LD</span>	X<span class="hljs-number">007</span>		;减幅状态下运行到减幅限位开关<span class="hljs-number">1</span><br><span class="hljs-attribute">ANI</span>	Y<span class="hljs-number">001</span><br><span class="hljs-attribute">ORB</span>				<br><span class="hljs-attribute">OUT</span>	Y<span class="hljs-number">005</span>		;制动器<span class="hljs-number">1</span>启动<br><span class="hljs-attribute">LD</span>	X<span class="hljs-number">006</span>		;增幅状态下运行到增幅限位开关<span class="hljs-number">2</span><br><span class="hljs-attribute">ANI</span>	Y<span class="hljs-number">002</span><br><span class="hljs-attribute">LD</span>	X<span class="hljs-number">008</span>		;增幅状态下运行到增幅限位开关<span class="hljs-number">2</span><br><span class="hljs-attribute">ANI</span>	Y<span class="hljs-number">001</span>	<br><span class="hljs-attribute">ORB</span><br><span class="hljs-attribute">OUT</span>	Y<span class="hljs-number">006</span>		;制动器<span class="hljs-number">1</span>启动<br><span class="hljs-attribute">LD</span>	X<span class="hljs-number">015</span>		;制动单元热敏开关反应<br><span class="hljs-attribute">OR</span>	X<span class="hljs-number">016</span><br><span class="hljs-attribute">OUT</span>	Y<span class="hljs-number">010</span>		;输出故障信号给变频器<br><span class="hljs-attribute">LD</span>	X<span class="hljs-number">017</span>		;复位按钮按下<br><span class="hljs-attribute">OUT</span>	Y<span class="hljs-number">011</span>		;输出复位信号给变频器<br><span class="hljs-attribute">LD</span>	X<span class="hljs-number">013</span>		;收到变频器工作信号<br><span class="hljs-attribute">OUT</span>	Y<span class="hljs-number">013</span>		;工作指示灯亮<br><span class="hljs-attribute">LD</span>	X<span class="hljs-number">014</span>		;收到变频器故障信号<br><span class="hljs-attribute">OUT</span>	Y<span class="hljs-number">014</span>		;故障指示灯亮<br></code></pre></div></td></tr></table></figure>
-<h1 id="变幅机构电路工作原理"><a href="#变幅机构电路工作原理" class="headerlink" title="变幅机构电路工作原理"></a>变幅机构电路工作原理</h1><p><img src="https://gitee.com/fuqingchen/picture-lib/raw/master/img/20200822184334.png" srcset="/img/loading.gif" lazyload alt="变幅机构电路图"></p>
-<p>变幅机构采用变频调速，四级启动，电机能正反转实现增减幅，有过电流保护，长期过载保护，双限位保护，零位连锁保护，超负荷限制器幅度保护，其主电路如A3图纸所示，电源经空气断路器、交流接触器触点、AC电抗器输入到变频器中，变频器经PLC控制改变电源频率，输出到电机，实现其控制</p>
-<p>以正转为例（增幅），当主令控制器在零位档时，同时空气断路器全部接通时，中间继电器M100得点，变频器电源开始接通。机构运行指示点亮，风机开始运行。当主令控制器在右1档时，2路接通，控制电机正转，PLC输出调节指令11给变频器。档主令在2档时，2路和5路接通，电机正转，PLC输出调速指令10给变频器。同理，3档时，调速指令为01，4档为00</p>
-<p>本设计采用双制动器实现软制动，当运行到增幅第一个行程开关时，若电机处于增幅状态，制动器1开始工作，当运行到增幅第二个行程开关时，若电机处于增幅状态，制动器2也加入制动过程，实现双制动</p>
-<p>当变频器出现故障时，变频器将输出故障信号给PLC，使变频器电源切断，同时故障信号指示灯HL3点亮，当变频器正常运行时，变频器将输出运行指示给PLC，使变频器运行正常指示灯HL2点亮。当变频器复位按钮按下时，PLC将向变频器传递故障复位信号。当制动单元发热过大，使其热敏电阻开关闭合，PLC将发送外部故障信号给变频器。</p>
-<p>当电路中电流过大时，空气断路器会直接切断主电路单元，实现过电流保护；当变幅机构负载过大，超过超负荷限位器设定值时，PLC将切断变频器电源，实现幅度保护。</p>
-<h1 id="设计小结"><a href="#设计小结" class="headerlink" title="设计小结"></a>设计小结</h1><p>通过本次机电传动控制课程设计，我进一步巩固了之前所学的理论知识，感受到了在实际设计中，完成一个项目的做法。首先要广泛的查阅资料，弄清标准与相关的需要，然后根据需求选择对应的元器件。对于本专业，只需要关注元器件的接线，段子和配件，最后根据设计需求设计电路。在设计过程中，还培养了我团结合作，互帮互助，与人交流的能力</p>
+<h2 id="PLC外部接线图"><a href="#PLC外部接线图" class="headerlink" title="PLC外部接线图"></a>PLC外部接线图</h2><p><img src="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/QQ截图20200822184018.png" srcset="/img/loading.gif" lazyload alt="PLC外部接线图"></p>
+<h2 id="PLC梯形图程序"><a href="#PLC梯形图程序" class="headerlink" title="PLC梯形图程序"></a>PLC梯形图程序</h2><p><img src="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/QQ截图20200822184226.png" srcset="/img/loading.gif" lazyload alt="PLC梯形图"></p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">LD</span>	X<span class="hljs-number">000</span>		;主令控制器处于零位挡<br><span class="hljs-attribute">OR</span>	M<span class="hljs-number">100</span><br><span class="hljs-attribute">AND</span>	X<span class="hljs-number">011</span>		;空气断路器触点闭合<br><span class="hljs-attribute">ANI</span>	X<span class="hljs-number">014</span>		;变频器无故障输出<br><span class="hljs-attribute">ANI</span>	X<span class="hljs-number">012</span>		;超负荷限制器工作正常<br><span class="hljs-attribute">MC</span>	N<span class="hljs-number">0</span>	M<span class="hljs-number">100</span>	;主令控制开始<br><span class="hljs-attribute">OUT</span>	Y<span class="hljs-number">000</span>		;变频器电源接通<br><span class="hljs-attribute">OUT</span>	Y<span class="hljs-number">012</span>		;变幅机构运行正常指示灯开始亮<br><span class="hljs-attribute">LD</span>	Y<span class="hljs-number">000</span>		;变频器电源接通<br><span class="hljs-attribute">OUT</span>	Y<span class="hljs-number">007</span>		;风扇开始工作<br><span class="hljs-attribute">LD</span>	X<span class="hljs-number">001</span>		;收到增幅信号<br><span class="hljs-attribute">ANI</span>	X<span class="hljs-number">002</span>		;不在减幅状态<br><span class="hljs-attribute">ANI</span>	X<span class="hljs-number">005</span>		;没有运行到增幅限位开关<span class="hljs-number">1</span><br><span class="hljs-attribute">ANI</span>	X<span class="hljs-number">006</span>		;没有运行到增幅限位开关<span class="hljs-number">2</span><br><span class="hljs-attribute">OUT</span>	Y<span class="hljs-number">001</span>		;增幅运行<br><span class="hljs-attribute">LD</span>	X<span class="hljs-number">002</span>		;收到减幅信号<br><span class="hljs-attribute">ANI</span>	X<span class="hljs-number">001</span>		;不在增幅状态<br><span class="hljs-attribute">ANI</span>	X<span class="hljs-number">007</span>		;没有运行到减幅限位开关<span class="hljs-number">1</span><br><span class="hljs-attribute">ANI</span>	X<span class="hljs-number">010</span>		;没有运行到减幅限位开关<span class="hljs-number">2</span><br><span class="hljs-attribute">OUT</span>	Y<span class="hljs-number">002</span>		;减幅运行<br><span class="hljs-attribute">LD</span>	X<span class="hljs-number">001</span><br><span class="hljs-attribute">OR</span>	X<span class="hljs-number">002</span><br><span class="hljs-attribute">ANI</span>	X<span class="hljs-number">003</span>		;收到多数调节<span class="hljs-number">1</span>信号<br><span class="hljs-attribute">OUT</span>	Y<span class="hljs-number">003</span>		;输出给变频器<br><span class="hljs-attribute">LD</span>	X<span class="hljs-number">001</span><br><span class="hljs-attribute">OR</span>	X<span class="hljs-number">002</span><br><span class="hljs-attribute">ANI</span>	X<span class="hljs-number">004</span>		;收到多数调节<span class="hljs-number">2</span>信号<br><span class="hljs-attribute">OUT</span>	Y<span class="hljs-number">004</span>		;输出给变频器<br><span class="hljs-attribute">MCR</span>	N<span class="hljs-number">0</span>			;主令控制结束<br><span class="hljs-attribute">LD</span>	X<span class="hljs-number">005</span>		;增幅状态下运行到增幅限位开关<span class="hljs-number">1</span><br><span class="hljs-attribute">ANI</span>	Y<span class="hljs-number">002</span><br><span class="hljs-attribute">LD</span>	X<span class="hljs-number">007</span>		;减幅状态下运行到减幅限位开关<span class="hljs-number">1</span><br><span class="hljs-attribute">ANI</span>	Y<span class="hljs-number">001</span><br><span class="hljs-attribute">ORB</span>				<br><span class="hljs-attribute">OUT</span>	Y<span class="hljs-number">005</span>		;制动器<span class="hljs-number">1</span>启动<br><span class="hljs-attribute">LD</span>	X<span class="hljs-number">006</span>		;增幅状态下运行到增幅限位开关<span class="hljs-number">2</span><br><span class="hljs-attribute">ANI</span>	Y<span class="hljs-number">002</span><br><span class="hljs-attribute">LD</span>	X<span class="hljs-number">008</span>		;增幅状态下运行到增幅限位开关<span class="hljs-number">2</span><br><span class="hljs-attribute">ANI</span>	Y<span class="hljs-number">001</span>	<br><span class="hljs-attribute">ORB</span><br><span class="hljs-attribute">OUT</span>	Y<span class="hljs-number">006</span>		;制动器<span class="hljs-number">1</span>启动<br><span class="hljs-attribute">LD</span>	X<span class="hljs-number">015</span>		;制动单元热敏开关反应<br><span class="hljs-attribute">OR</span>	X<span class="hljs-number">016</span><br><span class="hljs-attribute">OUT</span>	Y<span class="hljs-number">010</span>		;输出故障信号给变频器<br><span class="hljs-attribute">LD</span>	X<span class="hljs-number">017</span>		;复位按钮按下<br><span class="hljs-attribute">OUT</span>	Y<span class="hljs-number">011</span>		;输出复位信号给变频器<br><span class="hljs-attribute">LD</span>	X<span class="hljs-number">013</span>		;收到变频器工作信号<br><span class="hljs-attribute">OUT</span>	Y<span class="hljs-number">013</span>		;工作指示灯亮<br><span class="hljs-attribute">LD</span>	X<span class="hljs-number">014</span>		;收到变频器故障信号<br><span class="hljs-attribute">OUT</span>	Y<span class="hljs-number">014</span>		;故障指示灯亮<br></code></pre></td></tr></table></figure>
+<h1 id="变幅机构电路工作原理"><a href="#变幅机构电路工作原理" class="headerlink" title="变幅机构电路工作原理"></a>变幅机构电路工作原理</h1><p><img src="https://cquf-piclib.oss-cn-hangzhou.aliyuncs.com/20200822184334.png" srcset="/img/loading.gif" lazyload alt="变幅机构电路图"></p>
+<p>​        变幅机构采用变频调速，四级启动，电机能正反转实现增减幅，有过电流保护，长期过载保护，双限位保护，零位连锁保护，超负荷限制器幅度保护，其主电路如A3图纸所示，电源经空气断路器、交流接触器触点、AC电抗器输入到变频器中，变频器经PLC控制改变电源频率，输出到电机，实现其控制</p>
+<p>​        以正转为例（增幅），当主令控制器在零位档时，同时空气断路器全部接通时，中间继电器M100得点，变频器电源开始接通。机构运行指示点亮，风机开始运行。当主令控制器在右1档时，2路接通，控制电机正转，PLC输出调节指令11给变频器。档主令在2档时，2路和5路接通，电机正转，PLC输出调速指令10给变频器。同理，3档时，调速指令为01，4档为00</p>
+<p>​        本设计采用双制动器实现软制动，当运行到增幅第一个行程开关时，若电机处于增幅状态，制动器1开始工作，当运行到增幅第二个行程开关时，若电机处于增幅状态，制动器2也加入制动过程，实现双制动</p>
+<p>​        当变频器出现故障时，变频器将输出故障信号给PLC，使变频器电源切断，同时故障信号指示灯HL3点亮，当变频器正常运行时，变频器将输出运行指示给PLC，使变频器运行正常指示灯HL2点亮。当变频器复位按钮按下时，PLC将向变频器传递故障复位信号。当制动单元发热过大，使其热敏电阻开关闭合，PLC将发送外部故障信号给变频器。</p>
+<p>​        当电路中电流过大时，空气断路器会直接切断主电路单元，实现过电流保护；当变幅机构负载过大，超过超负荷限位器设定值时，PLC将切断变频器电源，实现幅度保护。</p>
+<h1 id="设计小结"><a href="#设计小结" class="headerlink" title="设计小结"></a>设计小结</h1><p>​        通过本次机电传动控制课程设计，我进一步巩固了之前所学的理论知识，感受到了在实际设计中，完成一个项目的做法。首先要广泛的查阅资料，弄清标准与相关的需要，然后根据需求选择对应的元器件。对于本专业，只需要关注元器件的接线，段子和配件，最后根据设计需求设计电路。在设计过程中，还培养了我团结合作，互帮互助，与人交流的能力</p>
 <h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p>[1]邓星钟. 机电传动控制. 5版. 武汉: 华中科技大学出版社. 2011. 6</p>
 <p>[2]刘银东. 张俊俊. 浅谈变频器U/f控制和矢量控制应用. 高新技术. 2015(1): 27</p>
 
+              
             </div>
-            <hr>
+            <hr/>
             <div>
-              <div class="post-metas mb-3">
-                
-                  <div class="post-meta mr-3">
-                    <i class="iconfont icon-category"></i>
-                    
-                      <a class="hover-with-bg" href="/categories/%E8%87%AA%E5%8A%A8%E5%8C%96%E7%9B%B8%E5%85%B3/">自动化相关</a>
-                    
-                  </div>
-                
-                
-                  <div class="post-meta">
-                    <i class="iconfont icon-tags"></i>
-                    
-                      <a class="hover-with-bg" href="/tags/%E8%AF%BE%E7%A8%8B%E8%AE%BE%E8%AE%A1/">课程设计</a>
-                    
-                  </div>
-                
-              </div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E8%87%AA%E5%8A%A8%E5%8C%96%E7%9B%B8%E5%85%B3/" class="category-chain-item">自动化相关</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E8%AF%BE%E7%A8%8B%E8%AE%BE%E8%AE%A1/">#课程设计</a>
+      
+    </div>
+  
+</div>
+
+
               
-                <p class="note note-warning">
-                  
-                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
-                  
-                </p>
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>课程设计：MQ4035门座起重机变幅机构变频调速电气控制线路设计</div>
+      <div>http://example.com/2020/01/18/WHUT/CourseDesignOnMechanicalAndElectronicTransmissionAndControl/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Fu Qingchen</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2020年1月18日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
               
-              
-                <div class="post-prevnext">
+                <div class="post-prevnext my-3">
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2020/01/18/WHUT/CourseDesignOnHydraulicElementsAndTransitionSystems/">
+                      <a href="/2020/01/18/WHUT/CourseDesignOnHydraulicElementsAndTransitionSystems/" title="课程设计：65t-55m岸桥挂舱保护液压缸设计">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">课程设计：65t-55m岸桥挂舱保护液压缸设计</span>
                         <span class="visible-mobile">上一篇</span>
@@ -593,7 +692,7 @@ L=\frac{(2\%-5\%)U}{2\pi fI}=0145mH</script><p>其中：</p>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2019/08/04/WHUT/CodingLesson/">
+                      <a href="/2019/08/04/WHUT/CodingLesson/" title="ICADCS同学的上位机科普">
                         <span class="hidden-mobile">ICADCS同学的上位机科普</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
@@ -605,55 +704,87 @@ L=\frac{(2\%-5\%)U}{2\pi fI}=0145mH</script><p>其中：</p>
             </div>
 
             
-              <!-- Comments -->
-              <article class="comments" id="comments" lazyload>
-                
-                  
-                
-                
+  <article id="comments" lazyload>
+    
   <div id="valine"></div>
   <script type="text/javascript">
     Fluid.utils.loadComments('#valine', function() {
-      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.4.16/Valine.min.js', function() {
         var options = Object.assign(
-          {"appId":"DNr2pgYBNbnn4YMKmdstH2Sw-gzGzoHsz","appKey":"6RRAdTwPs2Y3Tk5iKNo2qo1D","placeholder":"说点什么","path":"window.location.pathname","avatar":"retro","meta":["nick","mail"],"pageSize":10,"lang":"zh-CN","highlight":true,"recordIP":false,"serverURLs":"https://dnr2pgyb.lc-cn-n1-shared.com","emojiCDN":null,"emojiMaps":null,"enableQQ":false,"requiredFields":[],"appid":"DNr2pgYBNbnn4YMKmdstH2Sw-gzGzoHsz","appkey":"6RRAdTwPs2Y3Tk5iKNo2qo1D"},
+          {"appId":"DNr2pgYBNbnn4YMKmdstH2Sw-gzGzoHsz","appKey":"6RRAdTwPs2Y3Tk5iKNo2qo1D","path":"window.location.pathname","placeholder":"说点什么","avatar":"retro","meta":["nick","mail"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":true,"recordIP":false,"serverURLs":"https://dnr2pgyb.lc-cn-n1-shared.com","emojiCDN":null,"emojiMaps":null,"enableQQ":false,"appid":"DNr2pgYBNbnn4YMKmdstH2Sw-gzGzoHsz","appkey":"6RRAdTwPs2Y3Tk5iKNo2qo1D"},
           {
             el: "#valine",
             path: window.location.pathname
           }
         )
         new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
       });
     });
   </script>
   <noscript>Please enable JavaScript to view the comments</noscript>
 
 
-              </article>
-            
+  </article>
+
+
           </article>
         </div>
       </div>
     </div>
-    
-      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
-        <div id="toc">
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
   <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
   <div class="toc-body" id="toc-body"></div>
 </div>
 
-      </div>
-    
+
+
+  </aside>
+
+
+    </div>
   </div>
 </div>
 
-<!-- Custom -->
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
 
 
     
 
     
-      <a id="scroll-top-button" href="#" role="button">
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
         <i class="iconfont icon-arrowup" aria-hidden="true"></i>
       </a>
     
@@ -672,35 +803,37 @@ L=\frac{(2\%-5\%)U}{2\pi fI}=0145mH</script><p>其中：</p>
       <div class="modal-body mx-3">
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v"
-                 for="local-search-input">关键词</label>
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>
     </div>
   </div>
 </div>
+
     
 
     
   </main>
 
-  <footer class="text-center mt-5 py-3">
-  <div class="footer-content">
-     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
-  </div>
+  <footer>
+    <div class="footer-inner">
   
-
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
   
-
   
-</footer>
-
-
-  <!-- SCRIPTS -->
   
-  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
-  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
 
   <script>
     NProgress.configure({"showSpinner":false,"trickleSpeed":100})
@@ -711,12 +844,15 @@ L=\frac{(2\%-5\%)U}{2\pi fI}=0145mH</script><p>其中：</p>
   </script>
 
 
-<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
-<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
 <script  src="/js/events.js" ></script>
 <script  src="/js/plugins.js" ></script>
 
-<!-- Plugins -->
+
+
+
+
 
 
   
@@ -725,25 +861,137 @@ L=\frac{(2\%-5\%)U}{2\pi fI}=0145mH</script><p>其中：</p>
 
 
 
+
   
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.0/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
 
 
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
 
-  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
 
 
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
 
-  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
 
 
-
-  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
-
-
-
-  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
-
-
+  <script>Fluid.plugins.imageCaption();</script>
 
   <script  src="/js/local-search.js" ></script>
 
@@ -751,24 +999,15 @@ L=\frac{(2\%-5\%)U}{2\pi fI}=0145mH</script><p>其中：</p>
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- 主题的启动项 保持在最底部 -->
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
 <script  src="/js/boot.js" ></script>
 
 
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
 </body>
 </html>

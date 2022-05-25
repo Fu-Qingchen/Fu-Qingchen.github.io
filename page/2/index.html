@@ -1,7 +1,7 @@
 
 
 <!DOCTYPE html>
-<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+<html lang="zh-CN" data-default-color-scheme=auto>
 
 
 
@@ -9,50 +9,82 @@
   <meta charset="UTF-8">
   <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
   <link rel="icon" href="/img/favicon.ico">
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
   <meta name="theme-color" content="#2f4154">
-  <meta name="description" content="">
   <meta name="author" content="Fu Qingchen">
   <meta name="keywords" content="MSE, CS">
   
+    <meta property="og:type" content="website">
+<meta property="og:title" content="Fu&#39;s Web">
+<meta property="og:url" content="http://example.com/page/2/index.html">
+<meta property="og:site_name" content="Fu&#39;s Web">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="Fu Qingchen">
+<meta property="article:tag" content="MSE, CS">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
   <title>Fu&#39;s Web</title>
 
-  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
 
 
 
 <!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
 
 
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
 
 
 <link  rel="stylesheet" href="/css/main.css" />
 
-<!-- 自定义样式保持在最底部 -->
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
 
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.11","typing":{"enable":false,"typeSpeed":30,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null},"tajs":null},"search_path":"/local-search.xml"};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.0","typing":{"enable":false,"typeSpeed":30,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"tajs":null},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
+
+  
 <meta name="generator" content="Hexo 5.4.0"></head>
 
 
 <body>
-  <header style="height: 100vh;">
-    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 100vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
-    <a class="navbar-brand"
-       href="/">&nbsp;<strong>Fu's Web</strong>&nbsp;</a>
+    <a class="navbar-brand" href="/">
+      <strong>Fu&#39;s Web</strong>
+    </a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
             data-target="#navbarSupportedContent"
@@ -126,13 +158,15 @@
         
         
           <li class="nav-item" id="search-btn">
-            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
-                class="iconfont icon-search"></i>&nbsp;</a>
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
           </li>
+          
         
         
           <li class="nav-item" id="color-toggle-btn">
-            <a class="nav-link" target="_self">&nbsp;<i
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
                 class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
           </li>
         
@@ -141,36 +175,40 @@
   </div>
 </nav>
 
-    <div class="banner" id="banner" parallax=true
-         style="background: url('https://gitee.com/fuqingchen/picture-lib/raw/master/img/whut_names.png') no-repeat center center;
-           background-size: cover;">
-      <div class="full-bg-img">
-        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.7)">
-          <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="Learning by Sharing（￣▽￣）">
-              
-                Learning by Sharing（￣▽￣）
-              
-            </span>
+  
 
-            
-          </div>
-
+<div id="banner" class="banner" parallax=true
+     style="background: url('https://gitee.com/fuqingchen/picture-lib/raw/master/img/whut_names.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.7)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
           
-            <div class="scroll-down-bar">
-              <i class="iconfont icon-arrowdown"></i>
-            </div>
+            <span id="subtitle">Learning by Sharing（￣▽￣）</span>
           
         </div>
+
+        
       </div>
+
+      
+        <div class="scroll-down-bar">
+          <i class="iconfont icon-arrowdown"></i>
+        </div>
+      
     </div>
+  </div>
+</div>
+
+</div>
+
   </header>
 
   <main>
     
       <div class="container nopadding-x-md">
-        <div class="py-5" id="board"
-          style=margin-top:0>
+        <div id="board"
+          style="margin-top: 0">
           
           <div class="container">
             <div class="row">
@@ -184,20 +222,80 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
+        <a href="/2020/11/21/HUST/LearnCPP/" target="_self">
+          C++ Primer 阅读笔记
+        </a>
+      </h1>
+
+      <a class="index-excerpt" href="/2020/11/21/HUST/LearnCPP/" target="_self">
+        <div>
+          
+          为了准备C++的考试更新至：面向对象程序设计 PS：这本书可真厚实
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-11-21 17:00" pubdate>
+              2020-11-21
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9B%B8%E5%85%B3/" class="category-chain-item">计算机相关</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/C/">#C++</a>
+            
+              <a href="/tags/%E7%BC%96%E7%A8%8B/">#编程</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
         <a href="/2020/10/03/HUST/NumbericalAnalysis/" target="_self">
           数值分析笔记
         </a>
       </h1>
 
-      <p class="index-excerpt">
-        <a href="/2020/10/03/HUST/NumbericalAnalysis/" target="_self">
-          
-          
-            
+      <a class="index-excerpt" href="/2020/10/03/HUST/NumbericalAnalysis/" target="_self">
+        <div>
           
           蛮有用的一门（尤其是做数学动画的时候），应该边写程序边上这门课。
-        </a>
-      </p>
+        </div>
+      </a>
 
       <div class="index-btm post-metas">
         
@@ -209,20 +307,34 @@
           </div>
         
         
-          <div class="post-meta mr-3">
+          <div class="post-meta mr-3 d-flex align-items-center">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/%E6%95%B0%E5%AD%A6%E7%9B%B8%E5%85%B3/">数学相关</a>
-            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%95%B0%E5%AD%A6%E7%9B%B8%E5%85%B3/" class="category-chain-item">数学相关</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
           </div>
         
         
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/MATLAB/">MATLAB</a>
+              <a href="/tags/MATLAB/">#MATLAB</a>
             
-              <a href="/tags/%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90/">数值分析</a>
+              <a href="/tags/%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90/">#数值分析</a>
             
           </div>
         
@@ -241,15 +353,12 @@
         </a>
       </h1>
 
-      <p class="index-excerpt">
-        <a href="/2020/09/01/CommemorationWHUT/" target="_self">
-          
-          
-            
+      <a class="index-excerpt" href="/2020/09/01/CommemorationWHUT/" target="_self">
+        <div>
           
           武汉理工大学一些资源的汇总
-        </a>
-      </p>
+        </div>
+      </a>
 
       <div class="index-btm post-metas">
         
@@ -261,20 +370,34 @@
           </div>
         
         
-          <div class="post-meta mr-3">
+          <div class="post-meta mr-3 d-flex align-items-center">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/%E5%85%B6%E4%BB%96/">其他</a>
-            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%85%B6%E4%BB%96/" class="category-chain-item">其他</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
           </div>
         
         
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/%E6%AF%95%E4%B8%9A%E7%BA%AA%E5%BF%B5/">毕业纪念</a>
+              <a href="/tags/%E6%AD%A6%E6%B1%89%E7%90%86%E5%B7%A5%E5%A4%A7%E5%AD%A6/">#武汉理工大学</a>
             
-              <a href="/tags/%E6%AD%A6%E6%B1%89%E7%90%86%E5%B7%A5%E5%A4%A7%E5%AD%A6/">武汉理工大学</a>
+              <a href="/tags/%E6%AF%95%E4%B8%9A%E7%BA%AA%E5%BF%B5/">#毕业纪念</a>
             
           </div>
         
@@ -293,15 +416,12 @@
         </a>
       </h1>
 
-      <p class="index-excerpt">
-        <a href="/2020/04/09/WHUT/ReviewTheoreticalMechanics/" target="_self">
-          
-          
-            
+      <a class="index-excerpt" href="/2020/04/09/WHUT/ReviewTheoreticalMechanics/" target="_self">
+        <div>
           
           最近搞毕业设计遇到了一些理论力学的问题，发现自己忘记的好快，所以来回顾一下。理论力学是各种力学的基础，讨论物体不失效，不变形情况下运动和力的关系
-        </a>
-      </p>
+        </div>
+      </a>
 
       <div class="index-btm post-metas">
         
@@ -313,18 +433,32 @@
           </div>
         
         
-          <div class="post-meta mr-3">
+          <div class="post-meta mr-3 d-flex align-items-center">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/%E6%9C%BA%E6%A2%B0%E7%9B%B8%E5%85%B3/">机械相关</a>
-            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%9C%BA%E6%A2%B0%E7%9B%B8%E5%85%B3/" class="category-chain-item">机械相关</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
           </div>
         
         
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/%E5%8A%9B%E5%AD%A6/">力学</a>
+              <a href="/tags/%E5%8A%9B%E5%AD%A6/">#力学</a>
             
           </div>
         
@@ -343,15 +477,12 @@
         </a>
       </h1>
 
-      <p class="index-excerpt">
-        <a href="/2020/01/18/WHUT/CourseDesignOnHydraulicElementsAndTransitionSystems/" target="_self">
-          
-          
-            
+      <a class="index-excerpt" href="/2020/01/18/WHUT/CourseDesignOnHydraulicElementsAndTransitionSystems/" target="_self">
+        <div>
           
           放在这留作纪念，首次电子化了的课程设计，然后为了放抄袭故意设置了一些明显错误。
-        </a>
-      </p>
+        </div>
+      </a>
 
       <div class="index-btm post-metas">
         
@@ -363,18 +494,32 @@
           </div>
         
         
-          <div class="post-meta mr-3">
+          <div class="post-meta mr-3 d-flex align-items-center">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/%E6%B6%B2%E5%8E%8B%E7%9B%B8%E5%85%B3/">液压相关</a>
-            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%B6%B2%E5%8E%8B%E7%9B%B8%E5%85%B3/" class="category-chain-item">液压相关</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
           </div>
         
         
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/%E8%AF%BE%E7%A8%8B%E8%AE%BE%E8%AE%A1/">课程设计</a>
+              <a href="/tags/%E8%AF%BE%E7%A8%8B%E8%AE%BE%E8%AE%A1/">#课程设计</a>
             
           </div>
         
@@ -393,15 +538,12 @@
         </a>
       </h1>
 
-      <p class="index-excerpt">
-        <a href="/2020/01/18/WHUT/CourseDesignOnMechanicalAndElectronicTransmissionAndControl/" target="_self">
-          
-          
-            
+      <a class="index-excerpt" href="/2020/01/18/WHUT/CourseDesignOnMechanicalAndElectronicTransmissionAndControl/" target="_self">
+        <div>
           
           放在这留作纪念，不过为了放抄袭故意设置了一些明显错误。
-        </a>
-      </p>
+        </div>
+      </a>
 
       <div class="index-btm post-metas">
         
@@ -413,18 +555,32 @@
           </div>
         
         
-          <div class="post-meta mr-3">
+          <div class="post-meta mr-3 d-flex align-items-center">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/%E8%87%AA%E5%8A%A8%E5%8C%96%E7%9B%B8%E5%85%B3/">自动化相关</a>
-            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E8%87%AA%E5%8A%A8%E5%8C%96%E7%9B%B8%E5%85%B3/" class="category-chain-item">自动化相关</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
           </div>
         
         
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/%E8%AF%BE%E7%A8%8B%E8%AE%BE%E8%AE%A1/">课程设计</a>
+              <a href="/tags/%E8%AF%BE%E7%A8%8B%E8%AE%BE%E8%AE%A1/">#课程设计</a>
             
           </div>
         
@@ -443,16 +599,12 @@
         </a>
       </h1>
 
-      <p class="index-excerpt">
-        <a href="/2019/08/04/WHUT/CodingLesson/" target="_self">
+      <a class="index-excerpt" href="/2019/08/04/WHUT/CodingLesson/" target="_self">
+        <div>
           
-          
-            
-          
-          受到实验室指导老师的邀请，给学弟学妹们科普上位机。
-由于上位机软件开发中会涉及到大量英语文档，因此在基本概念中，有些使用的英文介绍。
-        </a>
-      </p>
+          受到实验室指导老师的邀请，给学弟学妹们科普上位机。 由于上位机软件开发中会涉及到大量英语文档，因此在基本概念中，有些使用的英文介绍。
+        </div>
+      </a>
 
       <div class="index-btm post-metas">
         
@@ -464,18 +616,32 @@
           </div>
         
         
-          <div class="post-meta mr-3">
+          <div class="post-meta mr-3 d-flex align-items-center">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9B%B8%E5%85%B3/">计算机相关</a>
-            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9B%B8%E5%85%B3/" class="category-chain-item">计算机相关</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
           </div>
         
         
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/%E6%95%99%E7%A8%8B/">教程</a>
+              <a href="/tags/%E6%95%99%E7%A8%8B/">#教程</a>
             
           </div>
         
@@ -494,15 +660,12 @@
         </a>
       </h1>
 
-      <p class="index-excerpt">
-        <a href="/2019/06/24/WHUT/MechanicalAndElectronicTransmissionAndControl/" target="_self">
-          
-          
-            
+      <a class="index-excerpt" href="/2019/06/24/WHUT/MechanicalAndElectronicTransmissionAndControl/" target="_self">
+        <div>
           
           讲电机的一门课程，主要要会画几个图
-        </a>
-      </p>
+        </div>
+      </a>
 
       <div class="index-btm post-metas">
         
@@ -514,20 +677,34 @@
           </div>
         
         
-          <div class="post-meta mr-3">
+          <div class="post-meta mr-3 d-flex align-items-center">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/%E8%87%AA%E5%8A%A8%E5%8C%96%E7%9B%B8%E5%85%B3/">自动化相关</a>
-            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E8%87%AA%E5%8A%A8%E5%8C%96%E7%9B%B8%E5%85%B3/" class="category-chain-item">自动化相关</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
           </div>
         
         
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/%E7%94%B5%E6%9C%BA/">电机</a>
+              <a href="/tags/%E7%94%B5%E6%9C%BA/">#电机</a>
             
-              <a href="/tags/%E6%9C%BA%E7%94%B5%E4%BC%A0%E5%8A%A8/">机电传动</a>
+              <a href="/tags/%E6%9C%BA%E7%94%B5%E4%BC%A0%E5%8A%A8/">#机电传动</a>
             
           </div>
         
@@ -541,20 +718,17 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2019/06/13/WHUT/HydraulicElements&Transition/" target="_self">
+        <a href="/2019/06/13/WHUT/HydraulicElements&amp;Transition/" target="_self">
           液压元件与系统笔记
         </a>
       </h1>
 
-      <p class="index-excerpt">
-        <a href="/2019/06/13/WHUT/HydraulicElements&Transition/" target="_self">
-          
-          
-            
+      <a class="index-excerpt" href="/2019/06/13/WHUT/HydraulicElements&amp;Transition/" target="_self">
+        <div>
           
           我这一届可能是物流学院最后一届液压班了，这课应该绝版了，不过当时在搞比赛没好好学很可惜。
-        </a>
-      </p>
+        </div>
+      </a>
 
       <div class="index-btm post-metas">
         
@@ -566,18 +740,32 @@
           </div>
         
         
-          <div class="post-meta mr-3">
+          <div class="post-meta mr-3 d-flex align-items-center">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/%E6%B6%B2%E5%8E%8B%E7%9B%B8%E5%85%B3/">液压相关</a>
-            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%B6%B2%E5%8E%8B%E7%9B%B8%E5%85%B3/" class="category-chain-item">液压相关</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
           </div>
         
         
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/%E6%B6%B2%E5%8E%8B/">液压</a>
+              <a href="/tags/%E6%B6%B2%E5%8E%8B/">#液压</a>
             
           </div>
         
@@ -596,15 +784,12 @@
         </a>
       </h1>
 
-      <p class="index-excerpt">
-        <a href="/2019/04/01/WHUT/NumericalControlTechnology/" target="_self">
-          
-          
-            
+      <a class="index-excerpt" href="/2019/04/01/WHUT/NumericalControlTechnology/" target="_self">
+        <div>
           
           介绍数控机床的一门课程。
-        </a>
-      </p>
+        </div>
+      </a>
 
       <div class="index-btm post-metas">
         
@@ -616,72 +801,34 @@
           </div>
         
         
-          <div class="post-meta mr-3">
+          <div class="post-meta mr-3 d-flex align-items-center">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/%E8%87%AA%E5%8A%A8%E5%8C%96%E7%9B%B8%E5%85%B3/">自动化相关</a>
-            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E8%87%AA%E5%8A%A8%E5%8C%96%E7%9B%B8%E5%85%B3/" class="category-chain-item">自动化相关</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
           </div>
         
         
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/%E8%87%AA%E5%8A%A8%E5%8C%96/">自动化</a>
+              <a href="/tags/%E8%87%AA%E5%8A%A8%E5%8C%96/">#自动化</a>
             
-              <a href="/tags/%E6%95%B0%E6%8E%A7%E6%8A%80%E6%9C%AF/">数控技术</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2019/04/01/WHUT/ModernTestingTechnology/" target="_self">
-          现代测试技术笔记
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2019/04/01/WHUT/ModernTestingTechnology/" target="_self">
-          
-          
-            
-          
-          又名传感器，测控方向的要好好学下。
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2019-04-01 08:07" pubdate>
-              2019-04-01
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E8%87%AA%E5%8A%A8%E5%8C%96%E7%9B%B8%E5%85%B3/">自动化相关</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E8%87%AA%E5%8A%A8%E5%8C%96/">自动化</a>
-            
-              <a href="/tags/%E4%BC%A0%E6%84%9F%E5%99%A8/">传感器</a>
+              <a href="/tags/%E6%95%B0%E6%8E%A7%E6%8A%80%E6%9C%AF/">#数控技术</a>
             
           </div>
         
@@ -707,7 +854,7 @@
     
 
     
-      <a id="scroll-top-button" href="#" role="button">
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
         <i class="iconfont icon-arrowup" aria-hidden="true"></i>
       </a>
     
@@ -726,35 +873,37 @@
       <div class="modal-body mx-3">
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v"
-                 for="local-search-input">关键词</label>
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>
     </div>
   </div>
 </div>
+
     
 
     
   </main>
 
-  <footer class="text-center mt-5 py-3">
-  <div class="footer-content">
-     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
-  </div>
+  <footer>
+    <div class="footer-inner">
   
-
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
   
-
   
-</footer>
-
-
-  <!-- SCRIPTS -->
   
-  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
-  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
 
   <script>
     NProgress.configure({"showSpinner":false,"trickleSpeed":100})
@@ -765,31 +914,21 @@
   </script>
 
 
-<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
-<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
 <script  src="/js/events.js" ></script>
 <script  src="/js/plugins.js" ></script>
 
-<!-- Plugins -->
+
+
+
+
 
 
   
     <script  src="/js/img-lazyload.js" ></script>
   
 
-
-
-  
-
-
-
-
-
-
-
-
-
-  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
 
 
 
@@ -799,24 +938,15 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- 主题的启动项 保持在最底部 -->
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
 <script  src="/js/boot.js" ></script>
 
 
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
 </body>
 </html>
